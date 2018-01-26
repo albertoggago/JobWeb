@@ -14,5 +14,7 @@ The project contains tree parts
 
 ### 2.1 Servers Python
 
+The system contains with 2 servers.
 
+1 - readEmails
 
