@@ -1,0 +1,5 @@
+{
+  "test/__init__.py": true, 
+  "test/test.py": true, 
+  "test/test.py::test_logger_test": true
+}

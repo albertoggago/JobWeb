@@ -16,13 +16,17 @@ import smtplib
 
 from pyvirtualdisplay import Display
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+
+import string
+from selenium.common.exceptions import NoSuchElementException
+
+#own classes
+from Logger import Logger
 
 #from lxml import html
 #from lxml import etree
-#from selenium.webdriver.common.keys import Keys
-#from selenium.common.exceptions import NoSuchElementException
 #import requests
-#import string
 #import nltk
 #from nltk.collocations import *
 #from nltk.tokenize import word_tokenize
@@ -32,6 +36,20 @@ from selenium import webdriver
 #import unicodedata
 #import base64 
 
+#clean code
+
+
+#class for analize emails.
+class mongodbAcess():
+	def __init__(file):
+		self.logger = Logger(self.__class__.__name__).get()
+
+	
+
+
+
+
+#review code
 def recursivo (x):
 	print x
 	if not(x.text is None):
@@ -129,29 +147,17 @@ def analizador (driver,secuencia=[{"tipo":"class","elemento":"xx"}],split=None, 
 
 
 
-class Posiciones:
+class readAndAnalyse:
 
 	visible = False
 
-	def __init__(self,name,visible):
-		#client = MongoClient('localhost:27017', ssl=True, ssl_ca_certs='/home/alberto/datos/ssl/mongodb.pem', ssl_match_hostname=False)  
-  		#client.the_database.authenticate("posiciones","posicionesX",source="admin")
-  		url =  'mongodb://posiciones:1984ZuloPase@'
-  		url += 'cluster0-shard-00-00-wapx6.mongodb.net:27017,'
-  		url += 'cluster0-shard-00-01-wapx6.mongodb.net:27017,'
-  		url += 'cluster0-shard-00-02-wapx6.mongodb.net:27017/'
-  		url += 'posiciones?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin'
-  		client = MongoClient(url)
+	def __init__(self,file,visible):
+		#define logger 
+		self.logger = Logger(self.__class__.__name__).get()
+		self.mongoDBAccess = MongoDBAccess("mongoDB.json")
 
+		self.visible = visible
   		
-  		self.db = client[name]
-  		self.param = self.db.correoUrl.find_one()
-
-  		self.visible = visible
-  		if self.param == None:
-			print "base de datos parada o param no inicializado"
-		else:
-			print "-- INFO -- Conexion a base de datos OK"
 
 	def buscar_elementos(self):
 		#ojo ya borra solo
@@ -493,9 +499,9 @@ class Posiciones:
 if __name__ == '__main__':
 	param_visible = True if len(sys.argv)>1 else False
 	print "## INFO ## Inicio: {0}".format(datetime.datetime.now())
-	posiciones = Posiciones("posiciones",param_visible)
-	posiciones.buscar_elementos()
-	posiciones.buscar_urls()
-	posiciones.analizar_url2()
+	readAndAnalyse = readAndAnalyse("mongodb.conf",param_visible)
+	readAndAnalyse.buscar_elementos()
+	readAndAnalyse.buscar_urls()
+	readAndAnalyse.analizar_url2()
 	print "## INFO ## fin: {0}".format(datetime.datetime.now())
 
