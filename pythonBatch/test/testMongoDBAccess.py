@@ -20,26 +20,34 @@ def test_mongodbAcessError():
 
 def test_mongoDBAccess_find_oneOK():
 	mongoDBAccess = MongoDBAccess("../test/config/testMongoDBOk.json")
-	res = mongoDBAccess.find_one("varios",{"clave":"IP"})
-
+	resInsert     = mongoDBAccess.insert("variosTest",{"clave":"IPFind","value":0})
+	res = mongoDBAccess.find_one("variosTest",{"clave":"IPFind"})
+	resDelete     = mongoDBAccess.delete_one("variosTest",{"clave":"IPFind"})
+	
 	assert res!= None 
 
 def test_mongoDBAccess_find_oneErrorDB():
 	mongoDBAccess = MongoDBAccess("../test/config/testMongoDBError.json")
-	res = mongoDBAccess.find_one("varios",{"clave":"IP"})
-
+	resInsert     = mongoDBAccess.insert("variosTest",{"clave":"IPFind","value":0})
+	res = mongoDBAccess.find_one("variosTest",{"clave":"IPFind"})
+	resDelete     = mongoDBAccess.delete_one("variosTest",{"clave":"IPFind"})
+	
 	assert res== None 
 
 def test_mongoDBAccess_find_oneErrorCollection():
 	mongoDBAccess = MongoDBAccess("../test/config/testMongoDBOk.json")
+	resInsert     = mongoDBAccess.insert("variosTest",{"clave":"IPFind"})
 	res = mongoDBAccess.find_one("variosXX",{"clave":"IP"})
-
+	resDelete     = mongoDBAccess.delete_one("variosTest",{"clave":"IPFind"})
+	
 	assert res== None 	
 
 def test_mongoDBAccess_find_oneErrorFilter():
 	mongoDBAccess = MongoDBAccess("../test/config/testMongoDBOk.json")
-	res = mongoDBAccess.find_one("varios",{"clave":"IPFilter"})
-
+	resInsert     = mongoDBAccess.insert("variosTest",{"clave":"IPFind","value":0})
+	res = mongoDBAccess.find_one("variosTest",{"clave":"IPFilter"})
+	resDelete     = mongoDBAccess.delete_one("variosTest",{"clave":"IPFind"})
+	
 	assert res== None 	
 
 def test_mongoDBAccess_findOK():

@@ -4,14 +4,14 @@
 import sys
 import datetime
 
-import imaplib
-import email
-from email.header import decode_header
-import re
-import ipgetter
-from email.mime.text import MIMEText
-import smtplib
-import base64 
+
+#import email
+#
+#import re
+#import ipgetter
+#from email.mime.text import MIMEText
+#import smtplib
+#import base64 
 
 from pyvirtualdisplay import Display
 from selenium import webdriver
@@ -156,83 +156,29 @@ class readAndAnalyse:
 		self.logger.info("Inicio: {0}".format(datetime.datetime.now()))	
   		
 
-	def buscar_elementos(self):
-		self.logger.info("BUSCAR_CORREOS")
+	def finding_mails(self):
+		self.logger.info("find_emails")
 
-		sumaCorreos = 0;
+		countEmails = 0;
+		listEmails = self.mailAccess.searchMails("inbox")
 
-		fromEmail = 'albertoggagocurro@albertoggago.es'
-		sslServer = 'albertoggago.es'
-		pwdServer= 'Gemaxana1973#'
-		mail = imaplib.IMAP4_SSL(sslServer)
-		mail.login(fromEmail,pwdServer)
-		mail.list()
-		mail.select("inbox")
-		lista = mail.search(None,"ALL")[1][0].split()
-		for ele in lista:
-			correo = {}
-			data = mail.fetch(ele, "(RFC822)")
-			#print data[1][0][1]
-			msg = email.message_from_string(data[1][0][1])
-			msgFrom = msg.get_all("from",[])
-			correo["From"]=msgFrom[0]
-			subject = decode_header(msg.get_all("Subject",[])[0])[0][0]
-			correo["Subject"]=subject
-			urlsAll = []
-			texto = ""
-			for part in msg.walk():
-				ctype = part.get_content_type()
-				cdispo = str(part.get('Content-Disposition'))
-				if (ctype == 'text/plain' or ctype == 'text/html' )and 'attachment' not in cdispo:
-					enc = msg['Content-Transfer-Encoding']
-					texto = texto+" "+part.get_payload()
-					if enc =="base64":
-						texto = base64.decodestring(texto)
-			texto = re.sub("=\r\n","",texto)
-			urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', texto)
-			for x in urls:
-				urlsAll.append(x)
-			correo["texto"]=texto
-			correo["urls"]=urlsAll
-			correo["datetime"]=datetime.datetime.now()
+		for ele in listEmails:
+			
+			correo = self.mailAccess.composeMailJson(self.mailAccess.get(ele))
+
 			self.mongoDBAccess.insert("correo",correo)
-			sumaCorreos += 1			
-			mail.store(ele, '+FLAGS', '\\Deleted')
-		#mail.expunge()
-		#mail.close()
- 		mail.logout()
- 		print "-- INFO -- Correos Leidos: {0:d}".format(sumaCorreos)
- 		#parte dos recogemos la IP de la maquina y la enviamos por correo
- 		IP = ipgetter.myip()
- 		#print IP
- 		ipOld = self.mongoDBAccess.find_one("varios",{"clave":"IP"})
- 		if (ipOld["valor"]!=IP):
- 			print IP
- 			smtp_ssl_host = 'mail.albertoggago.es'
-			smtp_ssl_port = 465
-			username = fromEmail
-			password = pwdServer
-			sender = fromEmail
-			targets = ['albertoggago@gmail.com']
-			msg = MIMEText('IP: http://'+IP+":3000")
-			msg['Subject'] = 'Nueva IP: '+IP
-			msg['From'] = sender
-			msg['To'] = ', '.join(targets)
-
-			server = smtplib.SMTP_SSL(smtp_ssl_host, smtp_ssl_port)
-			#server.set_debuglevel(2)
-			server.login(username, password)
-			server.sendmail(sender, targets, msg.as_string())
-			#print msg.as_string()
-			server.quit()
-			self.mongoDBAccess.update_one("varios",{"clave":"IP"},{'valor':IP})
+			countEmails += 1			
+			self.mailAccess.store(ele)
+		
+		#self.mailAccess.clean()
+ 		self.mailAccess.logout()
+ 		self.logger.info("Correos Leidos: {0:d}".format(countEmails))
 
  			
-			
-	def buscar_urls(self):
+	def finding_urls(self):
 		#ojo ya borra solo
-		print "-- INFO -- BUSCAR_URLS"
-		sumaUrls = 0
+		self.logger.info( "FINDING_URLS")
+		countUrls = 0
 		datos = self.mongoDBAccess.find("correo",{"control":{"$exists":0}},sort={"urls":1,"_id":1})
 		for ele in datos:
 			idCorreo = ele["_id"]
@@ -244,15 +190,16 @@ class readAndAnalyse:
 				elemento["decision"]= ""
 				elemento["datetime"]=datetime.datetime.now()
 				#buscar url
-				buscarURL = self.mongoDBAcess.find_one("correoUrl",{"url":url})
+				buscarURL = self.mongoDBAccess.find_one("correoUrl",{"url":url})
 				if buscarURL == None:
+					self.logger.debug("Url to save: {0}".format(url))
 					self.mongoDBAccess.insert("correoUrl",elemento)
 				else:
 					if self.visible!=1:
-						print "no guardamos: {0}".format(url)
+						self.logger.warning("No SAVE URL: {0}".format(url))
 			self.mongoDBAccess.update_one("correo",{"_id":idCorreo},{"control":"DONE"})
-			sumaUrls +=1
-		print "-- INFO -- URLS Leidas: {0:d}".format(sumaUrls)
+			countUrls +=1
+		self.logger.info("URLS read: {0:d}".format(countUrls))
 					
 				
 	def analizar_url2(self):
@@ -492,8 +439,8 @@ class readAndAnalyse:
 if __name__ == '__main__':
 	param_visible = True if len(sys.argv)>1 else False
 	readAndAnalyse = readAndAnalyse("mongodb.conf",param_visible)
-	readAndAnalyse.buscar_elementos()
-	readAndAnalyse.buscar_urls()
+	readAndAnalyse.finding_mails()
+	readAndAnalyse.finding_urls()
 	readAndAnalyse.analizar_url2()
 	print "## INFO ## fin: {0}".format(datetime.datetime.now())
 

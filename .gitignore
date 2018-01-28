@@ -38,7 +38,9 @@ npm-debug.log
 testem.log
 /typings
 /pythonBatch/pyproj/log/*
-/pythonBatch/test/log/*
+/pythonBatch/pyproj/logOld/*
+/pythonBatch/test/log/*	
+/pythonBatch/test/logOld/*
 /pythonBatch/test/__pycache__/*
 
 # e2e
