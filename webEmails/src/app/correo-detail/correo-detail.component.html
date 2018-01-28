@@ -1,0 +1,69 @@
+<div *ngIf="correo" class="panel panel-info">
+  <div  class="panel-body panel-primary">
+        <div  class="panel panel-primary">
+            <div  class="panel-heading">
+            <h1 class="panel-title">{{correo.company}}</h1>
+          </div>
+        </div>
+          <h2 class="panel-title">{{correo.titulo}}</h2>
+        <br>
+        <p>{{correo.fecha | date: "yyyy-MM-dd"}}</p>      
+      <div  class="jumbotron">
+       <form #f="ngForm" novalidate>
+          <div class="form-group">
+            <label  for="observaciones">Observaciones:</label>
+            <input id="observaciones" type="text" class="form-control" name="observaciones" [(ngModel)]="correo.observaciones" required autofocus>
+            <input type="hidden" name="id" [(ngModel)]="correo.id" >
+          </div>
+          <div class="input-group">
+             <span class="input-group-addon" *ngFor="let decision of decisiones" >
+              <input type="radio" name="decision2" (click)="onSiNo(decision.value)" [checked]="decision.value === correo.decision" />&nbsp;&nbsp;{{decision.value}}&nbsp;&nbsp; 
+          </span>              
+          &nbsp;&nbsp;&nbsp;
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" name="isSended" [(ngModel)]="correo.isSended" [disabled]="!isSendedValid()">¿Enviado?
+          </label>
+          &nbsp;&nbsp;&nbsp;
+          <button type="submit" class="btn btn-primary navbar-btn" [disabled]="!isFormValid()" (click)="onGuardar(f.valid)" autofocus>guardar</button>
+        </div>  
+         </form> 
+       </div>
+        <div *ngFor="let modelo of modelos">
+          <h1 class="panel-title">Prediccion {{modelo.nombre}}</h1>
+                  <div class="progress-bar progress-bar-success" role="progressbar" [style.width]="modelo.valorSI">{{modelo.valorSI}}
+                  </div>
+                  <div class="progress-bar progress-bar-danger" role="progressbar" [style.width]="modelo.valorNO">{{modelo.valorNO}}
+                  </div>
+        </div>
+        <br>
+        <div  class="panel-heading">
+        <span class="badge badge-secondary">{{correo.porcentPREDAvg | number : '1.2-2'}} %</span>
+        </div>
+        <p><a href="{{correo.urlOk}}" target="_blank" >{{correo.pagina}}</a></p>
+        <br>
+        <p><a href="{{correo.urlDonde}}" target="_blank" >{{correo.donde}}</a></p>     
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <agm-map [latitude]="lat" [longitude]="lng">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+          </agm-map>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <div class="panel-title">
+              <ul class="list-group">
+                <li *ngFor="let ele1 of correo.corpus|slice:0:30" class="list-group-item"  style="float: left;">
+                  {{ele1.palabra}}
+                </li>
+              </ul>
+          </div>
+        <br style="clear: both;display: block;content: '';">
+      </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <br>
+      <br>
+    <div class="panel-title" [innerHTML]="correo.summary"></div>
+  </div>
+    <br>
+  </div>
+</div>
+
+   

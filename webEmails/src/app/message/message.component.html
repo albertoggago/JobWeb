@@ -1,0 +1,23 @@
+<button class="clear"(click)="messageService.clear()">clear</button>
+<table class="table" *ngIf="messageService.messages">	
+<thead class="thead-dark">
+	<tr>
+  		<th>Type</th>
+  		<th>Where</th>
+  		<th>Function</th>
+  		<th>Level</th>
+  		<th>Text</th>
+  		<th>Fecha</th>
+	</tr>
+</thead>
+<tbody>
+  <tr *ngFor='let message of messageService.messages.reverse()'> 
+  	<td>{{message.tipo}}</td>
+  	<td>{{message.where}}</td>
+  	<td>{{message.funcion}}</td>
+  	<td>{{getTextLevel(message.level)}}</td>
+  	<td>{{message.texto}}</td> 
+  	<td>{{message.fecha}}</td> 
+  </tr>
+</tbody>
+</table>

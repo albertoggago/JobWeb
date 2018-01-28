@@ -1,0 +1,41 @@
+<div class="panel panel-info" *ngIf="doughnutChartLabels" >
+<div style="display: block">
+  <canvas baseChart
+              [data]="doughnutChartData"
+			  [labels]="doughnutChartLabel"              
+              [chartType]="doughnutChartType"
+              (chartHover)="chartHoveredX($event)"
+              (chartClick)="chartClickedX($event)"
+              [options]="options"
+              ></canvas>
+</div> 
+<div class="row">
+ <div class="col-md-6" style="margin-bottom: 10px">
+    <table class="table table-responsive table-condensed">
+      <tr>
+        <th *ngFor="let label of lineChartLabels">{{label}}</th>
+      </tr>
+      <tr *ngFor="let d of lineChartData">
+        <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
+      </tr>
+    </table>
+    <button (click)="load()">RECARGAR</button>
+  </div>
+  <div class="col-md-6">
+    <div style="display: block;">
+    <canvas baseChart width="400" height="400"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+</div>
+
+
+</div>	
+[data]="doughnutChartData"

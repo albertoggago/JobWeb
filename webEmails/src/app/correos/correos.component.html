@@ -1,0 +1,61 @@
+<div class="row">
+
+ <div class="col-lg-3 col-md-4 col-sm-12">
+  <div  class="container">
+    <form [formGroup]="tipoListado" novalidate>
+      <div class="input-group">
+        <select class="form-control" formControlName="seleccion" >
+          <option class="form-control" *ngFor="let sel of selecciones" [ngValue]="sel" >
+            {{sel.display}}
+        </option>
+        </select>
+      </div>
+      <br>
+      <div class="input-group" *ngIf="tipoListado.controls.seleccion.value.value === 'J'">
+        <span class="input-group-addon" id="basic-addon1">Texto</span>
+        <input type="text" class="form-control" formControlName='palabras' placeholder="Texto" name="palabras" ngModel aria-describedby="basic-addon1"/>
+      </div>
+      <br>
+      <div class="btn-group">
+        <button type="submit" class="btn btn-primary" (click)="onRefrescarBusqueda(tipoListado, false)">
+        Buscar
+          <span class="badge badge-secondary">{{cantidad}}</span>
+        </button>
+      </div>
+      <div class="btn-group">
+        <button type="submit" class="btn btn-primary" (click)="onBajar()" >
+          <span class="glyphicon glyphicon-arrow-down"></span>
+        </button>
+        <button type="submit" class="btn btn-primary" (click)="onSubir()" [disabled]="(seleccionado == null || seleccionado == 0)? true: null">
+          <span class="glyphicon glyphicon-arrow-up"></span>
+        </button>
+      </div>
+      <div class="input-group">
+        <input class="form-control" type="text" placeholder="{{seleccionado == null? '' :seleccionado+1}}" readonly>
+      </div>
+      <div class="btn-group">
+        <button type="submit" class="btn btn-primary" (click)="onLogOut()">LogOut</button>
+      </div>
+    </form>
+
+    <br>
+    <div class="row" *ngFor="let correo of correos" (click)="onSelect(correo)">
+      <div class="{{correo.numeroCorreo === seleccionado ? 'panel panel-primary' : 'panel-info'}}">
+         <div class="panel-heading">
+           <h4 class="panel-title">{{ correo.titulo }}</h4>
+         </div>
+         <div class="panel-body">
+           <p>{{correo.fecha | date: "yyyy-MM-dd"}}</p>      
+           <p><a href="{{correo.urlOk}}" target="_blank" >{{correo.pagina}}</a></p>      
+           <p>{{correo.company}} : {{correo.donde}} : {{correo.porcentPREDAvg | number:'1.2-2'}} % : {{correo.decision}} </p>
+         </div>  
+      </div>
+    </div>
+
+ </div>
+ </div>
+ <div class="col-lg-9 col-md-10 col-sm-12">
+  <app-correo-detail [correo]="selectedCorreo" (update)="guardadoP($event)"></app-correo-detail>
+ </div>
+</div>
+   

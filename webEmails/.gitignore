@@ -1,17 +1,11 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/webEmails/dist
-/webEmails/tmp
-/webEmails/out-tsc
+/dist
+/tmp
 
 # dependencies
-/webEmails/node_modules
-
-
-#keys
-/pythonBatch/pyproj/config/*
-/pythonBatch/test/config/*
+/node_modules
 
 # IDEs and editors
 /.idea
@@ -20,7 +14,6 @@
 .c9/
 *.launch
 .settings/
-*.sublime-workspace
 
 # IDE - VSCode
 .vscode/*
@@ -32,22 +25,16 @@
 # misc
 /.sass-cache
 /connect.lock
-/coverage
+/coverage/*
 /libpeerconnection.log
 npm-debug.log
 testem.log
 /typings
-/pythonBatch/pyproj/log/*
-/pythonBatch/pyproj/logOld/*
-/pythonBatch/test/log/*	
-/pythonBatch/test/logOld/*
-/pythonBatch/test/__pycache__/*
 
 # e2e
-/webEmails/e2e/*.js
-/webEmails/e2e/*.map
+/e2e/*.js
+/e2e/*.map
 
-# System Files
+#System Files
 .DS_Store
 Thumbs.db
-*.pyc
