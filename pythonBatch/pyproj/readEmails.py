@@ -4,8 +4,6 @@
 import sys
 import datetime
 
-from pymongo import MongoClient
-
 import imaplib
 import email
 from email.header import decode_header
@@ -13,6 +11,7 @@ import re
 import ipgetter
 from email.mime.text import MIMEText
 import smtplib
+import base64 
 
 from pyvirtualdisplay import Display
 from selenium import webdriver
@@ -23,6 +22,8 @@ from selenium.common.exceptions import NoSuchElementException
 
 #own classes
 from Logger import Logger
+from MongoDBAccess import MongoDBAccess
+from MailAccess import MailAccess
 
 #from lxml import html
 #from lxml import etree
@@ -34,17 +35,8 @@ from Logger import Logger
 #from nltk.corpus import brown
 #from nltk.probability import FreqDist
 #import unicodedata
-#import base64 
 
 #clean code
-
-
-#class for analize emails.
-class mongodbAcess():
-	def __init__(file):
-		self.logger = Logger(self.__class__.__name__).get()
-
-	
 
 
 
@@ -147,23 +139,28 @@ def analizador (driver,secuencia=[{"tipo":"class","elemento":"xx"}],split=None, 
 
 
 
+
 class readAndAnalyse:
 
-	visible = False
+	visible       = False
+	logger        = None
+	mongoDBAccess = None
+	mailAccess    = None
 
 	def __init__(self,file,visible):
-		#define logger 
 		self.logger = Logger(self.__class__.__name__).get()
-		self.mongoDBAccess = MongoDBAccess("mongoDB.json")
+		self.mongoDBAccess = MongoDBAccess("config/mongoDB.json")
+		self.mailAccess = MailAccess("config/mailAccess.json")
 
 		self.visible = visible
+		self.logger.info("Inicio: {0}".format(datetime.datetime.now()))	
   		
 
 	def buscar_elementos(self):
-		#ojo ya borra solo
-		#self.db.correo.remove()				
-		print "-- INFO -- BUSCAR_CORREOS"
+		self.logger.info("BUSCAR_CORREOS")
+
 		sumaCorreos = 0;
+
 		fromEmail = 'albertoggagocurro@albertoggago.es'
 		sslServer = 'albertoggago.es'
 		pwdServer= 'Gemaxana1973#'
@@ -198,7 +195,7 @@ class readAndAnalyse:
 			correo["texto"]=texto
 			correo["urls"]=urlsAll
 			correo["datetime"]=datetime.datetime.now()
-			self.db.correo.insert(correo)
+			self.mongoDBAccess.insert("correo",correo)
 			sumaCorreos += 1			
 			mail.store(ele, '+FLAGS', '\\Deleted')
 		#mail.expunge()
@@ -208,7 +205,7 @@ class readAndAnalyse:
  		#parte dos recogemos la IP de la maquina y la enviamos por correo
  		IP = ipgetter.myip()
  		#print IP
- 		ipOld = self.db.varios.find_one({"clave":"IP"})
+ 		ipOld = self.mongoDBAccess.find_one("varios",{"clave":"IP"})
  		if (ipOld["valor"]!=IP):
  			print IP
  			smtp_ssl_host = 'mail.albertoggago.es'
@@ -228,17 +225,15 @@ class readAndAnalyse:
 			server.sendmail(sender, targets, msg.as_string())
 			#print msg.as_string()
 			server.quit()
-			self.db.varios.update_one({"clave":"IP"},{"$set":{'valor':IP}})
+			self.mongoDBAccess.update_one("varios",{"clave":"IP"},{'valor':IP})
 
  			
 			
 	def buscar_urls(self):
 		#ojo ya borra solo
 		print "-- INFO -- BUSCAR_URLS"
-		#self.db.correoUrl.remove()				
-		#self.db.correo.update({},{"$unset":{"control":""}})
 		sumaUrls = 0
-		datos = self.db.correo.find({"control":{"$exists":0}},{"urls":1,"_id":1})
+		datos = self.mongoDBAccess.find("correo",{"control":{"$exists":0}},sort={"urls":1,"_id":1})
 		for ele in datos:
 			idCorreo = ele["_id"]
 			for url in ele["urls"]:
@@ -249,13 +244,13 @@ class readAndAnalyse:
 				elemento["decision"]= ""
 				elemento["datetime"]=datetime.datetime.now()
 				#buscar url
-				buscarURL = self.db.correoUrl.find_one({"url":url})
+				buscarURL = self.mongoDBAcess.find_one("correoUrl",{"url":url})
 				if buscarURL == None:
-					self.db.correoUrl.insert(elemento)
+					self.mongoDBAccess.insert("correoUrl",elemento)
 				else:
 					if self.visible!=1:
 						print "no guardamos: {0}".format(url)
-			self.db.correo.update_one({"_id":idCorreo},{"$set":{"control":"DONE"}})
+			self.mongoDBAccess.update_one("correo",{"_id":idCorreo},{"control":"DONE"})
 			sumaUrls +=1
 		print "-- INFO -- URLS Leidas: {0:d}".format(sumaUrls)
 					
@@ -263,13 +258,11 @@ class readAndAnalyse:
 	def analizar_url2(self):
 		#ojo ya borra solo
 		print "-- INFO -- ANALIZAR_URL_2"
-		#self.db.correoUrl.update_many({},{"$unset":{"control":""}})
-		#self.db.correoUrl.update_many({"pagina":"recruitireland"},{"$unset":{"control":""}})
-		self.db.correoUrl.update_many({"control":"ERROR"},{"$unset":{"control":""}})
-		self.db.correoUrl.update_many({"control":""},{"$unset":{"control":""}})
+		self.mongoDBAccess.update_many("correoUrl",{"control":"ERROR"},{"control":""},set="unset")
+		self.mongoDBAccess.update_many("correoUrl",{"control":""},{"control":""},set="unset")
 		sumaUrl2 = 0
 		sumaUrl2Ok = 0
-		datos = self.db.correoUrl.find({"control":{"$exists":0},"url":{"$exists":1}})												
+		datos = self.mongoDBAccess.find("correoUrl",{"control":{"$exists":0},"url":{"$exists":1}})												
 		if not self.visible:
 			display = Display(visible=0, size=(1024, 768))
 			display.start()
@@ -459,7 +452,7 @@ class readAndAnalyse:
 
 			sumaUrl2 +=1
 
-			self.db.correoUrl.update_one({"_id":idCorreoUrl},{"$set":{"control":control,"pagina":pagina}})
+			self.mongoDBAccess.update_one("correoUrl",{"_id":idCorreoUrl},{"control":control,"pagina":pagina})
 		print "-- INFO -- URLs Analizadas : {0:d}, procesadas OK: {1:d}".format(sumaUrl2,sumaUrl2Ok)
 		driver.close()
 
@@ -473,7 +466,7 @@ class readAndAnalyse:
 			actualiza["fecha"]=fecha
 			actualiza["company"]=company
 
-			self.db.correoUrl.update_one({"_id":correoUrl},{"$set":actualiza})
+			self.mongoDBAccess.update_one("correoUrl",{"_id":correoUrl},actualiza)
 			return "CORPUS"
 		elif (titulo=="" and donde == "" and summary == "" and fecha =="" and company == ""):
 			print "++++++++++++++++++++++++++++++++++++++"
@@ -498,7 +491,6 @@ class readAndAnalyse:
 
 if __name__ == '__main__':
 	param_visible = True if len(sys.argv)>1 else False
-	print "## INFO ## Inicio: {0}".format(datetime.datetime.now())
 	readAndAnalyse = readAndAnalyse("mongodb.conf",param_visible)
 	readAndAnalyse.buscar_elementos()
 	readAndAnalyse.buscar_urls()

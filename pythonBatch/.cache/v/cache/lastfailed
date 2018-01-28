@@ -1,5 +1,7 @@
 {
   "test/__init__.py": true, 
   "test/test.py": true, 
-  "test/test.py::test_logger_test": true
+  "test/test.py::test_logger_test": true, 
+  "test/testMongoDBAccess.py::test_mongoDBAccess_find_oneErrorAccess": true, 
+  "test/testMongoDBAccess.py::test_mongoDBAccess_find_oneErrorFind": true
 }
