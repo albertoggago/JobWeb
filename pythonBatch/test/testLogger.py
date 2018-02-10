@@ -1,8 +1,7 @@
 import sys
 import os
+
 sys.path.insert(0, "../pyproj")
-
-
 try:
     from Logger import Logger
 except ImportError:
@@ -13,7 +12,10 @@ except ImportError:
 
 def test_logger_test():
 	sys.path.insert(0, "../test")
-	os.remove("log/test.log")
+	try:
+		os.remove("log/test.log")
+	except OSError:
+		print ("file don't exist")
 	
 	logger = Logger("test").get()
 	logger.error("Error")

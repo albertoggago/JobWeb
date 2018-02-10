@@ -10,8 +10,11 @@
 
 
 #keys
+/pythonBatch/pyproj/log/*
 /pythonBatch/pyproj/config/*
 /pythonBatch/test/config/*
+/pythonBatch/test/log/*
+/pythonBatch/test/.cache/*
 
 # IDEs and editors
 /.idea

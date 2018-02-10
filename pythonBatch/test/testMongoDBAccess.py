@@ -9,17 +9,17 @@ except ImportError:
     print('No Import')
 
 def test_mongodbAcessOk():
-	mongoDBAccessOk = MongoDBAccess("../test/config/testMongoDBOk.json")
+	mongoDBAccessOk = MongoDBAccess("../test/config/configOk.json")
 	
-	assert mongoDBAccessOk.status
+	assert mongoDBAccessOk.status()
 
 def test_mongodbAcessError():
     mongoDBAccessError = MongoDBAccess("../test/config/testMongoDBError.json")
 	
-    assert not mongoDBAccessError.status
+    assert not mongoDBAccessError.status()
 
 def test_mongoDBAccess_find_oneOK():
-	mongoDBAccess = MongoDBAccess("../test/config/testMongoDBOk.json")
+	mongoDBAccess = MongoDBAccess("../test/config/configOk.json")
 	resInsert     = mongoDBAccess.insert("variosTest",{"clave":"IPFind","value":0})
 	res = mongoDBAccess.find_one("variosTest",{"clave":"IPFind"})
 	resDelete     = mongoDBAccess.delete_one("variosTest",{"clave":"IPFind"})
@@ -35,7 +35,7 @@ def test_mongoDBAccess_find_oneErrorDB():
 	assert res== None 
 
 def test_mongoDBAccess_find_oneErrorCollection():
-	mongoDBAccess = MongoDBAccess("../test/config/testMongoDBOk.json")
+	mongoDBAccess = MongoDBAccess("../test/config/configOk.json")
 	resInsert     = mongoDBAccess.insert("variosTest",{"clave":"IPFind"})
 	res = mongoDBAccess.find_one("variosXX",{"clave":"IP"})
 	resDelete     = mongoDBAccess.delete_one("variosTest",{"clave":"IPFind"})
@@ -43,7 +43,7 @@ def test_mongoDBAccess_find_oneErrorCollection():
 	assert res== None 	
 
 def test_mongoDBAccess_find_oneErrorFilter():
-	mongoDBAccess = MongoDBAccess("../test/config/testMongoDBOk.json")
+	mongoDBAccess = MongoDBAccess("../test/config/configOk.json")
 	resInsert     = mongoDBAccess.insert("variosTest",{"clave":"IPFind","value":0})
 	res = mongoDBAccess.find_one("variosTest",{"clave":"IPFilter"})
 	resDelete     = mongoDBAccess.delete_one("variosTest",{"clave":"IPFind"})
@@ -51,9 +51,14 @@ def test_mongoDBAccess_find_oneErrorFilter():
 	assert res== None 	
 
 def test_mongoDBAccess_findOK():
-	mongoDBAccess = MongoDBAccess("../test/config/testMongoDBOk.json")
-	res = mongoDBAccess.find("correo",{})
-
+	mongoDBAccess = MongoDBAccess("../test/config/configOk.json")
+	
+	mongoDBAccess.insert("variosTest",{"clave":"IPFind","value":0})
+	mongoDBAccess.insert("variosTest",{"clave":"IPFind","value":1})
+	res = mongoDBAccess.find("variosTest",{})
+	mongoDBAccess.delete_one("variosTest",{"clave":"IPFind","value":0})
+	mongoDBAccess.delete_one("variosTest",{"clave":"IPFind","value":1})
+	
 	countElements = 0
 	for elementFinding in res:
 		countElements =+1
@@ -66,7 +71,7 @@ def test_mongoDBAccess_findErrorDB():
 	assert res== None 
 
 def test_mongoDBAccess_findErrorCollection():
-	mongoDBAccess = MongoDBAccess("../test/config/testMongoDBOk.json")
+	mongoDBAccess = MongoDBAccess("../test/config/configOk.json")
 	res = mongoDBAccess.find("correoX",{})
 
 	countElements = 0
@@ -75,7 +80,7 @@ def test_mongoDBAccess_findErrorCollection():
 	assert countElements == 0 
 
 def test_mongoDBAccess_findErrorFilter():
-	mongoDBAccess = MongoDBAccess("../test/config/testMongoDBOk.json")
+	mongoDBAccess = MongoDBAccess("../test/config/configOk.json")
 	res = mongoDBAccess.find("correo",{"xxx":"xxxx"})
 
 	countElements = 0
@@ -86,7 +91,7 @@ def test_mongoDBAccess_findErrorFilter():
 
 def test_mongoDBAccess_update_oneOK():
 	randomNumber  = random.randint(1,100)
-	mongoDBAccess = MongoDBAccess("../test/config/testMongoDBOk.json")
+	mongoDBAccess = MongoDBAccess("../test/config/configOk.json")
 	resInsert     = mongoDBAccess.insert("variosTest",{"clave":"IPUpdateOne","value":0})
 	resUpdate1    = mongoDBAccess.update_one("variosTest",{"clave":"IPUpdateOne"},{'value':1})
 	resFind1      = mongoDBAccess.find_one("variosTest",{"clave":"IPUpdateOne"})
@@ -103,22 +108,22 @@ def test_mongoDBAccess_update_oneErrorDB():
 	assert res== None 
 
 def test_mongoDBAccess_update_oneErrorCollection():
-	mongoDBAccess = MongoDBAccess("../test/config/testMongoDBOk.json")
+	mongoDBAccess = MongoDBAccess("../test/config/configOk.json")
 	res = mongoDBAccess.update_one("variosXX",{"clave":"IP"},{'valorX':"1234"})
 	
 	assert res.modified_count== 0 	
 
 def test_mongoDBAccess_update_oneErrorFind():
-	mongoDBAccess = MongoDBAccess("../test/config/testMongoDBOk.json")
-	resInsert     = mongoDBAccess.insert("variosTest",{"clave":"IPUpdateOne","value":0})
-	res = mongoDBAccess.update_one("variosTest",{"clave":"IPFind"},{'valorX':"1234"})
-	resDelete     = mongoDBAccess.delete_one("variosTest",{"clave":"IPUpdateOne"})
+	mongoDBAccess = MongoDBAccess("../test/config/configOk.json")
+	resInsert     = mongoDBAccess.insert("variosTestXX",{"clave":"IPUpdateOne","value":0})
+	res = mongoDBAccess.update_one("variosTestXX",{"clave":"IPFind"},{'valorX':"1234"})
+	resDelete     = mongoDBAccess.delete_one("variosTestXX",{"clave":"IPUpdateOne"})
 	
 	assert res.modified_count== 0
 
 def test_mongoDBAccess_update_manyOK():
 	randomNumber  = random.randint(1,100)
-	mongoDBAccess = MongoDBAccess("../test/config/testMongoDBOk.json")
+	mongoDBAccess = MongoDBAccess("../test/config/configOk.json")
 
 	resInsert1    = mongoDBAccess.insert("variosTest",{"clave":"IPUpdateMany","value":0})
 	resInsert     = mongoDBAccess.insert("variosTest",{"clave":"IPUpdateMany","value":0})
@@ -153,13 +158,13 @@ def test_mongoDBAccess_update_manyErrorDB():
 	assert res== None 
 
 def test_mongoDBAccess_update_manyErrorCollection():
-	mongoDBAccess = MongoDBAccess("../test/config/testMongoDBOk.json")
+	mongoDBAccess = MongoDBAccess("../test/config/configOk.json")
 	res = mongoDBAccess.update_many("variosTest",{"clave":"IPManyUpdateError"},{'valorX':"1234"})
 	
 	assert res.modified_count== 0 	
 
 def test_mongoDBAccess_update_manyErrorFind():
-	mongoDBAccess = MongoDBAccess("../test/config/testMongoDBOk.json")
+	mongoDBAccess = MongoDBAccess("../test/config/configOk.json")
 	resInsert1    = mongoDBAccess.insert("variosTest",{"clave":"IPUpdateManyErrorF","value":0})
 	res = mongoDBAccess.update_many("variosTest",{"clave":"IPUpdateManyErrorFXX"},{'value':1})
 	resDelete1    = mongoDBAccess.delete_one("variosTest",{"clave":"IPUpdateManyErrorF"})
@@ -170,7 +175,7 @@ def test_mongoDBAccess_update_manyErrorFind():
 
 
 def test_mongoDBAccess_insertOK():
-	mongoDBAccess = MongoDBAccess("../test/config/testMongoDBOk.json")
+	mongoDBAccess = MongoDBAccess("../test/config/configOk.json")
 	resInsert     = mongoDBAccess.insert("variosTest",{"clave":"IPInsert"})
 	resFind1      = mongoDBAccess.find_one("variosTest",{"clave":"IPInsert"})
 

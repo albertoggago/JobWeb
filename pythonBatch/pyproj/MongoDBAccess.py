@@ -5,11 +5,12 @@ import json
 #class for analize emails.
 class MongoDBAccess():
 
-	status = False;
+	statusVar = False;
 	db = None;
 
 	def __init__(self,fileName):
 		self.logger = Logger(self.__class__.__name__).get()
+		self.logger.setLevel('WARNING')
 		configText = open(fileName,"r").read()
 		config = json.loads(configText)
 
@@ -24,13 +25,17 @@ class MongoDBAccess():
 
   		if param == None:
 			self.logger.error("base de datos parada o param no inicializado")
-			self.status = False
+			self.statusVar = False
 		else:
 			self.logger.info("-- INFO -- Conexion a base de datos OK")
-			self.status = True
+			self.statusVar = True
+
+	def status (self):
+		return self.statusVar
+
 
 	def find_one(self,collection,query):
-		if self.status:
+		if self.statusVar:
 			self.logger.debug("Access to collection: {0}, query {1}".format(collection,query))
 			return self.db[collection].find_one(query)
 		else:
@@ -38,7 +43,7 @@ class MongoDBAccess():
 			return None
 
 	def find(self,collection,query,sort=None):
-		if self.status:
+		if self.statusVar:
 			self.logger.debug("Access to collection Multi: {0}, query {1}, sort: {2}"\
 				.format(collection,query,sort))
 			return self.db[collection].find(query,sort)
@@ -47,7 +52,7 @@ class MongoDBAccess():
 			return None
 
 	def update_one(self,collection,query,change, set="set"):
-		if self.status:
+		if self.statusVar:
 			self.logger.debug("Modify collection: {0}, query {1}, modify: {2}, set: {3}"\
 				.format(collection,query, change,set))
 			setdollar = "$"+set
@@ -57,7 +62,7 @@ class MongoDBAccess():
 			return None
 
 	def update_many(self,collection,query,change, set="set"):
-		if self.status:
+		if self.statusVar:
 			self.logger.debug("Modify Many collection: {0}, query {1}, modify: {2}, set: {3}"\
 				.format(collection,query, change,set))
 			setdollar = "$"+set
@@ -67,7 +72,7 @@ class MongoDBAccess():
 			return None
 
 	def insert(self,collection,element):
-		if self.status:
+		if self.statusVar:
 			self.logger.debug("Insert collection: {0}, data {1}".format(collection,element))
 			return self.db[collection].insert(element)
 		else:
@@ -75,10 +80,17 @@ class MongoDBAccess():
 			return None
 
 	def delete_one(self,collection,element):
-		if self.status:
+		if self.statusVar:
 			self.logger.debug("Remove collection: {0}, data {1}".format(collection,element))
 			return self.db[collection].delete_one(element)
 		else:
 			self.logger.error("Bases de datos no inicalizada Find")
 			return None
 
+	def delete_many(self,collection,element):
+		if self.statusVar:
+			self.logger.debug("Remove collection: {0}, data {1}".format(collection,element))
+			return self.db[collection].delete_many(element)
+		else:
+			self.logger.error("Bases de datos no inicalizada Find")
+			return None

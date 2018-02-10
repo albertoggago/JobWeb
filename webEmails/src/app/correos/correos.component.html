@@ -1,8 +1,7 @@
 <div class="row">
 
- <div class="col-lg-3 col-md-4 col-sm-12">
-  <div  class="container">
-    <form [formGroup]="tipoListado" novalidate>
+ <div class="col-lg-3 col-md-4 col-sm-12 panel panel-info">
+    <form [formGroup]="tipoListado" novalidate class="form-group panel-body">
       <div class="input-group">
         <select class="form-control" formControlName="seleccion" >
           <option class="form-control" *ngFor="let sel of selecciones" [ngValue]="sel" >
@@ -12,8 +11,7 @@
       </div>
       <br>
       <div class="input-group" *ngIf="tipoListado.controls.seleccion.value.value === 'J'">
-        <span class="input-group-addon" id="basic-addon1">Texto</span>
-        <input type="text" class="form-control" formControlName='palabras' placeholder="Texto" name="palabras" ngModel aria-describedby="basic-addon1"/>
+        <input type="text" class="form-control" formControlName='palabras' placeholder="Texto" name="palabras" ngModel aria-describedby="basic-addon1"  />
       </div>
       <br>
       <div class="btn-group">
@@ -39,7 +37,7 @@
     </form>
 
     <br>
-    <div class="row" *ngFor="let correo of correos" (click)="onSelect(correo)">
+    <div class="panel-body" class="row" *ngFor="let correo of correos" (click)="onSelect(correo)">
       <div class="{{correo.numeroCorreo === seleccionado ? 'panel panel-primary' : 'panel-info'}}">
          <div class="panel-heading">
            <h4 class="panel-title">{{ correo.titulo }}</h4>
@@ -53,8 +51,7 @@
     </div>
 
  </div>
- </div>
- <div class="col-lg-9 col-md-10 col-sm-12">
+ <div class="col-lg-9 col-md-10 col-sm-12 panel">
   <app-correo-detail [correo]="selectedCorreo" (update)="guardadoP($event)"></app-correo-detail>
  </div>
 </div>
