@@ -15,6 +15,7 @@
 /pythonBatch/test/config/*
 /pythonBatch/test/log/*
 /pythonBatch/test/.cache/*
+/pythonBatch/.cache/*
 
 # IDEs and editors
 /.idea
