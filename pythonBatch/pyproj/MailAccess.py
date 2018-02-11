@@ -4,6 +4,8 @@ import imaplib
 import email
 from email.header import decode_header
 import re
+import datetime
+
 
 #class for analize emails.
 class MailAccess():
@@ -22,6 +24,7 @@ class MailAccess():
 			self._mail = imaplib.IMAP4_SSL(self._config["sslServer"])
 			self.logger.info("loggin correo: {0}".format(self._config["fromEmail"]))
 			self._mail.login(self._config["fromEmail"],self._config["pwdServer"])
+			self.logger.info("conected Data Base")
 			return True
 		except imaplib.IMAP4.error:
 			self.logger.error("error loggin eMail")
@@ -49,6 +52,7 @@ class MailAccess():
 			 
 	def searchMails(self,pathEmail):
 		try:
+			self.logger.info("Search Mails")
 			self.logger.debug("Access to mails of {0}".format(pathEmail))
 			self._mail.list()
 			self._mail.select("inbox")
@@ -68,7 +72,7 @@ class MailAccess():
 			
 	def store(self, emailEnter):
 		try:
-			self.logger.debug("Store email")
+			self.logger.info("Store email")
 			self._mail.store(emailEnter, '+FLAGS', '\\Deleted')
 			return True
 		except imaplib.IMAP4.error as e:
@@ -86,7 +90,7 @@ class MailAccess():
 
 	def clean(self):
 		try:
-			self.logger.error("Clean email")
+			self.logger.info("Clean email")
 			self._mail.expunge()
 			self._mail.close()
 			return True
@@ -96,7 +100,7 @@ class MailAccess():
 
 	def get(self, emailenter):
  		try:
-			self.logger.debug("find mail")
+			self.logger.info("find mail")
 			data =  self._mail.fetch(emailenter, "(RFC822)")
 			return email.message_from_string(data[1][0][1])
 		except:
@@ -117,10 +121,11 @@ class MailAccess():
 			
 			correo["texto"]=texto
 			correo["urls"]=urlsAll
+			correo["datetime"]=datetime.datetime.now()
+		
 			return correo
 		except:
 			self.logger.error("Error compose Mails")
-			print "xxxx"
 			return None
 
 	def decodeHeader(self,msg):

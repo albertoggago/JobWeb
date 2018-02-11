@@ -18,3 +18,20 @@ The system contains with 2 servers.
 
 1 - readEmails
 
+This process execute load information inside MongodDB.
+You must create in pytonBatch/pyproj/config/configOk.json
+
+file with this structure: 
+{
+	"fromEmail" : "myaccout@serveremail.com",
+	"sslServer" : "userMail",
+	"pwdServer" : "pwdMail",
+	"url" :  "mongodb://user:password@urlMongodb:port/nameDB?aditionaParameters",
+	"nameDB" : "nameDB"
+}
+
+Run script into MongoDB in nameDB.correoUrl for system works
+	/mongoDB/initMongoDB.js 
+
+
+2. Process Model  

@@ -9,11 +9,11 @@ except ImportError:
     print('No Import')
 
 def test_mailAcessOk():
-	mailAccess = MailAccess("../test/config/mailAccessOk.json")
+	mailAccess = MailAccess("../test/config/configOk.json")
 	assert mailAccess.status()
 
 def test_mailAcessOkMulti():
-	mailAccess = MailAccess("../test/config/mailAccessOk.json")
+	mailAccess = MailAccess("../test/config/configOk.json")
 	assert mailAccess.status()
 	
 	resLogout = mailAccess.logout()
@@ -25,7 +25,7 @@ def test_mailAcessOkMulti():
 	assert mailAccess.status()
 
 def test_mailDoubleLogut():
-	mailAccess = MailAccess("../test/config/mailAccessOk.json")
+	mailAccess = MailAccess("../test/config/configOk.json")
 	assert mailAccess.status()
 	
 	resLogout1 = mailAccess.logout()
@@ -35,25 +35,25 @@ def test_mailDoubleLogut():
 	assert not resLogout2
 
 def test_mailAcessError():
-	mailAccess = MailAccess("../test/config/mailAccessError.json")
+	mailAccess = MailAccess("../test/config/configMailAccessError.json")
 	
 	assert not mailAccess.status()
 	
 
 def test_listMailOk():
-	mailAccess = MailAccess("../test/config/mailAccessOk.json")
+	mailAccess = MailAccess("../test/config/configOk.json")
 	listMails =  mailAccess.searchMails("Inbox")
 	
 	assert listMails != None
 
 def test_listMailError():
-	mailAccess = MailAccess("../test/config/mailAccessError.json")
+	mailAccess = MailAccess("../test/config/configMailAccessError.json")
 	listMails =  mailAccess.searchMails("Inbox")
 	
 	assert listMails == None
 
 def test_listMailErrorInbox():
-	mailAccess = MailAccess("../test/config/mailAccessOk.json")
+	mailAccess = MailAccess("../test/config/configOk.json")
 	listMails =  mailAccess.searchMails("InboxXXXX")
 	
 	assert listMails != None

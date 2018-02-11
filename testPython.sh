@@ -1,3 +1,3 @@
 cd pythonBatch/test
 echo $0
-py.test * -v 
+py.test testR* -v 
