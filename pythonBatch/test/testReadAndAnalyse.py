@@ -2,10 +2,10 @@ import sys
 import os
 
 
-sys.path.insert(0, "../pyproj")
+sys.path.insert(0, "..")
 try:
-    from ReadAndAnalyse import ReadAndAnalyse
-    from MongoDBAccess import MongoDBAccess
+    from pyproj.readandanalyse import ReadAndAnalyse
+    from pyproj.mongodbaccess import MongoDBAccess
 except ImportError:
     print('No Import')
 

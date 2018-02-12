@@ -2,9 +2,9 @@ import sys
 import os
 import random
 
-sys.path.insert(0, "../pyproj")
+sys.path.insert(0, "..")
 try:
-    from MailAccess import MailAccess
+    from pyproj.mailaccess import MailAccess
 except ImportError:
     print('No Import')
 
@@ -42,18 +42,18 @@ def test_mailAcessError():
 
 def test_listMailOk():
 	mailAccess = MailAccess("../test/config/configOk.json","DEBUG")
-	listMails =  mailAccess.searchMails("Inbox")
+	listMails =  mailAccess.search_mails("Inbox")
 	
 	assert listMails != None
 
 def test_listMailError():
 	mailAccess = MailAccess("../test/config/configMailAccessError.json","DEBUG")
-	listMails =  mailAccess.searchMails("Inbox")
+	listMails =  mailAccess.search_mails("Inbox")
 	
 	assert listMails == None
 
 def test_listMailErrorInbox():
 	mailAccess = MailAccess("../test/config/configOk.json","DEBUG")
-	listMails =  mailAccess.searchMails("InboxXXXX")
+	listMails =  mailAccess.search_mails("InboxXXXX")
 	
 	assert listMails != None

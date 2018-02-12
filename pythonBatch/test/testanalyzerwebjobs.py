@@ -3,9 +3,9 @@ import os
 import json
 import datetime
 
-sys.path.insert(0, "../pyproj")
+sys.path.insert(0, "..")
 try:
-	from AnalyzerWebJobs import AnalyzerWebJobs
+	from pyproj.analyzerwebjobs import AnalyzerWebJobs
 except ImportError:
 	print('No Import')
 
@@ -19,7 +19,7 @@ def test_determinate_Linkedin():
 	correoUrl = {"url":urlLinkedin}	
 	analyzerWebJobs = AnalyzerWebJobs(config,False,"DEBUG")
 	result = analyzerWebJobs.analyze(correoUrl)
-	analyzerWebJobs.closeSelenium()
+	analyzerWebJobs.close_selenium()
 	assert result.get('control','') == 'REVIEW'
 	assert result.get('page','') == 'linkedin'
 	assert result.get('realUrl','') == urlLinkedin	
@@ -35,7 +35,7 @@ def test_determinate_webPageOther():
 	correoUrl = {"url":urlOther}	
 	analyzerWebJobs = AnalyzerWebJobs(config,False,"DEBUG")
 	result = analyzerWebJobs.analyze(correoUrl)
-	analyzerWebJobs.closeSelenium()
+	analyzerWebJobs.close_selenium()
 	assert result.get('control','') == 'OTRO'
 	assert result.get('page','') == 'N/D'
 
@@ -45,6 +45,6 @@ def test_determinate_webPageError():
 	correoUrl = {"url":urlError}	
 	analyzerWebJobs = AnalyzerWebJobs(config,False,"DEBUG")
 	result = analyzerWebJobs.analyze(correoUrl)
-	analyzerWebJobs.closeSelenium()
+	analyzerWebJobs.close_selenium()
 	assert result.get('control','') == 'ERROR'
 	assert result.get('page','') == 'N/D'

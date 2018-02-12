@@ -1,16 +1,22 @@
+#!/usr/bin/env pythoObjectn
+
+"""Only a class Logger"""
+
 import logging
 import os
 
-
 class Logger(object):
+    """Logger Activate object of logg create a file per name with level log"""
+
     LOGGING_DIR = "log"
 
-    def __init__(self, name,levelLog):
-        name = name.replace('.log','')
-        logger = logging.getLogger('log_namespace.%s' % name)    # log_namespace can be replaced with your namespace 
+    def __init__(self, name, levelLog):
+        name = name.replace('.log', '')
+        logger = logging.getLogger('log_namespace.%s' % name)
+
         logger.setLevel(levelLog)
         if not logger.handlers:
-            file_name = os.path.join(self.LOGGING_DIR, '%s.log' % name)    # usually I keep the LOGGING_DIR defined in some global settings file
+            file_name = os.path.join(self.LOGGING_DIR, '%s.log' % name)
             handler = logging.FileHandler(file_name)
             formatter = logging.Formatter('%(asctime)s %(levelname)s:%(name)s %(message)s')
             handler.setFormatter(formatter)
@@ -19,4 +25,5 @@ class Logger(object):
         self._logger = logger
 
     def get(self):
+        """Get the logger for use in a class"""
         return self._logger

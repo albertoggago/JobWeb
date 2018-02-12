@@ -1,5 +1,5 @@
-
-# coding: utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # # Proceso de analisis Diario de todos los correos
 # 

@@ -2,9 +2,9 @@ import sys
 import os
 import random
 
-sys.path.insert(0, "../pyproj")
+sys.path.insert(0, "..")
 try:
-    from MongoDBAccess import MongoDBAccess
+    from pyproj.mongodbaccess import MongoDBAccess
 except ImportError:
     print('No Import')
 

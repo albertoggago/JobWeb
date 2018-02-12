@@ -7,9 +7,9 @@ import json
 
 #own classes
 from Logger import Logger
-from MongoDBAccess import MongoDBAccess
-from MailAccess import MailAccess
-from AnalyzerWebJobs import AnalyzerWebJobs
+from mongodbaccess import MongoDBAccess
+from mailaccess import MailAccess
+from analyzerwebjobs import AnalyzerWebJobs
 
 
 

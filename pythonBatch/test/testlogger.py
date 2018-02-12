@@ -1,9 +1,9 @@
 import sys
 import os
 
-sys.path.insert(0, "../pyproj")
+sys.path.insert(0, "..")
 try:
-    from Logger import Logger
+    from pyproj.logger import Logger
 except ImportError:
     print('No Import')
 
