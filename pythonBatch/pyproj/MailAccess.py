@@ -12,8 +12,8 @@ class MailAccess():
 
 	_mail = None
 
-	def __init__(self,fileConfig):
-		self.logger = Logger(self.__class__.__name__).get()
+	def __init__(self,fileConfig,levelLog):
+		self.logger = Logger(self.__class__.__name__,levelLog).get()
 		configText = open(fileConfig,"r").read()
 		self._config = json.loads(configText)
 		self.login()

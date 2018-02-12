@@ -8,8 +8,8 @@ class MongoDBAccess():
 	db = None;
 	_client = None;
 
-	def __init__(self,fileName):
-		self.logger = Logger(self.__class__.__name__).get()
+	def __init__(self,fileName,levelLog):
+		self.logger = Logger(self.__class__.__name__,levelLog).get()
 		self.logger.setLevel('INFO')
 		configText = open(fileName,"r").read()
 		config = json.loads(configText)

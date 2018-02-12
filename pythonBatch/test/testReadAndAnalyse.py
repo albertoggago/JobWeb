@@ -12,31 +12,31 @@ except ImportError:
 
 
 def test_init_correct():
-	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",True)
+	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",False,"DEBUG")
 	assert readAndAnalyse.mongoDBAccess.status()
 	assert readAndAnalyse.mailAccess.status()
 	
 def test_init_ErrorMongo():
-	readAndAnalyse = ReadAndAnalyse("../test/config/configMongoDBError.json",True)
+	readAndAnalyse = ReadAndAnalyse("../test/config/configMongoDBError.json",False,"DEBUG")
 	assert not readAndAnalyse.mongoDBAccess.status()
 	assert readAndAnalyse.mailAccess.status()
 
 def test_init_ErrorMail():
-	readAndAnalyse = ReadAndAnalyse("../test/config/configMailError.json",True)
+	readAndAnalyse = ReadAndAnalyse("../test/config/configMailError.json",False,"DEBUG")
 	assert readAndAnalyse.mongoDBAccess.status()
 	assert not readAndAnalyse.mailAccess.status()
 
 def test_findingMails():
-	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",True)
-	mongoDBAccess =  MongoDBAccess("../test/config/configOk.json")
+	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",False,"DEBUG")
+	mongoDBAccess =  MongoDBAccess("../test/config/configOk.json","DEBUG")
 	mongoDBAccess.delete_many("correo",{})
 	amount =  readAndAnalyse.finding_mails()
 	#Depends of the emails in the mail test
 	assert amount == 2
 
 def test_findingUrls():
-	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",True)
-	mongoDBAccess =  MongoDBAccess("../test/config/configOk.json")
+	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",False,"DEBUG")
+	mongoDBAccess =  MongoDBAccess("../test/config/configOk.json","DEBUG")
 	mongoDBAccess.delete_many("correo",{})
 	mongoDBAccess.delete_many("correoUrl",{})
 	readAndAnalyse.finding_mails()
@@ -59,12 +59,12 @@ def test_findingUrls():
 	assert amountCorreosUrls == 33
 
 def test_scrapUrls():
-	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",False)
-	mongoDBAccess =  MongoDBAccess("../test/config/configOk.json")
+	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",False,"DEBUG")
+	mongoDBAccess =  MongoDBAccess("../test/config/configOk.json","DEBUG")
 	mongoDBAccess.delete_many("correo",{})
 	mongoDBAccess.delete_many("correoUrl",{})
 	readAndAnalyse.finding_mails()
 	readAndAnalyse.finding_urls()
 	amount = readAndAnalyse.scrap_urls()
 	#Depends of the information inside of mails
-	assert amount == 33
+	assert amount.get("Error",0) == 33

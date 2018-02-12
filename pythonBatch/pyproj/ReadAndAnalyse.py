@@ -20,15 +20,14 @@ class ReadAndAnalyse:
 	mailAccess      = None
 	analyzerWebJobs = None
 
-	def __init__(self,fileConfig,visible):
-		self.logger = Logger(self.__class__.__name__).get()
-		self.logger.setLevel('INFO')
-		self.mongoDBAccess = MongoDBAccess(fileConfig)
-		self.mailAccess    = MailAccess(fileConfig)
+	def __init__(self,fileConfig,visible,levelLog):
+		self.logger = Logger(self.__class__.__name__, levelLog).get()
+		self.mongoDBAccess = MongoDBAccess(fileConfig,levelLog)
+		self.mailAccess    = MailAccess(fileConfig,levelLog)
 		configText         = open(fileConfig,"r").read()
 		allconfig          = json.loads(configText)
 		config        = allconfig.get("webPagesDef",None)
-		self.analyzerWebJobs = AnalyzerWebJobs(config,visible)
+		self.analyzerWebJobs = AnalyzerWebJobs(config,visible,levelLog)
 
 		self.visible = visible
 		self.logger.info("Inicio: {0}".format(datetime.datetime.now()))	
@@ -143,10 +142,10 @@ class ReadAndAnalyse:
 			             {"_id":correoUrl["_id"]},\
 			             {"control":info.get("control","ERROR"),"pagina":info.get("page","None")})
 		if info.get("status",False) :
-			self.saveInformation(info.get("correoUrl",correoUrl));
+			self.saveInformation(correoUrl["_id"],info.get("newCorreoUrl",correoUrl));
 		return info.get("status",False)
 
 
-	def saveInformacion (self, correoUrl):
+	def saveInformacion (self, id, correoUrl):
 		selg.logger.debug("Save: "+correoUrl)
-		self.mongoDBAccess.update_one("correoUrl",{"_id":correoUrl},actualiza)
+		self.mongoDBAccess.update_one("correoUrl",{"_id":id},correoUrl)

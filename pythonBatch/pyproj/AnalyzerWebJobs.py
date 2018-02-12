@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-#import datetime
+import datetime
 
 #import string
 #from selenium.common.exceptions import NoSuchElementException
@@ -18,8 +18,9 @@ class AnalyzerWebJobs:
 	logger = None
 	driver = None
 
-	def __init__(self,config,visible):
-		self.logger    = Logger(self.__class__.__name__).get()
+	def __init__(self,config,visible,levelLog):
+
+		self.logger    = Logger(self.__class__.__name__,levelLog).get()
 		self.config    = config
 		
 		if not visible:
@@ -28,32 +29,212 @@ class AnalyzerWebJobs:
 		self.driver = webdriver.Chrome()
 
 	def analyze(self,correoUrl):
-		print correoUrl
-		print self.config
-		self.driver.get(correoUrl["url"])
-
-		print self.driver
+		result = {}
 		
-		#determinate page
-		#finding data
+		resultWithPage = self.determinateWeb(result,correoUrl["url"])
+		if resultWithPage.get("control","") == "REVIEW":
+			self.driver.get(resultWithPage.get("realUrl",""))
+			resultWithData = self.findData(resultWithPage)
 		#review correct page
 		#build information
-		return {} 
+			return resultWithData
+		else:
+			return resultWithPage
+
+
 
 	def closeSelenium(self):
 		self.driver.close()
 
+	def determinateWeb(self, resultImput, webUrl):
+		resultWeb = resultImput
+		self.logger.info("determinate Web")
+		for web in self.config.get("pages",{}):
+			if web.get("ruleFind") in webUrl:
+				self.logger.info("Locate web: "+web.get("name","ERROR"))		
+				resultWeb["page"] = web.get("name","ERROR")
+				resultWeb["control"] = "REVIEW"
+				#TODO Pending preprocess of web
+				resultWeb["realUrl"] = webUrl
 
+		if resultWeb.get("page",None) == None:
+			resultWeb == self.determinateOther(resultWeb, webUrl)
+		return resultWeb
 
+	def determinateOther(self, resultImput, webUrl):
+		resultOther = resultImput
+		for web in self.config.get("otherPages",{}):
+			if web in webUrl:
+				self.logger.info("Locate web OTHER: "+web)
+				resultOther["page"] = "N/D"
+				resultOther["control"] = "OTRO"
+		if resultOther.get("page",None) == None:
+			self.logger.info("Locate web ERROR: ")
+			resultOther["page"] = "N/D"
+			resultOther["control"] ="ERROR"
+		return resultOther
 	
-	def pending(self, correoUrl):
-			idCorreoUrl = ele["_id"]
-			urlOk = ""
-			control= ""
-			pagina= ""
-			url = ele["url"]
-			ver = self.visible
+	def findData(self,resultImput):
+		self.logger.info("Find Data")
+		resultFound = resultImput
+		necesaryVariables = self.config.get("necesaryVariables","")
+		rulesTransformUrl = []
+		pages = self.config["pages"]
+		for page in pages:
+			if page["name"] == resultImput["page"]:
+				self.logger.info("Locate page get rules: ")
+				self.logger.debug(page["rulesTransformUrl"])
+				rulesTransformUrl = page["rulesTransformUrl"]
 
+		resultFound["newCorreoUrl"]= {}
+		for variable in necesaryVariables:
+			resultVariable  = self.processVariable(variable,rulesTransformUrl.get(variable,{}))
+			resultFound["newCorreoUrl"][variable] = resultVariable
+
+		return resultFound
+
+
+	def processVariable(self, variable,rulesTransform):
+		self.logger.info("Process Variable: "+variable)
+		self.logger.info(rulesTransform)
+		secuences = rulesTransform.get("secuences",[{"tipo":"class","elemento":"xx"}])
+		self.logger.debug(secuences)
+		split     = rulesTransform.get("split",None)
+		self.logger.debug(split)
+		out       = rulesTransform.get("out",{"tipo":"text","initText":None})
+		self.logger.debug(out)
+
+		driverWork=self.driver
+		
+		#secuences
+		try: 
+			for secuence in secuences:
+				if secuence["tipo"] == "class":
+						driverWork = driverWork.find_element_by_class_name(secuence["elemento"])
+				elif ele["tipo"] == "tag":
+						driverWork = driverWork.find_element_by_tag_name(ele["elemento"])
+			textAfterSecuence = driverWork.text.encode("utf-8")
+		except NoSuchElementException as e:
+			self.logger.warning("Error secuences: ")
+			self.logger.warning(secuences)
+			self.logger.warning("Error find information: "+e)		
+
+		#split
+		self.logger.debug("textAfterSecuence: "+textAfterSecuence)
+		
+		textSplit = textAfterSecuence if split == None else self.splitText(textAfterSecuence,split)
+		self.logger.debug("textSplit: "+textSplit)
+		
+		#out
+		textOut = self.formatTextOut(textSplit,out)
+		
+		return textOut 
+
+	def splitText(self,text,splitRule):
+		self.logger.info("Process Split: ")
+		self.logger.debug("splitRule")
+		return text
+	
+	def formatTextOut(self,text,out):
+		if out["tipo"]=="text":
+			return text
+		elif out["tipo"]=="fecha-dif":
+			return decreaseDate(text)
+		elif out["tipo"]=="fecha":
+			if splitTemp =="":
+				return datetime.datetime.now()
+			else:
+				return datetime.datetime.strptime(text,out["formato"])
+		return None
+
+	def decreaseDate (self, datosFecha):
+		datosFecha = datosFecha.lower()
+		listaDF = datosFecha.split()
+		listaDFN = [int(s) for s in datosFecha.split() if s.isdigit()]
+		if len(listaDFN)>0:
+			numeroDF = listaDFN[0]
+		else:
+			numeroDF = 0
+		if ('dias' in listaDF or 'días' in listaDF or 'dia' in listaDF or 'día' in listaDF or 'day' in listaDF or 'days' in listaDF):
+			numeroDelta = datetime.timedelta(days=numeroDF)
+			fecha = datetime.datetime.now() - numeroDelta
+		elif ('mes' in listaDF or 'meses' in listaDF or 'month' in listaDF or 'months' in listaDF ):
+			numeroDelta = datetime.timedelta(months=numeroDF)
+			fecha = datetime.datetime.now() - numeroDelta
+		return fecha
+
+
+	def analizador (driver,secuencia=[{"tipo":"class","elemento":"xx"}],split=None, \
+		                           salida={"tipo":"text","initText":None}, vision=0):
+		try:
+		#fase localizador
+			if vision==1:
+				print "+++++++++++++++++++++++++++++++++++++++++++"
+				print "                   modo Visual "
+				print "+++++++++++++++++++++++++++++++++++++++++++"
+			if vision==1:
+				print "+ secuencia: {0}".format(secuencia)
+				print "+ split:     {0}".format(split)
+				print "+ salida:    {0}".format(salida)
+				print "+++++++++++++++++++++++++++++++++++++++++++"
+			driverTemp=driver 
+			for ele in secuencia:
+				if ele["tipo"] == "class":
+					driverTemp = driverTemp.find_element_by_class_name(ele["elemento"])
+				elif ele["tipo"] == "tag":
+					driverTemp = driverTemp.find_element_by_tag_name(ele["elemento"])
+			driverTemp = driverTemp.text.encode("utf-8")
+			if vision==1:
+				print "+ Despues de driver: {0}".format(driverTemp)
+				print "+++++++++++++++++++++++++++++++++++++++++++"
+		#fase split				
+			if (split == None):
+				splitTemp = driverTemp
+			else:
+				dataTemp = driverTemp.split(split["text"])
+
+				if vision==1:
+					print "+ Paso Split: {0}".format(dataTemp)
+					print "+++++++++++++++++++++++++++++++++++++++++++"
+
+				if split["initText"]== None:
+					pos = 0
+				else:
+					pos = dataTemp.index(split["initText"])
+				if len(dataTemp)> (split["n"]+pos):
+					splitTemp = dataTemp[split["n"]+pos]
+				else:
+					splitTemp = ""
+			if vision==1:
+				print "+ Despues de split: {0}".format(splitTemp)
+				print "+++++++++++++++++++++++++++++++++++++++++++"
+
+		#fase salida
+			if salida["tipo"]=="text":
+				salida = splitTemp
+			elif salida["tipo"]=="fecha-dif":
+				salida = fechaDecreciente(splitTemp)
+			elif salida["tipo"]=="fecha":
+				if splitTemp =="":
+					salida = datetime.datetime.now()
+				else:
+					salida = datetime.datetime.strptime(splitTemp,salida["formato"])
+
+			if vision==1:
+				print "+++++++++++++++++++++++++++++++++++++++++++"
+				print "SALIDA: //{0}//".format(salida)
+				print "+++++++++++++++++++++++++++++++++++++++++++"
+			return salida
+		except NoSuchElementException as e:
+			print "+++++++++++++++++++++++++++++++++++++++++++"
+			print "         ERROR: {0}".format(e)
+			print "+++++++++++++++++++++++++++++++++++++++++++"
+
+			return ""
+
+
+
+	def pending(self, correoUrl):
 			if ("linkedin" in url ):
 				pagina = "linkedin"
 				urlOk = url

@@ -17,7 +17,7 @@ def test_logger_test():
 	except OSError:
 		print ("file don't exist")
 	
-	logger = Logger("test").get()
+	logger = Logger("test","DEBUG").get()
 	logger.error("Error")
 	data = open("log/test.log","r").read()
 	
