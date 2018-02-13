@@ -13,18 +13,18 @@ except ImportError:
 
 def test_init_correct():
 	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",False,"DEBUG")
-	assert readAndAnalyse.mongoDBAccess.status()
-	assert readAndAnalyse.mailAccess.status()
+	assert readAndAnalyse.mongo_db_access.status()
+	assert readAndAnalyse.mail_access.status()
 	
 def test_init_ErrorMongo():
 	readAndAnalyse = ReadAndAnalyse("../test/config/configMongoDBError.json",False,"DEBUG")
-	assert not readAndAnalyse.mongoDBAccess.status()
-	assert readAndAnalyse.mailAccess.status()
+	assert not readAndAnalyse.mongo_db_access.status()
+	assert readAndAnalyse.mail_access.status()
 
 def test_init_ErrorMail():
 	readAndAnalyse = ReadAndAnalyse("../test/config/configMailError.json",False,"DEBUG")
-	assert readAndAnalyse.mongoDBAccess.status()
-	assert not readAndAnalyse.mailAccess.status()
+	assert readAndAnalyse.mongo_db_access.status()
+	assert not readAndAnalyse.mail_access.status()
 
 def test_findingMails():
 	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",False,"DEBUG")

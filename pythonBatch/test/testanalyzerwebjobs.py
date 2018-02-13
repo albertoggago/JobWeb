@@ -20,7 +20,8 @@ def test_determinate_Linkedin():
 	analyzerWebJobs = AnalyzerWebJobs(config,False,"DEBUG")
 	result = analyzerWebJobs.analyze(correoUrl)
 	analyzerWebJobs.close_selenium()
-	assert result.get('control','') == 'REVIEW'
+	assert result.get('status','') == True
+	assert result.get('control','') == 'CORPUS'
 	assert result.get('page','') == 'linkedin'
 	assert result.get('realUrl','') == urlLinkedin	
 	assert result["newCorreoUrl"].get("titulo","") == 'Performance Support (data) Analyst Contract Dublin'
@@ -28,8 +29,25 @@ def test_determinate_Linkedin():
 	assert len(result["newCorreoUrl"].get("summary","")) == 488
 	assert abs(result["newCorreoUrl"].get("fecha","") - datetime.datetime(2018, 2, 8, 7, 25, 1, 0))\
 	       < datetime.timedelta(days=1)
-	assert result["newCorreoUrl"].get("company","") == 'Computer People'
+	assert result["newCorreoUrl"].get("company","") == 'Computer People Inc'
 	
+def test_determinate_LinkedinErrorMyPage():
+	urlLinkedin = "https://www.linkedin.com/in/albertoggago/"
+	correoUrl = {"url":urlLinkedin}	
+	analyzerWebJobs = AnalyzerWebJobs(config,False,"DEBUG")
+	result = analyzerWebJobs.analyze(correoUrl)
+	analyzerWebJobs.close_selenium()
+	assert result.get('status','') == False
+	assert result.get('control','') == 'SEARCH'
+	assert result.get('page','') == 'linkedin'
+	assert result.get('realUrl','') == urlLinkedin	
+	assert result["newCorreoUrl"].get("titulo","") == ''
+	assert result["newCorreoUrl"].get("donde","") == ''
+	assert result["newCorreoUrl"].get("summary","") == ''
+	assert abs(result["newCorreoUrl"].get("fecha","") - datetime.datetime.now())\
+	       < datetime.timedelta(days=1)
+	assert result["newCorreoUrl"].get("company","") == ''
+
 def test_determinate_webPageOther():
 	urlOther = "http://www.youtube.com/somethig"
 	correoUrl = {"url":urlOther}	

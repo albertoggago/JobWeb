@@ -5,9 +5,10 @@
 import datetime
 
 #import string
-#from selenium.common.exceptions import NoSuchElementException
-from pyvirtualdisplay import Display
+import logging
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from pyvirtualdisplay import Display
 
 #own classes
 from pyproj.logger import Logger
@@ -27,6 +28,8 @@ class AnalyzerWebJobs(object):
             display = Display(visible=0, size=(1024, 768))
             display.start()
         self.driver = webdriver.Chrome()
+        selenium_logger = logging.getLogger('selenium.webdriver.remote.remote_connection')
+        selenium_logger.setLevel(logging.ERROR)
 
     def analyze(self, correo_url):
         """module analyze get url and prepare scraping"""
@@ -35,10 +38,9 @@ class AnalyzerWebJobs(object):
         if result_with_page.get("control", "") == "REVIEW":
             self.driver.get(result_with_page.get("realUrl", ""))
             result_with_data = self.find_data(result_with_page)
-        #review correct page
-        #build information
             return result_with_data
         else:
+            result_with_page["status"] = False
             return result_with_page
 
     def close_selenium(self):
@@ -54,12 +56,18 @@ class AnalyzerWebJobs(object):
                 self.logger.info("Locate web: "+web.get("name", "ERROR"))
                 result_web["page"] = web.get("name", "ERROR")
                 result_web["control"] = "REVIEW"
-                #TODO Pending preprocess of web
-                result_web["realUrl"] = web_url
+                result_web["realUrl"] =\
+                       self.real_url_transform(web_url, web.get("ruleTransformUrl", {}))
 
         if result_web.get("page", None) is None:
             result_web = self.determinate_other(result_web, web_url)
         return result_web
+
+    def real_url_transform(self, web_intro, rules):
+        """ transform url using rules to eliminate wrong data"""
+        self.logger.info("Rules Transform URL: ")
+        self.logger.info(rules)
+        return web_intro
 
     def determinate_other(self, result_imput, web_url):
         """it has got a list of web to ignore and not compute"""
@@ -78,93 +86,128 @@ class AnalyzerWebJobs(object):
     def find_data(self, result_imput):
         """Find Information using rules of web"""
         self.logger.info("Find Data")
-        resultFound = result_imput
-        necesaryVariables = self.config.get("necesaryVariables", "")
-        rulesTransformUrl = []
+        data_after_selenium = result_imput
+        necesary_variables = self.config.get("necesaryVariables", "")
+        rules_page = {}
         pages = self.config["pages"]
         for page in pages:
             if page["name"] == result_imput["page"]:
                 self.logger.info("Locate page get rules: ")
-                self.logger.debug(page["rulesTransformUrl"])
-                rulesTransformUrl = page["rulesTransformUrl"]
+                self.logger.debug(page)
+                rules_page = page
 
-        resultFound["newCorreoUrl"] = {}
-        for variable in necesaryVariables:
-            resultVariable = self.processVariable(variable, rulesTransformUrl.get(variable, {}))
-            resultFound["newCorreoUrl"][variable] = resultVariable
+        data_after_selenium["newCorreoUrl"] = {}
+        for variable in necesary_variables:
+            result_variable = self.process_variable(variable,\
+                                      rules_page["rulesTransformUrl"].get(variable, {}))
+            data_after_selenium["newCorreoUrl"][variable] = result_variable
 
-        return resultFound
+        #determinate rules after search
+        result_with_global_rules = self.transform_data_after_selenium(data_after_selenium,\
+            rules_page.get("rulestransformFinal"))
+        result_with_global_rules["status"] = \
+            self.review_data_ok(result_with_global_rules, rules_page.get("rulesOkFinfing"))
+        if result_with_global_rules["status"]:
+            result_with_global_rules["control"] = "CORPUS"
+        else:
+            result_with_global_rules["control"] = "SEARCH"
+        return result_with_global_rules
 
-    def processVariable(self, variable, rulesTransform):
+    def transform_data_after_selenium(self, data_imput, rules_after_selenium):
+        """ With rules transform output for modify data """
+        self.logger.info("Rules Transform after Selenium")
+        self.logger.info(rules_after_selenium)
+        return data_imput
+
+    def review_data_ok(self, data_imput, rules_review_data):
+        """ review which elements are mandatory """
+        self.logger.info("Rules Review Data")
+        self.logger.info(rules_review_data)
+        status = True
+        for variable_review in rules_review_data:
+            if data_imput.get("newCorreoUrl", {}).get(variable_review, "") is "":
+                status = False    
+        return status
+
+    def process_variable(self, variable, rules_transform):
+        """analize each varable of rules"""
         self.logger.info("Process Variable: "+variable)
-        self.logger.info(rulesTransform)
-        secuences = rulesTransform.get("secuences", [{"tipo":"class", "elemento":"xx"}])
+        self.logger.info(rules_transform)
+        secuences = rules_transform.get("secuences", [{"tipo":"class", "elemento":"xx"}])
         self.logger.debug(secuences)
-        split = rulesTransform.get("split", None)
+        split = rules_transform.get("split", None)
         self.logger.debug(split)
-        out = rulesTransform.get("out", {"tipo":"text", "initText":None})
+        out = rules_transform.get("out", {"tipo":"text", "initText":None})
         self.logger.debug(out)
 
-        driverWork = self.driver
+        driver_work = self.driver
 
         #secuences
         try:
             for secuence in secuences:
                 if secuence["tipo"] == "class":
-                    driverWork = driverWork.find_element_by_class_name(secuence["elemento"])
-                elif ele["tipo"] == "tag":
-                    driverWork = driverWork.find_element_by_tag_name(ele["elemento"])
-            textAfterSecuence = driverWork.text.encode("utf-8")
-        except NoSuchElementException as e:
+                    driver_work = driver_work.find_element_by_class_name(secuence["elemento"])
+                elif secuence["tipo"] == "tag":
+                    driver_work = driver_work.find_element_by_tag_name(secuence["elemento"])
+            text_after_secuence = driver_work.text.encode("utf-8")
+            self.logger.debug("text_after_secuence %s", text_after_secuence)
+        except NoSuchElementException as error:
             self.logger.warning("Error secuences: ")
             self.logger.warning(secuences)
-            self.logger.warning("Error find information: "+e)
+            self.logger.warning("Error find information: %s", error.args)
+            text_after_secuence = ""
 
         #split
-        self.logger.debug("textAfterSecuence: "+textAfterSecuence)
+        self.logger.debug("text_after_secuence: "+text_after_secuence)
 
-        textSplit = textAfterSecuence if split == None else self.splitText(textAfterSecuence, split)
-        self.logger.debug("textSplit: "+textSplit)
+        if split is None:
+            text_split = text_after_secuence
+        else:
+            text_split = self.split_text(text_after_secuence, split)
+        self.logger.debug("text_split: "+text_split)
 
         #out
-        textOut = self.formatTextOut(textSplit, out)
+        text_out = format_text_out(text_split, out)
 
-        return textOut
+        return text_out
 
-    def splitText(self, text, splitRule):
+    def split_text(self, text, split_rule):
+        """Split text with rule defined"""
         self.logger.info("Process Split: ")
-        self.logger.debug("splitRule")
+        self.logger.debug(split_rule)
         return text
 
-    def formatTextOut(self, text, out):
-        if out["tipo"] == "text":
-            return text
-        elif out["tipo"] == "fecha-dif":
-            return self.decreaseDate(text)
-        elif out["tipo"] == "fecha":
-            if splitTemp == "":
-                return datetime.datetime.now()
-            else:
-                return datetime.datetime.strptime(text, out["formato"])
-        return None
+#Functions
 
-    def decreaseDate(self, datosFecha):
-        datosFecha = datosFecha.lower()
-        listaDF = datosFecha.split()
-        listaDFN = [int(s) for s in datosFecha.split() if s.isdigit()]
-        if len(listaDFN) > 0:
-            numeroDF = listaDFN[0]
+def format_text_out(text, out):
+    """Format text for output"""
+    if out["tipo"] == "text":
+        return text
+    elif out["tipo"] == "fecha-dif":
+        return decrease_date(text)
+    elif out["tipo"] == "fecha":
+        if text == "":
+            return datetime.datetime.now()
         else:
-            numeroDF = 0
-        if 'dias' in listaDF or 'días' in listaDF or 'dia' in listaDF\
-          or 'día' in listaDF or 'day' in listaDF or 'days' in listaDF:
-            numeroDelta = datetime.timedelta(days=numeroDF)
-            fecha = datetime.datetime.now() - numeroDelta
-        elif 'mes' in listaDF or 'meses' in listaDF or 'month' in listaDF\
-                               or 'months' in listaDF:
-            numeroDelta = datetime.timedelta(months=numeroDF)
-            fecha = datetime.datetime.now() - numeroDelta
-        return fecha
+            return datetime.datetime.strptime(text, out["formato"])
+    return None
+
+def decrease_date(date_imput):
+    """ Decrease date """
+    date_imput = date_imput.lower()
+    list_date = date_imput.split()
+    list_date_number = [int(s) for s in date_imput.split() if s.isdigit()]
+    if len(list_date_number) > 0:
+        number_date = list_date_number[0]
+    else:
+        number_date = 0
+    delta_number = datetime.timedelta(days=number_date)
+    list_string_month = ['mes', 'meses', 'month', 'months']
+    for string_month in list_string_month:
+        if string_month in list_date:
+            delta_number = datetime.timedelta(months=number_date)
+    date_final = datetime.datetime.now() - delta_number
+    return date_final
 
 """
     def analizador (driver, secuencia=[{"tipo":"class", "elemento":"xx"}], split=None, \
@@ -460,21 +503,21 @@ def recursivo (x):
     for z in x:
         recursivo(z)
 
-def fechaDecreciente (datosFecha):
-    datosFecha = datosFecha.lower()
-    listaDF = datosFecha.split()
-    listaDFN = [int(s) for s in datosFecha.split() if s.isdigit()]
-    if len(listaDFN)>0:
-        numeroDF = listaDFN[0]
+def fechaDecreciente (date_imput):
+    date_imput = date_imput.lower()
+    list_date = date_imput.split()
+    list_date_number = [int(s) for s in date_imput.split() if s.isdigit()]
+    if len(list_date_number)>0:
+        number_date = list_date_number[0]
     else:
-        numeroDF = 0
+        number_date = 0
     fecha = datetime.datetime.now()
-    if ('dias' in listaDF or 'días' in listaDF or 'dia' in listaDF or 'día' in listaDF or 'day' in listaDF or 'days' in listaDF):
-        numeroDelta = datetime.timedelta(days=numeroDF)
-        fecha = fecha - numeroDelta
-    elif ('mes' in listaDF or 'meses' in listaDF or 'month' in listaDF or 'months' in listaDF ):
-        numeroDelta = datetime.timedelta(months=numeroDF)
-        fecha = fecha - numeroDelta
+    if ('dias' in list_date or 'días' in list_date or 'dia' in list_date or 'día' in list_date or 'day' in list_date or 'days' in list_date):
+        delta_number = datetime.timedelta(days=number_date)
+        fecha = fecha - delta_number
+    elif ('mes' in list_date or 'meses' in list_date or 'month' in list_date or 'months' in list_date ):
+        delta_number = datetime.timedelta(months=number_date)
+        fecha = fecha - delta_number
     return fecha
 
 

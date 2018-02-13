@@ -1,151 +1,151 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-#import sys
+""" file include class ReadAndAnalyse """
+
 import datetime
 import json
 
-#own classes
-from Logger import Logger
-from mongodbaccess import MongoDBAccess
-from mailaccess import MailAccess
-from analyzerwebjobs import AnalyzerWebJobs
+from pyproj.logger import Logger
+from pyproj.mongodbaccess import MongoDBAccess
+from pyproj.mailaccess import MailAccess
+from pyproj.analyzerwebjobs import AnalyzerWebJobs
 
 
 
-class ReadAndAnalyse:
+class ReadAndAnalyse(object):
+    """ Class for read and analize information, combine class"""
+    logger = None
+    mongo_db_access = None
+    mail_access = None
+    analyzer_web_jobs = None
 
-	logger          = None
-	mongoDBAccess   = None
-	mailAccess      = None
-	analyzerWebJobs = None
+    def __init__(self, fileConfig, visible, levelLog):
+        self.logger = Logger(self.__class__.__name__, levelLog).get()
+        self.mongo_db_access = MongoDBAccess(fileConfig, levelLog)
+        self.mail_access = MailAccess(fileConfig, levelLog)
+        config_text = open(fileConfig, "r").read()
+        allconfig = json.loads(config_text)
+        config = allconfig.get("webPagesDef", None)
+        self.analyzer_web_jobs = AnalyzerWebJobs(config, visible, levelLog)
 
-	def __init__(self,fileConfig,visible,levelLog):
-		self.logger = Logger(self.__class__.__name__, levelLog).get()
-		self.mongoDBAccess = MongoDBAccess(fileConfig,levelLog)
-		self.mailAccess    = MailAccess(fileConfig,levelLog)
-		configText         = open(fileConfig,"r").read()
-		allconfig          = json.loads(configText)
-		config        = allconfig.get("webPagesDef",None)
-		self.analyzerWebJobs = AnalyzerWebJobs(config,visible,levelLog)
+        self.visible = visible
+        self.logger.info("Inicio: %s", datetime.datetime.now())
 
-		self.visible = visible
-		self.logger.info("Inicio: {0}".format(datetime.datetime.now()))	
-  
-	def finding_mails(self):
-		self.logger.info("find_emails")
-		if not self.mailAccess.status(): 
-			self.logger.error("Error mail Not Active")
-			return None
-		if not self.mongoDBAccess.status():
-			self.logger.error("Error Database Not Active")
-			return None
-			
-		countEmails = 0;
-		listEmails = self.mailAccess.searchMails("inbox")
+    def finding_mails(self):
+        """Module for looking for emails return emails finding """
+        self.logger.info("find_emails")
+        if not self.mail_access.status():
+            self.logger.error("Error mail Not Active")
+            return None
+        if not self.mongo_db_access.status():
+            self.logger.error("Error Database Not Active")
+            return None
 
-		for ele in listEmails:
-			mail = self.mailAccess.composeMailJson(self.mailAccess.get(ele))
-			if mail == None:
-				self.logger.error("Mail generate wrong")
-			else:
-				self.mongoDBAccess.insert("correo",mail)
-				countEmails += 1			
-				self.mailAccess.store(ele)
-		
-		#self.mailAccess.clean()
- 		self.mailAccess.logout()
- 		self.logger.info("emails reads : {0:d}".format(countEmails))
- 		return countEmails
+        count_emails = 0
+        list_emails = self.mail_access.search_mails("inbox")
 
- 			
-	def finding_urls(self):
-		self.logger.info("FINDING_URLS")
-		if not self.mongoDBAccess.status():
-			self.logger.error("Error Database Not Active")
-			return None
+        for ele in list_emails:
+            mail = self.mail_access.compose_mail_json(self.mail_access.get(ele))
+            if mail is None:
+                self.logger.error("Mail generate wrong")
+            else:
+                self.mongo_db_access.insert("correo", mail)
+                count_emails += 1
+                self.mail_access.store(ele)
 
-		countUrls = 0
-		mails = self.mongoDBAccess.find("correo",{"control":{"$exists":0}},\
-			                                  sort={"urls":1,"_id":1})
-		for mail in mails:
-			for url in mail.get("urls",[]):
-				correoUrl = self.build_mailUrl(mail["_id"],url)
-				countUrls += self.review_mailUrl(correoUrl,url)
-			
-			self.mongoDBAccess.update_one("correo",{"_id":mail["_id"]},{"control":"DONE"})
-			
-		
-		self.logger.info("URLS read: {0:d}".format(countUrls))
-		return countUrls			
-				
-	def build_mailUrl(self,id,url):
-		correoUrl = {}
-		correoUrl["idCorreo"]= id
-		correoUrl["url"]= url
-		correoUrl["isSended"]= False
-		correoUrl["decision"]= ""
-		correoUrl["datetime"]=datetime.datetime.now()
-		return correoUrl
+        #self.mail_access.clean()
+        self.mail_access.logout()
+        self.logger.info("emails reads : %s", count_emails)
+        return count_emails
 
+    def finding_urls(self):
+        """ Find urls inside of mails saved """
+        self.logger.info("FINDING_URLS")
+        if not self.mongo_db_access.status():
+            self.logger.error("Error Database Not Active")
+            return None
 
-	def review_mailUrl(self,mailUrl,url):
-		buscarURL = self.mongoDBAccess.find_one("correoUrl",{"url":url})
-		if buscarURL == None:
-			self.logger.debug("Url to save: {0}".format(url))
-			self.mongoDBAccess.insert("correoUrl",mailUrl)
-			return 1
-		else:
-			self.logger.debug("No SAVE URL: {0}".format(url))
-			return 0
+        count_urls = 0
+        mails = self.mongo_db_access.find("correo", {"control":{"$exists":0}}, \
+                                              sort={"urls":1, "_id":1})
+        for mail in mails:
+            for url in mail.get("urls", []):
+                correo_url = build_mail_url(mail["_id"], url)
+                count_urls += self.review_mail_url(correo_url, url)
+            self.mongo_db_access.update_one("correo", {"_id":mail["_id"]}, {"control":"DONE"})
+        self.logger.info("URLS read: %s", count_urls)
+        return count_urls
 
-	def scrap_urls(self):
-		self.logger.info("SCRAP_URLS")
-		if not self.mongoDBAccess.status():
-			self.logger.error("Error Database Not Active")
-			return None
+    def review_mail_url(self, mail_url, url):
+        """ review mail url looking for in dabase and when not exist save"""
+        buscar_url = self.mongo_db_access.find_one("correoUrl", {"url":url})
+        if buscar_url is None:
+            self.logger.debug("Url to save: %s", url)
+            self.mongo_db_access.insert("correoUrl", mail_url)
+            return 1
+        else:
+            self.logger.debug("No SAVE URL: %s", url)
+            return 0
 
-		self.reprocess_mails();
+    def scrap_urls(self):
+        """ srap url using system of parameters and save this information in data base"""
+        self.logger.info("SCRAP_URLS")
+        if not self.mongo_db_access.status():
+            self.logger.error("Error Database Not Active")
+            return None
+        self.reprocess_mails()
+        count = {}
+        count["Ok"] = 0
+        count["Error"] = 0
+        correos_url = self.mongo_db_access.find("correoUrl", \
+                                  {"control":{"$exists":0}, "url":{"$exists":1}})
+        for correo_url in correos_url:
+            status = self.scrap_url(correo_url)
+            if status is True:
+                count["Ok"] += 1
+            else:
+                count["Error"] += 1
 
-		count = {}
-		count["Ok"]=0
-		count["Error"]=0
-		
-		correosUrl = self.mongoDBAccess.find("correoUrl",\
-			                      {"control":{"$exists":0},"url":{"$exists":1}})
-		
-		for correoUrl in correosUrl:
-			status = self.scrapUrl(correoUrl)
-			if status == True:
-				count["Ok"] += 1
-			else:
-				count["Error"] += 1
+        self.logger.info("-- INFO -- URLs Analysed Ok : %d, No Ok: %d",\
+                                       count["Ok"], count["Error"])
+        self.analyzer_web_jobs.close_selenium()
+        return count
 
-		self.logger.info("-- INFO -- URLs Analysed Ok : {0:d}, No Ok: {1:d}"\
-			                 .format(count["Ok"],count["Error"]))
-		self.analyzerWebJobs.closeSelenium()
-		return count
+    def reprocess_mails(self):
+        """ reprocess mails in status Error"""
+        mails_reproces_error = self.mongo_db_access\
+               .update_many("correoUrl", {"control":"ERROR"}, {"control":""}, is_set="unset")
+        self.logger.info("Email_Error Reprocess: %s", mails_reproces_error.modified_count)
+        mails_reproces_control = self.mongo_db_access\
+               .update_many("correoUrl", {"control":""}, {"control":""}, is_set="unset")
+        self.logger.info("Email_Blanck Reprocess: %d", mails_reproces_control.modified_count)
 
+    def scrap_url(self, correo_url):
+        """  scrap one url retrieve the information locate """
+        self.logger.info("SCRAP_URL: %s", correo_url["url"])
+        data_of_scraping = self.analyzer_web_jobs.analyze(correo_url)
+        self.mongo_db_access.update_one("correoUrl", \
+                         {"_id":correo_url["_id"]}, \
+                         {"control":data_of_scraping.get("control", "ERROR"),\
+                           "pagina":data_of_scraping.get("page", "None")})
+        if data_of_scraping.get("status", False):
+            self.save_scraping(correo_url["_id"],\
+                                  data_of_scraping.get("newCorreoUrl",\
+                                  correo_url))
+        return data_of_scraping.get("status", False)
 
-	def reprocess_mails(self):
-		mailsReprocesError = self.mongoDBAccess.update_many("correoUrl",{"control":"ERROR"},{"control":""},set="unset")
-		self.logger.info("Email_Error Reprocess: {0}".format(mailsReprocesError.modified_count))
-		mailsReprocesControl = self.mongoDBAccess.update_many("correoUrl",{"control":""},{"control":""},set="unset")
-		self.logger.info("Email_Blanck Reprocess: {0}".format(mailsReprocesControl.modified_count))
-		
+    def save_scraping(self, id_code, correo_url):
+        """ save information into database """
+        self.logger.debug("Save: "+correo_url)
+        self.mongo_db_access.update_one("correoUrl", {"_id":id_code}, correo_url)
 
-
-	def scrapUrl(self, correoUrl):
-		self.logger.info("SCRAP_URL: {0}".format(correoUrl["url"]))
-		info = self.analyzerWebJobs.analyze(correoUrl)
-		self.mongoDBAccess.update_one("correoUrl",\
-			             {"_id":correoUrl["_id"]},\
-			             {"control":info.get("control","ERROR"),"pagina":info.get("page","None")})
-		if info.get("status",False) :
-			self.saveInformation(correoUrl["_id"],info.get("newCorreoUrl",correoUrl));
-		return info.get("status",False)
-
-
-	def saveInformacion (self, id, correoUrl):
-		selg.logger.debug("Save: "+correoUrl)
-		self.mongoDBAccess.update_one("correoUrl",{"_id":id},correoUrl)
+def build_mail_url(id_code, url):
+    """ Build structure of correoUrl"""
+    correo_url = {}
+    correo_url["idCorreo"] = id_code
+    correo_url["url"] = url
+    correo_url["isSended"] = False
+    correo_url["decision"] = ""
+    correo_url["datetime"] = datetime.datetime.now()
+    return correo_url
