@@ -115,11 +115,12 @@ class AnalyzerWebJobs(object):
         result_with_global_rules = self.transform_data_after_selenium(data_after_selenium,\
             rules_page.get("rulestransformFinal"))
         result_with_global_rules["status"] = \
-            self.review_data_ok(result_with_global_rules, rules_page.get("rulesOkFinfing"))
+            self.review_data_ok(result_with_global_rules, rules_page.get("rulesOkFinding"))
         if result_with_global_rules["status"]:
             result_with_global_rules["control"] = "CORPUS"
         else:
             result_with_global_rules["control"] = "SEARCH"
+        self.logger.debug(result_with_global_rules)
         return result_with_global_rules
 
     def transform_data_after_selenium(self, data_imput, rules_after_selenium):
@@ -137,8 +138,8 @@ class AnalyzerWebJobs(object):
         self.logger.debug("Rule Unique Transform after Selenium")
         self.logger.debug(data_output["newCorreoUrl"].get(rule.get("in", "xxxx")))
         self.logger.debug(rule.get("valueIn", "yyyy"))
-        if data_output["newCorreoUrl"].get(rule.get("in", "xxxx")).decode('utf-8') == \
-            rule.get("valueIn", "yyyy"):
+        if data_output["newCorreoUrl"].get(rule.get("in", "xxxx")).\
+           decode('utf-8', errors='ignore') == rule.get("valueIn", "yyyy"):
             action = rule.get("action")
             self.logger.debug(action)
             if action == "SPACES":
@@ -167,43 +168,48 @@ class AnalyzerWebJobs(object):
         """analize each varable of rules"""
         self.logger.info("Process Variable: "+variable)
         self.logger.info(rules_transform)
+
+        #secuences
         secuences = rules_transform.get("secuences", [{"tipo":"class", "elemento":"xx"}])
         self.logger.debug(secuences)
+        text_after_secuence = self.in_driver_data_and_return_text(secuences)
+
+        #split
+        self.logger.debug("text_after_secuence: "+text_after_secuence)
         split = rules_transform.get("split", None)
         self.logger.debug(split)
+        if split is None:
+            text_split = text_after_secuence
+        else:
+            text_split = self.split_text(text_after_secuence, split)
+
+        #out
+        self.logger.debug("text_split: "+text_split)
+
         out = rules_transform.get("out", {"tipo":"text", "initText":None})
         self.logger.debug(out)
 
-        driver_work = self.driver
+        text_out = self.format_text_out(text_split, out)
 
-        #secuences
+        return text_out
+
+    def in_driver_data_and_return_text(self, secuences):
+        """ Select of driver selenium data using secuences rules"""
+        driver_work = self.driver
         try:
             for secuence in secuences:
                 if secuence["tipo"] == "class":
                     driver_work = driver_work.find_element_by_class_name(secuence["elemento"])
                 elif secuence["tipo"] == "tag":
                     driver_work = driver_work.find_element_by_tag_name(secuence["elemento"])
-            text_after_secuence = driver_work.text.encode("utf-8")
+            text_after_secuence = driver_work.text.encode("utf-8", errors='ignore')
             self.logger.debug("text_after_secuence %s", text_after_secuence)
+            return text_after_secuence
         except NoSuchElementException as error:
             self.logger.warning("Error secuences: ")
             self.logger.warning(secuences)
             self.logger.warning("Error find information: %s", error.args)
-            text_after_secuence = ""
-
-        #split
-        self.logger.debug("text_after_secuence: "+text_after_secuence)
-
-        if split is None:
-            text_split = text_after_secuence
-        else:
-            text_split = self.split_text(text_after_secuence, split)
-        self.logger.debug("text_split: "+text_split)
-
-        #out
-        text_out = format_text_out(text_split, out)
-
-        return text_out
+            return ""
 
     def split_text(self, text, split_rule):
         """Split text with rule defined"""
@@ -213,7 +219,9 @@ class AnalyzerWebJobs(object):
         cfg_text_initial = split_rule.get("initText", "")
         cfg_text_split = split_rule.get("text", "")
 
-        list_text_split = text.split(cfg_text_split)
+        text_clean = text.decode("utf-8", errors='ignore')#.encode("utf-8", errors='ignore')
+
+        list_text_split = text_clean.split(cfg_text_split)
 
         if cfg_text_initial is None or\
            cfg_text_initial == ''   or\
@@ -227,137 +235,42 @@ class AnalyzerWebJobs(object):
             split_out = ""
         return split_out
 
-#Functions
+    def format_text_out(self, text, out):
+        """Format text for output"""
+        self.logger.info("Format Text")
+        self.logger.debug(text)
+        self.logger.debug(out)
+        if out["tipo"] == "text":
+            return text
+        elif out["tipo"] == "fecha-dif":
+            return self.decrease_date(text)
+        elif out["tipo"] == "fecha":
+            if text == "":
+                return datetime.datetime.now()
+            else:
+                return datetime.datetime.strptime(text, out["formato"])
+        return None
 
-def format_text_out(text, out):
-    """Format text for output"""
-    if out["tipo"] == "text":
-        return text
-    elif out["tipo"] == "fecha-dif":
-        return decrease_date(text)
-    elif out["tipo"] == "fecha":
-        if text == "":
-            return datetime.datetime.now()
+    def decrease_date(self, date_imput):
+        """ Decrease date """
+        self.logger.info("Decrease_Date")
+        self.logger.debug(date_imput)
+        date_imput = date_imput.lower()
+        list_date = date_imput.split()
+        list_date_number = [int(s) for s in date_imput.split() if s.isdigit()]
+        if len(list_date_number) > 0:
+            number_date = list_date_number[0]
         else:
-            return datetime.datetime.strptime(text, out["formato"])
-    return None
-
-def decrease_date(date_imput):
-    """ Decrease date """
-    date_imput = date_imput.lower()
-    list_date = date_imput.split()
-    list_date_number = [int(s) for s in date_imput.split() if s.isdigit()]
-    if len(list_date_number) > 0:
-        number_date = list_date_number[0]
-    else:
-        number_date = 0
-    delta_number = datetime.timedelta(days=number_date)
-    list_string_month = ['mes', 'meses', 'month', 'months']
-    for string_month in list_string_month:
-        if string_month in list_date:
-            delta_number = datetime.timedelta(months=number_date)
-    date_final = datetime.datetime.now() - delta_number
-    return date_final
+            number_date = 0
+        delta_number = datetime.timedelta(days=number_date)
+        list_string_month = ['mes', 'meses', 'month', 'months']
+        for string_month in list_string_month:
+            if string_month in list_date:
+                delta_number = datetime.timedelta(months=number_date)
+        date_final = datetime.datetime.now() - delta_number
+        return date_final
 
 """
-    def analizador (driver, secuencia=[{"tipo":"class", "elemento":"xx"}], split=None, \
-                                                             salida={"tipo":"text", "initText":None}, vision=0):
-        try:
-        #fase localizador
-            if vision==1:
-                print "+++++++++++++++++++++++++++++++++++++++++++"
-                print "                                     modo Visual "
-                print "+++++++++++++++++++++++++++++++++++++++++++"
-            if vision==1:
-                print "+ secuencia: {0}".format(secuencia)
-                print "+ split:         {0}".format(split)
-                print "+ salida:        {0}".format(salida)
-                print "+++++++++++++++++++++++++++++++++++++++++++"
-            driverTemp=driver 
-            for ele in secuencia:
-                if ele["tipo"] == "class":
-                    driverTemp = driverTemp.find_element_by_class_name(ele["elemento"])
-                elif ele["tipo"] == "tag":
-                    driverTemp = driverTemp.find_element_by_tag_name(ele["elemento"])
-            driverTemp = driverTemp.text.encode("utf-8")
-            if vision==1:
-                print "+ Despues de driver: {0}".format(driverTemp)
-                print "+++++++++++++++++++++++++++++++++++++++++++"
-        #fase split                
-            if (split == None):
-                splitTemp = driverTemp
-            else:
-                dataTemp = driverTemp.split(split["text"])
-
-                if vision==1:
-                    print "+ Paso Split: {0}".format(dataTemp)
-                    print "+++++++++++++++++++++++++++++++++++++++++++"
-
-                if split["initText"]== None:
-                    pos = 0
-                else:
-                    pos = dataTemp.index(split["initText"])
-                if len(dataTemp)> (split["n"]+pos):
-                    splitTemp = dataTemp[split["n"]+pos]
-                else:
-                    splitTemp = ""
-            if vision==1:
-                print "+ Despues de split: {0}".format(splitTemp)
-                print "+++++++++++++++++++++++++++++++++++++++++++"
-
-        #fase salida
-            if salida["tipo"]=="text":
-                salida = splitTemp
-            elif salida["tipo"]=="fecha-dif":
-                salida = fechaDecreciente(splitTemp)
-            elif salida["tipo"]=="fecha":
-                if splitTemp =="":
-                    salida = datetime.datetime.now()
-                else:
-                    salida = datetime.datetime.strptime(splitTemp, salida["formato"])
-
-            if vision==1:
-                print "+++++++++++++++++++++++++++++++++++++++++++"
-                print "SALIDA: //{0}//".format(salida)
-                print "+++++++++++++++++++++++++++++++++++++++++++"
-            return salida
-        except NoSuchElementException as e:
-            print "+++++++++++++++++++++++++++++++++++++++++++"
-            print "                 ERROR: {0}".format(e)
-            print "+++++++++++++++++++++++++++++++++++++++++++"
-
-            return ""
-
-
-
-    def pending(self, correoUrl):
-            if ("linkedin" in url ):
-                pagina = "linkedin"
-                urlOk = url
-                driver.get(urlOk)
-
-                if ver==1:
-                    print "***** PAGINA: {0}".format(pagina)
-                    print "***** URL: {0}".format(urlOk)
-                
-                titulo    = analizador(driver, secuencia=[{"tipo":"class", "elemento":"title"}], vision=ver)
-                donde     = analizador(driver, secuencia=[{"tipo":"class", "elemento":"location"}], vision=ver)
-                summary = analizador(driver, secuencia=[{"tipo":"class", "elemento":"summary"}], vision=ver)
-                fecha     = analizador(driver, secuencia=[{"tipo":"class", "elemento":"posted"}], salida={"tipo":"fecha-dif"}, vision=ver)
-                company = analizador(driver, secuencia=[{"tipo":"class", "elemento":"company"}], vision=ver)
-
-                if titulo in ["Destaca en lo que haces", "Consultor - Científico de Datos - Scrum Master"]:
-                    titulo = ""
-
-                if (company == "") and not (titulo ==""):
-                    company = "<NO DEFINIDA>"
-
-
-                control = self.guardarInformacion(pagina, idCorreoUrl, urlOk, titulo, donde, summary, fecha, company)
-                if control=="CORPUS":
-                    sumaUrl2Ok +=1
-
-
             if ("irishjobs" in url):
                 pagina = "irishjob"
                 urlOk = url[:url.find("=")]
@@ -391,66 +304,6 @@ def decrease_date(date_imput):
                 if control=="CORPUS":
                     sumaUrl2Ok +=1
 
-
-            if ("recruitireland" in url):
-                pagina = "recruitireland"
-                urlOk =string.replace(url, "=2E", ".")
-                urlOk =string.replace(urlOk, "=3D", "=")
-                driver.get(urlOk)
-
-                if ver==1:
-                    print "***** PAGINA: {0}".format(pagina)
-                    print "***** URL: {0}".format(urlOk)
-
-                titulo    = analizador(driver, secuencia=[{"tipo":"class", "elemento":"job-header"}], split={"text":"\n", "n":0, "initText":None}, vision=ver)
-                if    titulo =="THIS JOB HAS BEEN REMOVED BY THE ADVERTISER." :
-                    titulo    = ""
-                    company = ""
-                    donde     = ""
-                    summary = ""
-                    fecha     = ""
-                else:
-                    donde     = analizador(driver, secuencia=[{"tipo":"class", "elemento":"job-info"}], \
-                                        split={"text":"\n", "n":1, "initText":"Location:"}, vision=ver)
-                    summary = analizador(driver, secuencia=[{"tipo":"class", "elemento":"generic-text"}], vision=ver)
-                    fecha     = analizador(driver, \
-                                    secuencia=[{"tipo":"class", "elemento":"job-info"}], split={"text":"\n", "n":1, "initText":"Posted on:"}, \
-                                    salida={"tipo":"fecha", "formato":"%d-%b-%Y"}, vision=ver)
-                    if (titulo == "" and donde == "" and summary == "" and fecha == ""):
-                        company = ""
-                    else:
-                        company = analizador(driver, secuencia=[{"tipo":"class", "elemento":"job-owner-description"}, {"tipo":"tag", "elemento":"a"}], vision=ver)
-
-                control = self.guardarInformacion(pagina, idCorreoUrl, urlOk, titulo, donde, summary, fecha, company)
-
-                if control=="CORPUS":
-                    sumaUrl2Ok +=1
-
-            if ".jobs.ie" in url:
-                pagina = "jobs.ie"
-                urlOk =string.replace(url, "=3D", "=")
-                driver.get(urlOk)
-                if ver==1:
-                    print "***** PAGINA: {0}".format(pagina)
-                    print "***** URL: {0}".format(urlOk)
-                titulo    = analizador(driver, secuencia=[{"tipo":"class", "elemento":"padding"}, {"tipo":"tag", "elemento":"h1"}], \
-                                                    split={"text":"\xe2\x80\x93", "initText":None, "n":0}, vision=ver)
-                company = analizador(driver, secuencia=[{"tipo":"class", "elemento":"sidebar"}, {"tipo":"class", "elemento":"acc-panel"}], \
-                                    split={"text":"\n", "initText":None, "n":1}, vision=ver)
-                donde     = analizador(driver, secuencia=[{"tipo":"class", "elemento":"c1"}], \
-                                                    split={"text":"\n", "initText":None, "n":1}, vision=ver)
-                summary = analizador(driver, secuencia=[{"tipo":"class", "elemento":"job-description"}], vision=ver)
-                fecha     = analizador(driver, \
-                                secuencia=[{"tipo":"class", "elemento":"c2"}], split={"text":"\n", "n":3, "initText":None}, \
-                                salida={"tipo":"fecha", "formato":"%d-%m-%Y"}, vision=ver)
-                
-                control = self.guardarInformacion(pagina, idCorreoUrl, urlOk, titulo, donde, summary, fecha, company)
-                if control=="CORPUS":
-                    sumaUrl2Ok +=1
-
-
-
-
             if ".monster." in url:                    
                 pagina = "monster.ie"
                 urlOk =string.replace(url, "=3D", "=")
@@ -480,163 +333,5 @@ def decrease_date(date_imput):
                     sumaUrl2Ok +=1
 
 
-            #proceso OTRO
-            lista = ["saongroup", "mailchimp", "www.w3.org", ".png", "123.ie", ".jpg", "hero.ie", "www.facebook.com", "twitter.com", \
-                             "plus.google.com", "youtube.com", "maps.google.com", "awstrack.me", ".gif", "/logos/", "www.albertoggago.es", \
-                             "register-cv", "login", "jobs-alerts", "logs11.xiti.com", "emltrk.com", "www.w3c.org", "www.lectiva.com", \
-                             "infojobs", "monster.secure.force.com", "caliber", "computerfutures", "vodafone.ie", "profitsflow", "citywonders", \
-                             "googleusercontent", "googleapis"]
-            otroInd = False
-            for ele in lista:
-                if ele in url:
-                    otroInd = True
-            if otroInd:
-                control = "OTRO"
-                pagina ="N/D"
 
-
-
-            if (control==""):
-                if pagina == "":
-                    pagina ="N/D"
-                if urlOk =="":
-                    urlOk = url
-                print "** ERROR************************************************************************" 
-                print "URL ERRONEA: "+urlOk
-                print "** ERROR************************************************************************" 
-                control = "ERROR"
-
-            sumaUrl2 +=1
-
-            self.mongoDBAccess.update_one("correoUrl", {"_id":idCorreoUrl}, {"control":control, "pagina":pagina})
-
-    def saveInformacion (self, correoUrl):
-        if not (titulo=="" or donde == "" or summary == "" or fecha =="" or company == ""):
-            actualiza = {}
-            actualiza["urlOk"]=urlOk
-            actualiza["titulo"]=titulo
-            actualiza["donde"]=donde
-            actualiza["summary"]=summary
-            actualiza["fecha"]=fecha
-            actualiza["company"]=company
-
-            self.mongoDBAccess.update_one("correoUrl", {"_id":correoUrl}, actualiza)
-            return "CORPUS"
-        elif (titulo=="" and donde == "" and summary == "" and fecha =="" and company == ""):
-            print "++++++++++++++++++++++++++++++++++++++"
-            print "                             SEARCH "
-            print "++++++++++++++++++++++++++++++++++++++"
-            print "urlOk    :    //{0}".format(urlOk)
-            return "SEARCH"
-        else: 
-            print "**********************************"
-            print "                             ERROR "
-            print "**********************************"
-            print "pagina    {0}".format(pagina)
-            print "**********************************"
-            print "urlOk    :    //{0}".format(urlOk)
-            print "titulo :    //{0}//".format(titulo)
-            print "donde    :    //{0}//".format(donde)
-            print "summary:    //{0}//".format(summary[:20])
-            print "fecha    :    //{0}//".format(fecha)
-            print "company:    //{0}//".format(company)
-            print "**********************************"
-            return "ERROR"
-
-
-
-#review code
-def recursivo (x):
-    print x
-    if not(x.text is None):
-        print x.text.encode('utf-8')
-    for z in x:
-        recursivo(z)
-
-def fechaDecreciente (date_imput):
-    date_imput = date_imput.lower()
-    list_date = date_imput.split()
-    list_date_number = [int(s) for s in date_imput.split() if s.isdigit()]
-    if len(list_date_number)>0:
-        number_date = list_date_number[0]
-    else:
-        number_date = 0
-    fecha = datetime.datetime.now()
-    if ('dias' in list_date or 'días' in list_date or 'dia' in list_date or 'día' in list_date or 'day' in list_date or 'days' in list_date):
-        delta_number = datetime.timedelta(days=number_date)
-        fecha = fecha - delta_number
-    elif ('mes' in list_date or 'meses' in list_date or 'month' in list_date or 'months' in list_date ):
-        delta_number = datetime.timedelta(months=number_date)
-        fecha = fecha - delta_number
-    return fecha
-
-
-
-def analizador (driver, secuencia=[{"tipo":"class", "elemento":"xx"}], split=None, salida={"tipo":"text", "initText":None}, vision=0):
-    #split={"text"="-", "n"=0}
-    try:
-    #fase localizador
-        if vision==1:
-            print "+++++++++++++++++++++++++++++++++++++++++++"
-            print "                                     modo Visual "
-            print "+++++++++++++++++++++++++++++++++++++++++++"
-        if vision==1:
-            print "+ secuencia: {0}".format(secuencia)
-            print "+ split:         {0}".format(split)
-            print "+ salida:        {0}".format(salida)
-            print "+++++++++++++++++++++++++++++++++++++++++++"
-        driverTemp=driver 
-        for ele in secuencia:
-            if ele["tipo"] == "class":
-                driverTemp = driverTemp.find_element_by_class_name(ele["elemento"])
-            elif ele["tipo"] == "tag":
-                driverTemp = driverTemp.find_element_by_tag_name(ele["elemento"])
-        driverTemp = driverTemp.text.encode("utf-8")
-        if vision==1:
-            print "+ Despues de driver: {0}".format(driverTemp)
-            print "+++++++++++++++++++++++++++++++++++++++++++"
-    #fase split                
-        if (split == None):
-            splitTemp = driverTemp
-        else:
-            dataTemp = driverTemp.split(split["text"])
-
-            if vision==1:
-                print "+ Paso Split: {0}".format(dataTemp)
-                print "+++++++++++++++++++++++++++++++++++++++++++"
-
-            if split["initText"]== None:
-                pos = 0
-            else:
-                pos = dataTemp.index(split["initText"])
-            if len(dataTemp)> (split["n"]+pos):
-                splitTemp = dataTemp[split["n"]+pos]
-            else:
-                splitTemp = ""
-        if vision==1:
-            print "+ Despues de split: {0}".format(splitTemp)
-            print "+++++++++++++++++++++++++++++++++++++++++++"
-
-    #fase salida
-        if salida["tipo"]=="text":
-            salida = splitTemp
-        elif salida["tipo"]=="fecha-dif":
-            salida = fechaDecreciente(splitTemp)
-        elif salida["tipo"]=="fecha":
-            if splitTemp =="":
-                salida = datetime.datetime.now()
-            else:
-                salida = datetime.datetime.strptime(splitTemp, salida["formato"])
-
-        if vision==1:
-            print "+++++++++++++++++++++++++++++++++++++++++++"
-            print "SALIDA: //{0}//".format(salida)
-            print "+++++++++++++++++++++++++++++++++++++++++++"
-        return salida
-    except NoSuchElementException as e:
-        print "+++++++++++++++++++++++++++++++++++++++++++"
-        print "                 ERROR: {0}".format(e)
-        print "+++++++++++++++++++++++++++++++++++++++++++"
-
-        return ""
 """

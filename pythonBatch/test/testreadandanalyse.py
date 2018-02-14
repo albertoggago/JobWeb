@@ -32,7 +32,7 @@ def test_findingMails():
 	mongoDBAccess.delete_many("correo",{})
 	amount =  readAndAnalyse.finding_mails()
 	#Depends of the emails in the mail test
-	assert amount == 3
+	assert amount == 4
 
 def test_findingUrls():
 	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",False,"WARNING")
@@ -42,21 +42,21 @@ def test_findingUrls():
 	readAndAnalyse.finding_mails()
 	amount =  readAndAnalyse.finding_urls()
 	#Depends of the information inside of mails
-	assert amount == 58
+	assert amount == 111
 	
 	dones = mongoDBAccess.find("correo",{"control":"DONE"})
 	amountDones = 0
 	for done in dones:
 		amountDones += 1
 	#Depends of the information inside of mails
-	assert amountDones == 3
+	assert amountDones == 4
 	
 	correosUrls = mongoDBAccess.find("correoUrl",{})
 	amountCorreosUrls = 0
 	for correoUrl in correosUrls:
 		amountCorreosUrls += 1
 	#Depends of the information inside of mails
-	assert amountCorreosUrls == 58
+	assert amountCorreosUrls == 111
 
 def test_scrapUrls():
 	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",False,"WARNING")
@@ -67,5 +67,5 @@ def test_scrapUrls():
 	readAndAnalyse.finding_urls()
 	amount = readAndAnalyse.scrap_urls()
 	#Depends of the information inside of mails
-	assert amount.get("Error",0) == 46
-	assert amount.get("Ok",0) == 12
+	assert amount.get("Error",0) == 72
+	assert amount.get("Ok",0) == 39

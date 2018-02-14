@@ -65,7 +65,8 @@ def test_determinate_recruitireland():
 	assert result["newCorreoUrl"].get("company","") == 'BD MEDICAL'
 	assert result.get('status','') == True
 	assert result.get('control','') == 'CORPUS'
-
+	assert result["newCorreoUrl"].get("salary","") == 'competitive'
+	assert result["newCorreoUrl"].get("jobType","") == 'PERMANENT'
 
 def test_determinate_recruitireland_error_no_exits():
 	url_recruitireland = "http://www.recruitireland.com/job/?JobID=3D153224144525&amp;utm_source=3Djobalerts&amp;utm_medium=3Demail&amp;utm_campaign=3DJobAlerts"
@@ -103,6 +104,119 @@ def test_determinate_recruitireland_error_retired():
 	assert result.get('status','') == False
 	assert result.get('control','') == 'SEARCH'
 	
+def test_determinate_irishjobs():
+	url_irishjobs = "https://www.irishjobs.ie/Jobs/Senior-Javascript-UI-Developer-8134189.aspx?adobeid=jajob&jacid=525770-02-2018&jst=1_tJ8AOY57h0AzRlf6ylCQld&utm_source=JobAlert&utm_medium=clicks&utm_campaign=Jbe+Applications"
+	correoUrl = {"url":url_irishjobs}	
+	analyzerWebJobs = AnalyzerWebJobs(config,False,"DEBUG")
+	result = analyzerWebJobs.analyze(correoUrl)
+	analyzerWebJobs.close_selenium()
+	assert result.get('page','') == 'irishjobs'
+	assert result.get('realUrl','') == url_irishjobs	
+	assert result["newCorreoUrl"].get("titulo","") == 'SENIOR JAVASCRIPT UI DEVELOPER'
+	assert result["newCorreoUrl"].get("donde","") == 'Galway / Galway city'
+	assert len(result["newCorreoUrl"].get("summary","")) == 913
+	assert abs(result["newCorreoUrl"].get("fecha","") - datetime.datetime(2018, 2, 13, 12, 0, 0, 0))\
+	       < datetime.timedelta(days=1)
+	assert result["newCorreoUrl"].get("company","") == 'STELFOX'
+	assert result.get('status','') == True
+	assert result.get('control','') == 'CORPUS'
+	assert result["newCorreoUrl"].get("salary","") == 'Negotiable'
+	assert result["newCorreoUrl"].get("jobType","") == 'Permanent full-time'
+
+
+def test_determinate_irishjobs_error_retired():
+	url_irishjobs = "https://www.irishjobs.ie/Jobs/Senior-FrontEnd-Engineer-8112985.aspx?adobeid=jajob&jacid=525770-12-2017&jst=z6kbolHKteomUWY3Lf73W1sP&utm_source=JobAlert&utm_medium=clicks&utm_campaign=Jbe+Applications"
+	correoUrl = {"url":url_irishjobs}	
+	analyzerWebJobs = AnalyzerWebJobs(config,False,"DEBUG")
+	result = analyzerWebJobs.analyze(correoUrl)
+	analyzerWebJobs.close_selenium()
+	assert result.get('page','') == 'irishjobs'
+	assert result.get('realUrl','') == url_irishjobs	
+	assert result["newCorreoUrl"].get("titulo","") == 'SENIOR FRONTEND ENGINEER'
+	assert result["newCorreoUrl"].get("donde","") == 'Kildare / Wicklow / Dublin'
+	assert result["newCorreoUrl"].get("summary","") == ''
+	assert abs(result["newCorreoUrl"].get("fecha","") - datetime.datetime(2018, 1, 19, 12, 0, 0, 0))\
+	       < datetime.timedelta(days=1)
+	assert result["newCorreoUrl"].get("company","") == 'VIASAT'
+	assert result.get('status','') == False
+	assert result.get('control','') == 'SEARCH'
+	assert result["newCorreoUrl"].get("salary","") == 'Negotiable'
+	assert result["newCorreoUrl"].get("jobType","") == 'Permanent full-time'
+
+
+def test_determinate_irishjobs_error_error():
+	url_irishjobs = "https://www.irishjobs.ie/Jobs/Senior-Fron-Engineer-8112985.aspx?adobeid=jajob&jacid=525770-12-2017&jst=z6kbolHKteomUWY3Lf73W1sP&utm_source=JobAlert&utm_medium=clicks&utm_campaign=Jbe+Applications"
+	correoUrl = {"url":url_irishjobs}	
+	analyzerWebJobs = AnalyzerWebJobs(config,False,"DEBUG")
+	result = analyzerWebJobs.analyze(correoUrl)
+	analyzerWebJobs.close_selenium()
+	assert result.get('page','') == 'irishjobs'
+	assert result.get('realUrl','') == url_irishjobs	
+	assert result["newCorreoUrl"].get("titulo","") == ''
+	assert result["newCorreoUrl"].get("donde","") == ''
+	assert result["newCorreoUrl"].get("summary","") == ''
+	assert abs(result["newCorreoUrl"].get("fecha","") - datetime.datetime.now())\
+	       < datetime.timedelta(days=1)
+	assert result["newCorreoUrl"].get("company","") == ''
+	assert result.get('status','') == False
+	assert result.get('control','') == 'SEARCH'
+
+def test_determinate_jobs_ie():
+	url_jobsie = "https://www.jobs.ie/ApplyForJob.aspx?Id=1683365&jst=3Dm1XZicalx_wFcls3wvyk6DKe&utm_source=3Djobalerts&utm_medium=3Demail&utm_campaign=3DJob%2BAlerts&cid=jajob&jacid=3DJob_Alert_1263851-02-2018"
+	url_real_jobsie = "https://www.jobs.ie/ApplyForJob.aspx?Id=1683365&jst=m1XZicalx_wFcls3wvyk6DKe&utm_source=jobalerts&utm_medium=email&utm_campaign=Job%2BAlerts&cid=jajob&jacid=Job_Alert_1263851-02-2018"
+	correoUrl = {"url":url_jobsie}	
+	analyzerWebJobs = AnalyzerWebJobs(config,False,"DEBUG")
+	result = analyzerWebJobs.analyze(correoUrl)
+	analyzerWebJobs.close_selenium()
+	assert result.get('page','') == 'jobs.ie'
+	assert result.get('realUrl','') == url_real_jobsie	
+	assert result["newCorreoUrl"].get("titulo","") == 'Audio Visual/ VC Technician'
+	assert result["newCorreoUrl"].get("donde","") == 'Grand Canal Square, Grand Canal Dock, Dublin 2'
+	assert len(result["newCorreoUrl"].get("summary","")) == 2873
+	assert abs(result["newCorreoUrl"].get("fecha","") - datetime.datetime(2018, 2, 14, 12, 0, 0, 0))\
+	       < datetime.timedelta(days=1)
+	assert result["newCorreoUrl"].get("company","") == 'Milestone Technologies'
+	assert result.get('status','') == True
+	assert result.get('control','') == 'CORPUS'
+	assert result["newCorreoUrl"].get("salary","") == 'Negotiable'
+	assert result["newCorreoUrl"].get("jobType","") == 'Permanent | Full Time'
+
+def test_determinate_jobsie_error_retired():
+	url_jobsie = "https://www.jobs.ie/ApplyForJob.aspx?Id=3D1671149&jst=3DtasndzhbOQL7jKXJPAJaFsxg&utm_source=3Djobalerts&utm_medium=email&utm_campaign=3DJob%2BAlerts&cid=jajob&jacid=Job_Alert_1263851-12-2017"
+	url_real_jobsie = "https://www.jobs.ie/ApplyForJob.aspx?Id=1671149&jst=tasndzhbOQL7jKXJPAJaFsxg&utm_source=jobalerts&utm_medium=email&utm_campaign=Job%2BAlerts&cid=jajob&jacid=Job_Alert_1263851-12-2017"
+	correoUrl = {"url":url_jobsie}	
+	analyzerWebJobs = AnalyzerWebJobs(config,False,"DEBUG")
+	result = analyzerWebJobs.analyze(correoUrl)
+	analyzerWebJobs.close_selenium()
+	assert result.get('page','') == 'jobs.ie'
+	assert result.get('realUrl','') == url_real_jobsie	
+	assert result["newCorreoUrl"].get("titulo","") == ''
+	assert result["newCorreoUrl"].get("donde","") == ''
+	assert result["newCorreoUrl"].get("summary","") == ''
+	assert abs(result["newCorreoUrl"].get("fecha","") - datetime.datetime.now())\
+	       < datetime.timedelta(days=1)
+	assert result["newCorreoUrl"].get("company","") == ''
+	assert result.get('status','') == False
+	assert result.get('control','') == 'SEARCH'
+	
+def test_determinate_jobsie_error_noexist():
+	url_jobsie = "https://www.jobs.ie/ApplyForJob.aspx?Id=16744441149&jst=tasndzhbOQL7jKXJPAJaFsxg&utm_source=jobalerts&utm_medium=email&utm_campaign=Job%2BAlerts&cid=jajob&jacid=Job_Alert_1263851-12-2017"
+	url_real_jobsie = "https://www.jobs.ie/ApplyForJob.aspx?Id=16744441149&jst=tasndzhbOQL7jKXJPAJaFsxg&utm_source=jobalerts&utm_medium=email&utm_campaign=Job%2BAlerts&cid=jajob&jacid=Job_Alert_1263851-12-2017"
+	correoUrl = {"url":url_jobsie}	
+	analyzerWebJobs = AnalyzerWebJobs(config,False,"DEBUG")
+	result = analyzerWebJobs.analyze(correoUrl)
+	analyzerWebJobs.close_selenium()
+	assert result.get('page','') == 'jobs.ie'
+	assert result.get('realUrl','') == url_real_jobsie	
+	assert result["newCorreoUrl"].get("titulo","") == ''
+	assert result["newCorreoUrl"].get("donde","") == ''
+	assert result["newCorreoUrl"].get("summary","") == ''
+	assert abs(result["newCorreoUrl"].get("fecha","") - datetime.datetime.now())\
+	       < datetime.timedelta(days=1)
+	assert result["newCorreoUrl"].get("company","") == ''
+	assert result.get('status','') == False
+	assert result.get('control','') == 'SEARCH'
+
 def test_determinate_webPageOther():
 	urlOther = "http://www.youtube.com/somethig"
 	correoUrl = {"url":urlOther}	
