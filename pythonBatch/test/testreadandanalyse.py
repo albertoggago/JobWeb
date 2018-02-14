@@ -32,39 +32,40 @@ def test_findingMails():
 	mongoDBAccess.delete_many("correo",{})
 	amount =  readAndAnalyse.finding_mails()
 	#Depends of the emails in the mail test
-	assert amount == 2
+	assert amount == 3
 
 def test_findingUrls():
-	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",False,"DEBUG")
-	mongoDBAccess =  MongoDBAccess("../test/config/configOk.json","DEBUG")
+	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",False,"WARNING")
+	mongoDBAccess =  MongoDBAccess("../test/config/configOk.json","WARNING")
 	mongoDBAccess.delete_many("correo",{})
 	mongoDBAccess.delete_many("correoUrl",{})
 	readAndAnalyse.finding_mails()
 	amount =  readAndAnalyse.finding_urls()
 	#Depends of the information inside of mails
-	assert amount == 33
+	assert amount == 58
 	
 	dones = mongoDBAccess.find("correo",{"control":"DONE"})
 	amountDones = 0
 	for done in dones:
 		amountDones += 1
 	#Depends of the information inside of mails
-	assert amountDones == 2
+	assert amountDones == 3
 	
 	correosUrls = mongoDBAccess.find("correoUrl",{})
 	amountCorreosUrls = 0
 	for correoUrl in correosUrls:
 		amountCorreosUrls += 1
 	#Depends of the information inside of mails
-	assert amountCorreosUrls == 33
+	assert amountCorreosUrls == 58
 
 def test_scrapUrls():
-	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",False,"DEBUG")
-	mongoDBAccess =  MongoDBAccess("../test/config/configOk.json","DEBUG")
+	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",False,"WARNING")
+	mongoDBAccess =  MongoDBAccess("../test/config/configOk.json","WARNING")
 	mongoDBAccess.delete_many("correo",{})
 	mongoDBAccess.delete_many("correoUrl",{})
 	readAndAnalyse.finding_mails()
 	readAndAnalyse.finding_urls()
 	amount = readAndAnalyse.scrap_urls()
 	#Depends of the information inside of mails
-	assert amount.get("Error",0) == 33
+	assert amount.get("Error",0) == 46
+	assert amount.get("Ok",0) == 12

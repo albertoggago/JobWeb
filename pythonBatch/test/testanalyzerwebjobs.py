@@ -46,8 +46,63 @@ def test_determinate_LinkedinErrorMyPage():
 	assert result["newCorreoUrl"].get("summary","") == ''
 	assert abs(result["newCorreoUrl"].get("fecha","") - datetime.datetime.now())\
 	       < datetime.timedelta(days=1)
-	assert result["newCorreoUrl"].get("company","") == ''
+	assert result["newCorreoUrl"].get("company","") == '<NO DEFINIDA>'
 
+def test_determinate_recruitireland():
+	url_recruitireland = "http://www.recruitireland.com/job/?JobID=3D15322414&amp;utm_source=3Djobalerts&amp;utm_medium=3Demail&amp;utm_campaign=3DJobAlerts"
+	url_real_recruitireland = "http://www.recruitireland.com/job/?JobID=15322414&amp;utm_source=jobalerts&amp;utm_medium=email&amp;utm_campaign=JobAlerts"
+	correoUrl = {"url":url_recruitireland}	
+	analyzerWebJobs = AnalyzerWebJobs(config,False,"DEBUG")
+	result = analyzerWebJobs.analyze(correoUrl)
+	analyzerWebJobs.close_selenium()
+	assert result.get('page','') == 'recruitireland'
+	assert result.get('realUrl','') == url_real_recruitireland	
+	assert result["newCorreoUrl"].get("titulo","") == 'SENIOR SOFTWARE ENGINEER'
+	assert result["newCorreoUrl"].get("donde","") == 'LIMERICK'
+	assert len(result["newCorreoUrl"].get("summary","")) == 4174
+	assert abs(result["newCorreoUrl"].get("fecha","") - datetime.datetime(2018, 2, 13, 12, 0, 0, 0))\
+	       < datetime.timedelta(days=1)
+	assert result["newCorreoUrl"].get("company","") == 'BD MEDICAL'
+	assert result.get('status','') == True
+	assert result.get('control','') == 'CORPUS'
+
+
+def test_determinate_recruitireland_error_no_exits():
+	url_recruitireland = "http://www.recruitireland.com/job/?JobID=3D153224144525&amp;utm_source=3Djobalerts&amp;utm_medium=3Demail&amp;utm_campaign=3DJobAlerts"
+	url_real_recruitireland = "http://www.recruitireland.com/job/?JobID=153224144525&amp;utm_source=jobalerts&amp;utm_medium=email&amp;utm_campaign=JobAlerts"
+	correoUrl = {"url":url_recruitireland}	
+	analyzerWebJobs = AnalyzerWebJobs(config,False,"DEBUG")
+	result = analyzerWebJobs.analyze(correoUrl)
+	analyzerWebJobs.close_selenium()
+	assert result.get('page','') == 'recruitireland'
+	assert result.get('realUrl','') == url_real_recruitireland	
+	assert result["newCorreoUrl"].get("titulo","") == ''
+	assert result["newCorreoUrl"].get("donde","") == ''
+	assert result["newCorreoUrl"].get("summary","") == ''
+	assert abs(result["newCorreoUrl"].get("fecha","") - datetime.datetime.now())\
+	       < datetime.timedelta(days=1)
+	assert result["newCorreoUrl"].get("company","") == ''
+	assert result.get('status','') == False
+	assert result.get('control','') == 'SEARCH'
+	
+def test_determinate_recruitireland_error_retired():
+	url_recruitireland = "https://www.recruitireland.com/job/?JobID=3D15315978&utm_source=3Djobalerts&utm_medium=3Demail&utm_campaign=3DJobAlerts"
+	url_real_recruitireland = "https://www.recruitireland.com/job/?JobID=15315978&utm_source=jobalerts&utm_medium=email&utm_campaign=JobAlerts"
+	correoUrl = {"url":url_recruitireland}	
+	analyzerWebJobs = AnalyzerWebJobs(config,False,"DEBUG")
+	result = analyzerWebJobs.analyze(correoUrl)
+	analyzerWebJobs.close_selenium()
+	assert result.get('page','') == 'recruitireland'
+	assert result.get('realUrl','') == url_real_recruitireland	
+	assert result["newCorreoUrl"].get("titulo","") == ''
+	assert result["newCorreoUrl"].get("donde","") == ''
+	assert result["newCorreoUrl"].get("summary","") == ''
+	assert abs(result["newCorreoUrl"].get("fecha","") - datetime.datetime.now())\
+	       < datetime.timedelta(days=1)
+	assert result["newCorreoUrl"].get("company","") == ''
+	assert result.get('status','') == False
+	assert result.get('control','') == 'SEARCH'
+	
 def test_determinate_webPageOther():
 	urlOther = "http://www.youtube.com/somethig"
 	correoUrl = {"url":urlOther}	

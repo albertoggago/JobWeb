@@ -137,7 +137,8 @@ class ReadAndAnalyse(object):
 
     def save_scraping(self, id_code, correo_url):
         """ save information into database """
-        self.logger.debug("Save: "+correo_url)
+        self.logger.debug("Save: ")
+        self.logger.debug(correo_url)
         self.mongo_db_access.update_one("correoUrl", {"_id":id_code}, correo_url)
 
 def build_mail_url(id_code, url):

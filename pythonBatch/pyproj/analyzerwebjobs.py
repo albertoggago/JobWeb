@@ -67,7 +67,16 @@ class AnalyzerWebJobs(object):
         """ transform url using rules to eliminate wrong data"""
         self.logger.info("Rules Transform URL: ")
         self.logger.info(rules)
-        return web_intro
+        web_output = web_intro
+        for rule_url_transform in rules:
+            web_output = self.transform_ulr_rule(web_output, rule_url_transform)
+        return web_output
+
+    def transform_ulr_rule(self, url, rule):
+        """ Transform url with one rule"""
+        self.logger.info("Rule Transform URL: ")
+        self.logger.info(rule)
+        return url.replace(rule.get("from", ""), rule.get("to", ""))
 
     def determinate_other(self, result_imput, web_url):
         """it has got a list of web to ignore and not compute"""
@@ -87,7 +96,6 @@ class AnalyzerWebJobs(object):
         """Find Information using rules of web"""
         self.logger.info("Find Data")
         data_after_selenium = result_imput
-        necesary_variables = self.config.get("necesaryVariables", "")
         rules_page = {}
         pages = self.config["pages"]
         for page in pages:
@@ -96,10 +104,11 @@ class AnalyzerWebJobs(object):
                 self.logger.debug(page)
                 rules_page = page
 
+        necesary_variables = rules_page.get("necesaryVariables", "")
         data_after_selenium["newCorreoUrl"] = {}
         for variable in necesary_variables:
             result_variable = self.process_variable(variable,\
-                                      rules_page["rulesTransformUrl"].get(variable, {}))
+                                      rules_page.get("rulesTransformUrl", {}).get(variable, {}))
             data_after_selenium["newCorreoUrl"][variable] = result_variable
 
         #determinate rules after search
@@ -115,9 +124,34 @@ class AnalyzerWebJobs(object):
 
     def transform_data_after_selenium(self, data_imput, rules_after_selenium):
         """ With rules transform output for modify data """
+        data_output = data_imput
         self.logger.info("Rules Transform after Selenium")
         self.logger.info(rules_after_selenium)
+        for rule in rules_after_selenium:
+            self.apply_rule_to_data(data_output, rule)
         return data_imput
+
+    def apply_rule_to_data(self, data_imput, rule):
+        """ get rule and aply to output"""
+        data_output = data_imput
+        self.logger.debug("Rule Unique Transform after Selenium")
+        self.logger.debug(data_output["newCorreoUrl"].get(rule.get("in", "xxxx")))
+        self.logger.debug(rule.get("valueIn", "yyyy"))
+        if data_output["newCorreoUrl"].get(rule.get("in", "xxxx")).decode('utf-8') == \
+            rule.get("valueIn", "yyyy"):
+            action = rule.get("action")
+            self.logger.debug(action)
+            if action == "SPACES":
+                data_output["newCorreoUrl"][rule.get("out", "zzz")] = ''
+            elif action == "COPY":
+                data_output["newCorreoUrl"][rule.get("out", "zzz")] = rule.get("valueOut", "ERROR")
+            elif action == "COPY-ANOTHER":
+                data_output["newCorreoUrl"][rule.get("out", "zzz")] = \
+                data_output["newCorreoUrl"][rule.get("another", "zzz")]
+            self.logger.debug(rule.get("out", "zzz"))
+            self.logger.debug(data_output["newCorreoUrl"][rule.get("out", "zzz")])
+            self.logger.debug(data_output)
+        return data_output
 
     def review_data_ok(self, data_imput, rules_review_data):
         """ review which elements are mandatory """
@@ -126,7 +160,7 @@ class AnalyzerWebJobs(object):
         status = True
         for variable_review in rules_review_data:
             if data_imput.get("newCorreoUrl", {}).get(variable_review, "") is "":
-                status = False    
+                status = False
         return status
 
     def process_variable(self, variable, rules_transform):
@@ -175,7 +209,23 @@ class AnalyzerWebJobs(object):
         """Split text with rule defined"""
         self.logger.info("Process Split: ")
         self.logger.debug(split_rule)
-        return text
+        cfg_position_initial = split_rule.get("n", 0)
+        cfg_text_initial = split_rule.get("initText", "")
+        cfg_text_split = split_rule.get("text", "")
+
+        list_text_split = text.split(cfg_text_split)
+
+        if cfg_text_initial is None or\
+           cfg_text_initial == ''   or\
+           list_text_split.count(cfg_text_initial) == 0:
+            position_split_prev = 0
+        else:
+            position_split_prev = list_text_split.index(cfg_text_initial)
+        if len(list_text_split) > (cfg_position_initial+position_split_prev):
+            split_out = list_text_split[cfg_position_initial+position_split_prev]
+        else:
+            split_out = ""
+        return split_out
 
 #Functions
 
