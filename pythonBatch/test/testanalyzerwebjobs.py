@@ -4,10 +4,7 @@ import json
 import datetime
 
 sys.path.insert(0, "..")
-try:
-	from pyproj.analyzerwebjobs import AnalyzerWebJobs
-except ImportError:
-	print('No Import')
+from pyproj.analyzerwebjobs import AnalyzerWebJobs
 
 configText = open("../test/config/configOk.json","r").read()
 allconfig  = json.loads(configText)
@@ -17,8 +14,7 @@ config     = allconfig.get("webPagesDef",None)
 def test_determinate_Linkedin():
 	data = {}
 	data["a"] = "b"
-	assert json.JSONEncoder({"a":"b"}) != None
-"""	urlLinkedin = "https://www.linkedin.com/comm/jobs/view/594182902?alertAction=3Dmarkasviewed&amp;savedSearchAuthToken=3D1%26AQHd_D1jAldtMQAAAWFylK3MksuHtX-Vkv0R8L4MIHsulkZgfHDFPPThdKagN4qX5SKs9anuOhwncTrDUrEqRpn_xAamPjP4PBFVn3viQlZ-Kwm8uVFOslO_HeqAyojkovMHY2hKl0Au7dytOLDyOpD-7NpWvpb2EXR4-LrEaEU3yW7KdTcIJFmx7E-Yf3Y7jXpYcJ961L34M37L41gQXr1B7ONDfdYx7YLdo6XVjr3MJYRG1_MoveFuJ6aosWMX4XdQqRcERYDCgbWDTU4ldVG6S8_QgH6781S1qRV2mrKY9635JE-NGw%26AVIwFRZ6FlWuciClOHUVZsMrK2cC&amp;savedSearchId=3D216056663&amp;refId=3D09245227-857f-4a7f-b692-1e12ea77d225&amp;trk=3Deml-job-alert-member-details&amp;midToken=3DAQF6sbeyCrMTqg&amp;trkEmail=3Deml-email_job_alert_single_02-null-6-null-null-1j0q1v%7Ejddp9xs9%7Ees-null-jobs%7Eview&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_job_alert_single_02%3BelCA1wQjRkm7uKIFkK%2Bc8w%3D%3D"
+	urlLinkedin = "https://www.linkedin.com/comm/jobs/view/594182902?alertAction=3Dmarkasviewed&amp;savedSearchAuthToken=3D1%26AQHd_D1jAldtMQAAAWFylK3MksuHtX-Vkv0R8L4MIHsulkZgfHDFPPThdKagN4qX5SKs9anuOhwncTrDUrEqRpn_xAamPjP4PBFVn3viQlZ-Kwm8uVFOslO_HeqAyojkovMHY2hKl0Au7dytOLDyOpD-7NpWvpb2EXR4-LrEaEU3yW7KdTcIJFmx7E-Yf3Y7jXpYcJ961L34M37L41gQXr1B7ONDfdYx7YLdo6XVjr3MJYRG1_MoveFuJ6aosWMX4XdQqRcERYDCgbWDTU4ldVG6S8_QgH6781S1qRV2mrKY9635JE-NGw%26AVIwFRZ6FlWuciClOHUVZsMrK2cC&amp;savedSearchId=3D216056663&amp;refId=3D09245227-857f-4a7f-b692-1e12ea77d225&amp;trk=3Deml-job-alert-member-details&amp;midToken=3DAQF6sbeyCrMTqg&amp;trkEmail=3Deml-email_job_alert_single_02-null-6-null-null-1j0q1v%7Ejddp9xs9%7Ees-null-jobs%7Eview&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_job_alert_single_02%3BelCA1wQjRkm7uKIFkK%2Bc8w%3D%3D"
 	correoUrl = {"url":urlLinkedin}	
 	analyzerWebJobs = AnalyzerWebJobs(config,False,"DEBUG")
 	result = analyzerWebJobs.analyze(correoUrl)
@@ -238,4 +234,3 @@ def test_determinate_webPageError():
 	analyzerWebJobs.close_selenium()
 	assert result.get('control','') == 'ERROR'
 	assert result.get('page','') == 'N/D'
-"""
