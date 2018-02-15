@@ -2,6 +2,7 @@ import sys
 import os
 import json
 import datetime
+import pymongo
 
 sys.path.insert(0, "..")
 from pyproj.analyzerwebjobs import AnalyzerWebJobs
