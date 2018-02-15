@@ -57,22 +57,22 @@ class AnalyzerWebJobs(object):
                 result_web["page"] = web.get("name", "ERROR")
                 result_web["control"] = "REVIEW"
                 result_web["realUrl"] =\
-                       self.real_url_transform(web_url, web.get("ruleTransformUrl", {}))
+                       self.function_real_url_transform(web_url, web.get("ruleTransformUrl", {}))
 
         if result_web.get("page", None) is None:
             result_web = self.determinate_other(result_web, web_url)
         return result_web
 
-    def real_url_transform(self, web_intro, rules):
+    def function_real_url_transform(self, web_intro, rules):
         """ transform url using rules to eliminate wrong data"""
         self.logger.info("Rules Transform URL: ")
         self.logger.info(rules)
         web_output = web_intro
         for rule_url_transform in rules:
-            web_output = self.transform_ulr_rule(web_output, rule_url_transform)
+            web_output = self.function_transform_url_role(web_output, rule_url_transform)
         return web_output
 
-    def transform_ulr_rule(self, url, rule):
+    def function_transform_url_role(self, url, rule):
         """ Transform url with one rule"""
         self.logger.info("Rule Transform URL: ")
         self.logger.info(rule)
@@ -112,10 +112,11 @@ class AnalyzerWebJobs(object):
             data_after_selenium["newCorreoUrl"][variable] = result_variable
 
         #determinate rules after search
-        result_with_global_rules = self.transform_data_after_selenium(data_after_selenium,\
-            rules_page.get("rulestransformFinal"))
+        result_with_global_rules =\
+            self.function_data_after_selenium(data_after_selenium,\
+                                                        rules_page.get("rulestransformFinal"))
         result_with_global_rules["status"] = \
-            self.review_data_ok(result_with_global_rules, rules_page.get("rulesOkFinding"))
+            self.function_review_data_ok(result_with_global_rules, rules_page.get("rulesOkFinding"))
         if result_with_global_rules["status"]:
             result_with_global_rules["control"] = "CORPUS"
         else:
@@ -123,16 +124,16 @@ class AnalyzerWebJobs(object):
         self.logger.debug(result_with_global_rules)
         return result_with_global_rules
 
-    def transform_data_after_selenium(self, data_imput, rules_after_selenium):
+    def function_data_after_selenium(self, data_imput, rules_after_selenium):
         """ With rules transform output for modify data """
         data_output = data_imput
         self.logger.info("Rules Transform after Selenium")
         self.logger.info(rules_after_selenium)
         for rule in rules_after_selenium:
-            self.apply_rule_to_data(data_output, rule)
+            self.function_apply_rule_to_data(data_output, rule)
         return data_imput
 
-    def apply_rule_to_data(self, data_imput, rule):
+    def function_apply_rule_to_data(self, data_imput, rule):
         """ get rule and aply to output"""
         data_output = data_imput
         self.logger.debug("Rule Unique Transform after Selenium")
@@ -154,7 +155,7 @@ class AnalyzerWebJobs(object):
             self.logger.debug(data_output)
         return data_output
 
-    def review_data_ok(self, data_imput, rules_review_data):
+    def function_review_data_ok(self, data_imput, rules_review_data):
         """ review which elements are mandatory """
         self.logger.info("Rules Review Data")
         self.logger.info(rules_review_data)
@@ -181,7 +182,7 @@ class AnalyzerWebJobs(object):
         if split is None:
             text_split = text_after_secuence
         else:
-            text_split = self.split_text(text_after_secuence, split)
+            text_split = self.function_split_text(text_after_secuence, split)
 
         #out
         self.logger.debug("text_split: "+text_split)
@@ -189,7 +190,7 @@ class AnalyzerWebJobs(object):
         out = rules_transform.get("out", {"tipo":"text", "initText":None})
         self.logger.debug(out)
 
-        text_out = self.format_text_out(text_split, out)
+        text_out = self.function_format_text_out(text_split, out)
 
         return text_out
 
@@ -211,7 +212,7 @@ class AnalyzerWebJobs(object):
             self.logger.warning("Error find information: %s", error.args)
             return ""
 
-    def split_text(self, text, split_rule):
+    def function_split_text(self, text, split_rule):
         """Split text with rule defined"""
         self.logger.info("Process Split: ")
         self.logger.debug(split_rule)
@@ -235,7 +236,7 @@ class AnalyzerWebJobs(object):
             split_out = ""
         return split_out
 
-    def format_text_out(self, text, out):
+    def function_format_text_out(self, text, out):
         """Format text for output"""
         self.logger.info("Format Text")
         self.logger.debug(text)
@@ -243,7 +244,7 @@ class AnalyzerWebJobs(object):
         if out["tipo"] == "text":
             return text
         elif out["tipo"] == "fecha-dif":
-            return self.decrease_date(text)
+            return self.function_decrease_date(text)
         elif out["tipo"] == "fecha":
             if text == "":
                 return datetime.datetime.now()
@@ -251,7 +252,7 @@ class AnalyzerWebJobs(object):
                 return datetime.datetime.strptime(text, out["formato"])
         return None
 
-    def decrease_date(self, date_imput):
+    def function_decrease_date(self, date_imput):
         """ Decrease date """
         self.logger.info("Decrease_Date")
         self.logger.debug(date_imput)
