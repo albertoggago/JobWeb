@@ -41524,3 +41524,44 @@ Help
 2018-02-17 08:07:49,842 DEBUG:log_namespace.TextAnalyzer 12/02/2017
 2018-02-17 08:07:49,842 DEBUG:log_namespace.TextAnalyzer {'formato': '%d-%m-%Y', 'tipo': 'fecha'}
 2018-02-17 08:07:49,843 ERROR:log_namespace.TextAnalyzer Error Find Date information: ("time data '12/02/2017' does not match format '%d-%m-%Y'",)
+2018-02-17 19:58:55,178 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-17 19:58:55,179 INFO:log_namespace.TextAnalyzer []
+2018-02-17 19:59:06,866 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-17 19:59:06,866 INFO:log_namespace.TextAnalyzer [{u'to': u'.', u'from': u'=2E'}, {u'to': u'=', u'from': u'=3D'}]
+2018-02-17 19:59:06,866 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-17 19:59:06,866 INFO:log_namespace.TextAnalyzer {u'to': u'.', u'from': u'=2E'}
+2018-02-17 19:59:06,866 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-17 19:59:06,866 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-17 20:05:25,350 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-17 20:05:25,350 INFO:log_namespace.TextAnalyzer []
+2018-02-17 20:05:30,649 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-17 20:05:30,649 DEBUG:log_namespace.TextAnalyzer Performance Support (data) Analyst Contract Dublin
+2018-02-17 20:05:30,667 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-17 20:05:30,706 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-17 20:05:30,706 DEBUG:log_namespace.TextAnalyzer Baile Átha Cliath, IE
+2018-02-17 20:05:30,706 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-17 20:05:30,747 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-17 20:05:30,747 DEBUG:log_namespace.TextAnalyzer Descripción de empleo
+Technical Performance Support (data) Analyst SQL/Tableau- Contract Dublin 4-6 Months. My client a global firm is in urgent need of a talented and experienced Performance Support Analyst to join a client project for 6-12 months
+
+My clients Portfolio Management & Performance Support team is responsible for running and reporting the performance dashboards, monitoring and reporting on the current ch...
+This job was originally posted as www.cwjobs.co.uk/job/79915625
+2018-02-17 20:05:30,747 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-17 20:05:30,786 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-17 20:05:30,786 DEBUG:log_namespace.TextAnalyzer Anunciado hace 10 días
+2018-02-17 20:05:30,786 DEBUG:log_namespace.TextAnalyzer {u'tipo': u'fecha-dif'}
+2018-02-17 20:05:30,787 INFO:log_namespace.TextAnalyzer Decrease_Date
+2018-02-17 20:05:30,787 DEBUG:log_namespace.TextAnalyzer Anunciado hace 10 días
+2018-02-17 20:05:30,823 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-17 20:05:30,823 DEBUG:log_namespace.TextAnalyzer Computer People Inc
+2018-02-17 20:05:30,823 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-17 20:05:30,823 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-17 20:05:30,823 INFO:log_namespace.TextAnalyzer [{u'action': u'SPACES', u'valueIn': u'Destaca en lo que haces, Consultor - Cient\xedfico de Datos - Scrum Master', u'out': u'titulo', u'in': u'titulo'}, {u'action': u'COPY', u'valueIn': u'', u'out': u'company', u'valueOut': u'<NO DEFINIDA>', u'in': u'company'}]
+2018-02-17 20:05:30,824 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-17 20:05:30,824 DEBUG:log_namespace.TextAnalyzer Destaca en lo que haces, Consultor - Científico de Datos - Scrum Master
+2018-02-17 20:05:30,824 DEBUG:log_namespace.TextAnalyzer Performance Support (data) Analyst Contract Dublin
+2018-02-17 20:05:30,824 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-17 20:05:30,824 DEBUG:log_namespace.TextAnalyzer 
+2018-02-17 20:05:30,824 DEBUG:log_namespace.TextAnalyzer Computer People Inc
+2018-02-17 20:05:30,824 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-17 20:05:30,824 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
