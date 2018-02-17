@@ -51,12 +51,15 @@ class MongoDBAccess(object):
             self.logger.error("Database Not INIT Find_one")
             return None
 
-    def find(self, collection, query, sort=None):
+    def find(self, collection, query, sort=None, limite=None):
         """Find several elements is a cursor, atention for line in cursor is better"""
         if self.status():
-            self.logger.info("Access to collection Multi: %s, query: %s, sort: %s",\
-                collection, query, sort)
-            return self.db_access[collection].find(query, sort)
+            self.logger.info("Access to collection Multi: %s, query: %s, sort: %s, limit: %s",\
+                collection, query, sort, limite)
+            if limite is None:
+                return self.db_access[collection].find(query, sort)
+            else:
+                return self.db_access[collection].find(query, sort).limit(limite)
         else:
             self.logger.error("Database Not INIT Find")
             return None

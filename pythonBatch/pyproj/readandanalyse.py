@@ -88,8 +88,9 @@ class ReadAndAnalyse(object):
             self.logger.debug("No SAVE URL: %s", url)
             return 0
 
-    def scrap_urls(self):
+    def scrap_urls(self, limite=None):
         """ srap url using system of parameters and save this information in data base"""
+        self.analyzer_web_jobs.open_selenium()
         self.logger.info("SCRAP_URLS")
         if not self.mongo_db_access.status():
             self.logger.error("Error Database Not Active")
@@ -99,7 +100,7 @@ class ReadAndAnalyse(object):
         count["Ok"] = 0
         count["Error"] = 0
         correos_url = self.mongo_db_access.find("correoUrl", \
-                                  {"control":{"$exists":0}, "url":{"$exists":1}})
+                                  {"control":{"$exists":0}, "url":{"$exists":1}}, limite=limite)
         for correo_url in correos_url:
             status = self.scrap_url(correo_url)
             if status is True:

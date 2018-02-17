@@ -10,8 +10,9 @@
 
 
 #keys
-/pythonBatch/pyproj/log/*
-/pythonBatch/pyproj/config/*
+/pythonBatch/log/*
+/pythonBatch/logOld/*
+/pythonBatch/config/*
 /pythonBatch/test/config/*
 /pythonBatch/test/log/*
 /pythonBatch/test/.cache/*
