@@ -1,0 +1,7 @@
+pytest
+selenium
+pyvirtualdisplay
+numpy
+pandas
+scipy
+pymongo
