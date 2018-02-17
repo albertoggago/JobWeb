@@ -36,7 +36,7 @@ class AnalyzerWebJobs(object):
         if not self.visible:
             display = Display(visible=0, size=(1024, 768))
             display.start()
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome("/usr/local/bin/chromedriver")
         options = webdriver.chrome.options.Options()
         options.add_argument("--disable-extensions")
         self.driver = webdriver.Chrome(chrome_options=options)

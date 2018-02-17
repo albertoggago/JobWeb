@@ -22,7 +22,7 @@ def test_init_ErrorMongo():
 	assert readAndAnalyse.mail_access.status()
 
 def test_init_ErrorMail():
-	readAndAnalyse = ReadAndAnalyse("../test/config/configMailError.json",False,logging.ERROR)
+	readAndAnalyse = ReadAndAnalyse("../test/config/configMailAccessError.json",False,logging.ERROR)
 	assert readAndAnalyse.mongo_db_access.status()
 	assert not readAndAnalyse.mail_access.status()
 

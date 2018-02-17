@@ -4,6 +4,13 @@ USER root
 
 RUN apt-get -y update  
 RUN apt-get install -y python-pip
+#RUN apt-get install -y chromium-chromedriver
+RUN wget https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip
+RUN unzip chromedriver_linux64.zip
+RUN mv -f chromedriver /usr/local/bin/chromedriver
+RUN chown root:root /usr/local/bin/chromedriver
+RUN chmod 0755 /usr/local/bin/chromedriver
+
 
 RUN cd /home && mkdir alberto && cd alberto
 
