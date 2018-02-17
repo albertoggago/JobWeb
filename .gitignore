@@ -11,12 +11,16 @@
 
 #keys
 /pythonBatch/log/*
+!/pythonBatch/log/TextAnalyzer.log
 /pythonBatch/logOld/*
+!/pythonBatch/logOld/TextAnalyzer.log
 /pythonBatch/config/*
 /pythonBatch/test/config/*
 /pythonBatch/test/log/*
+!/pythonBatch/test/log/TextAnalyzer.log
 /pythonBatch/test/.cache/*
 /pythonBatch/.cache/*
+config.json
 
 # IDEs and editors
 /.idea
