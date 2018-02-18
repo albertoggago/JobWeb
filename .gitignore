@@ -10,6 +10,7 @@
 
 
 #keys
+/pythonBatch/test/results.xml
 /pythonBatch/log/*
 !/pythonBatch/log/TextAnalyzer.log
 /pythonBatch/logOld/*

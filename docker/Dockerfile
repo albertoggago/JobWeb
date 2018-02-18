@@ -10,7 +10,7 @@ RUN unzip chromedriver_linux64.zip
 RUN mv -f chromedriver /usr/local/bin/chromedriver
 RUN chown root:root /usr/local/bin/chromedriver
 RUN chmod 0755 /usr/local/bin/chromedriver
-
+RUN apt-get install xvfb xserver-xephyr vnc4server
 
 RUN cd /home && mkdir alberto && cd alberto
 
