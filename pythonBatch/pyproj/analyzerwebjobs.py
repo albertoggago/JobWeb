@@ -19,13 +19,12 @@ class AnalyzerWebJobs(object):
 
     config = None
     logger = None
+    display = None
     driver = None
-    visible = None
     text_analyzer = None
 
-    def __init__(self, config, visible, level_log):
+    def __init__(self, config, level_log):
         self.logger = Logger(self.__class__.__name__, level_log).get()
-        self.visible = visible
         self.config = config
         self.text_analyzer = TextAnalyzer(level_log)
         #selenium_logger = logging.getLogger('selenium.webdriver.remote.remote_connection')
@@ -33,12 +32,21 @@ class AnalyzerWebJobs(object):
 
     def open_selenium(self):
         """open driver for scraping"""
-        if not self.visible:
-            display = Display(visible=0, size=(1024, 768))
-            display.start()
-        self.driver = webdriver.Chrome("/usr/local/bin/chromedriver")
+        self.display = Display(visible=0, size=(1024, 768))
+        self.display.start()
+        #service_log_path = "{}/chromedriver.log".format("/home/alberto")
+        service_args = ['--verbose']
         options = webdriver.chrome.options.Options()
-        options.add_argument("--disable-extensions")
+        options.binary_location = '/opt/google/chrome/google-chrome'
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-gpu")
+        self.driver = webdriver.Chrome('/usr/local/bin/chromedriver',\
+                                       chrome_options=options,\
+                                       service_args=service_args)
+        #                               service_log_path = service_log_path)
+
+
+        self.driver = webdriver.Chrome("/usr/local/bin/chromedriver")
         self.driver = webdriver.Chrome(chrome_options=options)
 
     def close_selenium(self):
@@ -46,6 +54,7 @@ class AnalyzerWebJobs(object):
         if self.driver != None:
             self.driver.stop_client()
             self.driver.close()
+            self.display.stop()
 
     def analyze(self, correo_url):
         """module analyze get url and prepare scraping"""

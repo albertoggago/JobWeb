@@ -2,7 +2,7 @@ FROM jenkins/jenkins
 
 USER root
 
-RUN apt-get -y update && apt-get install -y python-pip && apt-get upgrade
+RUN apt-get -y update && apt-get install -y python-pip
 
 #Packages prev to Chrome + ChromeDriver
 RUN apt-get install -y xvfb xserver-xephyr vnc4server apt-transport-https

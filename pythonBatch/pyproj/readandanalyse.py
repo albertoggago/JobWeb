@@ -20,16 +20,15 @@ class ReadAndAnalyse(object):
     mail_access = None
     analyzer_web_jobs = None
 
-    def __init__(self, fileConfig, visible, levelLog):
+    def __init__(self, fileConfig, levelLog):
         self.logger = Logger(self.__class__.__name__, levelLog).get()
         self.mongo_db_access = MongoDBAccess(fileConfig, levelLog)
         self.mail_access = MailAccess(fileConfig, levelLog)
         config_text = open(fileConfig, "r").read()
         allconfig = json.loads(config_text)
         config = allconfig.get("webPagesDef", None)
-        self.analyzer_web_jobs = AnalyzerWebJobs(config, visible, levelLog)
+        self.analyzer_web_jobs = AnalyzerWebJobs(config, levelLog)
 
-        self.visible = visible
         self.logger.info("Inicio: %s", datetime.datetime.now())
 
     def finding_mails(self):

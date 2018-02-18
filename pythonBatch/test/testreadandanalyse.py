@@ -12,22 +12,22 @@ except ImportError:
 
 
 def test_init_correct():
-	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",False,logging.ERROR)
+	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",logging.ERROR)
 	assert readAndAnalyse.mongo_db_access.status()
 	assert readAndAnalyse.mail_access.status()
 	
 def test_init_ErrorMongo():
-	readAndAnalyse = ReadAndAnalyse("../test/config/configMongoDBError.json",False,logging.ERROR)
+	readAndAnalyse = ReadAndAnalyse("../test/config/configMongoDBError.json",logging.ERROR)
 	assert not readAndAnalyse.mongo_db_access.status()
 	assert readAndAnalyse.mail_access.status()
 
 def test_init_ErrorMail():
-	readAndAnalyse = ReadAndAnalyse("../test/config/configMailAccessError.json",False,logging.ERROR)
+	readAndAnalyse = ReadAndAnalyse("../test/config/configMailAccessError.json",logging.ERROR)
 	assert readAndAnalyse.mongo_db_access.status()
 	assert not readAndAnalyse.mail_access.status()
 
 def test_findingMails():
-	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",False,logging.ERROR)
+	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",logging.ERROR)
 	mongoDBAccess =  MongoDBAccess("../test/config/configOk.json","DEBUG")
 	mongoDBAccess.delete_many("correo",{})
 	amount =  readAndAnalyse.finding_mails()
@@ -35,7 +35,7 @@ def test_findingMails():
 	assert amount == 5
 
 def test_findingUrls():
-	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",False,logging.ERROR)
+	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",logging.ERROR)
 	mongoDBAccess =  MongoDBAccess("../test/config/configOk.json","WARNING")
 	mongoDBAccess.delete_many("correo",{})
 	mongoDBAccess.delete_many("correoUrl",{})
@@ -59,7 +59,7 @@ def test_findingUrls():
 	assert amountCorreosUrls == 120
 
 def test_scrapUrls():
-	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",False,logging.ERROR)
+	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",logging.ERROR)
 	mongoDBAccess =  MongoDBAccess("../test/config/configOk.json","WARNING")
 	mongoDBAccess.delete_many("correo",{})
 	mongoDBAccess.delete_many("correoUrl",{})
