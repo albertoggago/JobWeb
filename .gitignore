@@ -22,6 +22,10 @@
 /pythonBatch/test/.cache/*
 /pythonBatch/.cache/*
 config.json
+configMongoDBError.json
+configMailAccessError.json
+configOk.json
+
 
 # IDEs and editors
 /.idea
