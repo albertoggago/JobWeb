@@ -1,5 +1,0 @@
-{
-  "pythonBatch/test/testanalyzerwebjobs.py": true, 
-  "pythonBatch/test/testfindrepeated.py": true, 
-  "pythonBatch/test/testreadandanalyse.py": true
-}
