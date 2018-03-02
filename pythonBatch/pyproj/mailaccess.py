@@ -127,7 +127,7 @@ class MailAccess(object):
             texto = re.sub("=\r\n", "", texto)
             urls_all = []
             urls = re.findall(\
-            r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\), ]|(?:%[0-9a-fA-F][0-9a-fA-F]))+',\
+            r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+',\
                    texto)
             for url in urls:
                 urls_all.append(url)
@@ -158,10 +158,12 @@ class MailAccess(object):
 
     def decode_text(self, part, encode):
         """ Decode text to base64 if s base64"""
+        self.logger.debug("Decode_text")
         ctype = part.get_content_type()
         cdispo = str(part.get('Content-Disposition'))
         if (ctype == 'text/plain' or ctype == 'text/html') and 'attachment' not in cdispo:
-            texto = base64.decodestring(part) if encode == "base64" else part.get_payload()
+            payload = part.get_payload();
+            texto = base64.decodestring(payload) if encode == "base64" else payload
             return texto
         else:
             self.logger.warn("Text without information to process")

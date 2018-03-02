@@ -19,6 +19,7 @@ class ReadAndAnalyse(object):
     mongo_db_access = None
     mail_access = None
     analyzer_web_jobs = None
+    env = None
 
     def __init__(self, fileConfig, levelLog):
         self.logger = Logger(self.__class__.__name__, levelLog).get()
@@ -27,6 +28,7 @@ class ReadAndAnalyse(object):
         config_text = open(fileConfig, "r").read()
         allconfig = json.loads(config_text)
         config = allconfig.get("webPagesDef", None)
+        self.env = allconfig.get("env", "DEV")
         self.analyzer_web_jobs = AnalyzerWebJobs(config, levelLog)
 
         self.logger.info("Inicio: %s", datetime.datetime.now())
@@ -49,11 +51,17 @@ class ReadAndAnalyse(object):
             if mail is None:
                 self.logger.error("Mail generate wrong")
             else:
+                self.logger.debug("Insert into Control")
+                self.logger.debug("control: %s",mail.get("control"))
+                self.logger.debug("urls: %s",mail.get("urls"))
+                self.logger.debug("datetime: %s",mail.get("datetime"))
                 self.mongo_db_access.insert("correo", mail)
                 count_emails += 1
                 self.mail_access.store(ele)
 
-        #self.mail_access.clean()
+        if self.env == "PRODUCTION":
+            self.logger.info("CLEAN EMAIL")
+            self.mail_access.clean()
         self.mail_access.logout()
         self.logger.info("emails reads : %s", count_emails)
         return count_emails

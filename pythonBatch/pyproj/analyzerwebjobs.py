@@ -95,7 +95,7 @@ class AnalyzerWebJobs(object):
                 result_other["page"] = "N/D"
                 result_other["control"] = "OTRO"
         if result_other.get("page", None) is None:
-            self.logger.info("Locate web ERROR: ")
+            self.logger.info("Locate web ERROR: " + web_url)
             result_other["page"] = "N/D"
             result_other["control"] = "ERROR"
         return result_other

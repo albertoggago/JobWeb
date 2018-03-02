@@ -45640,3 +45640,1705 @@ Help
 2018-02-18 08:55:40,750 DEBUG:log_namespace.TextAnalyzer Employers
 2018-02-18 08:55:40,750 INFO:log_namespace.TextAnalyzer Rules Review Data
 2018-02-18 08:55:40,750 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-18 08:57:29,027 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-18 08:57:29,027 INFO:log_namespace.TextAnalyzer []
+2018-02-18 08:57:33,148 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:33,148 DEBUG:log_namespace.TextAnalyzer Performance Support (data) Analyst Contract Dublin
+2018-02-18 08:57:33,148 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:33,188 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:33,188 DEBUG:log_namespace.TextAnalyzer Baile Átha Cliath, IE
+2018-02-18 08:57:33,188 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:33,230 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:33,230 DEBUG:log_namespace.TextAnalyzer Descripción de empleo
+Technical Performance Support (data) Analyst SQL/Tableau- Contract Dublin 4-6 Months. My client a global firm is in urgent need of a talented and experienced Performance Support Analyst to join a client project for 6-12 months
+
+My clients Portfolio Management & Performance Support team is responsible for running and reporting the performance dashboards, monitoring and reporting on the current ch...
+This job was originally posted as www.cwjobs.co.uk/job/79915625
+2018-02-18 08:57:33,230 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:33,271 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:33,271 DEBUG:log_namespace.TextAnalyzer Anunciado hace 10 días
+2018-02-18 08:57:33,271 DEBUG:log_namespace.TextAnalyzer {u'tipo': u'fecha-dif'}
+2018-02-18 08:57:33,271 INFO:log_namespace.TextAnalyzer Decrease_Date
+2018-02-18 08:57:33,271 DEBUG:log_namespace.TextAnalyzer Anunciado hace 10 días
+2018-02-18 08:57:33,315 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:33,315 DEBUG:log_namespace.TextAnalyzer Computer People Inc
+2018-02-18 08:57:33,315 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:33,315 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-18 08:57:33,315 INFO:log_namespace.TextAnalyzer [{u'action': u'SPACES', u'valueIn': u'Destaca en lo que haces, Consultor - Cient\xedfico de Datos - Scrum Master', u'out': u'titulo', u'in': u'titulo'}, {u'action': u'COPY', u'valueIn': u'', u'out': u'company', u'valueOut': u'<NO DEFINIDA>', u'in': u'company'}]
+2018-02-18 08:57:33,315 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:57:33,315 DEBUG:log_namespace.TextAnalyzer Destaca en lo que haces, Consultor - Científico de Datos - Scrum Master
+2018-02-18 08:57:33,316 DEBUG:log_namespace.TextAnalyzer Performance Support (data) Analyst Contract Dublin
+2018-02-18 08:57:33,316 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:57:33,316 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:57:33,316 DEBUG:log_namespace.TextAnalyzer Computer People Inc
+2018-02-18 08:57:33,316 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-18 08:57:33,316 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-18 08:57:38,019 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-18 08:57:38,020 INFO:log_namespace.TextAnalyzer [{u'to': u'.', u'from': u'=2E'}, {u'to': u'=', u'from': u'=3D'}]
+2018-02-18 08:57:38,020 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-18 08:57:38,020 INFO:log_namespace.TextAnalyzer {u'to': u'.', u'from': u'=2E'}
+2018-02-18 08:57:38,020 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-18 08:57:38,020 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-18 08:57:42,982 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:57:42,982 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 0}
+2018-02-18 08:57:42,982 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:57:42,982 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:57:42,983 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:57:42,983 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:42,983 DEBUG:log_namespace.TextAnalyzer BUSINESS ANALYST
+2018-02-18 08:57:42,983 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:43,026 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:57:43,026 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Location:', u'n': 0}
+2018-02-18 08:57:43,027 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:57:43,027 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Location:
+2018-02-18 08:57:43,027 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:57:43,027 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:43,027 DEBUG:log_namespace.TextAnalyzer DUBLIN SOUTH
+2018-02-18 08:57:43,027 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:43,073 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:43,073 DEBUG:log_namespace.TextAnalyzer Immediate contract role for a Technical Business Analyst to provide technical analysis, design, development, software installation and support to local and EMEA based team.
+Fluent German and English speaking is a prerequisite to this role.
+Core to this role involves gathering requirements, documenting and communicating these requirements to internal project teams and providing day-to-day support to the Project Manager.
+The successful candidate will have strong technical and customer facing skills.
+Key Skills
+At least 5 years commercial exposure as a Technical Business Analyst.
+Proven track record as a BA, PM or Solution Architect.
+Customer focused, excellent client facing abilities at a global level.
+Fluent German speaking.
+Exposure to insurance and reinsurance.
+Global projects experience.
+Excellent communication skills.
+Highly technically competent.
+Technology exposure to include Weblogic, websphere, JBOSS, DB2, Oracle, SQL, Java, J2EE, Javascript, HTML 5, XML.
+Please email your cv in confidence to janet.smullen@cpl.ie
+This job originally appeared on RecruitIreland.com
+2018-02-18 08:57:43,073 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:43,098 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:57:43,099 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Posted on:', u'n': 0}
+2018-02-18 08:57:43,099 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:57:43,099 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Posted on:
+2018-02-18 08:57:43,099 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:57:43,099 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:43,099 DEBUG:log_namespace.TextAnalyzer 15-FEB-2018
+2018-02-18 08:57:43,099 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d-%b-%Y', u'tipo': u'fecha'}
+2018-02-18 08:57:43,253 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:43,253 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:57:43,253 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:43,307 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:43,307 DEBUG:log_namespace.TextAnalyzer CPL
+2018-02-18 08:57:43,307 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:43,332 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:57:43,332 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Salary:', u'n': 0}
+2018-02-18 08:57:43,333 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:57:43,333 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Salary:
+2018-02-18 08:57:43,333 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:57:43,333 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:43,333 DEBUG:log_namespace.TextAnalyzer NEGOTIABLE
+2018-02-18 08:57:43,333 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:43,365 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:57:43,365 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Job type:', u'n': 0}
+2018-02-18 08:57:43,365 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:57:43,365 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Job type:
+2018-02-18 08:57:43,365 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:57:43,365 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:43,365 DEBUG:log_namespace.TextAnalyzer CONTRACT
+2018-02-18 08:57:43,365 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:43,366 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-18 08:57:43,366 INFO:log_namespace.TextAnalyzer [{u'action': u'SPACES', u'valueIn': u'THIS JOB HAS BEEN REMOVED BY THE ADVERTISER.', u'out': u'titulo', u'in': u'titulo'}, {u'action': u'COPY-ANOTHER', u'valueIn': u'', u'out': u'company', u'another': u'company2', u'in': u'company'}, {u'action': u'SPACES', u'valueIn': u'INCORRECT JOB ID NUMBER', u'out': u'titulo', u'in': u'titulo'}]
+2018-02-18 08:57:43,366 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:57:43,366 DEBUG:log_namespace.TextAnalyzer THIS JOB HAS BEEN REMOVED BY THE ADVERTISER.
+2018-02-18 08:57:43,366 DEBUG:log_namespace.TextAnalyzer BUSINESS ANALYST
+2018-02-18 08:57:43,366 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:57:43,366 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:57:43,366 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:57:43,366 DEBUG:log_namespace.TextAnalyzer COPY-ANOTHER
+2018-02-18 08:57:43,366 DEBUG:log_namespace.TextAnalyzer company
+2018-02-18 08:57:43,366 DEBUG:log_namespace.TextAnalyzer CPL
+2018-02-18 08:57:43,366 DEBUG:log_namespace.TextAnalyzer {'control': 'REVIEW', 'realUrl': u'https://www.recruitireland.com/job/?JobID=15323238&utm_source=jobalerts&utm_medium=email&utm_campaign=JobAlerts', 'newCorreoUrl': {u'salary': u'NEGOTIABLE', u'fecha': datetime.datetime(2018, 2, 15, 0, 0), u'summary': 'Immediate contract role for a Technical Business Analyst to provide technical analysis, design, development, software installation and support to local and EMEA based team.\nFluent German and English speaking is a prerequisite to this role.\nCore to this role involves gathering requirements, documenting and communicating these requirements to internal project teams and providing day-to-day support to the Project Manager.\nThe successful candidate will have strong technical and customer facing skills.\nKey Skills\nAt least 5 years commercial exposure as a Technical Business Analyst.\nProven track record as a BA, PM or Solution Architect.\nCustomer focused, excellent client facing abilities at a global level.\nFluent German speaking.\nExposure to insurance and reinsurance.\nGlobal projects experience.\nExcellent communication skills.\nHighly technically competent.\nTechnology exposure to include Weblogic, websphere, JBOSS, DB2, Oracle, SQL, Java, J2EE, Javascript, HTML 5, XML.\nPlease email your cv in confidence to janet.smullen@cpl.ie\nThis job originally appeared on RecruitIreland.com', u'donde': u'DUBLIN SOUTH', u'titulo': u'BUSINESS ANALYST', u'company': 'CPL', u'company2': 'CPL', u'jobType': u'CONTRACT'}, 'page': u'recruitireland'}
+2018-02-18 08:57:43,366 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:57:43,367 DEBUG:log_namespace.TextAnalyzer INCORRECT JOB ID NUMBER
+2018-02-18 08:57:43,367 DEBUG:log_namespace.TextAnalyzer BUSINESS ANALYST
+2018-02-18 08:57:43,367 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-18 08:57:43,367 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-18 08:57:48,124 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-18 08:57:48,124 INFO:log_namespace.TextAnalyzer []
+2018-02-18 08:57:52,039 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:52,039 DEBUG:log_namespace.TextAnalyzer SENIOR JAVASCRIPT UI DEVELOPER
+2018-02-18 08:57:52,039 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:52,076 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:52,076 DEBUG:log_namespace.TextAnalyzer Galway / Galway city
+2018-02-18 08:57:52,077 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:52,120 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:52,120 DEBUG:log_namespace.TextAnalyzer DESCRIPTION
+Senior Javascript UI Developer
+  Stelfox is delighted to be partnering with an established U.S Technology organisation operating 25+ years within their marketplace providing Software Monitoring tools that allow engineering teams of their customers to be more effective and efficient in the way they build and manage their own Software & Infrastructure.
+
+We are looking to recruit a Senior Front-end / UI developer to be based locally in the Galway Office (EMEA HQ) to help revamp and build new features for a Enterprise solutions with the use of modern libraries, tooling (Angularjs, Reactjs, Nodejs, Grunt, Karma, etc).
+
+If you have 5+ years commercial experience within Software engineering (specifically Front-end / UI) then this could be a unique opportunity in Galway for you!
+
+For more information, feel free to email your CV for immediately consideration to eugene(at)stelfox(dot)com
+Apply Here
+2018-02-18 08:57:52,120 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:52,156 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:57:52,156 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' ', u'initText': None, u'n': 1}
+2018-02-18 08:57:52,156 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-18 08:57:52,156 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:57:52,156 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  
+2018-02-18 08:57:52,156 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:52,157 DEBUG:log_namespace.TextAnalyzer 13/02/2018
+2018-02-18 08:57:52,157 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d/%m/%Y', u'tipo': u'fecha'}
+2018-02-18 08:57:52,202 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:52,202 DEBUG:log_namespace.TextAnalyzer STELFOX
+2018-02-18 08:57:52,202 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:52,223 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:52,224 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:57:52,224 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:52,283 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:52,283 DEBUG:log_namespace.TextAnalyzer Negotiable
+2018-02-18 08:57:52,283 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:52,330 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:57:52,330 DEBUG:log_namespace.TextAnalyzer Permanent full-time
+2018-02-18 08:57:52,330 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:57:52,330 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-18 08:57:52,330 INFO:log_namespace.TextAnalyzer [{u'action': u'COPY-ANOTHER', u'valueIn': u'', u'out': u'company', u'another': u'titulo', u'in': u'company'}]
+2018-02-18 08:57:52,330 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:57:52,330 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:57:52,330 DEBUG:log_namespace.TextAnalyzer STELFOX
+2018-02-18 08:57:52,331 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-18 08:57:52,331 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-18 08:57:57,062 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-18 08:57:57,062 INFO:log_namespace.TextAnalyzer [{u'to': u'=', u'from': u'=3D'}]
+2018-02-18 08:57:57,062 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-18 08:57:57,062 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-18 08:58:01,605 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:01,606 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\\u00e2\\0080\\0093', u'initText': None, u'n': 0}
+2018-02-18 08:58:01,606 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:58:01,606 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:58:01,606 DEBUG:log_namespace.TextAnalyzer cfg_text_split: \u00e2\0080\0093
+2018-02-18 08:58:01,606 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:01,606 DEBUG:log_namespace.TextAnalyzer Audio Visual/ VC Technician
+2018-02-18 08:58:01,606 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:01,648 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:01,648 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 1}
+2018-02-18 08:58:01,648 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-18 08:58:01,648 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:58:01,648 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:58:01,648 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:01,648 DEBUG:log_namespace.TextAnalyzer Grand Canal Square, Grand Canal Dock, Dublin 2
+2018-02-18 08:58:01,648 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:01,715 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:01,715 DEBUG:log_namespace.TextAnalyzer Job Description
+The AV Escalations Technician II supports Tier 2 video conferencing equipment and provides ongoing Video Conferencing Technical Support to the client. This position is responsible for resolving issues related to in-room technology; AV/VC equipment failure, physical malfunction and software configurations and conduct root cause analyses to improve processes and trend reoccurring issues to improve service. This position serves as the escalation point for the Events Service Team. The AV Escalations Technician II provides Level-2 support for remote Facebook services and support teams in regional Facebook offices. This position is additionally responsible for commissioning retrofits and new builds.
+
+Responsibilities: 
+Communicates with team throughout the day, as it relates to assigned calls, day-to-day functions, operations, scheduling, and any other videoconferencing related issues.
+Troubleshoots and maintains all technology pertaining to the AV System in all conference rooms on a Tier 2 basis. Serves as the subject matter expert for Video Conferencing Technical Support.
+Provides ongoing Video Conferencing technical support.
+Maintains the ticketing systems to open, track and resolve assignments.
+Assists with Make/Add/Changes requests throughout the facility pertaining to AV and VC.
+Troubleshoots as needed to satisfy the end users needs, and escalates if necessary.
+Swaps equipment as needed to maintain service levels.
+Manages Break/Fix and RMA requests as needed to maintain service levels.
+Jointly develops VC processes and procedures (Run Book).
+Qualifications
+Technical Qualifications: 
+Must have experience with Intercall and BlueJeans bridging services
+Must have technical expertise in equipment integration, handling, break/fixing and configuring all hardware related to VC: projectors, VC hardware,
+Audio, Video and Control connector types, cable types.
+Must have strong AV Installation experience
+Must have experience with – RJ45/CAT5, RS232, BNC, Audio Connectors.
+Must have experience with Crestron/ Vortex, Crestron Toolbox, Clearone DSP software.
+Must have experience High Definition endpoints and projectors
+Must have experience with audio and video switchers.
+  Special Qualifications:
+Must be agile, and exhibit a strong sense of urgency.
+Must be responsive, efficient, have excellent customer interaction, and exhibit a high level of professionalism.
+The ideal candidate will not find difficult tech problems deterring or frustrating, but intriguing and will welcome the challenge.
+Must be comfortable working in a fast-paced, demanding environment, under immense pressure. The pace requires independent and confident thinking, self-motivation and determination.
+Must be engaged in the process of technical development.
+
+Related Sectors:
+IT , Telecoms / Tech Support
+Related Locations:
+Dublin City Centre , Dublin South
+2018-02-18 08:58:01,715 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:01,766 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:01,766 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 3}
+2018-02-18 08:58:01,766 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 3
+2018-02-18 08:58:01,766 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:58:01,766 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:58:01,766 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:01,767 DEBUG:log_namespace.TextAnalyzer 16-02-2018
+2018-02-18 08:58:01,767 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d-%m-%Y', u'tipo': u'fecha'}
+2018-02-18 08:58:01,826 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:01,826 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 1}
+2018-02-18 08:58:01,826 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-18 08:58:01,826 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:58:01,826 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:58:01,827 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:01,827 DEBUG:log_namespace.TextAnalyzer Milestone Technologies
+2018-02-18 08:58:01,827 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:01,848 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:01,848 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Payment:', u'n': 0}
+2018-02-18 08:58:01,849 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:58:01,849 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Payment:
+2018-02-18 08:58:01,849 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:58:01,849 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:01,849 DEBUG:log_namespace.TextAnalyzer Negotiable
+2018-02-18 08:58:01,849 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:01,870 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:01,871 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Terms:', u'n': 0}
+2018-02-18 08:58:01,871 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:58:01,871 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Terms:
+2018-02-18 08:58:01,871 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:58:01,871 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:01,871 DEBUG:log_namespace.TextAnalyzer Permanent | Full Time
+2018-02-18 08:58:01,871 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:01,871 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-18 08:58:01,871 INFO:log_namespace.TextAnalyzer []
+2018-02-18 08:58:01,872 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-18 08:58:01,872 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-18 08:58:06,616 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-18 08:58:06,616 INFO:log_namespace.TextAnalyzer [{u'to': u'=', u'from': u'=3D'}]
+2018-02-18 08:58:06,616 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-18 08:58:06,616 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-18 08:58:16,250 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:16,251 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' - ', u'initText': None, u'n': 0}
+2018-02-18 08:58:16,251 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:58:16,251 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:58:16,251 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  - 
+2018-02-18 08:58:16,251 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:16,251 DEBUG:log_namespace.TextAnalyzer Java Web Services Developer
+2018-02-18 08:58:16,251 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:16,290 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:16,290 DEBUG:log_namespace.TextAnalyzer Dublin, Dublin
+2018-02-18 08:58:16,291 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:16,341 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:16,341 DEBUG:log_namespace.TextAnalyzer Java Web Services Developer
+Dublin, Ireland.
+
+My client in Dublin are seeking a Java Web Services Developer to join their technical team to develop and maintain new integration solutions built around SOA
+
+6 Month contract.
+
+The Job:
+Develop, design and maintain Java web services
+Diagnose, research and resolve software defects
+Assist technical teams during acceptance testing
+
+Have you?
+5+ years' Java experience
+Hands-on experience with Web development stacks (Java / J2EE, JavaScript, HTML & CSS)
+Experience with SOAP web services
+
+Candidates who apply must be eligible to work in Ireland and hold a Stamp 4 visa
+
+Berkley IT is a specialist consultancy recruiting IT professionals for organizations throughout Ireland, UK and Europe; for more information go to www.berkley-group.com
+
+If you would like to discuss this vacancy further or to discuss your career options in confidence, please telephone Colm Porter on +353 21 4289619 or send your CV to cporter@berkley-group.com
+Help
+2018-02-18 08:58:16,341 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:16,394 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:16,394 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Posted', u'n': 0}
+2018-02-18 08:58:16,394 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:58:16,394 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Posted
+2018-02-18 08:58:16,394 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:58:16,395 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:16,395 DEBUG:log_namespace.TextAnalyzer 9 Days ago
+2018-02-18 08:58:16,395 DEBUG:log_namespace.TextAnalyzer {u'tipo': u'fecha-dif'}
+2018-02-18 08:58:16,395 INFO:log_namespace.TextAnalyzer Decrease_Date
+2018-02-18 08:58:16,395 DEBUG:log_namespace.TextAnalyzer 9 Days ago
+2018-02-18 08:58:16,413 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:16,413 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' - ', u'initText': None, u'n': 1}
+2018-02-18 08:58:16,413 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-18 08:58:16,413 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:58:16,413 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  - 
+2018-02-18 08:58:16,414 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:16,414 DEBUG:log_namespace.TextAnalyzer Berkley Recruitment Group
+2018-02-18 08:58:16,414 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:16,549 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:16,549 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:16,549 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:17,816 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:17,816 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:17,816 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:17,816 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-18 08:58:17,816 INFO:log_namespace.TextAnalyzer [{u'action': u'SPACES', u'valueIn': u'Does your CV pass the 6-second test?', u'out': u'titulo', u'in': u'titulo'}]
+2018-02-18 08:58:17,816 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:58:17,816 DEBUG:log_namespace.TextAnalyzer Does your CV pass the 6-second test?
+2018-02-18 08:58:17,816 DEBUG:log_namespace.TextAnalyzer Java Web Services Developer
+2018-02-18 08:58:17,816 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-18 08:58:17,816 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-18 08:58:22,648 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-18 08:58:22,648 INFO:log_namespace.TextAnalyzer []
+2018-02-18 08:58:25,717 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:25,717 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:25,718 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:25,740 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:25,740 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:25,740 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:25,766 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:25,767 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:25,767 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:26,187 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:26,187 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:26,187 DEBUG:log_namespace.TextAnalyzer {u'tipo': u'fecha-dif'}
+2018-02-18 08:58:26,188 INFO:log_namespace.TextAnalyzer Decrease_Date
+2018-02-18 08:58:26,188 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:26,265 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:26,265 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:26,265 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:26,265 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-18 08:58:26,265 INFO:log_namespace.TextAnalyzer [{u'action': u'SPACES', u'valueIn': u'Destaca en lo que haces, Consultor - Cient\xedfico de Datos - Scrum Master', u'out': u'titulo', u'in': u'titulo'}, {u'action': u'COPY', u'valueIn': u'', u'out': u'company', u'valueOut': u'<NO DEFINIDA>', u'in': u'company'}]
+2018-02-18 08:58:26,266 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:58:26,266 DEBUG:log_namespace.TextAnalyzer Destaca en lo que haces, Consultor - Científico de Datos - Scrum Master
+2018-02-18 08:58:26,266 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:26,266 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:58:26,266 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:26,266 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:26,266 DEBUG:log_namespace.TextAnalyzer COPY
+2018-02-18 08:58:26,266 DEBUG:log_namespace.TextAnalyzer company
+2018-02-18 08:58:26,266 DEBUG:log_namespace.TextAnalyzer <NO DEFINIDA>
+2018-02-18 08:58:26,267 DEBUG:log_namespace.TextAnalyzer {'control': 'REVIEW', 'realUrl': 'https://www.linkedin.com/in/albertoggago/', 'newCorreoUrl': {u'titulo': '', u'fecha': datetime.datetime(2018, 2, 18, 8, 58, 26, 188245), u'donde': '', u'company': u'<NO DEFINIDA>', u'summary': ''}, 'page': u'linkedin'}
+2018-02-18 08:58:26,267 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-18 08:58:26,267 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-18 08:58:31,012 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-18 08:58:31,012 INFO:log_namespace.TextAnalyzer [{u'to': u'.', u'from': u'=2E'}, {u'to': u'=', u'from': u'=3D'}]
+2018-02-18 08:58:31,012 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-18 08:58:31,013 INFO:log_namespace.TextAnalyzer {u'to': u'.', u'from': u'=2E'}
+2018-02-18 08:58:31,013 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-18 08:58:31,013 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-18 08:58:39,550 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:39,550 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 0}
+2018-02-18 08:58:39,550 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:58:39,550 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:58:39,551 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:58:39,551 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:39,551 DEBUG:log_namespace.TextAnalyzer INCORRECT JOB ID NUMBER
+2018-02-18 08:58:39,551 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:39,579 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:39,579 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Location:', u'n': 0}
+2018-02-18 08:58:39,579 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:58:39,579 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Location:
+2018-02-18 08:58:39,579 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:58:39,579 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:39,580 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:39,580 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:39,602 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:39,602 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:39,602 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:39,615 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:39,616 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Posted on:', u'n': 0}
+2018-02-18 08:58:39,616 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:58:39,616 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Posted on:
+2018-02-18 08:58:39,616 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:58:39,616 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:39,616 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:39,616 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d-%b-%Y', u'tipo': u'fecha'}
+2018-02-18 08:58:39,636 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:39,636 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:39,636 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:39,655 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:39,655 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:39,655 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:39,668 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:39,668 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Salary:', u'n': 0}
+2018-02-18 08:58:39,668 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:58:39,668 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Salary:
+2018-02-18 08:58:39,669 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:58:39,669 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:39,669 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:39,669 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:39,682 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:39,682 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Job type:', u'n': 0}
+2018-02-18 08:58:39,682 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:58:39,682 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Job type:
+2018-02-18 08:58:39,682 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:58:39,682 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:39,683 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:39,683 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:39,683 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-18 08:58:39,683 INFO:log_namespace.TextAnalyzer [{u'action': u'SPACES', u'valueIn': u'THIS JOB HAS BEEN REMOVED BY THE ADVERTISER.', u'out': u'titulo', u'in': u'titulo'}, {u'action': u'COPY-ANOTHER', u'valueIn': u'', u'out': u'company', u'another': u'company2', u'in': u'company'}, {u'action': u'SPACES', u'valueIn': u'INCORRECT JOB ID NUMBER', u'out': u'titulo', u'in': u'titulo'}]
+2018-02-18 08:58:39,683 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:58:39,683 DEBUG:log_namespace.TextAnalyzer THIS JOB HAS BEEN REMOVED BY THE ADVERTISER.
+2018-02-18 08:58:39,683 DEBUG:log_namespace.TextAnalyzer INCORRECT JOB ID NUMBER
+2018-02-18 08:58:39,683 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:58:39,683 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:39,683 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:39,683 DEBUG:log_namespace.TextAnalyzer COPY-ANOTHER
+2018-02-18 08:58:39,683 DEBUG:log_namespace.TextAnalyzer company
+2018-02-18 08:58:39,683 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:39,684 DEBUG:log_namespace.TextAnalyzer {'control': 'REVIEW', 'realUrl': u'http://www.recruitireland.com/job/?JobID=153224144525&amp;utm_source=jobalerts&amp;utm_medium=email&amp;utm_campaign=JobAlerts', 'newCorreoUrl': {u'salary': u'', u'fecha': datetime.datetime(2018, 2, 18, 8, 58, 39, 617000), u'summary': '', u'donde': u'', u'titulo': u'INCORRECT JOB ID NUMBER', u'company': '', u'company2': '', u'jobType': u''}, 'page': u'recruitireland'}
+2018-02-18 08:58:39,684 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:58:39,684 DEBUG:log_namespace.TextAnalyzer INCORRECT JOB ID NUMBER
+2018-02-18 08:58:39,684 DEBUG:log_namespace.TextAnalyzer INCORRECT JOB ID NUMBER
+2018-02-18 08:58:39,684 DEBUG:log_namespace.TextAnalyzer SPACES
+2018-02-18 08:58:39,684 DEBUG:log_namespace.TextAnalyzer titulo
+2018-02-18 08:58:39,684 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:39,684 DEBUG:log_namespace.TextAnalyzer {'control': 'REVIEW', 'realUrl': u'http://www.recruitireland.com/job/?JobID=153224144525&amp;utm_source=jobalerts&amp;utm_medium=email&amp;utm_campaign=JobAlerts', 'newCorreoUrl': {u'salary': u'', u'fecha': datetime.datetime(2018, 2, 18, 8, 58, 39, 617000), u'summary': '', u'donde': u'', u'titulo': '', u'company': '', u'company2': '', u'jobType': u''}, 'page': u'recruitireland'}
+2018-02-18 08:58:39,684 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-18 08:58:39,684 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-18 08:58:44,432 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-18 08:58:44,433 INFO:log_namespace.TextAnalyzer [{u'to': u'.', u'from': u'=2E'}, {u'to': u'=', u'from': u'=3D'}]
+2018-02-18 08:58:44,433 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-18 08:58:44,433 INFO:log_namespace.TextAnalyzer {u'to': u'.', u'from': u'=2E'}
+2018-02-18 08:58:44,433 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-18 08:58:44,433 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-18 08:58:53,230 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:53,230 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 0}
+2018-02-18 08:58:53,231 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:58:53,231 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:58:53,231 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:58:53,231 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:53,231 DEBUG:log_namespace.TextAnalyzer THIS JOB HAS BEEN REMOVED BY THE ADVERTISER.
+2018-02-18 08:58:53,231 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:53,250 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:53,250 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Location:', u'n': 0}
+2018-02-18 08:58:53,250 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:58:53,250 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Location:
+2018-02-18 08:58:53,251 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:58:53,251 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:53,251 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:53,251 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:53,270 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:53,270 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:53,270 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:53,283 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:53,283 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Posted on:', u'n': 0}
+2018-02-18 08:58:53,283 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:58:53,283 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Posted on:
+2018-02-18 08:58:53,283 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:58:53,283 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:53,284 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:53,284 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d-%b-%Y', u'tipo': u'fecha'}
+2018-02-18 08:58:53,304 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:53,304 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:53,304 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:53,325 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:53,325 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:53,325 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:53,487 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:53,487 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Salary:', u'n': 0}
+2018-02-18 08:58:53,487 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:58:53,487 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Salary:
+2018-02-18 08:58:53,487 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:58:53,488 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:53,488 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:53,488 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:53,506 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:58:53,506 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Job type:', u'n': 0}
+2018-02-18 08:58:53,506 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:58:53,506 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Job type:
+2018-02-18 08:58:53,507 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:58:53,507 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:58:53,507 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:53,507 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:58:53,507 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-18 08:58:53,507 INFO:log_namespace.TextAnalyzer [{u'action': u'SPACES', u'valueIn': u'THIS JOB HAS BEEN REMOVED BY THE ADVERTISER.', u'out': u'titulo', u'in': u'titulo'}, {u'action': u'COPY-ANOTHER', u'valueIn': u'', u'out': u'company', u'another': u'company2', u'in': u'company'}, {u'action': u'SPACES', u'valueIn': u'INCORRECT JOB ID NUMBER', u'out': u'titulo', u'in': u'titulo'}]
+2018-02-18 08:58:53,507 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:58:53,507 DEBUG:log_namespace.TextAnalyzer THIS JOB HAS BEEN REMOVED BY THE ADVERTISER.
+2018-02-18 08:58:53,507 DEBUG:log_namespace.TextAnalyzer THIS JOB HAS BEEN REMOVED BY THE ADVERTISER.
+2018-02-18 08:58:53,507 DEBUG:log_namespace.TextAnalyzer SPACES
+2018-02-18 08:58:53,508 DEBUG:log_namespace.TextAnalyzer titulo
+2018-02-18 08:58:53,508 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:53,508 DEBUG:log_namespace.TextAnalyzer {'control': 'REVIEW', 'realUrl': u'https://www.recruitireland.com/job/?JobID=15315978&utm_source=jobalerts&utm_medium=email&utm_campaign=JobAlerts', 'newCorreoUrl': {u'salary': u'', u'fecha': datetime.datetime(2018, 2, 18, 8, 58, 53, 284276), u'summary': '', u'donde': u'', u'titulo': '', u'company': '', u'company2': '', u'jobType': u''}, 'page': u'recruitireland'}
+2018-02-18 08:58:53,508 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:58:53,508 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:53,508 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:53,508 DEBUG:log_namespace.TextAnalyzer COPY-ANOTHER
+2018-02-18 08:58:53,508 DEBUG:log_namespace.TextAnalyzer company
+2018-02-18 08:58:53,508 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:53,508 DEBUG:log_namespace.TextAnalyzer {'control': 'REVIEW', 'realUrl': u'https://www.recruitireland.com/job/?JobID=15315978&utm_source=jobalerts&utm_medium=email&utm_campaign=JobAlerts', 'newCorreoUrl': {u'salary': u'', u'fecha': datetime.datetime(2018, 2, 18, 8, 58, 53, 284276), u'summary': '', u'donde': u'', u'titulo': '', u'company': '', u'company2': '', u'jobType': u''}, 'page': u'recruitireland'}
+2018-02-18 08:58:53,508 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:58:53,508 DEBUG:log_namespace.TextAnalyzer INCORRECT JOB ID NUMBER
+2018-02-18 08:58:53,508 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:58:53,509 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-18 08:58:53,509 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-18 08:58:58,422 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-18 08:58:58,422 INFO:log_namespace.TextAnalyzer []
+2018-02-18 08:59:02,144 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:02,144 DEBUG:log_namespace.TextAnalyzer SENIOR FRONTEND ENGINEER
+2018-02-18 08:59:02,144 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:02,185 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:02,185 DEBUG:log_namespace.TextAnalyzer Kildare / Wicklow / Dublin
+2018-02-18 08:59:02,185 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:02,243 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:02,243 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:02,243 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:02,284 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:59:02,284 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' ', u'initText': None, u'n': 1}
+2018-02-18 08:59:02,284 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-18 08:59:02,284 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:59:02,284 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  
+2018-02-18 08:59:02,284 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:02,284 DEBUG:log_namespace.TextAnalyzer 19/01/2018
+2018-02-18 08:59:02,285 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d/%m/%Y', u'tipo': u'fecha'}
+2018-02-18 08:59:02,332 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:02,332 DEBUG:log_namespace.TextAnalyzer VIASAT
+2018-02-18 08:59:02,332 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:02,351 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:02,351 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:02,352 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:02,388 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:02,388 DEBUG:log_namespace.TextAnalyzer Negotiable
+2018-02-18 08:59:02,388 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:02,429 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:02,429 DEBUG:log_namespace.TextAnalyzer Permanent full-time
+2018-02-18 08:59:02,429 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:02,429 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-18 08:59:02,429 INFO:log_namespace.TextAnalyzer [{u'action': u'COPY-ANOTHER', u'valueIn': u'', u'out': u'company', u'another': u'titulo', u'in': u'company'}]
+2018-02-18 08:59:02,429 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:59:02,429 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:02,429 DEBUG:log_namespace.TextAnalyzer VIASAT
+2018-02-18 08:59:02,430 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-18 08:59:02,430 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-18 08:59:07,198 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-18 08:59:07,198 INFO:log_namespace.TextAnalyzer []
+2018-02-18 08:59:15,783 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:15,783 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:15,783 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:15,803 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:15,803 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:15,803 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:15,824 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:15,824 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:15,824 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:15,842 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:59:15,842 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' ', u'initText': None, u'n': 1}
+2018-02-18 08:59:15,843 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-18 08:59:15,843 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:59:15,843 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  
+2018-02-18 08:59:15,843 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:15,843 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:15,843 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d/%m/%Y', u'tipo': u'fecha'}
+2018-02-18 08:59:15,855 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:15,855 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:15,855 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:15,874 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:15,874 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:15,874 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:15,895 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:15,895 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:15,896 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:15,918 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:15,918 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:15,918 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:15,918 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-18 08:59:15,918 INFO:log_namespace.TextAnalyzer [{u'action': u'COPY-ANOTHER', u'valueIn': u'', u'out': u'company', u'another': u'titulo', u'in': u'company'}]
+2018-02-18 08:59:15,918 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:59:15,919 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:15,919 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:15,919 DEBUG:log_namespace.TextAnalyzer COPY-ANOTHER
+2018-02-18 08:59:15,919 DEBUG:log_namespace.TextAnalyzer company
+2018-02-18 08:59:15,919 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:15,919 DEBUG:log_namespace.TextAnalyzer {'control': 'REVIEW', 'realUrl': 'https://www.irishjobs.ie/Jobs/Senior-Fron-Engineer-8112985.aspx?adobeid=jajob&jacid=525770-12-2017&jst=z6kbolHKteomUWY3Lf73W1sP&utm_source=JobAlert&utm_medium=clicks&utm_campaign=Jbe+Applications', 'newCorreoUrl': {u'salary': '', u'fecha': datetime.datetime(2018, 2, 18, 8, 59, 15, 843683), u'summary': '', u'donde': '', u'titulo': '', u'company': '', u'company2': '', u'jobType': ''}, 'page': u'irishjobs'}
+2018-02-18 08:59:15,919 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-18 08:59:15,919 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-18 08:59:20,801 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-18 08:59:20,802 INFO:log_namespace.TextAnalyzer [{u'to': u'=', u'from': u'=3D'}]
+2018-02-18 08:59:20,802 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-18 08:59:20,802 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-18 08:59:28,975 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:59:28,975 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\\u00e2\\0080\\0093', u'initText': None, u'n': 0}
+2018-02-18 08:59:28,975 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:59:28,975 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:59:28,975 DEBUG:log_namespace.TextAnalyzer cfg_text_split: \u00e2\0080\0093
+2018-02-18 08:59:28,975 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:28,975 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:28,975 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:28,994 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:59:28,995 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 1}
+2018-02-18 08:59:28,995 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-18 08:59:28,995 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:59:28,995 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:59:28,995 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:28,995 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:28,995 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:29,015 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:29,015 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:29,015 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:29,034 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:59:29,034 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 3}
+2018-02-18 08:59:29,034 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 3
+2018-02-18 08:59:29,034 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:59:29,034 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:59:29,034 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:29,034 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:29,034 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d-%m-%Y', u'tipo': u'fecha'}
+2018-02-18 08:59:29,065 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:59:29,065 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 1}
+2018-02-18 08:59:29,065 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-18 08:59:29,065 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:59:29,065 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:59:29,066 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:29,066 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:29,066 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:29,081 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:59:29,081 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Payment:', u'n': 0}
+2018-02-18 08:59:29,082 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:59:29,082 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Payment:
+2018-02-18 08:59:29,082 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:59:29,082 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:29,082 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:29,083 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:29,283 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:59:29,284 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Terms:', u'n': 0}
+2018-02-18 08:59:29,285 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:59:29,285 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Terms:
+2018-02-18 08:59:29,286 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:59:29,288 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:29,289 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:29,290 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:29,290 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-18 08:59:29,291 INFO:log_namespace.TextAnalyzer []
+2018-02-18 08:59:29,292 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-18 08:59:29,292 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-18 08:59:34,496 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-18 08:59:34,496 INFO:log_namespace.TextAnalyzer [{u'to': u'=', u'from': u'=3D'}]
+2018-02-18 08:59:34,497 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-18 08:59:34,497 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-18 08:59:39,584 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:59:39,585 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\\u00e2\\0080\\0093', u'initText': None, u'n': 0}
+2018-02-18 08:59:39,585 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:59:39,585 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:59:39,585 DEBUG:log_namespace.TextAnalyzer cfg_text_split: \u00e2\0080\0093
+2018-02-18 08:59:39,585 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:39,585 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:39,586 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:39,620 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:59:39,621 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 1}
+2018-02-18 08:59:39,621 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-18 08:59:39,621 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:59:39,621 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:59:39,621 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:39,621 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:39,621 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:39,659 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:39,659 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:39,659 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:39,687 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:59:39,687 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 3}
+2018-02-18 08:59:39,687 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 3
+2018-02-18 08:59:39,688 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:59:39,688 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:59:39,688 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:39,688 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:39,688 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d-%m-%Y', u'tipo': u'fecha'}
+2018-02-18 08:59:39,715 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:59:39,716 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 1}
+2018-02-18 08:59:39,716 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-18 08:59:39,716 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:59:39,716 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:59:39,716 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:39,716 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:39,716 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:39,728 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:59:39,728 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Payment:', u'n': 0}
+2018-02-18 08:59:39,728 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:59:39,728 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Payment:
+2018-02-18 08:59:39,728 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:59:39,729 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:39,729 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:39,729 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:39,743 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:59:39,743 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Terms:', u'n': 0}
+2018-02-18 08:59:39,743 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:59:39,743 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Terms:
+2018-02-18 08:59:39,744 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:59:39,744 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:39,745 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:39,745 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:39,745 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-18 08:59:39,745 INFO:log_namespace.TextAnalyzer []
+2018-02-18 08:59:39,745 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-18 08:59:39,745 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-18 08:59:46,156 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-18 08:59:46,156 INFO:log_namespace.TextAnalyzer [{u'to': u'=', u'from': u'=3D'}]
+2018-02-18 08:59:46,157 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-18 08:59:46,157 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-18 08:59:50,913 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:59:50,913 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' - ', u'initText': None, u'n': 0}
+2018-02-18 08:59:50,914 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:59:50,914 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:59:50,914 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  - 
+2018-02-18 08:59:50,914 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:50,914 DEBUG:log_namespace.TextAnalyzer Employers
+2018-02-18 08:59:50,915 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:54,638 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:54,638 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:54,639 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:54,670 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:54,670 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:54,670 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:54,698 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:59:54,698 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Posted', u'n': 0}
+2018-02-18 08:59:54,698 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 08:59:54,698 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Posted
+2018-02-18 08:59:54,698 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 08:59:54,699 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:54,699 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:54,699 DEBUG:log_namespace.TextAnalyzer {u'tipo': u'fecha-dif'}
+2018-02-18 08:59:54,699 INFO:log_namespace.TextAnalyzer Decrease_Date
+2018-02-18 08:59:54,699 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:54,744 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 08:59:54,744 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' - ', u'initText': None, u'n': 1}
+2018-02-18 08:59:54,744 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-18 08:59:54,744 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 08:59:54,745 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  - 
+2018-02-18 08:59:54,745 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:54,745 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:54,745 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:54,781 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:54,781 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:54,781 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:54,800 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 08:59:54,800 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 08:59:54,800 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 08:59:54,800 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-18 08:59:54,800 INFO:log_namespace.TextAnalyzer [{u'action': u'SPACES', u'valueIn': u'Does your CV pass the 6-second test?', u'out': u'titulo', u'in': u'titulo'}]
+2018-02-18 08:59:54,800 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 08:59:54,801 DEBUG:log_namespace.TextAnalyzer Does your CV pass the 6-second test?
+2018-02-18 08:59:54,801 DEBUG:log_namespace.TextAnalyzer Employers
+2018-02-18 08:59:54,801 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-18 08:59:54,801 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-18 09:00:02,087 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-18 09:00:02,087 INFO:log_namespace.TextAnalyzer [{u'to': u'=', u'from': u'=3D'}]
+2018-02-18 09:00:02,088 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-18 09:00:02,088 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-18 09:00:05,611 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 09:00:05,611 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' - ', u'initText': None, u'n': 0}
+2018-02-18 09:00:05,611 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 09:00:05,611 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 09:00:05,611 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  - 
+2018-02-18 09:00:05,611 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 09:00:05,612 DEBUG:log_namespace.TextAnalyzer Employers
+2018-02-18 09:00:05,612 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 09:00:05,639 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 09:00:05,639 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 09:00:05,639 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 09:00:05,664 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 09:00:05,664 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 09:00:05,664 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 09:00:05,685 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 09:00:05,686 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Posted', u'n': 0}
+2018-02-18 09:00:05,686 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-18 09:00:05,686 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Posted
+2018-02-18 09:00:05,686 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-18 09:00:05,686 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 09:00:05,686 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 09:00:05,686 DEBUG:log_namespace.TextAnalyzer {u'tipo': u'fecha-dif'}
+2018-02-18 09:00:05,686 INFO:log_namespace.TextAnalyzer Decrease_Date
+2018-02-18 09:00:05,686 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 09:00:05,708 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-18 09:00:05,708 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' - ', u'initText': None, u'n': 1}
+2018-02-18 09:00:05,708 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-18 09:00:05,708 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-18 09:00:05,708 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  - 
+2018-02-18 09:00:05,708 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 09:00:05,709 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 09:00:05,709 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 09:00:05,730 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 09:00:05,730 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 09:00:05,730 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 09:00:05,756 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-18 09:00:05,756 DEBUG:log_namespace.TextAnalyzer 
+2018-02-18 09:00:06,236 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-18 09:00:06,236 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-18 09:00:06,237 INFO:log_namespace.TextAnalyzer [{u'action': u'SPACES', u'valueIn': u'Does your CV pass the 6-second test?', u'out': u'titulo', u'in': u'titulo'}]
+2018-02-18 09:00:06,237 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-18 09:00:06,237 DEBUG:log_namespace.TextAnalyzer Does your CV pass the 6-second test?
+2018-02-18 09:00:06,237 DEBUG:log_namespace.TextAnalyzer Employers
+2018-02-18 09:00:06,237 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-18 09:00:06,237 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-18 09:05:54,739 ERROR:log_namespace.TextAnalyzer Rules not List
+2018-02-18 09:05:54,752 ERROR:log_namespace.TextAnalyzer Rule not Dictionary
+2018-02-18 09:05:54,760 ERROR:log_namespace.TextAnalyzer Rule not Dict
+2018-02-18 09:05:54,786 ERROR:log_namespace.TextAnalyzer Rules not List
+2018-02-18 09:05:54,792 ERROR:log_namespace.TextAnalyzer Rules not List
+2018-02-18 09:05:54,811 ERROR:log_namespace.TextAnalyzer Rule not Dict
+2018-02-18 09:05:54,856 ERROR:log_namespace.TextAnalyzer Error Find Date information: ("time data '12/02/2017' does not match format '%d-%m-%Y'",)
+2018-02-27 19:58:27,804 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-27 19:58:27,903 INFO:log_namespace.TextAnalyzer []
+2018-02-27 19:58:32,287 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:32,287 DEBUG:log_namespace.TextAnalyzer Performance Support (data) Analyst Contract Dublin
+2018-02-27 19:58:32,287 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:32,333 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:32,333 DEBUG:log_namespace.TextAnalyzer Baile Átha Cliath, IE
+2018-02-27 19:58:32,333 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:32,376 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:32,376 DEBUG:log_namespace.TextAnalyzer Descripción de empleo
+Technical Performance Support (data) Analyst SQL/Tableau- Contract Dublin 4-6 Months. My client a global firm is in urgent need of a talented and experienced Performance Support Analyst to join a client project for 6-12 months
+
+My clients Portfolio Management & Performance Support team is responsible for running and reporting the performance dashboards, monitoring and reporting on the current ch...
+This job was originally posted as www.cwjobs.co.uk/job/79915625
+2018-02-27 19:58:32,376 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:32,421 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:32,421 DEBUG:log_namespace.TextAnalyzer Anunciado hace 20 días
+2018-02-27 19:58:32,422 DEBUG:log_namespace.TextAnalyzer {u'tipo': u'fecha-dif'}
+2018-02-27 19:58:32,422 INFO:log_namespace.TextAnalyzer Decrease_Date
+2018-02-27 19:58:32,422 DEBUG:log_namespace.TextAnalyzer Anunciado hace 20 días
+2018-02-27 19:58:32,470 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:32,470 DEBUG:log_namespace.TextAnalyzer Computer People Inc
+2018-02-27 19:58:32,470 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:32,470 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-27 19:58:32,470 INFO:log_namespace.TextAnalyzer [{u'action': u'SPACES', u'valueIn': u'Destaca en lo que haces, Consultor - Cient\xedfico de Datos - Scrum Master', u'out': u'titulo', u'in': u'titulo'}, {u'action': u'COPY', u'valueIn': u'', u'out': u'company', u'valueOut': u'<NO DEFINIDA>', u'in': u'company'}]
+2018-02-27 19:58:32,470 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 19:58:32,470 DEBUG:log_namespace.TextAnalyzer Destaca en lo que haces, Consultor - Científico de Datos - Scrum Master
+2018-02-27 19:58:32,470 DEBUG:log_namespace.TextAnalyzer Performance Support (data) Analyst Contract Dublin
+2018-02-27 19:58:32,470 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 19:58:32,471 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:58:32,471 DEBUG:log_namespace.TextAnalyzer Computer People Inc
+2018-02-27 19:58:32,471 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-27 19:58:32,471 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-27 19:58:37,871 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-27 19:58:37,872 INFO:log_namespace.TextAnalyzer [{u'to': u'.', u'from': u'=2E'}, {u'to': u'=', u'from': u'=3D'}]
+2018-02-27 19:58:37,872 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-27 19:58:37,872 INFO:log_namespace.TextAnalyzer {u'to': u'.', u'from': u'=2E'}
+2018-02-27 19:58:37,872 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-27 19:58:37,872 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-27 19:58:44,261 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:58:44,261 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 0}
+2018-02-27 19:58:44,261 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:58:44,261 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 19:58:44,261 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:58:44,262 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:44,262 DEBUG:log_namespace.TextAnalyzer BUSINESS ANALYST
+2018-02-27 19:58:44,262 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:44,311 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:58:44,312 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Location:', u'n': 0}
+2018-02-27 19:58:44,312 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:58:44,312 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Location:
+2018-02-27 19:58:44,312 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:58:44,312 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:44,312 DEBUG:log_namespace.TextAnalyzer DUBLIN SOUTH
+2018-02-27 19:58:44,312 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:44,362 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:44,362 DEBUG:log_namespace.TextAnalyzer Immediate contract role for a Technical Business Analyst to provide technical analysis, design, development, software installation and support to local and EMEA based team.
+Fluent German and English speaking is a prerequisite to this role.
+Core to this role involves gathering requirements, documenting and communicating these requirements to internal project teams and providing day-to-day support to the Project Manager.
+The successful candidate will have strong technical and customer facing skills.
+Key Skills
+At least 5 years commercial exposure as a Technical Business Analyst.
+Proven track record as a BA, PM or Solution Architect.
+Customer focused, excellent client facing abilities at a global level.
+Fluent German speaking.
+Exposure to insurance and reinsurance.
+Global projects experience.
+Excellent communication skills.
+Highly technically competent.
+Technology exposure to include Weblogic, websphere, JBOSS, DB2, Oracle, SQL, Java, J2EE, Javascript, HTML 5, XML.
+Please email your cv in confidence to janet.smullen@cpl.ie
+This job originally appeared on RecruitIreland.com
+2018-02-27 19:58:44,362 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:44,390 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:58:44,390 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Posted on:', u'n': 0}
+2018-02-27 19:58:44,390 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:58:44,390 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Posted on:
+2018-02-27 19:58:44,390 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:58:44,391 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:44,391 DEBUG:log_namespace.TextAnalyzer 15-FEB-2018
+2018-02-27 19:58:44,391 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d-%b-%Y', u'tipo': u'fecha'}
+2018-02-27 19:58:44,549 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:44,549 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:58:44,550 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:44,608 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:44,608 DEBUG:log_namespace.TextAnalyzer CPL
+2018-02-27 19:58:44,609 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:44,644 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:58:44,644 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Salary:', u'n': 0}
+2018-02-27 19:58:44,644 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:58:44,644 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Salary:
+2018-02-27 19:58:44,644 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:58:44,644 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:44,644 DEBUG:log_namespace.TextAnalyzer NEGOTIABLE
+2018-02-27 19:58:44,645 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:44,670 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:58:44,670 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Job type:', u'n': 0}
+2018-02-27 19:58:44,670 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:58:44,670 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Job type:
+2018-02-27 19:58:44,670 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:58:44,670 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:44,670 DEBUG:log_namespace.TextAnalyzer CONTRACT
+2018-02-27 19:58:44,671 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:44,671 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-27 19:58:44,671 INFO:log_namespace.TextAnalyzer [{u'action': u'SPACES', u'valueIn': u'THIS JOB HAS BEEN REMOVED BY THE ADVERTISER.', u'out': u'titulo', u'in': u'titulo'}, {u'action': u'COPY-ANOTHER', u'valueIn': u'', u'out': u'company', u'another': u'company2', u'in': u'company'}, {u'action': u'SPACES', u'valueIn': u'INCORRECT JOB ID NUMBER', u'out': u'titulo', u'in': u'titulo'}]
+2018-02-27 19:58:44,671 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 19:58:44,671 DEBUG:log_namespace.TextAnalyzer THIS JOB HAS BEEN REMOVED BY THE ADVERTISER.
+2018-02-27 19:58:44,671 DEBUG:log_namespace.TextAnalyzer BUSINESS ANALYST
+2018-02-27 19:58:44,671 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 19:58:44,671 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:58:44,671 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:58:44,671 DEBUG:log_namespace.TextAnalyzer COPY-ANOTHER
+2018-02-27 19:58:44,671 DEBUG:log_namespace.TextAnalyzer company
+2018-02-27 19:58:44,671 DEBUG:log_namespace.TextAnalyzer CPL
+2018-02-27 19:58:44,671 DEBUG:log_namespace.TextAnalyzer {'control': 'REVIEW', 'realUrl': u'https://www.recruitireland.com/job/?JobID=15323238&utm_source=jobalerts&utm_medium=email&utm_campaign=JobAlerts', 'newCorreoUrl': {u'salary': u'NEGOTIABLE', u'fecha': datetime.datetime(2018, 2, 15, 0, 0), u'summary': 'Immediate contract role for a Technical Business Analyst to provide technical analysis, design, development, software installation and support to local and EMEA based team.\nFluent German and English speaking is a prerequisite to this role.\nCore to this role involves gathering requirements, documenting and communicating these requirements to internal project teams and providing day-to-day support to the Project Manager.\nThe successful candidate will have strong technical and customer facing skills.\nKey Skills\nAt least 5 years commercial exposure as a Technical Business Analyst.\nProven track record as a BA, PM or Solution Architect.\nCustomer focused, excellent client facing abilities at a global level.\nFluent German speaking.\nExposure to insurance and reinsurance.\nGlobal projects experience.\nExcellent communication skills.\nHighly technically competent.\nTechnology exposure to include Weblogic, websphere, JBOSS, DB2, Oracle, SQL, Java, J2EE, Javascript, HTML 5, XML.\nPlease email your cv in confidence to janet.smullen@cpl.ie\nThis job originally appeared on RecruitIreland.com', u'donde': u'DUBLIN SOUTH', u'titulo': u'BUSINESS ANALYST', u'company': 'CPL', u'company2': 'CPL', u'jobType': u'CONTRACT'}, 'page': u'recruitireland'}
+2018-02-27 19:58:44,672 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 19:58:44,672 DEBUG:log_namespace.TextAnalyzer INCORRECT JOB ID NUMBER
+2018-02-27 19:58:44,672 DEBUG:log_namespace.TextAnalyzer BUSINESS ANALYST
+2018-02-27 19:58:44,672 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-27 19:58:44,672 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-27 19:58:49,736 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-27 19:58:49,736 INFO:log_namespace.TextAnalyzer []
+2018-02-27 19:58:55,873 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:55,873 DEBUG:log_namespace.TextAnalyzer SENIOR JAVASCRIPT UI DEVELOPER
+2018-02-27 19:58:55,873 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:55,911 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:55,911 DEBUG:log_namespace.TextAnalyzer Galway / Galway city
+2018-02-27 19:58:55,911 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:55,956 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:55,956 DEBUG:log_namespace.TextAnalyzer DESCRIPTION
+Senior Javascript UI Developer
+  Stelfox is delighted to be partnering with an established U.S Technology organisation operating 25+ years within their marketplace providing Software Monitoring tools that allow engineering teams of their customers to be more effective and efficient in the way they build and manage their own Software & Infrastructure.
+
+We are looking to recruit a Senior Front-end / UI developer to be based locally in the Galway Office (EMEA HQ) to help revamp and build new features for a Enterprise solutions with the use of modern libraries, tooling (Angularjs, Reactjs, Nodejs, Grunt, Karma, etc).
+
+If you have 5+ years commercial experience within Software engineering (specifically Front-end / UI) then this could be a unique opportunity in Galway for you!
+
+For more information, feel free to email your CV for immediately consideration to eugene(at)stelfox(dot)com
+Apply Here
+2018-02-27 19:58:55,956 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:55,996 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:58:55,997 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' ', u'initText': None, u'n': 1}
+2018-02-27 19:58:55,997 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-27 19:58:55,997 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 19:58:55,997 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  
+2018-02-27 19:58:55,997 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:55,997 DEBUG:log_namespace.TextAnalyzer 13/02/2018
+2018-02-27 19:58:55,997 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d/%m/%Y', u'tipo': u'fecha'}
+2018-02-27 19:58:56,044 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:56,044 DEBUG:log_namespace.TextAnalyzer STELFOX
+2018-02-27 19:58:56,044 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:56,065 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:56,066 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:58:56,066 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:56,117 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:56,117 DEBUG:log_namespace.TextAnalyzer Negotiable
+2018-02-27 19:58:56,117 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:56,158 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:58:56,158 DEBUG:log_namespace.TextAnalyzer Permanent full-time
+2018-02-27 19:58:56,158 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:58:56,159 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-27 19:58:56,159 INFO:log_namespace.TextAnalyzer [{u'action': u'COPY-ANOTHER', u'valueIn': u'', u'out': u'company', u'another': u'titulo', u'in': u'company'}]
+2018-02-27 19:58:56,159 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 19:58:56,159 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:58:56,159 DEBUG:log_namespace.TextAnalyzer STELFOX
+2018-02-27 19:58:56,159 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-27 19:58:56,159 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-27 19:59:01,133 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-27 19:59:01,134 INFO:log_namespace.TextAnalyzer [{u'to': u'=', u'from': u'=3D'}]
+2018-02-27 19:59:01,134 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-27 19:59:01,134 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-27 19:59:05,591 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:05,591 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\\u00e2\\0080\\0093', u'initText': None, u'n': 0}
+2018-02-27 19:59:05,591 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:59:05,591 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 19:59:05,591 DEBUG:log_namespace.TextAnalyzer cfg_text_split: \u00e2\0080\0093
+2018-02-27 19:59:05,592 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:05,592 DEBUG:log_namespace.TextAnalyzer Audio Visual/ VC Technician
+2018-02-27 19:59:05,592 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:05,648 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:05,648 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 1}
+2018-02-27 19:59:05,648 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-27 19:59:05,648 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 19:59:05,648 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:59:05,649 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:05,649 DEBUG:log_namespace.TextAnalyzer Grand Canal Square, Grand Canal Dock, Dublin 2
+2018-02-27 19:59:05,649 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:05,715 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:05,716 DEBUG:log_namespace.TextAnalyzer Job Description
+The AV Escalations Technician II supports Tier 2 video conferencing equipment and provides ongoing Video Conferencing Technical Support to the client. This position is responsible for resolving issues related to in-room technology; AV/VC equipment failure, physical malfunction and software configurations and conduct root cause analyses to improve processes and trend reoccurring issues to improve service. This position serves as the escalation point for the Events Service Team. The AV Escalations Technician II provides Level-2 support for remote Facebook services and support teams in regional Facebook offices. This position is additionally responsible for commissioning retrofits and new builds.
+
+Responsibilities: 
+Communicates with team throughout the day, as it relates to assigned calls, day-to-day functions, operations, scheduling, and any other videoconferencing related issues.
+Troubleshoots and maintains all technology pertaining to the AV System in all conference rooms on a Tier 2 basis. Serves as the subject matter expert for Video Conferencing Technical Support.
+Provides ongoing Video Conferencing technical support.
+Maintains the ticketing systems to open, track and resolve assignments.
+Assists with Make/Add/Changes requests throughout the facility pertaining to AV and VC.
+Troubleshoots as needed to satisfy the end users needs, and escalates if necessary.
+Swaps equipment as needed to maintain service levels.
+Manages Break/Fix and RMA requests as needed to maintain service levels.
+Jointly develops VC processes and procedures (Run Book).
+Qualifications
+Technical Qualifications: 
+Must have experience with Intercall and BlueJeans bridging services
+Must have technical expertise in equipment integration, handling, break/fixing and configuring all hardware related to VC: projectors, VC hardware,
+Audio, Video and Control connector types, cable types.
+Must have strong AV Installation experience
+Must have experience with – RJ45/CAT5, RS232, BNC, Audio Connectors.
+Must have experience with Crestron/ Vortex, Crestron Toolbox, Clearone DSP software.
+Must have experience High Definition endpoints and projectors
+Must have experience with audio and video switchers.
+  Special Qualifications:
+Must be agile, and exhibit a strong sense of urgency.
+Must be responsive, efficient, have excellent customer interaction, and exhibit a high level of professionalism.
+The ideal candidate will not find difficult tech problems deterring or frustrating, but intriguing and will welcome the challenge.
+Must be comfortable working in a fast-paced, demanding environment, under immense pressure. The pace requires independent and confident thinking, self-motivation and determination.
+Must be engaged in the process of technical development.
+
+Related Sectors:
+IT , Telecoms / Tech Support
+Related Locations:
+Dublin City Centre , Dublin South
+2018-02-27 19:59:05,716 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:05,760 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:05,761 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 3}
+2018-02-27 19:59:05,761 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 3
+2018-02-27 19:59:05,761 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 19:59:05,761 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:59:05,761 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:05,761 DEBUG:log_namespace.TextAnalyzer 22-02-2018
+2018-02-27 19:59:05,761 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d-%m-%Y', u'tipo': u'fecha'}
+2018-02-27 19:59:05,840 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:05,840 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 1}
+2018-02-27 19:59:05,840 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-27 19:59:05,840 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 19:59:05,840 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:59:05,841 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:05,841 DEBUG:log_namespace.TextAnalyzer Milestone Technologies
+2018-02-27 19:59:05,841 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:05,868 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:05,868 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Payment:', u'n': 0}
+2018-02-27 19:59:05,869 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:59:05,869 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Payment:
+2018-02-27 19:59:05,869 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:59:05,870 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:05,870 DEBUG:log_namespace.TextAnalyzer Negotiable
+2018-02-27 19:59:05,870 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:05,892 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:05,892 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Terms:', u'n': 0}
+2018-02-27 19:59:05,892 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:59:05,892 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Terms:
+2018-02-27 19:59:05,892 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:59:05,892 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:05,893 DEBUG:log_namespace.TextAnalyzer Permanent | Full Time
+2018-02-27 19:59:05,893 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:05,893 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-27 19:59:05,893 INFO:log_namespace.TextAnalyzer []
+2018-02-27 19:59:05,893 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-27 19:59:05,893 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-27 19:59:11,166 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-27 19:59:11,166 INFO:log_namespace.TextAnalyzer [{u'to': u'=', u'from': u'=3D'}]
+2018-02-27 19:59:11,166 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-27 19:59:11,166 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-27 19:59:15,193 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:15,193 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' - ', u'initText': None, u'n': 0}
+2018-02-27 19:59:15,193 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:59:15,193 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 19:59:15,193 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  - 
+2018-02-27 19:59:15,194 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:15,194 DEBUG:log_namespace.TextAnalyzer Java Web Services Developer
+2018-02-27 19:59:15,194 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:15,244 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:15,244 DEBUG:log_namespace.TextAnalyzer Dublin, Dublin
+2018-02-27 19:59:15,244 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:15,315 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:15,316 DEBUG:log_namespace.TextAnalyzer Java Web Services Developer
+Dublin, Ireland.
+
+My client in Dublin are seeking a Java Web Services Developer to join their technical team to develop and maintain new integration solutions built around SOA
+
+6 Month contract.
+
+The Job:
+Develop, design and maintain Java web services
+Diagnose, research and resolve software defects
+Assist technical teams during acceptance testing
+
+Have you?
+5+ years' Java experience
+Hands-on experience with Web development stacks (Java / J2EE, JavaScript, HTML & CSS)
+Experience with SOAP web services
+
+Candidates who apply must be eligible to work in Ireland and hold a Stamp 4 visa
+
+Berkley IT is a specialist consultancy recruiting IT professionals for organizations throughout Ireland, UK and Europe; for more information go to www.berkley-group.com
+
+If you would like to discuss this vacancy further or to discuss your career options in confidence, please telephone Colm Porter on +353 21 4289619 or send your CV to cporter@berkley-group.com
+Help
+2018-02-27 19:59:15,316 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:15,383 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:15,383 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Posted', u'n': 0}
+2018-02-27 19:59:15,383 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:59:15,383 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Posted
+2018-02-27 19:59:15,383 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:59:15,384 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:15,384 DEBUG:log_namespace.TextAnalyzer 18 Days ago
+2018-02-27 19:59:15,384 DEBUG:log_namespace.TextAnalyzer {u'tipo': u'fecha-dif'}
+2018-02-27 19:59:15,384 INFO:log_namespace.TextAnalyzer Decrease_Date
+2018-02-27 19:59:15,384 DEBUG:log_namespace.TextAnalyzer 18 Days ago
+2018-02-27 19:59:15,406 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:15,406 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' - ', u'initText': None, u'n': 1}
+2018-02-27 19:59:15,406 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-27 19:59:15,406 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 19:59:15,406 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  - 
+2018-02-27 19:59:15,406 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:15,407 DEBUG:log_namespace.TextAnalyzer Berkley Recruitment Group
+2018-02-27 19:59:15,407 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:16,989 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:16,989 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:16,989 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:17,019 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:17,019 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:17,019 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:17,019 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-27 19:59:17,019 INFO:log_namespace.TextAnalyzer [{u'action': u'SPACES', u'valueIn': u'Does your CV pass the 6-second test?', u'out': u'titulo', u'in': u'titulo'}]
+2018-02-27 19:59:17,019 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 19:59:17,019 DEBUG:log_namespace.TextAnalyzer Does your CV pass the 6-second test?
+2018-02-27 19:59:17,019 DEBUG:log_namespace.TextAnalyzer Java Web Services Developer
+2018-02-27 19:59:17,020 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-27 19:59:17,020 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-27 19:59:22,008 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-27 19:59:22,009 INFO:log_namespace.TextAnalyzer []
+2018-02-27 19:59:24,912 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:24,912 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:24,912 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:24,946 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:24,947 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:24,947 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:25,394 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:25,394 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:25,395 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:25,461 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:25,461 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:25,461 DEBUG:log_namespace.TextAnalyzer {u'tipo': u'fecha-dif'}
+2018-02-27 19:59:25,461 INFO:log_namespace.TextAnalyzer Decrease_Date
+2018-02-27 19:59:25,461 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:25,505 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:25,505 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:25,505 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:25,505 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-27 19:59:25,505 INFO:log_namespace.TextAnalyzer [{u'action': u'SPACES', u'valueIn': u'Destaca en lo que haces, Consultor - Cient\xedfico de Datos - Scrum Master', u'out': u'titulo', u'in': u'titulo'}, {u'action': u'COPY', u'valueIn': u'', u'out': u'company', u'valueOut': u'<NO DEFINIDA>', u'in': u'company'}]
+2018-02-27 19:59:25,505 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 19:59:25,506 DEBUG:log_namespace.TextAnalyzer Destaca en lo que haces, Consultor - Científico de Datos - Scrum Master
+2018-02-27 19:59:25,506 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:25,506 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 19:59:25,506 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:25,506 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:25,506 DEBUG:log_namespace.TextAnalyzer COPY
+2018-02-27 19:59:25,506 DEBUG:log_namespace.TextAnalyzer company
+2018-02-27 19:59:25,507 DEBUG:log_namespace.TextAnalyzer <NO DEFINIDA>
+2018-02-27 19:59:25,507 DEBUG:log_namespace.TextAnalyzer {'control': 'REVIEW', 'realUrl': 'https://www.linkedin.com/in/albertoggago/', 'newCorreoUrl': {u'titulo': '', u'fecha': datetime.datetime(2018, 2, 27, 19, 59, 25, 461784), u'donde': '', u'company': u'<NO DEFINIDA>', u'summary': ''}, 'page': u'linkedin'}
+2018-02-27 19:59:25,507 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-27 19:59:25,507 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-27 19:59:30,455 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-27 19:59:30,455 INFO:log_namespace.TextAnalyzer [{u'to': u'.', u'from': u'=2E'}, {u'to': u'=', u'from': u'=3D'}]
+2018-02-27 19:59:30,455 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-27 19:59:30,455 INFO:log_namespace.TextAnalyzer {u'to': u'.', u'from': u'=2E'}
+2018-02-27 19:59:30,455 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-27 19:59:30,455 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-27 19:59:35,468 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:35,468 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 0}
+2018-02-27 19:59:35,468 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:59:35,468 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 19:59:35,468 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:59:35,469 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:35,469 DEBUG:log_namespace.TextAnalyzer INCORRECT JOB ID NUMBER
+2018-02-27 19:59:35,469 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:35,491 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:35,491 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Location:', u'n': 0}
+2018-02-27 19:59:35,491 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:59:35,491 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Location:
+2018-02-27 19:59:35,491 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:59:35,491 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:35,491 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:35,491 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:35,518 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:35,518 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:35,519 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:35,532 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:35,532 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Posted on:', u'n': 0}
+2018-02-27 19:59:35,533 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:59:35,533 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Posted on:
+2018-02-27 19:59:35,533 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:59:35,533 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:35,533 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:35,533 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d-%b-%Y', u'tipo': u'fecha'}
+2018-02-27 19:59:35,554 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:35,554 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:35,554 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:36,928 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:36,928 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:36,929 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:36,943 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:36,943 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Salary:', u'n': 0}
+2018-02-27 19:59:36,943 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:59:36,943 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Salary:
+2018-02-27 19:59:36,943 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:59:36,944 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:36,944 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:36,944 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:36,958 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:36,958 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Job type:', u'n': 0}
+2018-02-27 19:59:36,958 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:59:36,958 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Job type:
+2018-02-27 19:59:36,958 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:59:36,959 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:36,959 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:36,959 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:36,959 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-27 19:59:36,959 INFO:log_namespace.TextAnalyzer [{u'action': u'SPACES', u'valueIn': u'THIS JOB HAS BEEN REMOVED BY THE ADVERTISER.', u'out': u'titulo', u'in': u'titulo'}, {u'action': u'COPY-ANOTHER', u'valueIn': u'', u'out': u'company', u'another': u'company2', u'in': u'company'}, {u'action': u'SPACES', u'valueIn': u'INCORRECT JOB ID NUMBER', u'out': u'titulo', u'in': u'titulo'}]
+2018-02-27 19:59:36,959 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 19:59:36,959 DEBUG:log_namespace.TextAnalyzer THIS JOB HAS BEEN REMOVED BY THE ADVERTISER.
+2018-02-27 19:59:36,959 DEBUG:log_namespace.TextAnalyzer INCORRECT JOB ID NUMBER
+2018-02-27 19:59:36,959 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 19:59:36,959 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:36,960 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:36,960 DEBUG:log_namespace.TextAnalyzer COPY-ANOTHER
+2018-02-27 19:59:36,960 DEBUG:log_namespace.TextAnalyzer company
+2018-02-27 19:59:36,960 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:36,960 DEBUG:log_namespace.TextAnalyzer {'control': 'REVIEW', 'realUrl': u'http://www.recruitireland.com/job/?JobID=153224144525&amp;utm_source=jobalerts&amp;utm_medium=email&amp;utm_campaign=JobAlerts', 'newCorreoUrl': {u'salary': u'', u'fecha': datetime.datetime(2018, 2, 27, 19, 59, 35, 533870), u'summary': '', u'donde': u'', u'titulo': u'INCORRECT JOB ID NUMBER', u'company': '', u'company2': '', u'jobType': u''}, 'page': u'recruitireland'}
+2018-02-27 19:59:36,960 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 19:59:36,960 DEBUG:log_namespace.TextAnalyzer INCORRECT JOB ID NUMBER
+2018-02-27 19:59:36,960 DEBUG:log_namespace.TextAnalyzer INCORRECT JOB ID NUMBER
+2018-02-27 19:59:36,960 DEBUG:log_namespace.TextAnalyzer SPACES
+2018-02-27 19:59:36,961 DEBUG:log_namespace.TextAnalyzer titulo
+2018-02-27 19:59:36,961 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:36,961 DEBUG:log_namespace.TextAnalyzer {'control': 'REVIEW', 'realUrl': u'http://www.recruitireland.com/job/?JobID=153224144525&amp;utm_source=jobalerts&amp;utm_medium=email&amp;utm_campaign=JobAlerts', 'newCorreoUrl': {u'salary': u'', u'fecha': datetime.datetime(2018, 2, 27, 19, 59, 35, 533870), u'summary': '', u'donde': u'', u'titulo': '', u'company': '', u'company2': '', u'jobType': u''}, 'page': u'recruitireland'}
+2018-02-27 19:59:36,961 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-27 19:59:36,961 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-27 19:59:41,925 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-27 19:59:41,925 INFO:log_namespace.TextAnalyzer [{u'to': u'.', u'from': u'=2E'}, {u'to': u'=', u'from': u'=3D'}]
+2018-02-27 19:59:41,926 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-27 19:59:41,926 INFO:log_namespace.TextAnalyzer {u'to': u'.', u'from': u'=2E'}
+2018-02-27 19:59:41,926 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-27 19:59:41,926 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-27 19:59:46,713 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:46,713 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 0}
+2018-02-27 19:59:46,713 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:59:46,713 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 19:59:46,713 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:59:46,714 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:46,714 DEBUG:log_namespace.TextAnalyzer THIS JOB HAS BEEN REMOVED BY THE ADVERTISER.
+2018-02-27 19:59:46,714 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:46,734 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:46,734 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Location:', u'n': 0}
+2018-02-27 19:59:46,734 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:59:46,734 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Location:
+2018-02-27 19:59:46,735 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:59:46,735 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:46,735 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:46,735 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:46,758 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:46,758 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:46,758 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:46,770 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:46,771 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Posted on:', u'n': 0}
+2018-02-27 19:59:46,771 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:59:46,771 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Posted on:
+2018-02-27 19:59:46,771 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:59:46,771 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:46,771 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:46,771 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d-%b-%Y', u'tipo': u'fecha'}
+2018-02-27 19:59:46,792 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:46,792 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:46,792 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:46,811 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:46,811 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:46,811 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:46,823 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:46,824 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Salary:', u'n': 0}
+2018-02-27 19:59:46,824 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:59:46,824 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Salary:
+2018-02-27 19:59:46,824 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:59:46,824 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:46,824 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:46,824 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:46,836 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 19:59:46,836 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Job type:', u'n': 0}
+2018-02-27 19:59:46,836 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 19:59:46,836 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Job type:
+2018-02-27 19:59:46,837 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 19:59:46,837 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 19:59:46,837 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:46,837 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 19:59:46,837 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-27 19:59:46,837 INFO:log_namespace.TextAnalyzer [{u'action': u'SPACES', u'valueIn': u'THIS JOB HAS BEEN REMOVED BY THE ADVERTISER.', u'out': u'titulo', u'in': u'titulo'}, {u'action': u'COPY-ANOTHER', u'valueIn': u'', u'out': u'company', u'another': u'company2', u'in': u'company'}, {u'action': u'SPACES', u'valueIn': u'INCORRECT JOB ID NUMBER', u'out': u'titulo', u'in': u'titulo'}]
+2018-02-27 19:59:46,837 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 19:59:46,837 DEBUG:log_namespace.TextAnalyzer THIS JOB HAS BEEN REMOVED BY THE ADVERTISER.
+2018-02-27 19:59:46,837 DEBUG:log_namespace.TextAnalyzer THIS JOB HAS BEEN REMOVED BY THE ADVERTISER.
+2018-02-27 19:59:46,837 DEBUG:log_namespace.TextAnalyzer SPACES
+2018-02-27 19:59:46,838 DEBUG:log_namespace.TextAnalyzer titulo
+2018-02-27 19:59:46,838 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:46,838 DEBUG:log_namespace.TextAnalyzer {'control': 'REVIEW', 'realUrl': u'https://www.recruitireland.com/job/?JobID=15315978&utm_source=jobalerts&utm_medium=email&utm_campaign=JobAlerts', 'newCorreoUrl': {u'salary': u'', u'fecha': datetime.datetime(2018, 2, 27, 19, 59, 46, 771825), u'summary': '', u'donde': u'', u'titulo': '', u'company': '', u'company2': '', u'jobType': u''}, 'page': u'recruitireland'}
+2018-02-27 19:59:46,838 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 19:59:46,838 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:46,838 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:46,838 DEBUG:log_namespace.TextAnalyzer COPY-ANOTHER
+2018-02-27 19:59:46,838 DEBUG:log_namespace.TextAnalyzer company
+2018-02-27 19:59:46,838 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:46,839 DEBUG:log_namespace.TextAnalyzer {'control': 'REVIEW', 'realUrl': u'https://www.recruitireland.com/job/?JobID=15315978&utm_source=jobalerts&utm_medium=email&utm_campaign=JobAlerts', 'newCorreoUrl': {u'salary': u'', u'fecha': datetime.datetime(2018, 2, 27, 19, 59, 46, 771825), u'summary': '', u'donde': u'', u'titulo': '', u'company': '', u'company2': '', u'jobType': u''}, 'page': u'recruitireland'}
+2018-02-27 19:59:46,839 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 19:59:46,839 DEBUG:log_namespace.TextAnalyzer INCORRECT JOB ID NUMBER
+2018-02-27 19:59:46,839 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 19:59:46,839 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-27 19:59:46,839 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-27 19:59:51,648 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-27 19:59:51,649 INFO:log_namespace.TextAnalyzer []
+2018-02-27 20:00:04,546 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:04,546 DEBUG:log_namespace.TextAnalyzer SENIOR FRONTEND ENGINEER
+2018-02-27 20:00:04,546 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:04,583 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:04,583 DEBUG:log_namespace.TextAnalyzer Kildare / Wicklow / Dublin
+2018-02-27 20:00:04,583 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:04,630 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:04,630 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:04,630 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:04,674 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:04,674 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' ', u'initText': None, u'n': 1}
+2018-02-27 20:00:04,675 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-27 20:00:04,675 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 20:00:04,675 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  
+2018-02-27 20:00:04,675 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:04,675 DEBUG:log_namespace.TextAnalyzer 19/01/2018
+2018-02-27 20:00:04,675 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d/%m/%Y', u'tipo': u'fecha'}
+2018-02-27 20:00:04,723 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:04,723 DEBUG:log_namespace.TextAnalyzer VIASAT
+2018-02-27 20:00:04,723 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:04,749 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:04,749 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:04,750 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:04,787 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:04,787 DEBUG:log_namespace.TextAnalyzer Negotiable
+2018-02-27 20:00:04,787 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:04,823 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:04,823 DEBUG:log_namespace.TextAnalyzer Permanent full-time
+2018-02-27 20:00:04,823 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:04,823 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-27 20:00:04,823 INFO:log_namespace.TextAnalyzer [{u'action': u'COPY-ANOTHER', u'valueIn': u'', u'out': u'company', u'another': u'titulo', u'in': u'company'}]
+2018-02-27 20:00:04,823 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 20:00:04,823 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:04,823 DEBUG:log_namespace.TextAnalyzer VIASAT
+2018-02-27 20:00:04,823 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-27 20:00:04,823 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-27 20:00:09,682 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-27 20:00:09,682 INFO:log_namespace.TextAnalyzer []
+2018-02-27 20:00:13,174 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:13,174 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:13,175 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:13,197 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:13,197 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:13,197 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:13,219 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:13,219 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:13,219 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:13,243 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:13,243 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' ', u'initText': None, u'n': 1}
+2018-02-27 20:00:13,243 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-27 20:00:13,243 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 20:00:13,243 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  
+2018-02-27 20:00:13,244 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:13,244 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:13,244 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d/%m/%Y', u'tipo': u'fecha'}
+2018-02-27 20:00:13,258 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:13,258 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:13,258 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:13,278 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:13,278 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:13,278 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:13,307 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:13,307 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:13,307 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:13,454 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:13,454 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:13,454 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:13,454 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-27 20:00:13,455 INFO:log_namespace.TextAnalyzer [{u'action': u'COPY-ANOTHER', u'valueIn': u'', u'out': u'company', u'another': u'titulo', u'in': u'company'}]
+2018-02-27 20:00:13,455 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 20:00:13,455 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:13,455 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:13,455 DEBUG:log_namespace.TextAnalyzer COPY-ANOTHER
+2018-02-27 20:00:13,455 DEBUG:log_namespace.TextAnalyzer company
+2018-02-27 20:00:13,455 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:13,455 DEBUG:log_namespace.TextAnalyzer {'control': 'REVIEW', 'realUrl': 'https://www.irishjobs.ie/Jobs/Senior-Fron-Engineer-8112985.aspx?adobeid=jajob&jacid=525770-12-2017&jst=z6kbolHKteomUWY3Lf73W1sP&utm_source=JobAlert&utm_medium=clicks&utm_campaign=Jbe+Applications', 'newCorreoUrl': {u'salary': '', u'fecha': datetime.datetime(2018, 2, 27, 20, 0, 13, 244573), u'summary': '', u'donde': '', u'titulo': '', u'company': '', u'company2': '', u'jobType': ''}, 'page': u'irishjobs'}
+2018-02-27 20:00:13,456 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-27 20:00:13,456 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-27 20:00:18,378 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-27 20:00:18,378 INFO:log_namespace.TextAnalyzer [{u'to': u'=', u'from': u'=3D'}]
+2018-02-27 20:00:18,378 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-27 20:00:18,378 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-27 20:00:22,665 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:22,665 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\\u00e2\\0080\\0093', u'initText': None, u'n': 0}
+2018-02-27 20:00:22,665 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 20:00:22,666 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 20:00:22,666 DEBUG:log_namespace.TextAnalyzer cfg_text_split: \u00e2\0080\0093
+2018-02-27 20:00:22,666 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:22,666 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:22,666 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:22,688 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:22,688 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 1}
+2018-02-27 20:00:22,689 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-27 20:00:22,689 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 20:00:22,689 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 20:00:22,689 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:22,689 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:22,689 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:22,726 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:22,726 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:22,726 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:22,745 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:22,746 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 3}
+2018-02-27 20:00:22,746 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 3
+2018-02-27 20:00:22,746 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 20:00:22,746 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 20:00:22,746 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:22,746 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:22,746 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d-%m-%Y', u'tipo': u'fecha'}
+2018-02-27 20:00:22,767 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:22,767 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 1}
+2018-02-27 20:00:22,767 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-27 20:00:22,767 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 20:00:22,767 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 20:00:22,767 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:22,767 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:22,767 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:22,780 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:22,780 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Payment:', u'n': 0}
+2018-02-27 20:00:22,780 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 20:00:22,780 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Payment:
+2018-02-27 20:00:22,780 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 20:00:22,781 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:22,781 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:22,781 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:22,793 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:22,793 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Terms:', u'n': 0}
+2018-02-27 20:00:22,793 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 20:00:22,793 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Terms:
+2018-02-27 20:00:22,793 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 20:00:22,793 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:22,793 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:22,793 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:22,793 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-27 20:00:22,794 INFO:log_namespace.TextAnalyzer []
+2018-02-27 20:00:22,794 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-27 20:00:22,794 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-27 20:00:27,578 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-27 20:00:27,578 INFO:log_namespace.TextAnalyzer [{u'to': u'=', u'from': u'=3D'}]
+2018-02-27 20:00:27,578 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-27 20:00:27,579 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-27 20:00:32,234 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:32,234 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\\u00e2\\0080\\0093', u'initText': None, u'n': 0}
+2018-02-27 20:00:32,234 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 20:00:32,234 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 20:00:32,234 DEBUG:log_namespace.TextAnalyzer cfg_text_split: \u00e2\0080\0093
+2018-02-27 20:00:32,235 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:32,235 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:32,235 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:32,255 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:32,255 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 1}
+2018-02-27 20:00:32,255 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-27 20:00:32,255 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 20:00:32,255 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 20:00:32,256 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:32,256 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:32,256 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:32,276 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:32,276 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:32,276 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:32,304 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:32,304 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 3}
+2018-02-27 20:00:32,304 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 3
+2018-02-27 20:00:32,304 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 20:00:32,304 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 20:00:32,305 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:32,305 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:32,305 DEBUG:log_namespace.TextAnalyzer {u'formato': u'%d-%m-%Y', u'tipo': u'fecha'}
+2018-02-27 20:00:32,325 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:32,325 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': None, u'n': 1}
+2018-02-27 20:00:32,325 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-27 20:00:32,326 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 20:00:32,326 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 20:00:32,326 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:32,326 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:32,326 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:32,339 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:32,339 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Payment:', u'n': 0}
+2018-02-27 20:00:32,339 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 20:00:32,339 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Payment:
+2018-02-27 20:00:32,339 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 20:00:32,340 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:32,340 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:32,340 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:32,353 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:32,353 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Terms:', u'n': 0}
+2018-02-27 20:00:32,353 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 20:00:32,353 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Terms:
+2018-02-27 20:00:32,353 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 20:00:32,354 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:32,354 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:32,354 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:32,354 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-27 20:00:32,354 INFO:log_namespace.TextAnalyzer []
+2018-02-27 20:00:32,354 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-27 20:00:32,354 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-27 20:00:37,162 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-27 20:00:37,162 INFO:log_namespace.TextAnalyzer [{u'to': u'=', u'from': u'=3D'}]
+2018-02-27 20:00:37,162 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-27 20:00:37,163 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-27 20:00:42,910 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:42,910 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' - ', u'initText': None, u'n': 0}
+2018-02-27 20:00:42,910 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 20:00:42,910 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 20:00:42,910 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  - 
+2018-02-27 20:00:42,910 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:42,911 DEBUG:log_namespace.TextAnalyzer Employers
+2018-02-27 20:00:42,911 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:42,932 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:42,933 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:42,933 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:42,952 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:42,952 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:42,952 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:42,976 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:42,976 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Posted', u'n': 0}
+2018-02-27 20:00:42,976 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 20:00:42,977 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Posted
+2018-02-27 20:00:42,977 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 20:00:42,977 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:42,977 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:42,978 DEBUG:log_namespace.TextAnalyzer {u'tipo': u'fecha-dif'}
+2018-02-27 20:00:42,978 INFO:log_namespace.TextAnalyzer Decrease_Date
+2018-02-27 20:00:42,978 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:43,000 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:43,000 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' - ', u'initText': None, u'n': 1}
+2018-02-27 20:00:43,000 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-27 20:00:43,000 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 20:00:43,000 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  - 
+2018-02-27 20:00:43,001 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:43,001 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:43,001 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:43,021 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:43,021 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:43,021 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:43,151 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:43,151 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:43,151 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:43,151 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-27 20:00:43,151 INFO:log_namespace.TextAnalyzer [{u'action': u'SPACES', u'valueIn': u'Does your CV pass the 6-second test?', u'out': u'titulo', u'in': u'titulo'}]
+2018-02-27 20:00:43,151 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 20:00:43,152 DEBUG:log_namespace.TextAnalyzer Does your CV pass the 6-second test?
+2018-02-27 20:00:43,152 DEBUG:log_namespace.TextAnalyzer Employers
+2018-02-27 20:00:43,152 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-27 20:00:43,152 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-27 20:00:49,380 INFO:log_namespace.TextAnalyzer Rules Transform URL: 
+2018-02-27 20:00:49,380 INFO:log_namespace.TextAnalyzer [{u'to': u'=', u'from': u'=3D'}]
+2018-02-27 20:00:49,380 INFO:log_namespace.TextAnalyzer Rule Transform URL: 
+2018-02-27 20:00:49,380 INFO:log_namespace.TextAnalyzer {u'to': u'=', u'from': u'=3D'}
+2018-02-27 20:00:52,726 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:52,726 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' - ', u'initText': None, u'n': 0}
+2018-02-27 20:00:52,726 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 20:00:52,726 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 20:00:52,727 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  - 
+2018-02-27 20:00:52,727 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:52,727 DEBUG:log_namespace.TextAnalyzer Employers
+2018-02-27 20:00:52,727 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:52,767 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:52,767 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:52,767 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:52,789 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:52,789 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:52,789 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:52,809 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:52,809 DEBUG:log_namespace.TextAnalyzer {u'text_split': u'\n', u'initText': u'Posted', u'n': 0}
+2018-02-27 20:00:52,809 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 0
+2018-02-27 20:00:52,809 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: Posted
+2018-02-27 20:00:52,809 DEBUG:log_namespace.TextAnalyzer cfg_text_split: 
+
+2018-02-27 20:00:52,809 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:52,810 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:52,810 DEBUG:log_namespace.TextAnalyzer {u'tipo': u'fecha-dif'}
+2018-02-27 20:00:52,810 INFO:log_namespace.TextAnalyzer Decrease_Date
+2018-02-27 20:00:52,810 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:52,831 INFO:log_namespace.TextAnalyzer Process Split: 
+2018-02-27 20:00:52,831 DEBUG:log_namespace.TextAnalyzer {u'text_split': u' - ', u'initText': None, u'n': 1}
+2018-02-27 20:00:52,831 DEBUG:log_namespace.TextAnalyzer cfg_position_initial: 1
+2018-02-27 20:00:52,831 DEBUG:log_namespace.TextAnalyzer cfg_text_initial: None
+2018-02-27 20:00:52,831 DEBUG:log_namespace.TextAnalyzer cfg_text_split:  - 
+2018-02-27 20:00:52,832 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:52,832 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:52,832 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:52,854 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:52,854 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:52,854 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:52,872 INFO:log_namespace.TextAnalyzer Format Text
+2018-02-27 20:00:52,872 DEBUG:log_namespace.TextAnalyzer 
+2018-02-27 20:00:52,872 DEBUG:log_namespace.TextAnalyzer {'initText': None, 'tipo': 'text'}
+2018-02-27 20:00:52,872 INFO:log_namespace.TextAnalyzer Rules Transform after Selenium
+2018-02-27 20:00:52,872 INFO:log_namespace.TextAnalyzer [{u'action': u'SPACES', u'valueIn': u'Does your CV pass the 6-second test?', u'out': u'titulo', u'in': u'titulo'}]
+2018-02-27 20:00:52,873 DEBUG:log_namespace.TextAnalyzer Rule Unique Transform after Selenium
+2018-02-27 20:00:52,873 DEBUG:log_namespace.TextAnalyzer Does your CV pass the 6-second test?
+2018-02-27 20:00:52,873 DEBUG:log_namespace.TextAnalyzer Employers
+2018-02-27 20:00:52,873 INFO:log_namespace.TextAnalyzer Rules Review Data
+2018-02-27 20:00:52,874 INFO:log_namespace.TextAnalyzer [u'titulo', u'donde', u'summary', u'company']
+2018-02-27 20:06:38,639 ERROR:log_namespace.TextAnalyzer Rules not List
+2018-02-27 20:06:38,654 ERROR:log_namespace.TextAnalyzer Rule not Dictionary
+2018-02-27 20:06:38,662 ERROR:log_namespace.TextAnalyzer Rule not Dict
+2018-02-27 20:06:38,687 ERROR:log_namespace.TextAnalyzer Rules not List
+2018-02-27 20:06:38,694 ERROR:log_namespace.TextAnalyzer Rules not List
+2018-02-27 20:06:38,709 ERROR:log_namespace.TextAnalyzer Rule not Dict
+2018-02-27 20:06:38,752 ERROR:log_namespace.TextAnalyzer Error Find Date information: ("time data '12/02/2017' does not match format '%d-%m-%Y'",)

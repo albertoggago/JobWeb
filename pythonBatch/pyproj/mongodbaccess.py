@@ -56,10 +56,9 @@ class MongoDBAccess(object):
         if self.status():
             self.logger.info("Access to collection Multi: %s, query: %s, sort: %s, limit: %s",\
                 collection, query, sort, limite)
-            if limite is None:
-                return self.db_access[collection].find(query, sort)
-            else:
-                return self.db_access[collection].find(query, sort).limit(limite)
+            limite = 0 if limite is None else limite
+            sort = None if sort is None else sort.items()
+            return self.db_access[collection].find(query, sort=sort, limit=limite)
         else:
             self.logger.error("Database Not INIT Find")
             return None
