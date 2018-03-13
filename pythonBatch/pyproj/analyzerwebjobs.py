@@ -63,7 +63,7 @@ class AnalyzerWebJobs(object):
         result = {}
         result_with_page = self.determinate_web(result, correo_url["url"])
         if result_with_page.get("control", "") == "REVIEW":
-            self.driver.get(result_with_page.get("realUrl", ""))
+            self.driver.get(result_with_page.get("urlOk", ""))
             result_with_data = self.find_data(result_with_page)
             return result_with_data
         else:
@@ -79,7 +79,7 @@ class AnalyzerWebJobs(object):
                 self.logger.info("Locate web: "+web.get("name", "ERROR"))
                 result_web["page"] = web.get("name", "ERROR")
                 result_web["control"] = "REVIEW"
-                result_web["realUrl"] =\
+                result_web["urlOk"] =\
                     self.text_analyzer.real_url_transform(web_url, web.get("rulesTransformUrl", []))
 
         if result_web.get("page", None) is None:

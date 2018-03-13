@@ -16,9 +16,7 @@ if __name__ == '__main__':
                                                          "dataframe_matrix.npz")
     print "## INFO ## Elements Read to generate Data Frame: {0}, matrix: {1}"\
                                  .format(ELEMENTS_READ[0], ELEMENTS_READ[1])
-    MODELS_GENERATOR.geneate_test_train
 
 
 
     print "## INFO ## fin: {0}".format(datetime.datetime.now())
-    ELEMENTS_READ = MODELS_GENERATOR.generate_test_train()

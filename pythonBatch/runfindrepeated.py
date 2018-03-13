@@ -18,12 +18,14 @@ def is_float(value):
         return False
 
 if __name__ == '__main__':
+    print 
     print "## INFO ## inicio: {0}".format(datetime.datetime.now())
     RATIO = float(sys.argv[1]) if len(sys.argv) > 1 and is_float(sys.argv[1]) else 1.0
     DELETE = (sys.argv[2] == "True") if len(sys.argv) > 2 else False
+    FILE = sys.argv[3] if len(sys.argv) > 3 else "config.json"
     print "Ratio: {0}".format(RATIO)
     print "Delete: {0}".format(DELETE)
-    FIND_REPEATED = FindRepeated("config/config_real.json", logging.DEBUG, ratio_accept=RATIO)
+    FIND_REPEATED = FindRepeated("config/"+FILE, logging.DEBUG, ratio_accept=RATIO)
     RESULT = FIND_REPEATED.finding_open_jobs(DELETE)
     for MAIL in RESULT.get('lines', []):
         if MAIL != []:

@@ -136,7 +136,8 @@ class ReadAndAnalyse(object):
         self.mongo_db_access.update_one("correoUrl", \
                          {"_id":correo_url["_id"]}, \
                          {"control":data_of_scraping.get("control", "ERROR"),\
-                           "pagina":data_of_scraping.get("page", "None")})
+                           "pagina":data_of_scraping.get("page", "None"),
+                           "urlOk":data_of_scraping.get("urlOk", "None")})
         if data_of_scraping.get("status", False):
             self.save_scraping(correo_url["_id"],\
                                   data_of_scraping.get("newCorreoUrl",\
