@@ -25,7 +25,6 @@ config.json
 configMongoDBError.json
 configMailAccessError.json
 configOk.json
-results.xml
 A1*
 
 # IDEs and editors
