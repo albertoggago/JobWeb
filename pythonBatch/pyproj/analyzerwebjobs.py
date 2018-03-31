@@ -7,6 +7,7 @@
 #import logging
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from pyvirtualdisplay import Display
 
 #own classes
@@ -40,14 +41,26 @@ class AnalyzerWebJobs(object):
         options.binary_location = '/opt/google/chrome/google-chrome'
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-gpu")
-        self.driver = webdriver.Chrome('/usr/local/bin/chromedriver',\
-                                       chrome_options=options,\
-                                       service_args=service_args)
+        self.driver = webdriver.Remote(\
+                      command_executor='http://127.0.0.1:4444/wd/hub',\
+                      desired_capabilities=DesiredCapabilities.CHROME)
+        #self.driver = webdriver.Remote(command_executor='http://127.0.0.1:4444/wd/hub',\
+        #                               desired_capabilities={'browserName': 'chrome',\
+        #                                                'version': '2',\
+        #                                                'javascriptEnabled': True,\
+        #                                                'browserConnectionEnabled':True})
+        #self.driver = webdriver.Remote(\
+        #              command_executor='http://127.0.0.1:4444/wd/hub',\
+        #              desired_capabilities=DesiredCapabilities.CHROME)
+        #self.driver = webdriver.Chrome();
+        #self.driver = webdriver.Chrome('/usr/local/bin/chromedriver',\
+        #                               chrome_options=options,\
+        #                               service_args=service_args)
         #                               service_log_path = service_log_path)
-
-
-        self.driver = webdriver.Chrome("/usr/local/bin/chromedriver")
-        self.driver = webdriver.Chrome(chrome_options=options)
+        #
+        #
+        #self.driver = webdriver.Chrome("/usr/local/bin/chromedriver")
+        #self.driver = webdriver.Chrome(chrome_options=options)
 
     def close_selenium(self):
         """close driver for scraping"""

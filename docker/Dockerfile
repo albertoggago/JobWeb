@@ -19,3 +19,6 @@ COPY requirements.txt /home/alberto/requirements.txt
 
 #install python requeriments
 RUN pip install -r /home/alberto/requirements.txt
+
+#path selenium 3.11
+https://goo.gl/UzaKCo

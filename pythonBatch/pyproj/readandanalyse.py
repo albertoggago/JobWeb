@@ -104,19 +104,16 @@ class ReadAndAnalyse(object):
             return None
         self.reprocess_mails()
         count = {}
-        count["Ok"] = 0
-        count["Error"] = 0
         correos_url = self.mongo_db_access.find("correoUrl", \
                                   {"control":{"$exists":0}, "url":{"$exists":1}}, limite=limite)
         for correo_url in correos_url:
-            status = self.scrap_url(correo_url)
-            if status is True:
-                count["Ok"] += 1
+            control = self.scrap_url(correo_url)
+            if count.get(control,0) == 0 :
+                count[control] = 1
             else:
-                count["Error"] += 1
+                count[control] += 1
 
-        self.logger.info("-- INFO -- URLs Analysed Ok : %d, No Ok: %d",\
-                                       count["Ok"], count["Error"])
+        self.logger.info("-- INFO -- URLs Analysed  %s",count)
         self.analyzer_web_jobs.close_selenium()
         return count
 
@@ -142,7 +139,7 @@ class ReadAndAnalyse(object):
             self.save_scraping(correo_url["_id"],\
                                   data_of_scraping.get("newCorreoUrl",\
                                   correo_url))
-        return data_of_scraping.get("status", False)
+        return data_of_scraping.get("contol", "ERROR")
 
     def save_scraping(self, id_code, correo_url):
         """ save information into database """

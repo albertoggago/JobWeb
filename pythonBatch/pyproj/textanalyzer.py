@@ -59,9 +59,10 @@ class TextAnalyzer(object):
         self.logger.debug(rule.get("valueIn", "yyyy"))
         self.logger.debug(data_output["newCorreoUrl"].get(rule.get("in", "xxxx")))
         in_variable = rule.get("in", "IN-ERROR")
+        print data_output["newCorreoUrl"].get(in_variable)
         if data_output["newCorreoUrl"].get(in_variable) != None and\
-           data_output["newCorreoUrl"].get(in_variable).\
-           decode('utf-8', errors='ignore') ==\
+           data_output["newCorreoUrl"].get(in_variable)\
+           .encode('utf-8', 'ignore') ==\
                rule.get("valueIn", "VALUE-ERROR"):
             action = rule.get("action")
             out_variable = rule.get("out", "OUT-ERROR")
@@ -79,6 +80,7 @@ class TextAnalyzer(object):
             self.logger.debug(rule.get("out", "zzz"))
             self.logger.debug(data_output["newCorreoUrl"][out_variable])
             self.logger.debug(data_output)
+
         return data_output
 
     def review_data_ok(self, data_imput, rules_review_data):
