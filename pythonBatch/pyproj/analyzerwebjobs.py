@@ -8,7 +8,7 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from pyvirtualdisplay import Display
+#from pyvirtualdisplay import Display
 
 #own classes
 from pyproj.logger import Logger
@@ -20,7 +20,7 @@ class AnalyzerWebJobs(object):
 
     config = None
     logger = None
-    display = None
+    #display = None
     driver = None
     text_analyzer = None
 
@@ -33,8 +33,8 @@ class AnalyzerWebJobs(object):
 
     def open_selenium(self):
         """open driver for scraping"""
-        self.display = Display(visible=0, size=(1024, 768))
-        self.display.start()
+        #self.display = Display(visible=0, size=(1024, 768))
+        #self.x.start()
         #service_log_path = "{}/chromedriver.log".format("/home/alberto")
         service_args = ['--verbose']
         options = webdriver.chrome.options.Options()
@@ -67,7 +67,7 @@ class AnalyzerWebJobs(object):
         if self.driver != None:
             self.driver.stop_client()
             self.driver.close()
-            self.display.stop()
+            #self.display.stop()
 
     def analyze(self, correo_url):
         """module analyze get url and prepare scraping"""
