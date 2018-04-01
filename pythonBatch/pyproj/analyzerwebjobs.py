@@ -75,49 +75,45 @@ class AnalyzerWebJobs(object):
         if self.driver is None:
             return {}
         result = {}
-        result_with_page = self.determinate_web(result, correo_url["url"])
-        if result_with_page.get("control", "") == "REVIEW":
-            self.driver.get(result_with_page.get("urlOk", ""))
-            result_with_data = self.find_data(result_with_page)
-            return result_with_data
+        self.determinate_web(result, correo_url["url"])
+        if result.get("control", "") == "REVIEW":
+            self.driver.get(result.get("urlOk", ""))
+            self.find_data(result)
         else:
-            result_with_page["status"] = False
-            return result_with_page
+            result["status"] = False
+        return result
 
     def determinate_web(self, result_imput, web_url):
         """ determinate web where working to set configuration to analize of this web"""
-        result_web = result_imput
+        result_imput
         self.logger.info("determinate Web")
         for web in self.config.get("pages", []):
             if web.get("ruleFind", "ERROR-GET-RULEFIND") in web_url:
                 self.logger.info("Locate web: "+web.get("name", "ERROR"))
-                result_web["page"] = web.get("name", "ERROR")
-                result_web["control"] = "REVIEW"
-                result_web["urlOk"] =\
+                result_imput["page"] = web.get("name", "ERROR")
+                result_imput["control"] = "REVIEW"
+                result_imput["urlOk"] =\
                     self.text_analyzer.real_url_transform(web_url, web.get("rulesTransformUrl", []))
 
-        if result_web.get("page", None) is None:
-            result_web = self.determinate_other(result_web, web_url)
-        return result_web
+        if result_imput.get("page", None) is None:
+            self.determinate_other(result_imput, web_url)
 
-    def determinate_other(self, result_imput, web_url):
+    def determinate_other(self, result, web_url):
         """it has got a list of web to ignore and not compute"""
-        result_other = result_imput
         for web in self.config.get("otherPages", []):
             if web in web_url:
                 self.logger.info("Locate web OTHER: "+web)
-                result_other["page"] = "N/D"
-                result_other["control"] = "OTRO"
-        if result_other.get("page", None) is None:
+                result["page"] = "N/D"
+                result["control"] = "OTRO"
+        if result.get("page", None) is None:
             self.logger.info("Locate web ERROR: " + web_url)
-            result_other["page"] = "N/D"
-            result_other["control"] = "ERROR"
-        return result_other
+            result["page"] = "N/D"
+            result["control"] = "ERROR"
 
     def find_data(self, result_imput):
         """Find Information using rules of web"""
         self.logger.info("Find Data")
-        data_after_selenium = result_imput
+        result_imput
         rules_page = {}
         pages = self.config["pages"]
         for page in pages:
@@ -127,15 +123,14 @@ class AnalyzerWebJobs(object):
                 rules_page = page
 
         necesary_variables = rules_page.get("necesaryVariables", [])
-        data_after_selenium["newCorreoUrl"] = {}
+        result_imput["newCorreoUrl"] = {}
         for variable in necesary_variables:
-            result_variable = self.process_variable(variable,\
+            result_imput["newCorreoUrl"][variable] = self.process_variable(variable,\
                                       rules_page.get("rulesTransformData", []).get(variable, {}))
-            data_after_selenium["newCorreoUrl"][variable] = result_variable
 
         #determinate rules after search
         result_with_global_rules =\
-            self.text_analyzer.data_after_selenium(data_after_selenium,\
+            self.text_analyzer.data_after_selenium(result_imput,\
                                                         rules_page.get("rulestransformFinal", []))
         result_with_global_rules["status"] = \
             self.text_analyzer.review_data_ok(result_with_global_rules,\
