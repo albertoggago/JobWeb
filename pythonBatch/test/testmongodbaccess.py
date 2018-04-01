@@ -14,9 +14,11 @@ def test_mongodbAcessOk():
 	assert mongoDBAccessOk.status()
 
 def test_mongodbAcessFileError():
-	mongoDBAccessOk = MongoDBAccess("../test/config/configOkxx.json","DEBUG")
-	
-	assert mongoDBAccessOk.status()
+	try :
+		mongoDBAccessOk = MongoDBAccess("../test/config/configOkxx.json","DEBUG")
+		assert False
+	except IOError:
+		assert True
 
 def test_mongodbAcessError():
     mongoDBAccessError = MongoDBAccess("../test/config/configMongoDBError.json","DEBUG")
