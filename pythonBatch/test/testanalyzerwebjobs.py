@@ -13,6 +13,7 @@ allconfig  = json.loads(configText)
 config     = allconfig.get("webPagesDef",None)
 time_out   = 20
 
+"""
 @pytest.mark.timeout(time_out)
 def test_determinate_Linkedin():
 	data = {}
@@ -118,6 +119,7 @@ def test_determinate_jobs_monster():
 	assert result["newCorreoUrl"].get("company","") == 'Berkley Recruitment Group'
 	assert result.get('status','') == True
 	assert result.get('control','') == 'CORPUS'
+"""
 
 @pytest.mark.timeout(time_out)
 def test_determinate_LinkedinErrorMyPage():
