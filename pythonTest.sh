@@ -2,7 +2,7 @@ cd pythonBatch/test
 echo $0
 #py.test test*.py -v
 #py.test testanalyzerwebjobsTextFuntions.py -v 
-py.test --junitxml results.xml testa*.py -v 
+py.test --junitxml results.xml testread*.py testa*.py testmon* -v 
 #py.test testa*.py testl*.py testm*.py testr*.py testt*.py -v 
 #py.test testa*.py testt*.py -v 
 #py.test --junitxml results.xml test*.py -v

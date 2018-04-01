@@ -12,6 +12,6 @@ COPY requirements.txt /home/alberto/requirements.txt
 RUN pip install -r /home/alberto/requirements.txt
 
 #add files of testing
-COPY config.json /home/alberto
+COPY configOk.json /home/alberto
 COPY configMailAccessError.json /home/alberto
 COPY configMongoDBError.json /home/alberto
