@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="0" name="pytest" skips="0" tests="1" time="1.513"><testcase classname="testlogger" file="testlogger.py" line="12" name="test_logger_test" time="0.0590341091156"><system-err>testlogger.py               21 ERROR    Error
-</system-err></testcase></testsuite>
