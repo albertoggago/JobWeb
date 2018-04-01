@@ -60,13 +60,11 @@ def test_findingUrls():
 
 def test_scrapUrls():
 	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",logging.ERROR)
-	mongoDBAccess =  MongoDBAccess("../test/config/configOk.json","WARNING")
+	mongoDBAccess =  MongoDBAccess("../test/config/configOk.json",logging.ERROR)
 	mongoDBAccess.delete_many("correo",{})
 	mongoDBAccess.delete_many("correoUrl",{})
 	readAndAnalyse.finding_mails()
 	readAndAnalyse.finding_urls()
 	amount = readAndAnalyse.scrap_urls(10)
 	#Depends of the information inside of mails
-	print(amount)
-	assert amount.get("Error",0) == 7
-	assert amount.get("Ok",0) == 3
+	assert amount == {"ERROR":10}
