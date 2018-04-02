@@ -91,7 +91,7 @@ class TextAnalyzer(object):
             return False
         status = True
         for variable_review in rules_review_data:
-            if not data_imput.get("newCorreoUrl", {}).get(variable_review, "") :
+            if not data_imput.get("newCorreoUrl", {}).get(variable_review, ""):
                 status = False
         return status
 
