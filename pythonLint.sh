@@ -1,1 +1,1 @@
-pylint pythonBatch/pyproj/*.py
+pylint pythonBatch/pyproj/r*.py

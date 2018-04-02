@@ -59,7 +59,6 @@ class TextAnalyzer(object):
         self.logger.debug(rule.get("valueIn", "yyyy"))
         self.logger.debug(data_output["newCorreoUrl"].get(rule.get("in", "xxxx")))
         in_variable = rule.get("in", "IN-ERROR")
-        print data_output["newCorreoUrl"].get(in_variable)
         if data_output["newCorreoUrl"].get(in_variable) != None and\
            data_output["newCorreoUrl"].get(in_variable)\
            .encode('utf-8', 'ignore') ==\

@@ -36,13 +36,12 @@ class AnalyzerWebJobs(object):
         #self.display = Display(visible=0, size=(1024, 768))
         #self.x.start()
         #service_log_path = "{}/chromedriver.log".format("/home/alberto")
-        service_args = ['--verbose']
-        options = webdriver.chrome.options.Options()
-        options.binary_location = '/opt/google/chrome/google-chrome'
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-gpu")
+        #service_args = ['--verbose']
+        #options = webdriver.chrome.options.Options()
+        #options.binary_location = '/opt/google/chrome/google-chrome'
+        #options.add_argument("--no-sandbox")
+        #options.add_argument("--disable-gpu")
         self.driver = webdriver.Remote(\
-                      #command_executor='http://127.0.0.1:4444/wd/hub',\
                       command_executor=self.config.get("urlSelenium"),\
                       desired_capabilities=DesiredCapabilities.CHROME)
         #self.driver = webdriver.Remote(command_executor='http://127.0.0.1:4444/wd/hub',\
@@ -85,7 +84,6 @@ class AnalyzerWebJobs(object):
 
     def determinate_web(self, result_imput, web_url):
         """ determinate web where working to set configuration to analize of this web"""
-        result_imput
         self.logger.info("determinate Web")
         for web in self.config.get("pages", []):
             if web.get("ruleFind", "ERROR-GET-RULEFIND") in web_url:
@@ -113,7 +111,6 @@ class AnalyzerWebJobs(object):
     def find_data(self, result_imput):
         """Find Information using rules of web"""
         self.logger.info("Find Data")
-        result_imput
         rules_page = {}
         pages = self.config["pages"]
         for page in pages:

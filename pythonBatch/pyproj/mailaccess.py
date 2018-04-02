@@ -162,7 +162,7 @@ class MailAccess(object):
         ctype = part.get_content_type()
         cdispo = str(part.get('Content-Disposition'))
         if (ctype == 'text/plain' or ctype == 'text/html') and 'attachment' not in cdispo:
-            payload = part.get_payload();
+            payload = part.get_payload()
             texto = base64.decodestring(payload) if encode == "base64" else payload
             return texto
         else:
