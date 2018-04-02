@@ -29,7 +29,7 @@ class ReadAndAnalyse(object):
         allconfig = json.loads(config_text)
         config = allconfig.get("webPagesDef", None)
         self.env = allconfig.get("env", "DEV")
-        self.analyzer_web_jobs = AnalyzerWebJobs(config,levelLog)
+        self.analyzer_web_jobs = AnalyzerWebJobs(config, levelLog)
 
         self.logger.info("Inicio: %s", datetime.datetime.now())
 

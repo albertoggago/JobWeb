@@ -1,1 +1,1 @@
-pylint pythonBatch/pyproj/*.py --rcfile=pylint.cfg
+pylint --rcfile=pylint.cfg pythonBatch/pyproj/*.py  -f parseable

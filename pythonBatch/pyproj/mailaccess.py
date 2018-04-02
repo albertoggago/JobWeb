@@ -164,7 +164,7 @@ class MailAccess(object):
         if (ctype == 'text/plain' or ctype == 'text/html') and 'attachment' not in cdispo:
             payload = part.get_payload()
             texto = base64.decodestring(payload) if encode == "base64" else payload
-            return texto
         else:
             self.logger.warn("Text without information to process")
-            return ""
+            texto = ""
+        return texto

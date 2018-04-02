@@ -87,7 +87,7 @@ class AnalyzerWebJobs(object):
         self.logger.info("determinate Web")
         for web in self.config.get("pages", []):
             if web.get("ruleFind", "ERROR-GET-RULEFIND") in web_url:
-                self.logger.info("Locate web: "+web.get("name", "ERROR"))
+                self.logger.info("Locate web: %s", web.get("name", "ERROR"))
                 result_imput["page"] = web.get("name", "ERROR")
                 result_imput["control"] = "REVIEW"
                 result_imput["urlOk"] =\
@@ -100,11 +100,11 @@ class AnalyzerWebJobs(object):
         """it has got a list of web to ignore and not compute"""
         for web in self.config.get("otherPages", []):
             if web in web_url:
-                self.logger.info("Locate web OTHER: "+web)
+                self.logger.info("Locate web OTHER: %s", web)
                 result["page"] = "N/D"
                 result["control"] = "OTRO"
         if result.get("page", None) is None:
-            self.logger.info("Locate web ERROR: " + web_url)
+            self.logger.info("Locate web ERROR: %s", web_url)
             result["page"] = "N/D"
             result["control"] = "ERROR"
 
@@ -141,7 +141,7 @@ class AnalyzerWebJobs(object):
 
     def process_variable(self, variable, rules_transform):
         """analize each varable of rules"""
-        self.logger.info("Process Variable: "+variable)
+        self.logger.info("Process Variable: %s", variable)
         self.logger.info(rules_transform)
 
         #secuences
@@ -150,7 +150,7 @@ class AnalyzerWebJobs(object):
         text_after_secuence = self.in_driver_data_and_return_text(secuences)
 
         #split
-        self.logger.debug("text_after_secuence: "+text_after_secuence)
+        self.logger.debug("text_after_secuence: %s", text_after_secuence)
         split = rules_transform.get("split", None)
         self.logger.debug(split)
         if split is None:
@@ -159,7 +159,7 @@ class AnalyzerWebJobs(object):
             text_split = self.text_analyzer.split_text(text_after_secuence, split)
 
         #out
-        self.logger.debug("text_split: "+text_split)
+        self.logger.debug("text_split: %s", text_split)
 
         out = rules_transform.get("out", {"tipo":"text", "initText":None})
         self.logger.debug(out)
