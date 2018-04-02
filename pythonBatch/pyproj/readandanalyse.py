@@ -29,7 +29,7 @@ class ReadAndAnalyse(object):
         allconfig = json.loads(config_text)
         config = allconfig.get("webPagesDef", None)
         self.env = allconfig.get("env", "DEV")
-        self.analyzer_web_jobs = AnalyzerWebJobs(config, levelLog)
+        self.analyzer_web_jobs = AnalyzerWebJobs(config,levelLog)
 
         self.logger.info("Inicio: %s", datetime.datetime.now())
 
@@ -52,9 +52,9 @@ class ReadAndAnalyse(object):
                 self.logger.error("Mail generate wrong")
             else:
                 self.logger.debug("Insert into Control")
-                self.logger.debug("control: %s",mail.get("control"))
-                self.logger.debug("urls: %s",mail.get("urls"))
-                self.logger.debug("datetime: %s",mail.get("datetime"))
+                self.logger.debug("control: %s", mail.get("control"))
+                self.logger.debug("urls: %s", mail.get("urls"))
+                self.logger.debug("datetime: %s", mail.get("datetime"))
                 self.mongo_db_access.insert("correo", mail)
                 count_emails += 1
                 self.mail_access.store(ele)
@@ -108,12 +108,12 @@ class ReadAndAnalyse(object):
                                   {"control":{"$exists":0}, "url":{"$exists":1}}, limite=limite)
         for correo_url in correos_url:
             control = self.scrap_url(correo_url)
-            if count.get(control,0) == 0 :
+            if count.get(control, 0) == 0:
                 count[control] = 1
             else:
                 count[control] += 1
 
-        self.logger.info("-- INFO -- URLs Analysed  %s",count)
+        self.logger.info("-- INFO -- URLs Analysed  %s", count)
         self.analyzer_web_jobs.close_selenium()
         return count
 
@@ -133,7 +133,7 @@ class ReadAndAnalyse(object):
         self.mongo_db_access.update_one("correoUrl", \
                          {"_id":correo_url["_id"]}, \
                          {"control":data_of_scraping.get("control", "ERROR"),\
-                           "pagina":data_of_scraping.get("page", "None"),
+                           "pagina":data_of_scraping.get("page", "None"),\
                            "urlOk":data_of_scraping.get("urlOk", "None")})
         if data_of_scraping.get("status", False):
             self.save_scraping(correo_url["_id"],\

@@ -1,1 +1,1 @@
-pylint pythonBatch/pyproj/r*.py
+pylint pythonBatch/pyproj/*.py --rcfile=pylint.cfg
