@@ -91,7 +91,7 @@ class TextAnalyzer(object):
             return False
         status = True
         for variable_review in rules_review_data:
-            if data_imput.get("newCorreoUrl", {}).get(variable_review, "") is "":
+            if not data_imput.get("newCorreoUrl", {}).get(variable_review, "") :
                 status = False
         return status
 
@@ -154,7 +154,7 @@ class TextAnalyzer(object):
         date_imput = date_imput.lower()
         list_date = date_imput.split()
         list_date_number = [int(s) for s in date_imput.split() if s.isdigit()]
-        if len(list_date_number) > 0:
+        if list_date_number:
             number_date = list_date_number[0]
         else:
             number_date = 0
