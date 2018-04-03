@@ -179,21 +179,24 @@ def test_process_after_get_variables_void_rule():
     text = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"c"}, "other":"xxxx"}
     rule = []
     result = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"c"}, "other":"xxxx"}
-    assert text_rule_analyzer.process_after_get_variables(text, rule) == result
+    text_rule_analyzer.process_after_get_variables(text, rule)
+    assert text == result
 
 def test_process_after_get_variables_error_type_rule():
     text = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"c"}, "other":"xxxx"}
     rule = {"in":"campo1", "out":"campo3", "valueIn":"a", "action":"COPY-ANOTHER",\
             "another":"campo2"}
     result = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"c"}, "other":"xxxx"}
-    assert text_rule_analyzer.process_after_get_variables(text, rule) == result
+    text_rule_analyzer.process_after_get_variables(text, rule)
+    assert text  == result
 
 def test_process_after_get_variables_one_rule():
     text = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"c"}, "other":"xxxx"}
     rule = [{"in":"campo1", "out":"campo3", "valueIn":"a", "action":"COPY-ANOTHER",\
              "another":"campo2"}]
     result = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"b"}, "other":"xxxx"}
-    assert text_rule_analyzer.process_after_get_variables(text, rule) == result
+    text_rule_analyzer.process_after_get_variables(text, rule)
+    assert text == result
 
 def test_process_after_get_variables_two_rules():
     text = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"c"}, "other":"xxxx"}
@@ -201,7 +204,8 @@ def test_process_after_get_variables_two_rules():
              "another":"campo2"}, \
             {"in":"campo1", "out":"campo1", "valueIn":"a", "action":"COPY", "valueOut":"hello"}]
     result = {"newCorreoUrl":{"campo1":"hello", "campo2":"b", "campo3":"b"}, "other":"xxxx"}
-    assert text_rule_analyzer.process_after_get_variables(text, rule) == result
+    text_rule_analyzer.process_after_get_variables(text, rule)
+    assert text == result
 
 def test_review_data_ok_void():
     text = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"c"}, "other":"xxxx"}

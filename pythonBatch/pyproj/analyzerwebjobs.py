@@ -81,18 +81,16 @@ class AnalyzerWebJobs(object):
                                       rules_page.get("rulesTransformData", []).get(variable, {}))
 
         #determinate rules after search
-        result_with_global_rules =\
-            self.text_rule_analyzer.process_after_get_variables(json_info_web,\
+        self.text_rule_analyzer.process_after_get_variables(json_info_web,\
                                                         rules_page.get("rulestransformFinal", []))
-        result_with_global_rules["status"] = \
-            self.text_rule_analyzer.review_data_ok(result_with_global_rules,\
+        json_info_web["status"] = \
+            self.text_rule_analyzer.review_data_ok(json_info_web,\
                                              rules_page.get("rulesOkFinding", []))
-        if result_with_global_rules["status"]:
-            result_with_global_rules["control"] = "CORPUS"
+        if json_info_web["status"]:
+            json_info_web["control"] = "CORPUS"
         else:
-            result_with_global_rules["control"] = "SEARCH"
-        self.logger.debug(result_with_global_rules)
-        return result_with_global_rules
+            json_info_web["control"] = "SEARCH"
+        self.logger.debug(json_info_web)
 
     def process_variable(self, variable, rules_transform):
         """analize each varable of rules"""

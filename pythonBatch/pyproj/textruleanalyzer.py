@@ -37,17 +37,14 @@ class TextRuleAnalyzer(object):
             return ""
         return url.replace(rule.get("from", "NOFIND12345"), rule.get("to", "ERROR-RULE"))
 
-    def process_after_get_variables(self, data_imput, rules_after_selenium):
+    def process_after_get_variables(self, json_result, rules_after_selenium):
         """ With rules transform output for modify data """
-        data_output = data_imput
         self.logger.info("Rules Transform after Selenium")
         self.logger.info(rules_after_selenium)
         if not isinstance(rules_after_selenium, types.ListType):
             self.logger.error("Rules not List")
-            return data_imput
         for rule in rules_after_selenium:
-            self.apply_rule_after_sel(data_output, rule)
-        return data_imput
+            self.apply_rule_after_sel(json_result, rule)
 
     def apply_rule_after_sel(self, data_imput, rule):
         """ get rule and aply to output"""
