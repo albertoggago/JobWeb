@@ -5,13 +5,14 @@
 
 import datetime
 import json
+import urllib2
+from selenium.common.exceptions import WebDriverException
 
 from pyproj.logger import Logger
 from pyproj.mongodbaccess import MongoDBAccess
 from pyproj.mailaccess import MailAccess
 from pyproj.analyzerwebjobs import AnalyzerWebJobs
 from pyproj.seleniumaccess import SeleniumAccess
-
 
 
 class ReadAndAnalyse(object):
@@ -115,7 +116,13 @@ class ReadAndAnalyse(object):
         correos_url = self.mongo_db_access.find("correoUrl", \
                                   {"control":{"$exists":0}, "url":{"$exists":1}}, limite=limite)
         for correo_url in correos_url:
-            control = self.scrap_url(correo_url)
+            try:
+                control = self.scrap_url(correo_url)
+            except urllib2.URLError:
+                control = "ERROR_URL"
+            except WebDriverException:
+                control = "ERROR_WEBDRIVER_ERROR"
+
             if count.get(control, 0) == 0:
                 count[control] = 1
             else:
