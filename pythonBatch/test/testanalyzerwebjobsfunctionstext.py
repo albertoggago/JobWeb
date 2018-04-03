@@ -7,12 +7,14 @@ import pytest
 
 sys.path.insert(0, "..")
 from pyproj.analyzerwebjobs import AnalyzerWebJobs
+from pyproj.seleniumaccess import SeleniumAccess
 
 configText = open("../test/config/configOk.json","r").read()
 allconfig  = json.loads(configText)
 config     = allconfig.get("webPagesDef",None)
 time_out   = 20
-analyzerWebJobs = AnalyzerWebJobs(config,"DEBUG")
+seleniumaccess = SeleniumAccess(config, "DEBUG")
+analyzerWebJobs = AnalyzerWebJobs(config, seleniumaccess.driver, "DEBUG")
 
 def test_determinate_web_error():
     url = "https://www.none.com"

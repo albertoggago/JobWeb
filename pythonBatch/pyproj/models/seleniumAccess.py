@@ -2,31 +2,49 @@
 # -*- coding: utf-8 -*-
 
 """ Clase unique AnalyzerWebJobs """
+
+#import string
+#import logging
+from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+#from pyvirtualdisplay import Display
 
 #own classes
 from pyproj.logger import Logger
 from pyproj.textanalyzer import TextAnalyzer
 
 
-class AnalyzerWebJobs(object):
+class SeleniumAccess(object):
     """Analyze information of each scrapint of a job and contruct information for save"""
 
     config = None
     logger = None
-    text_analyzer = None
+    #display = None
     driver = None
+    text_analyzer = None
 
-    def __init__(self, config, driver, level_log):
+    def __init__(self, config, level_log):
         self.logger = Logger(self.__class__.__name__, level_log).get()
         self.config = config
         self.text_analyzer = TextAnalyzer(level_log)
-        self.driver = driver
+
+    def open_selenium(self):
+        """open driver for scraping"""
+        self.driver = webdriver.Remote(\
+                      command_executor=self.config.get("urlSelenium"),\
+                      desired_capabilities=DesiredCapabilities.CHROME)
+
+    def close_selenium(self):
+        """close driver for scraping"""
+        if self.driver != None:
+            self.driver.stop_client()
+            self.driver.close()
+            #self.display.stop()
 
     def analyze(self, correo_url):
         """module analyze get url and prepare scraping"""
         if self.driver is None:
-            self.logger.debug("Driver NULL!!!!!")
             return {}
         result = {}
         self.determinate_web(result, correo_url["url"])

@@ -10,6 +10,7 @@ from pyproj.logger import Logger
 from pyproj.mongodbaccess import MongoDBAccess
 from pyproj.mailaccess import MailAccess
 from pyproj.analyzerwebjobs import AnalyzerWebJobs
+from pyproj.seleniumaccess import SeleniumAccess
 
 
 
@@ -20,6 +21,7 @@ class ReadAndAnalyse(object):
     mail_access = None
     analyzer_web_jobs = None
     env = None
+    seleniumaccess = None
 
     def __init__(self, fileConfig, levelLog):
         self.logger = Logger(self.__class__.__name__, levelLog).get()
@@ -29,7 +31,8 @@ class ReadAndAnalyse(object):
         allconfig = json.loads(config_text)
         config = allconfig.get("webPagesDef", None)
         self.env = allconfig.get("env", "DEV")
-        self.analyzer_web_jobs = AnalyzerWebJobs(config, levelLog)
+        self.seleniumaccess = SeleniumAccess(config, levelLog)
+        self.analyzer_web_jobs = AnalyzerWebJobs(config, self.seleniumaccess.driver, levelLog)
 
         self.logger.info("Inicio: %s", datetime.datetime.now())
 
@@ -97,7 +100,7 @@ class ReadAndAnalyse(object):
 
     def scrap_urls(self, limite=None):
         """ srap url using system of parameters and save this information in data base"""
-        self.analyzer_web_jobs.open_selenium()
+        self.seleniumaccess.open_selenium()
         self.logger.info("SCRAP_URLS")
         if not self.mongo_db_access.status():
             self.logger.error("Error Database Not Active")
@@ -114,7 +117,7 @@ class ReadAndAnalyse(object):
                 count[control] += 1
 
         self.logger.info("-- INFO -- URLs Analysed  %s", count)
-        self.analyzer_web_jobs.close_selenium()
+        self.seleniumaccess.close_selenium()
         return count
 
     def reprocess_mails(self):
