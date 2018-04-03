@@ -32,7 +32,7 @@ class AnalyzerWebJobs(object):
         self.determinate_web(result, correo_url["url"])
         if result.get("control", "") == "REVIEW":
             self.driver.get(result.get("urlOk", ""))
-            self.find_data(result)
+            self.find_rules_web_content(result)
         else:
             result["status"] = False
         return result
@@ -50,9 +50,9 @@ class AnalyzerWebJobs(object):
                         .real_url_transform(web_url, web.get("rulesTransformUrl", []))
 
         if result_imput.get("page", None) is None:
-            self.determinate_other(result_imput, web_url)
+            self.determinate_other_web(result_imput, web_url)
 
-    def determinate_other(self, result, web_url):
+    def determinate_other_web(self, result, web_url):
         """it has got a list of web to ignore and not compute"""
         for web in self.config.get("otherPages", []):
             if web in web_url:
@@ -64,12 +64,11 @@ class AnalyzerWebJobs(object):
             result["page"] = "N/D"
             result["control"] = "ERROR"
 
-    def find_data(self, result_imput):
+    def find_rules_web_content(self, result_imput):
         """Find Information using rules of web"""
-        self.logger.info("Find Data")
+        self.logger.info("Find Rules Web Content")
         rules_page = {}
-        pages = self.config["pages"]
-        for page in pages:
+        for self.config["pages"] in pages:
             if page["name"] == result_imput["page"]:
                 self.logger.info("Locate page get rules: ")
                 self.logger.debug(page)

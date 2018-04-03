@@ -47,14 +47,14 @@ def test_determinate_web_other():
 def test_determinate_other_error():
     url = "https://www.none.com"
     result = {}
-    analyzerWebJobs.determinate_other(result, url)
+    analyzerWebJobs.determinate_other_web(result, url)
     assert result["page"] == "N/D"
     assert result["control"] == "ERROR"
         
 def test_determinate_other_other():
     url = "https://www.saongroup.ie"
     result = {}
-    analyzerWebJobs.determinate_other(result, url)
+    analyzerWebJobs.determinate_other_web(result, url)
     assert result["page"] == "N/D"
     assert result["control"] == "OTRO"
         
