@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-""" Clase unique TextAnalyzer """
+""" Clase unique TextRuleAnalyzer """
 import datetime
 import types
 
 #own classes
 from pyproj.logger import Logger
 
-class TextAnalyzer(object):
+class TextRuleAnalyzer(object):
     """Analyze text for AnalizerWebJobs"""
 
     logger = None

@@ -6,7 +6,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 #own classes
 from pyproj.logger import Logger
-from pyproj.textanalyzer import TextAnalyzer
+from pyproj.textruleanalyzer import TextRuleAnalyzer
 
 
 class AnalyzerWebJobs(object):
@@ -14,13 +14,13 @@ class AnalyzerWebJobs(object):
 
     config = None
     logger = None
-    text_analyzer = None
+    text_rule_analyzer = None
     driver = None
 
     def __init__(self, config, driver, level_log):
         self.logger = Logger(self.__class__.__name__, level_log).get()
         self.config = config
-        self.text_analyzer = TextAnalyzer(level_log)
+        self.text_rule_analyzer = TextRuleAnalyzer(level_log)
         self.driver = driver
 
     def analyze(self, correo_url):
@@ -46,7 +46,8 @@ class AnalyzerWebJobs(object):
                 result_imput["page"] = web.get("name", "ERROR")
                 result_imput["control"] = "REVIEW"
                 result_imput["urlOk"] =\
-                    self.text_analyzer.real_url_transform(web_url, web.get("rulesTransformUrl", []))
+                    self.text_rule_analyzer\
+                        .real_url_transform(web_url, web.get("rulesTransformUrl", []))
 
         if result_imput.get("page", None) is None:
             self.determinate_other(result_imput, web_url)
@@ -82,10 +83,10 @@ class AnalyzerWebJobs(object):
 
         #determinate rules after search
         result_with_global_rules =\
-            self.text_analyzer.data_after_selenium(result_imput,\
+            self.text_rule_analyzer.data_after_selenium(result_imput,\
                                                         rules_page.get("rulestransformFinal", []))
         result_with_global_rules["status"] = \
-            self.text_analyzer.review_data_ok(result_with_global_rules,\
+            self.text_rule_analyzer.review_data_ok(result_with_global_rules,\
                                              rules_page.get("rulesOkFinding", []))
         if result_with_global_rules["status"]:
             result_with_global_rules["control"] = "CORPUS"
@@ -111,7 +112,7 @@ class AnalyzerWebJobs(object):
         if split is None:
             text_split = text_after_secuence
         else:
-            text_split = self.text_analyzer.split_text(text_after_secuence, split)
+            text_split = self.text_rule_analyzer.split_text(text_after_secuence, split)
 
         #out
         self.logger.debug("text_split: %s", text_split)
@@ -119,7 +120,7 @@ class AnalyzerWebJobs(object):
         out = rules_transform.get("out", {"tipo":"text", "initText":None})
         self.logger.debug(out)
 
-        text_out = self.text_analyzer.format_text_out(text_split, out)
+        text_out = self.text_rule_analyzer.format_text_out(text_split, out)
 
         return text_out
 
