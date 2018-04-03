@@ -68,7 +68,7 @@ class AnalyzerWebJobs(object):
         """Find Information using rules of web"""
         self.logger.info("Find Rules Web Content")
         rules_page = {}
-        for self.config["pages"] in pages:
+        for page in self.config["pages"]:
             if page["name"] == result_imput["page"]:
                 self.logger.info("Locate page get rules: ")
                 self.logger.debug(page)
