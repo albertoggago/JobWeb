@@ -135,7 +135,7 @@ def test_determinate_LinkedinErrorMyPage():
 	assert result.get('status','') == False
 	assert result.get('control','') == 'SEARCH'
 	assert result.get('page','') == 'linkedin'
-	#assert result.get('urlOk','') == urlLinkedin	
+	assert result.get('urlOk','') == urlLinkedin	
 	assert result["newCorreoUrl"].get("titulo","") == ''
 	assert result["newCorreoUrl"].get("donde","") == ''
 	assert result["newCorreoUrl"].get("summary","") == ''
@@ -154,7 +154,7 @@ def test_determinate_recruitireland_error_no_exits():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'recruitireland'
-	#assert result.get('urlOk','') == url_real_recruitireland	
+	assert result.get('urlOk','') == url_real_recruitireland	
 	assert result["newCorreoUrl"].get("titulo","") == ''
 	assert result["newCorreoUrl"].get("donde","") == ''
 	assert result["newCorreoUrl"].get("summary","") == ''
@@ -175,7 +175,7 @@ def test_determinate_recruitireland_error_retired():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'recruitireland'
-	#assert result.get('urlOk','') == url_real_recruitireland	
+	assert result.get('urlOk','') == url_real_recruitireland	
 	assert result["newCorreoUrl"].get("titulo","") == ''
 	assert result["newCorreoUrl"].get("donde","") == ''
 	assert result["newCorreoUrl"].get("summary","") == ''
@@ -195,7 +195,7 @@ def test_determinate_irishjobs_error_retired():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'irishjobs'
-	#assert result.get('urlOk','') == url_irishjobs	
+	assert result.get('urlOk','') == url_irishjobs	
 	assert result["newCorreoUrl"].get("titulo","") == 'SENIOR FRONTEND ENGINEER'
 	assert result["newCorreoUrl"].get("donde","") == 'Kildare / Wicklow / Dublin'
 	assert result["newCorreoUrl"].get("summary","") == ''
@@ -218,7 +218,7 @@ def test_determinate_irishjobs_error_error():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'irishjobs'
-	#assert result.get('urlOk','') == url_irishjobs	
+	assert result.get('urlOk','') == url_irishjobs	
 	assert result["newCorreoUrl"].get("titulo","") == ''
 	assert result["newCorreoUrl"].get("donde","") == ''
 	assert result["newCorreoUrl"].get("summary","") == ''
@@ -239,7 +239,7 @@ def test_determinate_jobsie_error_retired():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'jobs.ie'
-	#assert result.get('urlOk','') == url_real_jobsie	
+	assert result.get('urlOk','') == url_real_jobsie	
 	assert result["newCorreoUrl"].get("titulo","") == ''
 	assert result["newCorreoUrl"].get("donde","") == ''
 	assert result["newCorreoUrl"].get("summary","") == ''
@@ -260,7 +260,7 @@ def test_determinate_jobsie_error_noexist():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'jobs.ie'
-	#assert result.get('urlOk','') == url_real_jobsie	
+	assert result.get('urlOk','') == url_real_jobsie	
 	assert result["newCorreoUrl"].get("titulo","") == ''
 	assert result["newCorreoUrl"].get("donde","") == ''
 	assert result["newCorreoUrl"].get("summary","") == ''
@@ -281,7 +281,7 @@ def test_determinate_monster_error_retired():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'monster.ie'
-	#assert result.get('urlOk','') == url_real_monster
+	assert result.get('urlOk','') == url_real_monster
 	assert result["newCorreoUrl"].get("titulo","") == 'Employers'
 	assert result["newCorreoUrl"].get("donde","") == ''
 	assert result["newCorreoUrl"].get("summary","") == ''
@@ -302,7 +302,7 @@ def test_determinate_monster_error_noexist():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'monster.ie'
-	#assert result.get('urlOk','') == url_real_monster	
+	assert result.get('urlOk','') == url_real_monster	
 	assert result["newCorreoUrl"].get("titulo","") == 'Employers'
 	assert result["newCorreoUrl"].get("donde","") == ''
 	assert result["newCorreoUrl"].get("summary","") == ''
