@@ -34,3 +34,4 @@ class SeleniumAccess(object):
         if self.driver != None:
             self.driver.stop_client()
             self.driver.close()
+            self.driver = None
