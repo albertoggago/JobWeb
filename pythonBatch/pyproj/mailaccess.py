@@ -16,12 +16,20 @@ class MailAccess(object):
     """ Create un access to Mail to read Emails and format Text"""
 
     _mail = None
+    _config = None
 
     def __init__(self, fileConfig, levelLog):
         self.logger = Logger(self.__class__.__name__, levelLog).get()
-        config_text = open(fileConfig, "r").read()
-        self._config = json.loads(config_text)
-        self.login()
+
+        if fileConfig :
+            config_text = open(fileConfig, "r").read()
+            self._config = json.loads(config_text)
+            self.login()
+        else:
+            self._config = {}
+            self._config["sslServer"]= ""
+            self._config["fromEmail"]= ""
+            
 
     def login(self):
         """ do loggin using informaction of file configuration"""

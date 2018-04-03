@@ -25,14 +25,19 @@ class ReadAndAnalyse(object):
 
     def __init__(self, fileConfig, levelLog):
         self.logger = Logger(self.__class__.__name__, levelLog).get()
-        self.mongo_db_access = MongoDBAccess(fileConfig, levelLog)
-        self.mail_access = MailAccess(fileConfig, levelLog)
-        config_text = open(fileConfig, "r").read()
-        allconfig = json.loads(config_text)
-        config = allconfig.get("webPagesDef", None)
-        self.env = allconfig.get("env", "DEV")
-        self.seleniumaccess = SeleniumAccess(config, levelLog)
-        self.analyzer_web_jobs = AnalyzerWebJobs(config, self.seleniumaccess.driver, levelLog)
+        try:
+            self.mongo_db_access = MongoDBAccess(fileConfig, levelLog)
+            self.mail_access = MailAccess(fileConfig, levelLog)
+            config_text = open(fileConfig, "r").read()
+            allconfig = json.loads(config_text)
+            config = allconfig.get("webPagesDef", None)
+            self.env = allconfig.get("env", "DEV")
+            self.seleniumaccess = SeleniumAccess(config, levelLog)
+            self.analyzer_web_jobs = AnalyzerWebJobs(config, self.seleniumaccess.driver, levelLog)
+        except IOError:
+            self.logger.error("File Error: %s", fileConfig)            
+            self.mongo_db_access = MongoDBAccess("", levelLog)
+            self.mail_access = MailAccess("", levelLog)
 
         self.logger.info("Inicio: %s", datetime.datetime.now())
 

@@ -11,6 +11,11 @@ except ImportError:
 
 
 
+def test_init_error_fichero():
+	readAndAnalyse = ReadAndAnalyse("../test/config/configOkXXXX.json",logging.ERROR)
+	assert not readAndAnalyse.mongo_db_access.status()
+	assert not readAndAnalyse.mail_access.status()
+	
 def test_init_correct():
 	readAndAnalyse = ReadAndAnalyse("../test/config/configOk.json",logging.ERROR)
 	assert readAndAnalyse.mongo_db_access.status()
