@@ -82,7 +82,7 @@ class AnalyzerWebJobs(object):
 
         #determinate rules after search
         result_with_global_rules =\
-            self.text_rule_analyzer.data_after_selenium(result_imput,\
+            self.text_rule_analyzer.process_after_get_variables(result_imput,\
                                                         rules_page.get("rulestransformFinal", []))
         result_with_global_rules["status"] = \
             self.text_rule_analyzer.review_data_ok(result_with_global_rules,\

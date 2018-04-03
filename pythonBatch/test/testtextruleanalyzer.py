@@ -175,33 +175,33 @@ def test_apply_rule_after_sel_ok_copy_another_other_variable():
     result = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"b"}, "other":"xxxx"}
     assert text_rule_analyzer.apply_rule_after_sel(text, rule) == result
 
-def test_data_after_selenium_void_rule():
+def test_process_after_get_variables_void_rule():
     text = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"c"}, "other":"xxxx"}
     rule = []
     result = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"c"}, "other":"xxxx"}
-    assert text_rule_analyzer.data_after_selenium(text, rule) == result
+    assert text_rule_analyzer.process_after_get_variables(text, rule) == result
 
-def test_data_after_selenium_error_type_rule():
+def test_process_after_get_variables_error_type_rule():
     text = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"c"}, "other":"xxxx"}
     rule = {"in":"campo1", "out":"campo3", "valueIn":"a", "action":"COPY-ANOTHER",\
             "another":"campo2"}
     result = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"c"}, "other":"xxxx"}
-    assert text_rule_analyzer.data_after_selenium(text, rule) == result
+    assert text_rule_analyzer.process_after_get_variables(text, rule) == result
 
-def test_data_after_selenium_one_rule():
+def test_process_after_get_variables_one_rule():
     text = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"c"}, "other":"xxxx"}
     rule = [{"in":"campo1", "out":"campo3", "valueIn":"a", "action":"COPY-ANOTHER",\
              "another":"campo2"}]
     result = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"b"}, "other":"xxxx"}
-    assert text_rule_analyzer.data_after_selenium(text, rule) == result
+    assert text_rule_analyzer.process_after_get_variables(text, rule) == result
 
-def test_data_after_selenium_two_rules():
+def test_process_after_get_variables_two_rules():
     text = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"c"}, "other":"xxxx"}
     rule = [{"in":"campo1", "out":"campo3", "valueIn":"a", "action":"COPY-ANOTHER",\
              "another":"campo2"}, \
             {"in":"campo1", "out":"campo1", "valueIn":"a", "action":"COPY", "valueOut":"hello"}]
     result = {"newCorreoUrl":{"campo1":"hello", "campo2":"b", "campo3":"b"}, "other":"xxxx"}
-    assert text_rule_analyzer.data_after_selenium(text, rule) == result
+    assert text_rule_analyzer.process_after_get_variables(text, rule) == result
 
 def test_review_data_ok_void():
     text = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"c"}, "other":"xxxx"}
