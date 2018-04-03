@@ -13,28 +13,30 @@ configText = open("../test/config/configOk.json","r").read()
 allconfig  = json.loads(configText)
 config     = allconfig.get("webPagesDef",None)
 time_out   = 20
-"""
+
 @pytest.mark.timeout(time_out)
 def test_determinate_Linkedin():
 	data = {}
 	data["a"] = "b"
-	urlLinkedin = "https://www.linkedin.com/comm/jobs/view/594182902?alertAction=3Dmarkasviewed&amp;savedSearchAuthToken=3D1%26AQHd_D1jAldtMQAAAWFylK3MksuHtX-Vkv0R8L4MIHsulkZgfHDFPPThdKagN4qX5SKs9anuOhwncTrDUrEqRpn_xAamPjP4PBFVn3viQlZ-Kwm8uVFOslO_HeqAyojkovMHY2hKl0Au7dytOLDyOpD-7NpWvpb2EXR4-LrEaEU3yW7KdTcIJFmx7E-Yf3Y7jXpYcJ961L34M37L41gQXr1B7ONDfdYx7YLdo6XVjr3MJYRG1_MoveFuJ6aosWMX4XdQqRcERYDCgbWDTU4ldVG6S8_QgH6781S1qRV2mrKY9635JE-NGw%26AVIwFRZ6FlWuciClOHUVZsMrK2cC&amp;savedSearchId=3D216056663&amp;refId=3D09245227-857f-4a7f-b692-1e12ea77d225&amp;trk=3Deml-job-alert-member-details&amp;midToken=3DAQF6sbeyCrMTqg&amp;trkEmail=3Deml-email_job_alert_single_02-null-6-null-null-1j0q1v%7Ejddp9xs9%7Ees-null-jobs%7Eview&amp;lipi=3Durn%3Ali%3Apage%3Aemail_email_job_alert_single_02%3BelCA1wQjRkm7uKIFkK%2Bc8w%3D%3D"
+	urlLinkedin = "https://www.linkedin.com/comm/jobs/view/646084323?alertAction=3Dmarkasviewed&savedSearchAuthToken=3D1%26AQFssPvjMOy2NwAAAWKCZKZyyVrw5WgOs5aYLehvvxAjH_E1afIyLvdHWdw5t23MJQjwqL8CAv3pu-Ns9M8wvwdLfwcQK8uGa0MwFKw21VDRQowXKthaNmr0M4ziww54Knugn9xcaODtLLRK8Q8QLr9XVGzEdThpPu2mA2GfLFDZxq5cv5swkDwBbEXaqpMUjIr0OsJY-4zTLbUw0uh-MN4JuNf5tCL_PU4oSH14vpeDvydwIm13VNP1rObhNYByDRDn09fKeoMELlyloqu52Ti2IIs1kEafmcDqqv2b5tM_ZxhYUOxItg%26AV89wZ0VKsdVq9pPseqxgaqvzk4p&savedSearchId=3D200671386&refId=3D48707036-8509-4b12-9180-70adafbebebc&trk=3Deml-job-alert-member-details&midToken=3DAQF6sbeyCrMTqg&trkEmail=3Deml-email_job_alert_single_02-null-4-null-null-1j0q1v%7Ejfh4ccrx%7Eyb-null-jobs%7Eview&lipi=3Durn%3Ali%3Apage%3Aemail_email_job_alert_single_02%3BOFvcM7x2SB23%2B1k6w2uOzg%3D%3D"
 	correoUrl = {"url":urlLinkedin}	
-	analyzerWebJobs = AnalyzerWebJobs(config,"DEBUG")
+	seleniumaccess = SeleniumAccess(config, "DEBUG")
 	seleniumaccess.open_selenium()
+	analyzerWebJobs = AnalyzerWebJobs(config, seleniumaccess.driver, "DEBUG")
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('status','') == True
 	assert result.get('control','') == 'CORPUS'
 	assert result.get('page','') == 'linkedin'
-	assert result.get('realUrl','') == urlLinkedin	
-	assert result["newCorreoUrl"].get("titulo","") == 'Performance Support (data) Analyst Contract Dublin'
-	assert result["newCorreoUrl"].get("donde","") == 'Baile \xc3\x81tha Cliath, IE'
-	assert len(result["newCorreoUrl"].get("summary","")) == 488
-	assert abs(result["newCorreoUrl"].get("fecha","") - datetime.datetime(2018, 2, 8, 7, 25, 1, 0))\
+	assert result.get('urlOk','') == urlLinkedin	
+	assert result["newCorreoUrl"].get("titulo","") == 'Product Manager - Data Quality and Big Data'
+	assert result["newCorreoUrl"].get("donde","") == 'Dublin, IE'
+	assert len(result["newCorreoUrl"].get("summary","")) == 5408
+	assert abs(result["newCorreoUrl"].get("fecha","") - datetime.datetime(2018, 4, 01, 19, 35, 27, 0))\
 	       < datetime.timedelta(days=1)
-	assert result["newCorreoUrl"].get("company","") == 'Computer People Inc'
-	
+	assert result["newCorreoUrl"].get("company","") == 'Informatica'
+
+"""	
 @pytest.mark.timeout(time_out)
 def test_determinate_recruitireland():
 	url_recruitireland = "https://www.recruitireland.com/job/?JobID=3D15323238&utm_source=3Djobalerts&utm_medium=3Demail&utm_campaign=3DJobAlerts"
@@ -45,7 +47,7 @@ def test_determinate_recruitireland():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'recruitireland'
-	assert result.get('realUrl','') == url_real_recruitireland	
+	assert result.get('urlOk','') == url_real_recruitireland	
 	assert result["newCorreoUrl"].get("titulo","") == 'BUSINESS ANALYST'
 	assert result["newCorreoUrl"].get("donde","") == 'DUBLIN SOUTH'
 	assert len(result["newCorreoUrl"].get("summary","")) == 1086
@@ -66,7 +68,7 @@ def test_determinate_irishjobs():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'irishjobs'
-	assert result.get('realUrl','') == url_irishjobs	
+	assert result.get('urlOk','') == url_irishjobs	
 	assert result["newCorreoUrl"].get("titulo","") == 'SENIOR JAVASCRIPT UI DEVELOPER'
 	assert result["newCorreoUrl"].get("donde","") == 'Galway / Galway city'
 	assert len(result["newCorreoUrl"].get("summary","")) == 913
@@ -88,7 +90,7 @@ def test_determinate_jobs_ie():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'jobs.ie'
-	assert result.get('realUrl','') == url_real_jobsie	
+	assert result.get('urlOk','') == url_real_jobsie	
 	assert result["newCorreoUrl"].get("titulo","") == 'Audio Visual/ VC Technician'
 	assert result["newCorreoUrl"].get("donde","") == 'Grand Canal Square, Grand Canal Dock, Dublin 2'
 	assert len(result["newCorreoUrl"].get("summary","")) == 2873
@@ -110,7 +112,7 @@ def test_determinate_jobs_monster():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'monster.ie'
-	assert result.get('realUrl','') == url_real_monster	
+	assert result.get('urlOk','') == url_real_monster	
 	assert result["newCorreoUrl"].get("titulo","") == 'Java Web Services Developer'
 	assert result["newCorreoUrl"].get("donde","") == 'Dublin, Dublin'
 	assert len(result["newCorreoUrl"].get("summary","")) == 983
@@ -120,7 +122,6 @@ def test_determinate_jobs_monster():
 	assert result.get('status','') == True
 	assert result.get('control','') == 'CORPUS'
 """
-
 @pytest.mark.timeout(time_out)
 def test_determinate_LinkedinErrorMyPage():
 	urlLinkedin = "https://www.linkedin.com/in/albertoggago/"
@@ -134,7 +135,7 @@ def test_determinate_LinkedinErrorMyPage():
 	assert result.get('status','') == False
 	assert result.get('control','') == 'SEARCH'
 	assert result.get('page','') == 'linkedin'
-	#assert result.get('realUrl','') == urlLinkedin	
+	#assert result.get('urlOk','') == urlLinkedin	
 	assert result["newCorreoUrl"].get("titulo","") == ''
 	assert result["newCorreoUrl"].get("donde","") == ''
 	assert result["newCorreoUrl"].get("summary","") == ''
@@ -153,7 +154,7 @@ def test_determinate_recruitireland_error_no_exits():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'recruitireland'
-	#assert result.get('realUrl','') == url_real_recruitireland	
+	#assert result.get('urlOk','') == url_real_recruitireland	
 	assert result["newCorreoUrl"].get("titulo","") == ''
 	assert result["newCorreoUrl"].get("donde","") == ''
 	assert result["newCorreoUrl"].get("summary","") == ''
@@ -174,7 +175,7 @@ def test_determinate_recruitireland_error_retired():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'recruitireland'
-	#assert result.get('realUrl','') == url_real_recruitireland	
+	#assert result.get('urlOk','') == url_real_recruitireland	
 	assert result["newCorreoUrl"].get("titulo","") == ''
 	assert result["newCorreoUrl"].get("donde","") == ''
 	assert result["newCorreoUrl"].get("summary","") == ''
@@ -194,7 +195,7 @@ def test_determinate_irishjobs_error_retired():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'irishjobs'
-	#assert result.get('realUrl','') == url_irishjobs	
+	#assert result.get('urlOk','') == url_irishjobs	
 	assert result["newCorreoUrl"].get("titulo","") == 'SENIOR FRONTEND ENGINEER'
 	assert result["newCorreoUrl"].get("donde","") == 'Kildare / Wicklow / Dublin'
 	assert result["newCorreoUrl"].get("summary","") == ''
@@ -217,7 +218,7 @@ def test_determinate_irishjobs_error_error():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'irishjobs'
-	#assert result.get('realUrl','') == url_irishjobs	
+	#assert result.get('urlOk','') == url_irishjobs	
 	assert result["newCorreoUrl"].get("titulo","") == ''
 	assert result["newCorreoUrl"].get("donde","") == ''
 	assert result["newCorreoUrl"].get("summary","") == ''
@@ -238,7 +239,7 @@ def test_determinate_jobsie_error_retired():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'jobs.ie'
-	#assert result.get('realUrl','') == url_real_jobsie	
+	#assert result.get('urlOk','') == url_real_jobsie	
 	assert result["newCorreoUrl"].get("titulo","") == ''
 	assert result["newCorreoUrl"].get("donde","") == ''
 	assert result["newCorreoUrl"].get("summary","") == ''
@@ -259,7 +260,7 @@ def test_determinate_jobsie_error_noexist():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'jobs.ie'
-	#assert result.get('realUrl','') == url_real_jobsie	
+	#assert result.get('urlOk','') == url_real_jobsie	
 	assert result["newCorreoUrl"].get("titulo","") == ''
 	assert result["newCorreoUrl"].get("donde","") == ''
 	assert result["newCorreoUrl"].get("summary","") == ''
@@ -280,7 +281,7 @@ def test_determinate_monster_error_retired():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'monster.ie'
-	#assert result.get('realUrl','') == url_real_monster
+	#assert result.get('urlOk','') == url_real_monster
 	assert result["newCorreoUrl"].get("titulo","") == 'Employers'
 	assert result["newCorreoUrl"].get("donde","") == ''
 	assert result["newCorreoUrl"].get("summary","") == ''
@@ -301,7 +302,7 @@ def test_determinate_monster_error_noexist():
 	result = analyzerWebJobs.analyze(correoUrl)
 	seleniumaccess.close_selenium()
 	assert result.get('page','') == 'monster.ie'
-	#assert result.get('realUrl','') == url_real_monster	
+	#assert result.get('urlOk','') == url_real_monster	
 	assert result["newCorreoUrl"].get("titulo","") == 'Employers'
 	assert result["newCorreoUrl"].get("donde","") == ''
 	assert result["newCorreoUrl"].get("summary","") == ''
