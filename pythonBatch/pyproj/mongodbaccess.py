@@ -17,11 +17,11 @@ class MongoDBAccess(object):
         """Need a file where has got all parameters and level of Loggin"""
         self.logger = Logger(self.__class__.__name__, levelLog).get()
         self.logger.setLevel('INFO')
-        if fileName :
+        if fileName:
             config_text = open(fileName, "r").read()
             config = json.loads(config_text)
         else:
-            config ={}
+            config = {}
             config["url"] = "localhost:27017"
             config["nameDB"] = "temp"
 

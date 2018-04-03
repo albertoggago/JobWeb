@@ -35,7 +35,7 @@ class ReadAndAnalyse(object):
             self.seleniumaccess = SeleniumAccess(config, levelLog)
             self.analyzer_web_jobs = AnalyzerWebJobs(config, self.seleniumaccess.driver, levelLog)
         except IOError:
-            self.logger.error("File Error: %s", fileConfig)            
+            self.logger.error("File Error: %s", fileConfig)
             self.mongo_db_access = MongoDBAccess("", levelLog)
             self.mail_access = MailAccess("", levelLog)
 

@@ -21,15 +21,11 @@ class MailAccess(object):
     def __init__(self, fileConfig, levelLog):
         self.logger = Logger(self.__class__.__name__, levelLog).get()
 
-        if fileConfig :
+        if fileConfig:
             config_text = open(fileConfig, "r").read()
             self._config = json.loads(config_text)
             self.login()
-        else:
-            self._config = {}
-            self._config["sslServer"]= ""
-            self._config["fromEmail"]= ""
-            
+
 
     def login(self):
         """ do loggin using informaction of file configuration"""
@@ -56,6 +52,8 @@ class MailAccess(object):
 
     def status(self):
         """determine id mail server is connect or not"""
+        if self._mail is None:
+            return False
         try:
             result = self._mail.namespace()
             self.logger.debug("Status email: %s", result)
