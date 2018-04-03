@@ -37,52 +37,52 @@ class AnalyzerWebJobs(object):
             result["status"] = False
         return result
 
-    def determinate_web(self, result_imput, web_url):
+    def determinate_web(self, json_info_web, web_url):
         """ determinate web where working to set configuration to analize of this web"""
         self.logger.info("determinate Web")
         for web in self.config.get("pages", []):
             if web.get("ruleFind", "ERROR-GET-RULEFIND") in web_url:
                 self.logger.info("Locate web: %s", web.get("name", "ERROR"))
-                result_imput["page"] = web.get("name", "ERROR")
-                result_imput["control"] = "REVIEW"
-                result_imput["urlOk"] =\
+                json_info_web["page"] = web.get("name", "ERROR")
+                json_info_web["control"] = "REVIEW"
+                json_info_web["urlOk"] =\
                     self.text_rule_analyzer\
                         .real_url_transform(web_url, web.get("rulesTransformUrl", []))
 
-        if result_imput.get("page", None) is None:
-            self.determinate_other_web(result_imput, web_url)
+        if json_info_web.get("page", None) is None:
+            self.determinate_other_web(json_info_web, web_url)
 
-    def determinate_other_web(self, result, web_url):
+    def determinate_other_web(self, json_info, web_url):
         """it has got a list of web to ignore and not compute"""
         for web in self.config.get("otherPages", []):
             if web in web_url:
                 self.logger.info("Locate web OTHER: %s", web)
-                result["page"] = "N/D"
-                result["control"] = "OTRO"
-        if result.get("page", None) is None:
+                json_info["page"] = "N/D"
+                json_info["control"] = "OTRO"
+        if json_info.get("page", None) is None:
             self.logger.info("Locate web ERROR: %s", web_url)
-            result["page"] = "N/D"
-            result["control"] = "ERROR"
+            json_info["page"] = "N/D"
+            json_info["control"] = "ERROR"
 
-    def find_rules_web_content(self, result_imput):
+    def find_rules_web_content(self, json_info_web):
         """Find Information using rules of web"""
         self.logger.info("Find Rules Web Content")
         rules_page = {}
         for page in self.config["pages"]:
-            if page["name"] == result_imput["page"]:
+            if page["name"] == json_info_web["page"]:
                 self.logger.info("Locate page get rules: ")
                 self.logger.debug(page)
                 rules_page = page
 
         necesary_variables = rules_page.get("necesaryVariables", [])
-        result_imput["newCorreoUrl"] = {}
+        json_info_web["newCorreoUrl"] = {}
         for variable in necesary_variables:
-            result_imput["newCorreoUrl"][variable] = self.process_variable(variable,\
+            json_info_web["newCorreoUrl"][variable] = self.process_variable(variable,\
                                       rules_page.get("rulesTransformData", []).get(variable, {}))
 
         #determinate rules after search
         result_with_global_rules =\
-            self.text_rule_analyzer.process_after_get_variables(result_imput,\
+            self.text_rule_analyzer.process_after_get_variables(json_info_web,\
                                                         rules_page.get("rulestransformFinal", []))
         result_with_global_rules["status"] = \
             self.text_rule_analyzer.review_data_ok(result_with_global_rules,\
