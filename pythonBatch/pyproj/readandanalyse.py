@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/environment python
 # -*- coding: utf-8 -*-
 
 """ file include class ReadAndAnalyse """
@@ -21,7 +21,7 @@ class ReadAndAnalyse(object):
     mongo_db_access = None
     mail_access = None
     analyzer_web_jobs = None
-    env = None
+    environment = None
     seleniumaccess = None
 
     def __init__(self, fileConfig, levelLog):
@@ -32,7 +32,7 @@ class ReadAndAnalyse(object):
             config_text = open(fileConfig, "r").read()
             allconfig = json.loads(config_text)
             config = allconfig.get("webPagesDef", None)
-            self.env = allconfig.get("env", "DEV")
+            self.environment = allconfig.get("env", "DEV")
             self.seleniumaccess = SeleniumAccess(config, levelLog)
             self.analyzer_web_jobs = AnalyzerWebJobs(config, levelLog)
         except IOError:
@@ -68,7 +68,7 @@ class ReadAndAnalyse(object):
                 count_emails += 1
                 self.mail_access.store(ele)
 
-        if self.env == "PRODUCTION":
+        if self.environment == "PRODUCTION":
             self.logger.info("CLEAN EMAIL")
             self.mail_access.clean()
         self.mail_access.logout()
