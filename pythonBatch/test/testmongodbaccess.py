@@ -208,9 +208,9 @@ def test_insert_ok():
     assert res_insert != None
     assert res_find1['clave'] == "IPInsert"
 
-    mongo_db_access.delete_one("testInsert_ok", {"clave":"IPInsert"})
+    res_remove = mongo_db_access.delete_one("testInsert_ok", {"clave":"IPInsert"})
     res_find2 = mongo_db_access.find_one("testInsert_ok", {"clave":"IPInsert"})
-    res_remove = mongo_db_access.drop("testInsert_ok")
+    mongo_db_access.drop("testInsert_ok")
 
     assert res_remove.deleted_count == 1
     assert res_find2 is None
