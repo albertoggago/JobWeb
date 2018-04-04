@@ -1,23 +1,21 @@
 """Test mongo DB Access"""
 import sys
-import os
-import random
 
 sys.path.insert(0, "..")
 try:
     from pyproj.mongodbaccess import MongoDBAccess
 except ImportError:
-    print('No Import')
+    print 'No Import'
 
 def test_ok():
     """test_ok"""
     mongo_db_access_ok = MongoDBAccess("../test/config/configOk.json", "DEBUG")
-    
+
     assert mongo_db_access_ok.status()
 
 def test_file_error():
     """test_file_error"""
-    try :
+    try:
         MongoDBAccess("../test/config/config_okxx.json", "DEBUG")
         assert False
     except IOError:
@@ -26,7 +24,7 @@ def test_file_error():
 def test_error():
     """test_error"""
     mongo_db_access_error = MongoDBAccess("../test/config/configMongoDBError.json", "DEBUG")
-    
+
     assert not mongo_db_access_error.status()
 
 def test_find_one_ok():
@@ -35,7 +33,7 @@ def test_find_one_ok():
     mongo_db_access.insert("testFindOne", {"clave":"IPFind", "value":0})
     res = mongo_db_access.find_one("testFindOne", {"clave":"IPFind"})
     mongo_db_access.drop("testFindOne")
-    
+
     assert res != None
 
 def test_find_one_error_db():
@@ -177,12 +175,12 @@ def test_update_many_error_db():
 
     assert res is None
 
-def test_update_many_error_collection():
+def test_update_many_error_collect():
     """test_update_many_error_collection"""
     mongo_db_access = MongoDBAccess("../test/config/configOk.json", "DEBUG")
-    res_insert1 = mongo_db_access.insert("testUpdateManyErrorColection",\
+    mongo_db_access.insert("testUpdateManyErrorColection",\
                                          {"clave":"IPUpdateMany", "value":0})
-    res_insert = mongo_db_access.insert("testUpdateManyErrorColection",\
+    mongo_db_access.insert("testUpdateManyErrorColection",\
                                         {"clave":"IPUpdateMany", "value":0})
     res = mongo_db_access.update_many("testUpdateManyErrorColectionXX",\
                                       {"clave":"IPManyUpdateError"}, {'valorX':"1234"})
@@ -193,7 +191,7 @@ def test_update_many_error_collection():
 def test_update_many_error_find():
     """test_update_many_error_find"""
     mongo_db_access = MongoDBAccess("../test/config/configOk.json", "DEBUG")
-    res_insert1 = mongo_db_access.insert("testUpdateManyErrorFind",\
+    mongo_db_access.insert("testUpdateManyErrorFind",\
                                          {"clave":"IPUpdateManyErrorF", "value":0})
     res = mongo_db_access.update_many("testUpdateManyErrorFind",\
                                       {"clave":"IPUpdateManyErrorFXX"}, {'value':1})
@@ -210,14 +208,14 @@ def test_insert_ok():
     assert res_insert != None
     assert res_find1['clave'] == "IPInsert"
 
-    resRemove = mongo_db_access.delete_one("testInsert_ok", {"clave":"IPInsert"})
+    mongo_db_access.delete_one("testInsert_ok", {"clave":"IPInsert"})
     res_find2 = mongo_db_access.find_one("testInsert_ok", {"clave":"IPInsert"})
-    mongo_db_access.drop("testInsert_ok")
+    res_remove = mongo_db_access.drop("testInsert_ok")
 
-    assert resRemove.deleted_count == 1
+    assert res_remove.deleted_count == 1
     assert res_find2 is None
 
-def test_insertError_db():
+def test_insert_error_db():
     """test_insertError_db"""
     mongo_db_access = MongoDBAccess("../test/config/configMongoDBError.json", "DEBUG")
     res = mongo_db_access.insert("testInsertError", {"clave":"IPInsertError"})
