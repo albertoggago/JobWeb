@@ -1,18 +1,14 @@
 """Test ANalyzeWebJobs Functions no Selenium"""
 import sys
-import os
 import json
-import datetime
-import pymongo
-import pytest
 
 sys.path.insert(0, "..")
 from pyproj.analyzerwebjobs import AnalyzerWebJobs
 from pyproj.seleniumaccess import SeleniumAccess
 
-CONFIG_TEXT = open("../test/config/configOk.json","r").read()
+CONFIG_TEXT = open("../test/config/configOk.json", "r").read()
 ALL_CONFIG = json.loads(CONFIG_TEXT)
-CONFIG = ALL_CONFIG.get("webPagesDef",None)
+CONFIG = ALL_CONFIG.get("webPagesDef", None)
 TIME_OUT = 20
 SELENIUM_ACCESS = SeleniumAccess(CONFIG, "DEBUG")
 ANALYZER_WEB_JOBS = AnalyzerWebJobs(CONFIG, "DEBUG")

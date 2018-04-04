@@ -6,7 +6,7 @@ sys.path.insert(0, "..")
 try:
     from pyproj.logger import Logger
 except ImportError:
-    print('No Import')
+    print 'No Import'
 
 def test_logger_test():
     """Test logger"""
@@ -19,5 +19,5 @@ def test_logger_test():
     logger = Logger("test", "DEBUG").get()
     logger.error("Error")
     data = open("log/test.log", "r").read()
-    
-    assert " ERROR:log_namespace.test Error" in data 
+
+    assert " ERROR:log_namespace.test Error" in data
