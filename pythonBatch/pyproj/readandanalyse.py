@@ -34,7 +34,7 @@ class ReadAndAnalyse(object):
             config = allconfig.get("webPagesDef", None)
             self.env = allconfig.get("env", "DEV")
             self.seleniumaccess = SeleniumAccess(config, levelLog)
-            self.analyzer_web_jobs = AnalyzerWebJobs(config, self.seleniumaccess.driver, levelLog)
+            self.analyzer_web_jobs = AnalyzerWebJobs(config, levelLog)
         except IOError:
             self.logger.error("File Error: %s", fileConfig)
             self.mongo_db_access = MongoDBAccess("", levelLog)
@@ -144,7 +144,7 @@ class ReadAndAnalyse(object):
     def scrap_url(self, correo_url):
         """  scrap one url retrieve the information locate """
         self.logger.info("SCRAP_URL: %s", correo_url["url"])
-        data_of_scraping = self.analyzer_web_jobs.analyze(correo_url)
+        data_of_scraping = self.analyzer_web_jobs.analyze(correo_url, self.seleniumaccess.driver)
         self.mongo_db_access.update_one("correoUrl", \
                          {"_id":correo_url["_id"]}, \
                          {"control":data_of_scraping.get("control", "ERROR"),\

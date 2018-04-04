@@ -15,24 +15,22 @@ class AnalyzerWebJobs(object):
     config = None
     logger = None
     text_rule_analyzer = None
-    driver = None
 
-    def __init__(self, config, driver, level_log):
+    def __init__(self, config, level_log):
         self.logger = Logger(self.__class__.__name__, level_log).get()
         self.config = config
         self.text_rule_analyzer = TextRuleAnalyzer(level_log)
-        self.driver = driver
 
-    def analyze(self, correo_url):
+    def analyze(self, correo_url, driver):
         """module analyze get url and prepare scraping"""
-        if self.driver is None:
+        if driver is None:
             self.logger.debug("Driver NULL!!!!!")
             return {}
         result = {}
         self.determinate_web(result, correo_url["url"])
         if result.get("control", "") == "REVIEW":
-            self.driver.get(result.get("urlOk", ""))
-            self.find_rules_web_content(result)
+            driver.get(result.get("urlOk", ""))
+            self.find_rules_web_content(result, driver)
         else:
             result["status"] = False
         return result
@@ -64,7 +62,7 @@ class AnalyzerWebJobs(object):
             json_info["page"] = "N/D"
             json_info["control"] = "ERROR"
 
-    def find_rules_web_content(self, json_info_web):
+    def find_rules_web_content(self, json_info_web, driver):
         """Find Information using rules of web"""
         self.logger.info("Find Rules Web Content")
         rules_page = {}
@@ -78,7 +76,8 @@ class AnalyzerWebJobs(object):
         json_info_web["newCorreoUrl"] = {}
         for variable in necesary_variables:
             json_info_web["newCorreoUrl"][variable] = self.process_variable(variable,\
-                                      rules_page.get("rulesTransformData", []).get(variable, {}))
+                                      rules_page.get("rulesTransformData", []).get(variable, {}),\
+                                                                            driver)
 
         #determinate rules after search
         self.text_rule_analyzer.process_after_get_variables(json_info_web,\
@@ -92,7 +91,7 @@ class AnalyzerWebJobs(object):
             json_info_web["control"] = "SEARCH"
         self.logger.debug(json_info_web)
 
-    def process_variable(self, variable, rules_transform):
+    def process_variable(self, variable, rules_transform, driver):
         """analize each varable of rules"""
         self.logger.info("Process Variable: %s", variable)
         self.logger.info(rules_transform)
@@ -100,7 +99,7 @@ class AnalyzerWebJobs(object):
         #secuences
         secuences = rules_transform.get("secuences", [{"tipo":"class", "elemento":"xx"}])
         self.logger.debug(secuences)
-        text_after_secuence = self.in_driver_data_and_return_text(secuences)
+        text_after_secuence = self.in_driver_data_and_return_text(secuences, driver)
 
         #split
         self.logger.debug("text_after_secuence: %s", text_after_secuence)
@@ -121,9 +120,9 @@ class AnalyzerWebJobs(object):
 
         return text_out
 
-    def in_driver_data_and_return_text(self, secuences):
+    def in_driver_data_and_return_text(self, secuences, driver):
         """ Select of driver selenium data using secuences rules"""
-        driver_work = self.driver
+        driver_work = driver
         try:
             for secuence in secuences:
                 if secuence["tipo"] == "class":
