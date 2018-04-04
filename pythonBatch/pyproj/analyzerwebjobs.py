@@ -19,7 +19,7 @@ class AnalyzerWebJobs(object):
 
     def __init__(self, config, driver, level_log):
         self.logger = Logger(self.__class__.__name__, level_log).get()
-        self.config = config
+        self.config = configXXXXXX
         self.text_rule_analyzer = TextRuleAnalyzer(level_log)
         self.driver = driver
 
