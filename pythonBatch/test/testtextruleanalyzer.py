@@ -281,14 +281,14 @@ def test_split_text_error_type():
     text_out = text_in
     assert TEXT_RULE_ANALYZER.split_text(text_in, rule) == text_out
 
-def test_split_text_ok_without_n():
+def test_spltxtokwith_n():
     """Test"""
     text_in = "text1 split text2"
     rule = {"text_split": " ", "initText" : "text1"}
     text_out = "split"
     assert TEXT_RULE_ANALYZER.split_text(text_in, rule) == text_out
 
-def test_split_text_ok_without_init_text():
+def test_spltxtokwith_init_text():
     """Test"""
     text_in = "text1 text2 text3"
     rule = {"text_split": " ", "n" : 2}
@@ -323,7 +323,7 @@ def test_split_text_out_range():
     text_out = ""
     assert TEXT_RULE_ANALYZER.split_text(text_in, rule) == text_out
 
-def test_split_text_ok_full_berkley_recruiteland():
+def test_split_text_ok_full_txt():
     """Test"""
     text_in = "Java Web Services Developer - Berkley Recruitment Group"
     #Error in rule 'text_split' put 'text'
@@ -337,18 +337,16 @@ def test_decrease_date_no_text():
     date_out = datetime.datetime.now()
     assert abs(TEXT_RULE_ANALYZER.decrease_date(text_in) - date_out) < datetime.timedelta(days=1)
 
-def test_decrease_date_no_text_error():
+def test_decrease_date_no_text_err():
     """Test"""
     text_in = "en un lugar de la mancha "
     date_out = datetime.datetime.now()
-    diff = 0
     assert abs(TEXT_RULE_ANALYZER.decrease_date(text_in) - date_out) < datetime.timedelta(days=1)
 
 def test_decrease_date_day_null():
     """Test"""
     text_in = "hace dia more text to read"
     date_out = datetime.datetime.now()
-    diff = 0
     assert abs(TEXT_RULE_ANALYZER.decrease_date(text_in) - date_out) < datetime.timedelta(days=1)
 
 def test_decrease_date_month_null():
