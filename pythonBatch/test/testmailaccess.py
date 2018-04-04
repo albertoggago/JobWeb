@@ -1,3 +1,4 @@
+"""test mail access"""
 import sys
 import os
 import random
@@ -8,52 +9,51 @@ try:
 except ImportError:
     print('No Import')
 
-def test_mailAcessOk():
-	mailAccess = MailAccess("../test/config/configOk.json","DEBUG")
-	assert mailAccess.status()
+def test_mail_acess_ok():
+    mail_access = MailAccess("../test/config/configOk.json", "DEBUG")
+    assert mail_access.status()
 
 def test_mailAcessOkMulti():
-	mailAccess = MailAccess("../test/config/configOk.json","DEBUG")
-	assert mailAccess.status()
-	
-	resLogout = mailAccess.logout()
-	assert resLogout
-	assert not mailAccess.status()
+    mail_access = MailAccess("../test/config/configOk.json", "DEBUG")
+    assert mail_access.status()
+    
+    resLogout = mail_access.logout()
+    assert resLogout
+    assert not mail_access.status()
 
-	resLogin  = mailAccess.login()
-	assert resLogin
-	assert mailAccess.status()
+    resLogin = mail_access.login()
+    assert resLogin
+    assert mail_access.status()
 
 def test_mailDoubleLogut():
-	mailAccess = MailAccess("../test/config/configOk.json","DEBUG")
-	assert mailAccess.status()
-	
-	resLogout1 = mailAccess.logout()
-	resLogout2  = mailAccess.logout()
+    mail_access = MailAccess("../test/config/configOk.json", "DEBUG")
+    assert mail_access.status()
 
-	assert     resLogout1
-	assert not resLogout2
+    resLogout1 = mail_access.logout()
+    resLogout2 = mail_access.logout()
+
+    assert     resLogout1
+    assert not resLogout2
 
 def test_mailAcessError():
-	mailAccess = MailAccess("../test/config/configMailAccessError.json","DEBUG")
-	
-	assert not mailAccess.status()
-	
+    mail_access = MailAccess("../test/config/configMailAccessError.json", "DEBUG")
+
+    assert not mail_access.status()    
 
 def test_listMailOk():
-	mailAccess = MailAccess("../test/config/configOk.json","DEBUG")
-	listMails =  mailAccess.search_mails("Inbox")
-	
-	assert listMails != None
+    mail_access = MailAccess("../test/config/configOk.json", "DEBUG")
+    listMails = mail_access.search_mails("Inbox")
+
+    assert listMails != None
 
 def test_listMailError():
-	mailAccess = MailAccess("../test/config/configMailAccessError.json","DEBUG")
-	listMails =  mailAccess.search_mails("Inbox")
-	
-	assert listMails == None
+    mail_access = MailAccess("../test/config/configMailAccessError.json", "DEBUG")
+    listMails = mail_access.search_mails("Inbox")
+
+    assert listMails == None
 
 def test_listMailErrorInbox():
-	mailAccess = MailAccess("../test/config/configOk.json","DEBUG")
-	listMails =  mailAccess.search_mails("InboxXXXX")
-	
-	assert listMails != None
+    mail_access = MailAccess("../test/config/configOk.json", "DEBUG")
+    listMails = mail_access.search_mails("InboxXXXX")
+
+    assert listMails != None
