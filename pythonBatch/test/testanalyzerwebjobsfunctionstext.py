@@ -14,7 +14,7 @@ allconfig  = json.loads(configText)
 config     = allconfig.get("webPagesDef",None)
 time_out   = 20
 seleniumaccess = SeleniumAccess(config, "DEBUG")
-analyzerWebJobs = AnalyzerWebJobs(config, seleniumaccess.driver, "DEBUG")
+analyzerWebJobs = AnalyzerWebJobs(config, "DEBUG")
 
 def test_determinate_web_error():
     url = "https://www.none.com"

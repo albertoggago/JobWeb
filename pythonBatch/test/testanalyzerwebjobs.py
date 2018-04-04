@@ -34,7 +34,7 @@ def test_determinate_Linkedin():
     correoUrl = {"url":urlLinkedin}
     seleniumaccess = SeleniumAccess(config, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzerWebJobs = AnalyzerWebJobs(config, seleniumaccess.driver, "DEBUG")
+    analyzerWebJobs = AnalyzerWebJobs(config, "DEBUG")
     result = analyzerWebJobs.analyze(correoUrl)
     seleniumaccess.close_selenium()
     assert result.get("status", "") == True
@@ -56,7 +56,7 @@ def test_determinate_LinkedinErrorMyPage():
     correoUrl = {"url":urlLinkedin}
     seleniumaccess = SeleniumAccess(config, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzerWebJobs = AnalyzerWebJobs(config, seleniumaccess.driver, "DEBUG")
+    analyzerWebJobs = AnalyzerWebJobs(config, "DEBUG")
     result = analyzerWebJobs.analyze(correoUrl)
     print result
     seleniumaccess.close_selenium()
@@ -103,7 +103,7 @@ def test_determinate_recruitireland_error_retired():
     correoUrl = {"url":url_recruitireland}    
     seleniumaccess = SeleniumAccess(config, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzerWebJobs = AnalyzerWebJobs(config, seleniumaccess.driver, "DEBUG")
+    analyzerWebJobs = AnalyzerWebJobs(config, "DEBUG")
     result = analyzerWebJobs.analyze(correoUrl)
     seleniumaccess.close_selenium()
     assert result.get("page", "") == "recruitireland"
@@ -123,7 +123,7 @@ def test_determinate_irishjobs_error_retired():
     correoUrl = {"url":url_irishjobs}    
     seleniumaccess = SeleniumAccess(config, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzerWebJobs = AnalyzerWebJobs(config, seleniumaccess.driver, "DEBUG")
+    analyzerWebJobs = AnalyzerWebJobs(config, "DEBUG")
     result = analyzerWebJobs.analyze(correoUrl)
     seleniumaccess.close_selenium()
     assert result.get("page", "") == "irishjobs"
@@ -146,7 +146,7 @@ def test_determinate_irishjobs_error_error():
     correoUrl = {"url":url_irishjobs}    
     seleniumaccess = SeleniumAccess(config, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzerWebJobs = AnalyzerWebJobs(config, seleniumaccess.driver, "DEBUG")
+    analyzerWebJobs = AnalyzerWebJobs(config, "DEBUG")
     result = analyzerWebJobs.analyze(correoUrl)
     seleniumaccess.close_selenium()
     assert result.get("page", "") == "irishjobs"
@@ -167,7 +167,7 @@ def test_determinate_jobsie_error_retired():
     correoUrl = {"url":url_jobsie}    
     seleniumaccess = SeleniumAccess(config, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzerWebJobs = AnalyzerWebJobs(config, seleniumaccess.driver, "DEBUG")
+    analyzerWebJobs = AnalyzerWebJobs(config, "DEBUG")
     result = analyzerWebJobs.analyze(correoUrl)
     seleniumaccess.close_selenium()
     assert result.get("page", "") == "jobs.ie"
@@ -188,7 +188,7 @@ def test_determinate_jobsie_error_noexist():
     correoUrl = {"url":url_jobsie}    
     seleniumaccess = SeleniumAccess(config, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzerWebJobs = AnalyzerWebJobs(config, seleniumaccess.driver, "DEBUG")
+    analyzerWebJobs = AnalyzerWebJobs(config, "DEBUG")
     result = analyzerWebJobs.analyze(correoUrl)
     seleniumaccess.close_selenium()
     assert result.get("page", "") == "jobs.ie"
@@ -209,7 +209,7 @@ def test_determinate_monster_error_retired():
     correoUrl = {"url":url_monster}    
     seleniumaccess = SeleniumAccess(config, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzerWebJobs = AnalyzerWebJobs(config, seleniumaccess.driver, "DEBUG")
+    analyzerWebJobs = AnalyzerWebJobs(config, "DEBUG")
     result = analyzerWebJobs.analyze(correoUrl)
     seleniumaccess.close_selenium()
     assert result.get("page", "") == "monster.ie"
@@ -230,7 +230,7 @@ def test_determinate_monster_error_noexist():
     correoUrl = {"url":url_monster}    
     seleniumaccess = SeleniumAccess(config, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzerWebJobs = AnalyzerWebJobs(config, seleniumaccess.driver, "DEBUG")
+    analyzerWebJobs = AnalyzerWebJobs(config, "DEBUG")
     result = analyzerWebJobs.analyze(correoUrl)
     seleniumaccess.close_selenium()
     assert result.get("page", "") == "monster.ie"
@@ -250,7 +250,7 @@ def test_determinate_webPageOther():
     correoUrl = {"url":urlOther}    
     seleniumaccess = SeleniumAccess(config, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzerWebJobs = AnalyzerWebJobs(config, seleniumaccess.driver, "DEBUG")
+    analyzerWebJobs = AnalyzerWebJobs(config, "DEBUG")
     result = analyzerWebJobs.analyze(correoUrl)
     seleniumaccess.close_selenium()
     assert result.get("control", "") == "OTRO"
@@ -263,7 +263,7 @@ def test_determinate_webPageError():
     correoUrl = {"url":urlError}    
     seleniumaccess = SeleniumAccess(config, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzerWebJobs = AnalyzerWebJobs(config, seleniumaccess.driver, "DEBUG")
+    analyzerWebJobs = AnalyzerWebJobs(config, "DEBUG")
     result = analyzerWebJobs.analyze(correoUrl)
     seleniumaccess.close_selenium()
     assert result.get("control", "") == "ERROR"
