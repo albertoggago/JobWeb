@@ -1,7 +1,5 @@
 """Test Text Rule Analyzer"""
 import sys
-import os
-import json
 import datetime
 
 sys.path.insert(0, "..")
@@ -392,21 +390,21 @@ def test_format_text_out_void():
     text_out = text_in
     assert TEXT_RULE_ANALYZER.format_text_out(text_in, rule) == text_out
 
-def test_format_text_out_ok_text():
+def test_fmttxtoutok_text():
     """Test"""
     text_in = "texto a analizar"
     rule = {"tipo":"text"}
     text_out = text_in
     assert TEXT_RULE_ANALYZER.format_text_out(text_in, rule) == text_out
 
-def test_format_text_out_ok_text_void():
+def test_fmttxtoutok_text_void():
     """Test"""
     text_in = ""
     rule = {"tipo":"text"}
     text_out = text_in
     assert TEXT_RULE_ANALYZER.format_text_out(text_in, rule) == text_out
 
-def test_format_text_out_ok_dateDecreasing():
+def test_fmttxtoutok_date_decre():
     """Test"""
     text_in = "hace 6 meses"
     rule = {"tipo":"fecha-dif"}
@@ -414,7 +412,7 @@ def test_format_text_out_ok_dateDecreasing():
     assert abs(TEXT_RULE_ANALYZER.format_text_out(text_in, rule) - date_out)\
                           < datetime.timedelta(days=1)
 
-def test_format_text_out_ok_dateDecreasing_void():
+def test_fmttxtoutok_date_decr_void():
     """Test"""
     text_in = ""
     rule = {"tipo":"fecha-dif"}
@@ -422,28 +420,28 @@ def test_format_text_out_ok_dateDecreasing_void():
     assert abs(TEXT_RULE_ANALYZER.format_text_out(text_in, rule) - date_out)\
                           < datetime.timedelta(days=1)
 
-def test_format_text_out_ok_date_without_format():
+def test_fmttxtoutok_date_witho_fmt():
     """Test"""
     text_in = "12/02/2017"
     rule = {"tipo":"fecha"}
     date_out = datetime.datetime(2017, 2, 12, 0, 0, 0, 0)
     assert TEXT_RULE_ANALYZER.format_text_out(text_in, rule) == date_out
 
-def test_format_text_out_ok_date_guiones():
+def test_fmttxtoutok_date_guiones():
     """Test"""
     text_in = "12-02-2017"
     rule = {"tipo":"fecha", "formato":"%d-%m-%Y"}
     date_out = datetime.datetime(2017, 2, 12, 0, 0, 0, 0)
     assert TEXT_RULE_ANALYZER.format_text_out(text_in, rule) == date_out
 
-def test_format_text_out_ok_date_guiones():
+def test_fmttxtoutok_date_guiones2():
     """Test"""
     text_in = "11-12-17"
     rule = {"tipo":"fecha", "formato":"%d-%m-%y"}
     date_out = datetime.datetime(2017, 12, 11, 0, 0, 0, 0)
     assert TEXT_RULE_ANALYZER.format_text_out(text_in, rule) == date_out
 
-def test_format_text_out_ok_date_format():
+def test_fmttxtoutok_date_format():
     """Test"""
     text_in = "12/02/2017"
     rule = {"tipo":"fecha", "formato":"%d-%m-%Y"}

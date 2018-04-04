@@ -6,12 +6,11 @@ sys.path.insert(0, "..")
 from pyproj.analyzerwebjobs import AnalyzerWebJobs
 from pyproj.seleniumaccess import SeleniumAccess
 
-CONFIG_TEXT = open("../test/config/configOk.json", "r").read()
-ALL_CONFIG = json.loads(CONFIG_TEXT)
-CONFIG = ALL_CONFIG.get("webPagesDef", None)
-TIME_OUT = 20
-SELENIUM_ACCESS = SeleniumAccess(CONFIG, "DEBUG")
-ANALYZER_WEB_JOBS = AnalyzerWebJobs(CONFIG, "DEBUG")
+CONFIG_TEXT2 = open("../test/config/configOk.json", "r").read()
+ALL_CONFIG2 = json.loads(CONFIG_TEXT2)
+CONFIG2 = ALL_CONFIG2.get("webPagesDef", None)
+SELENIUM_ACCESS = SeleniumAccess(CONFIG2, "DEBUG")
+ANALYZER_WEB_JOBS = AnalyzerWebJobs(CONFIG2, "DEBUG")
 
 def test_determinate_web_error():
     """test_determinate_web_error"""
