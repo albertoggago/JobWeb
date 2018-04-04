@@ -67,5 +67,3 @@ def test_driver_malformed_url():
     except WebDriverException:
         assert True
     seleniumaccess.close_selenium()
-
-       

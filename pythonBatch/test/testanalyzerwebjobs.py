@@ -3,7 +3,6 @@ import sys
 import json
 import datetime
 import pytest
-
 sys.path.insert(0, "..")
 from pyproj.analyzerwebjobs import AnalyzerWebJobs
 from pyproj.seleniumaccess import SeleniumAccess
