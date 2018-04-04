@@ -155,11 +155,11 @@ def test_irishjobs_error_error():
     url_irishjobs = "https://www.irishjobs.ie/Jobs/Senior-Fron-Engineer-8112985.aspx?adobeid="+\
                   "jajob&jacid=525770-12-2017&jst=z6kbolHKteomUWY3Lf73W1sP&utm_source=JobAler"+\
                   "t&utm_medium=clicks&utm_campaign=Jbe+Applications"
-    correo_url = {"url":url_irishjobs}    
+    correo_url = {"url":url_irishjobs}
     seleniumaccess = SeleniumAccess(CONFIG, "DEBUG")
     seleniumaccess.open_selenium()
     analyzer_web_jobs = AnalyzerWebJobs(CONFIG, "DEBUG")
-    result = analyzer_web_jobs.analyze(correo_url,seleniumaccess.driver)
+    result = analyzer_web_jobs.analyze(correo_url, seleniumaccess.driver)
     seleniumaccess.close_selenium()
     assert result.get("page", "") == "irishjobs"
     assert result.get("urlOk", "") == url_irishjobs
