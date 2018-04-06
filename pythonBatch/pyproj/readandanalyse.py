@@ -1,4 +1,4 @@
-#!/usr/bin/environment python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """ file include class ReadAndAnalyse """

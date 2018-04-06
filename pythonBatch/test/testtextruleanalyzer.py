@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 """Test Text Rule Analyzer"""
 import sys
 import datetime

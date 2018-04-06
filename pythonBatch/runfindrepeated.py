@@ -18,7 +18,7 @@ def is_float(value):
         return False
 
 if __name__ == '__main__':
-    print 
+    print
     print "## INFO ## inicio: {0}".format(datetime.datetime.now())
     RATIO = float(sys.argv[1]) if len(sys.argv) > 1 and is_float(sys.argv[1]) else 1.0
     DELETE = (sys.argv[2] == "True") if len(sys.argv) > 2 else False

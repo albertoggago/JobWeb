@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 """Test ANalyzeWebJobs Functions no Selenium"""
 import sys
 import json

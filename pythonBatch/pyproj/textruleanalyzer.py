@@ -58,6 +58,7 @@ class TextRuleAnalyzer(object):
         in_variable = rule.get("in", "IN-ERROR")
         if data_output["newCorreoUrl"].get(in_variable) != None and\
            data_output["newCorreoUrl"].get(in_variable)\
+           .decode('utf-8', 'ignore')\
            .encode('utf-8', 'ignore') ==\
                rule.get("valueIn", "VALUE-ERROR"):
             action = rule.get("action")

@@ -14,8 +14,8 @@ if __name__ == '__main__':
     MODELS_GENERATOR = ModelsGenerator("config/configModels.json", logging.INFO)
     ELEMENTS_READ = MODELS_GENERATOR.generate_dataframe("data/", "dataframe.df",\
                                                          "dataframe_matrix.npz")
-    print "## INFO ## Elements Read to generate Data Frame: {0}, matrix: {1}"\
-                                 .format(ELEMENTS_READ[0], ELEMENTS_READ[1])
+    #print "## INFO ## Elements Read to generate Data Frame: {0}, matrix: {1}"\
+    #                             .format(ELEMENTS_READ[0], ELEMENTS_READ[1])
 
 
 
