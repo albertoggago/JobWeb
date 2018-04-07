@@ -34,8 +34,8 @@ class ReadAndAnalyse(object):
             self.analyzer_web_jobs = AnalyzerWebJobs(self.config.get("webPagesDef", None), levelLog)
         except IOError:
             self.logger.error("File Error: %s", fileConfig)
-            self.mongo_db_access = MongoDBAccess("", levelLog)
-            self.mail_access = MailAccess("", levelLog)
+            self.mongo_db_access = MongoDBAccess({}, levelLog)
+            self.mail_access = MailAccess({}, levelLog)
         self.logger.info("Inicio: %s", datetime.datetime.now())
 
     def finding_mails(self):

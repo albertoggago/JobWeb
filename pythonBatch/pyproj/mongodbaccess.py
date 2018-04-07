@@ -21,7 +21,7 @@ class MongoDBAccess(object):
         try:
             self.logger.debug(config.get("url", ""))
             self._client = MongoClient(config.get("url", ""))
-            self.db_access = self._client[config["nameDB"]]
+            self.db_access = self._client[config.get("nameDB")]
             self.logger.info("-- INFO -- DATA BASE CONECT OK")
         except ConfigurationError:
             self.logger.error("ConfigurationErr")

@@ -4,6 +4,7 @@
 """Test readanalyse"""
 import sys
 import logging
+import json
 
 sys.path.insert(0, "..")
 try:
@@ -11,6 +12,9 @@ try:
     from pyproj.mongodbaccess import MongoDBAccess
 except ImportError:
     print 'No Import'
+
+FILE_CONFIG2 = "../test/config/configOk.json"
+CONFIG2 = json.loads(open(FILE_CONFIG2, "r").read())
 
 def test_init_error_fichero():
     """test_init_error_fichero"""
@@ -39,7 +43,7 @@ def test_init_error_mail():
 def test_finding_mails():
     """test_findingMails"""
     read_and_analyse = ReadAndAnalyse("../test/config/configOk.json", logging.ERROR)
-    mongo_db_access = MongoDBAccess("../test/config/configOk.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG2, "DEBUG")
     mongo_db_access.delete_many("correo", {})
     amount = read_and_analyse.finding_mails()
     #Depends of the emails in the mail test
@@ -48,7 +52,7 @@ def test_finding_mails():
 def test_finding_urls():
     """test_findingUrls"""
     read_and_analyse = ReadAndAnalyse("../test/config/configOk.json", logging.ERROR)
-    mongo_db_access = MongoDBAccess("../test/config/configOk.json", "WARNING")
+    mongo_db_access = MongoDBAccess(CONFIG2, "WARNING")
     mongo_db_access.delete_many("correo", {})
     mongo_db_access.delete_many("correoUrl", {})
     read_and_analyse.finding_mails()
@@ -75,7 +79,7 @@ def test_finding_urls():
 def test_scrap_urls():
     """test_scrapUrls"""
     read_and_analyse = ReadAndAnalyse("../test/config/configOk.json", logging.ERROR)
-    mongo_db_access = MongoDBAccess("../test/config/configOk.json", logging.ERROR)
+    mongo_db_access = MongoDBAccess(CONFIG2, logging.ERROR)
     mongo_db_access.delete_many("correo", {})
     mongo_db_access.delete_many("correoUrl", {})
     read_and_analyse.finding_mails()
