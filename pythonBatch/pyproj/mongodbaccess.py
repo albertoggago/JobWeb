@@ -32,6 +32,8 @@ class MongoDBAccess(object):
 
     def status(self):
         """Determinate True is connect or False if is not connect"""
+        if self._client is None:
+            return False
         try:
             self.logger.debug(self._client.server_info())
             return True
