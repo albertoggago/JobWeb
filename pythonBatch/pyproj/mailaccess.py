@@ -10,6 +10,7 @@ import re
 import datetime
 import base64
 from pyproj.logger import Logger
+from socket import gaierror
 
 #class for analize emails.
 class MailAccess(object):
@@ -27,13 +28,17 @@ class MailAccess(object):
     def login(self):
         """ do loggin using informaction of file configuration"""
         try:
-            self.logger.debug("acceso al Correo %s", self._config["sslServer"])
-            self._mail = imaplib.IMAP4_SSL(self._config["sslServer"])
-            self.logger.info("loggin correo: %s", self._config["fromEmail"])
-            self._mail.login(self._config["fromEmail"], self._config["pwdServer"])
+            self.logger.debug("acceso al Correo %s",\
+                              self._config.get("sslServer", "ERROR sslServer"))
+            self._mail = imaplib.IMAP4_SSL(self._config.get("sslServer", ""))
+            self.logger.info("loggin correo: %s", self._config.get("fromEmail", ""))
+            self._mail.login(self._config["fromEmail"], self._config.get("pwdServer", ""))
             self.logger.info("conected Data Base")
             return True
         except imaplib.IMAP4.error:
+            self.logger.error("error loggin eMail")
+            return None
+        except gaierror:
             self.logger.error("error loggin eMail")
             return None
 
