@@ -3,7 +3,6 @@
 
 """ Only a Class MailAccess"""
 
-import json
 import imaplib
 import email
 from email.header import decode_header
@@ -19,13 +18,10 @@ class MailAccess(object):
     _mail = None
     _config = None
 
-    def __init__(self, fileConfig, levelLog):
+    def __init__(self, config, levelLog):
         self.logger = Logger(self.__class__.__name__, levelLog).get()
-
-        if fileConfig:
-            config_text = open(fileConfig, "r").read()
-            self._config = json.loads(config_text)
-            self.login()
+        self._config = config
+        self.login()
 
 
     def login(self):

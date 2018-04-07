@@ -3,6 +3,7 @@
 
 """Test mongo DB Access"""
 import sys
+import json
 
 sys.path.insert(0, "..")
 try:
@@ -10,29 +11,31 @@ try:
 except ImportError:
     print 'No Import'
 
+FILE_CONFIG = "../test/config/configOk.json"
+CONFIG = json.loads(open(FILE_CONFIG, "r").read())
+FILE_CONFIG_ERROR = "../test/config/configMongoDBError.json"
+CONFIG_ERROR = json.loads(open(FILE_CONFIG_ERROR, "r").read())
+
 def test_ok():
     """test_ok"""
-    mongo_db_access_ok = MongoDBAccess("../test/config/configOk.json", "DEBUG")
+    mongo_db_access_ok = MongoDBAccess(CONFIG, "DEBUG")
 
     assert mongo_db_access_ok.status()
 
 def test_file_error():
-    """test_file_error"""
-    try:
-        MongoDBAccess("../test/config/config_okxx.json", "DEBUG")
-        assert False
-    except IOError:
-        assert True
+    """test file error"""
+    mongo_db_access = MongoDBAccess({}, "DEBUG")
+    assert not mongo_db_access.status()
 
 def test_error():
     """test_error"""
-    mongo_db_access_error = MongoDBAccess("../test/config/configMongoDBError.json", "DEBUG")
+    mongo_db_access_error = MongoDBAccess(CONFIG_ERROR, "DEBUG")
 
     assert not mongo_db_access_error.status()
 
 def test_find_one_ok():
     """test_find_one_ok"""
-    mongo_db_access = MongoDBAccess("../test/config/configOk.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG, "DEBUG")
     mongo_db_access.insert("testFindOne", {"clave":"IPFind", "value":0})
     res = mongo_db_access.find_one("testFindOne", {"clave":"IPFind"})
     mongo_db_access.drop("testFindOne")
@@ -41,7 +44,7 @@ def test_find_one_ok():
 
 def test_find_one_error_db():
     """test_find_one_error_db"""
-    mongo_db_access = MongoDBAccess("../test/config/configMongoDBError.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG_ERROR, "DEBUG")
     mongo_db_access.insert("testFindone_error_db", {"clave":"IPFind", "value":0})
     res = mongo_db_access.find_one("testFindone_error_db", {"clave":"IPFind"})
     mongo_db_access.drop("testFindone_error_db")
@@ -50,7 +53,7 @@ def test_find_one_error_db():
 
 def test_find_one_error_collection():
     """test_find_one_error_collection"""
-    mongo_db_access = MongoDBAccess("../test/config/configOk.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG, "DEBUG")
     mongo_db_access.insert("testFindone_errorCollection", {"clave":"IPFind"})
     res = mongo_db_access.find_one("testFindone_errorCollectionXX", {"clave":"IP"})
     mongo_db_access.drop("testFindone_errorCollection")
@@ -58,7 +61,7 @@ def test_find_one_error_collection():
 
 def test_find_one_error_filter():
     """test_find_one_error_filter"""
-    mongo_db_access = MongoDBAccess("../test/config/configOk.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG, "DEBUG")
     mongo_db_access.insert("testFindone_errorFilter", {"clave":"IPFind", "value":0})
     res = mongo_db_access.find_one("testFindone_errorFilter", {"clave":"IPFilter"})
     mongo_db_access.drop("testFindone_errorFilter")
@@ -67,7 +70,7 @@ def test_find_one_error_filter():
 
 def test_find_ok():
     """test_find_ok"""
-    mongo_db_access = MongoDBAccess("../test/config/configOk.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG, "DEBUG")
     mongo_db_access.insert("testFind_ok", {"clave":"IPFind", "value":0})
     mongo_db_access.insert("testFind_ok", {"clave":"IPFind", "value":1})
     res = mongo_db_access.find("testFind_ok", {})
@@ -82,13 +85,13 @@ def test_find_ok():
 
 def test_find_error_db():
     """test_find_error_db"""
-    mongo_db_access = MongoDBAccess("../test/config/configMongoDBError.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG_ERROR, "DEBUG")
     res = mongo_db_access.find("correo", {})
     assert res is None
 
 def test_find_error_collection():
     """test_find_error_collection"""
-    mongo_db_access = MongoDBAccess("../test/config/configOk.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG, "DEBUG")
     res = mongo_db_access.find("correoX", {})
     count_elements = 0
     for element_finding in res:
@@ -98,7 +101,7 @@ def test_find_error_collection():
 
 def test_find_error_filter():
     """test_find_error_filter"""
-    mongo_db_access = MongoDBAccess("../test/config/configOk.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG, "DEBUG")
     mongo_db_access.insert("testFindErrorFilter", {"clave":"IPFind", "value":0})
     res = mongo_db_access.find("testFindErrorFilter", {"xxx":"xxxx"})
     count_elements = 0
@@ -111,7 +114,7 @@ def test_find_error_filter():
 
 def test_update_one_ok():
     """test_update_one_ok"""
-    mongo_db_access = MongoDBAccess("../test/config/configOk.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG, "DEBUG")
     mongo_db_access.insert("testUpdateOne", {"clave":"IPUpdateOne", "value":0})
     res_update1 = mongo_db_access.update_one("testUpdateOne", {"clave":"IPUpdateOne"}, {'value':1})
     res_find1 = mongo_db_access.find_one("testUpdateOne", {"clave":"IPUpdateOne"})
@@ -123,14 +126,14 @@ def test_update_one_ok():
 
 def test_update_one_error_db():
     """test_update_one_error_db"""
-    mongo_db_access = MongoDBAccess("../test/config/configMongoDBError.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG_ERROR, "DEBUG")
     res = mongo_db_access.update_one("testUpdateone_error_db", {"clave":"IP"}, {'valorX':"1234"})
 
     assert res is None
 
 def test_update_one_error_collect():
     """test_update_one_error_collection"""
-    mongo_db_access = MongoDBAccess("../test/config/configOk.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG, "DEBUG")
     mongo_db_access.insert("testUpdateone_errorCollection",\
                                         {"clave":"IPUpdateOne", "value":0})
     res = mongo_db_access.update_one("testUpdateone_errorCollectionXX",\
@@ -141,7 +144,7 @@ def test_update_one_error_collect():
 
 def test_update_one_error_find():
     """test_update_one_error_find"""
-    mongo_db_access = MongoDBAccess("../test/config/configOk.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG, "DEBUG")
     mongo_db_access.insert("testUpdateone_errorFind",\
                                         {"clave":"IPUpdateOne", "value":0})
     res = mongo_db_access.update_one("testUpdateone_errorFind",\
@@ -152,7 +155,7 @@ def test_update_one_error_find():
 
 def test_update_many_ok():
     """test_update_many_ok"""
-    mongo_db_access = MongoDBAccess("../test/config/configOk.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG, "DEBUG")
 
     mongo_db_access.insert("testUpdateMany_ok", {"clave":"IPUpdateMany", "value":0})
     mongo_db_access.insert("testUpdateMany_ok", {"clave":"IPUpdateMany", "value":0})
@@ -173,14 +176,14 @@ def test_update_many_ok():
 
 def test_update_many_error_db():
     """test_update_many_error_db"""
-    mongo_db_access = MongoDBAccess("../test/config/configMongoDBError.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG_ERROR, "DEBUG")
     res = mongo_db_access.update_many("testUpdateManyErrorDB", {"clave":"IP"}, {'valorX':"1234"})
 
     assert res is None
 
 def test_update_many_error_collect():
     """test_update_many_error_collection"""
-    mongo_db_access = MongoDBAccess("../test/config/configOk.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG, "DEBUG")
     mongo_db_access.insert("testUpdateManyErrorColection",\
                                          {"clave":"IPUpdateMany", "value":0})
     mongo_db_access.insert("testUpdateManyErrorColection",\
@@ -193,7 +196,7 @@ def test_update_many_error_collect():
 
 def test_update_many_error_find():
     """test_update_many_error_find"""
-    mongo_db_access = MongoDBAccess("../test/config/configOk.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG, "DEBUG")
     mongo_db_access.insert("testUpdateManyErrorFind",\
                                          {"clave":"IPUpdateManyErrorF", "value":0})
     res = mongo_db_access.update_many("testUpdateManyErrorFind",\
@@ -204,7 +207,7 @@ def test_update_many_error_find():
 
 def test_insert_ok():
     """test_insert_ok"""
-    mongo_db_access = MongoDBAccess("../test/config/configOk.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG, "DEBUG")
     res_insert = mongo_db_access.insert("testInsert_ok", {"clave":"IPInsert"})
     res_find1 = mongo_db_access.find_one("testInsert_ok", {"clave":"IPInsert"})
 
@@ -220,7 +223,7 @@ def test_insert_ok():
 
 def test_insert_error_db():
     """test_insertError_db"""
-    mongo_db_access = MongoDBAccess("../test/config/configMongoDBError.json", "DEBUG")
+    mongo_db_access = MongoDBAccess(CONFIG_ERROR, "DEBUG")
     res = mongo_db_access.insert("testInsertError", {"clave":"IPInsertError"})
 
     assert res is None

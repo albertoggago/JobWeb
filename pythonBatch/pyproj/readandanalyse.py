@@ -21,25 +21,21 @@ class ReadAndAnalyse(object):
     mongo_db_access = None
     mail_access = None
     analyzer_web_jobs = None
-    environment = None
     seleniumaccess = None
+    config = None
 
     def __init__(self, fileConfig, levelLog):
         self.logger = Logger(self.__class__.__name__, levelLog).get()
         try:
-            self.mongo_db_access = MongoDBAccess(fileConfig, levelLog)
-            self.mail_access = MailAccess(fileConfig, levelLog)
-            config_text = open(fileConfig, "r").read()
-            allconfig = json.loads(config_text)
-            config = allconfig.get("webPagesDef", None)
-            self.environment = allconfig.get("env", "DEV")
-            self.seleniumaccess = SeleniumAccess(config, levelLog)
-            self.analyzer_web_jobs = AnalyzerWebJobs(config, levelLog)
+            self.config = json.loads(open(fileConfig, "r").read())
+            self.mongo_db_access = MongoDBAccess(self.config, levelLog)
+            self.mail_access = MailAccess(self.config, levelLog)
+            self.seleniumaccess = SeleniumAccess(self.config, levelLog)
+            self.analyzer_web_jobs = AnalyzerWebJobs(self.config.get("webPagesDef", None), levelLog)
         except IOError:
             self.logger.error("File Error: %s", fileConfig)
             self.mongo_db_access = MongoDBAccess("", levelLog)
             self.mail_access = MailAccess("", levelLog)
-
         self.logger.info("Inicio: %s", datetime.datetime.now())
 
     def finding_mails(self):
@@ -68,7 +64,7 @@ class ReadAndAnalyse(object):
                 count_emails += 1
                 self.mail_access.store(ele)
 
-        if self.environment == "PRODUCTION":
+        if self.config.get("env", "DEV") == "PRODUCTION":
             self.logger.info("CLEAN EMAIL")
             self.mail_access.clean()
         self.mail_access.logout()

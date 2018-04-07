@@ -3,9 +3,8 @@
 
 """ Only a Class MongoDBAccess"""
 
-import json
 from pymongo import MongoClient
-from pymongo.errors import ConnectionFailure, OperationFailure
+from pymongo.errors import ConnectionFailure, OperationFailure, ConfigurationError
 from pyproj.logger import Logger
 
 class MongoDBAccess(object):
@@ -14,23 +13,18 @@ class MongoDBAccess(object):
     db_access = None
     _client = None
 
-    def __init__(self, fileName, levelLog):
+    def __init__(self, config, levelLog):
         """Need a file where has got all parameters and level of Loggin"""
         self.logger = Logger(self.__class__.__name__, levelLog).get()
         self.logger.setLevel('INFO')
-        if fileName:
-            config_text = open(fileName, "r").read()
-            config = json.loads(config_text)
-        else:
-            config = {}
-            config["url"] = "localhost:27017"
-            config["nameDB"] = "temp"
 
         try:
-            self.logger.debug(config["url"])
-            self._client = MongoClient(config["url"])
+            self.logger.debug(config.get("url", ""))
+            self._client = MongoClient(config.get("url", ""))
             self.db_access = self._client[config["nameDB"]]
             self.logger.info("-- INFO -- DATA BASE CONECT OK")
+        except ConfigurationError:
+            self.logger.error("ConfigurationErr")
         except ConnectionFailure:
             self.logger.error("ConnectionFailure")
         except OperationFailure:
@@ -114,6 +108,15 @@ class MongoDBAccess(object):
         if self.status():
             self.logger.info("Remove collection: %s, data: %s", collection, element)
             return self.db_access[collection].delete_many(element)
+        else:
+            self.logger.error("Database Not INIT Find")
+            return None
+
+    def aggregate(self, collection, element):
+        """delete return status of delete"""
+        if self.status():
+            self.logger.info("Aggregate collection: %s, data: %s", collection, element)
+            return self.db_access[collection].aggregate(element)
         else:
             self.logger.error("Database Not INIT Find")
             return None
