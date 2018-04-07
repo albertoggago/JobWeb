@@ -9,8 +9,9 @@ from email.header import decode_header
 import re
 import datetime
 import base64
-from pyproj.logger import Logger
 from socket import gaierror
+
+from pyproj.logger import Logger
 
 #class for analize emails.
 class MailAccess(object):
