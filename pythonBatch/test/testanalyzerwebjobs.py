@@ -12,8 +12,7 @@ from pyproj.analyzerwebjobs import AnalyzerWebJobs
 from pyproj.seleniumaccess import SeleniumAccess
 
 CONFIG_TEXT = open("../test/config/configOk.json", "r").read()
-ALL_CONFIG = json.loads(CONFIG_TEXT)
-CONFIG = ALL_CONFIG.get("webPagesDef", None)
+CONFIG = json.loads(CONFIG_TEXT)
 TIME_OUT = 20
 
 @pytest.mark.timeout(TIME_OUT)

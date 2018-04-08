@@ -4,6 +4,7 @@
 """ Clase unique FindRepeated """
 
 import datetime
+import json
 from difflib import SequenceMatcher
 
 from pyproj.logger import Logger
@@ -23,9 +24,10 @@ class FindRepeated(object):
     ratio_bottom = None
 
     def __init__(self, fileConfig, levelLog, ratio_accept=1.0):
+        config = json.loads(open(fileConfig, "r").read())
         self.ratio_bottom = ratio_accept
         self.logger = Logger(self.__class__.__name__, levelLog).get()
-        self.mongo_db_access = MongoDBAccess(fileConfig, levelLog)
+        self.mongo_db_access = MongoDBAccess(config, levelLog)
         self.logger.info("Inicio: %s", datetime.datetime.now())
 
     def finding_open_jobs(self, delete_database):
