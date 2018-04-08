@@ -14,8 +14,7 @@ from pyproj.seleniumaccess import SeleniumAccess
 def test_selenium_ok():
     """test_selenium_Ok"""
     config_text = open("../test/config/configOk.json", "r").read()
-    allconfig = json.loads(config_text)
-    config = allconfig.get("webPagesDef", None)
+    config = json.loads(config_text)
     seleniumaccess = SeleniumAccess(config, "DEBUG")
     seleniumaccess.open_selenium()
     assert seleniumaccess.driver != None
@@ -24,8 +23,7 @@ def test_selenium_ok():
 def test_selenium_error():
     """test_selenium_Error"""
     config_text = open("../test/config/configMongoDBError.json", "r").read()
-    allconfig = json.loads(config_text)
-    config = allconfig.get("webPagesDef", None)
+    config = json.loads(config_text)
     seleniumaccess = SeleniumAccess(config, "DEBUG")
     try:
         seleniumaccess.open_selenium()
@@ -36,8 +34,7 @@ def test_selenium_error():
 def test_selenium_close():
     """test_selenium_close"""
     config_text = open("../test/config/configOk.json", "r").read()
-    allconfig = json.loads(config_text)
-    config = allconfig.get("webPagesDef", None)
+    config = json.loads(config_text)
     seleniumaccess = SeleniumAccess(config, "DEBUG")
     seleniumaccess.open_selenium()
     seleniumaccess.close_selenium()
@@ -46,8 +43,7 @@ def test_selenium_close():
 def test_driver_ok():
     """test_Driver_Ok"""
     config_text = open("../test/config/configOk.json", "r").read()
-    allconfig = json.loads(config_text)
-    config = allconfig.get("webPagesDef", None)
+    config = json.loads(config_text)
     seleniumaccess = SeleniumAccess(config, "DEBUG")
     seleniumaccess.open_selenium()
     try:
@@ -60,8 +56,7 @@ def test_driver_ok():
 def test_driver_malformed_url():
     """test_Driver_Malformed_URL"""
     config_text = open("../test/config/configOk.json", "r").read()
-    allconfig = json.loads(config_text)
-    config = allconfig.get("webPagesDef", None)
+    config = json.loads(config_text)
     seleniumaccess = SeleniumAccess(config, "DEBUG")
     seleniumaccess.open_selenium()
     try:

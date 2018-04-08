@@ -13,6 +13,7 @@ from pyproj.seleniumaccess import SeleniumAccess
 
 CONFIG_TEXT = open("../test/config/configOk.json", "r").read()
 CONFIG = json.loads(CONFIG_TEXT)
+CONFIG_ANALYZE = CONFIG.get("webPagesDef", None)
 TIME_OUT = 20
 
 @pytest.mark.timeout(TIME_OUT)
@@ -36,7 +37,7 @@ def test_linkedin():
     correo_url = {"url":url_linkedin}
     seleniumaccess = SeleniumAccess(CONFIG, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzer_web_jobs = AnalyzerWebJobs(CONFIG, "DEBUG")
+    analyzer_web_jobs = AnalyzerWebJobs(CONFIG_ANALYZE, "DEBUG")
     result = analyzer_web_jobs.analyze(correo_url, seleniumaccess.driver)
     seleniumaccess.close_selenium()
     assert result.get("status", "")
@@ -59,7 +60,7 @@ def test_linkedin_error_my_page():
     correo_url = {"url":url_linkedin}
     seleniumaccess = SeleniumAccess(CONFIG, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzer_web_jobs = AnalyzerWebJobs(CONFIG, "DEBUG")
+    analyzer_web_jobs = AnalyzerWebJobs(CONFIG_ANALYZE, "DEBUG")
     result = analyzer_web_jobs.analyze(correo_url, seleniumaccess.driver)
     print result
     seleniumaccess.close_selenium()
@@ -86,7 +87,7 @@ def test_recruitireland_no_exists():
     correo_url = {"url":url_recruitireland}
     seleniumaccess = SeleniumAccess(CONFIG, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzer_web_jobs = AnalyzerWebJobs(CONFIG, "DEBUG")
+    analyzer_web_jobs = AnalyzerWebJobs(CONFIG_ANALYZE, "DEBUG")
     result = analyzer_web_jobs.analyze(correo_url, seleniumaccess.driver)
     seleniumaccess.close_selenium()
     assert result.get("page", "") == "recruitireland"
@@ -110,7 +111,7 @@ def test_recruitireland_retired():
     correo_url = {"url":url_recruitireland}
     seleniumaccess = SeleniumAccess(CONFIG, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzer_web_jobs = AnalyzerWebJobs(CONFIG, "DEBUG")
+    analyzer_web_jobs = AnalyzerWebJobs(CONFIG_ANALYZE, "DEBUG")
     result = analyzer_web_jobs.analyze(correo_url, seleniumaccess.driver)
     seleniumaccess.close_selenium()
     assert result.get("page", "") == "recruitireland"
@@ -133,7 +134,7 @@ def test_irishjobs_error_retired():
     correo_url = {"url":url_irishjobs}
     seleniumaccess = SeleniumAccess(CONFIG, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzer_web_jobs = AnalyzerWebJobs(CONFIG, "DEBUG")
+    analyzer_web_jobs = AnalyzerWebJobs(CONFIG_ANALYZE, "DEBUG")
     result = analyzer_web_jobs.analyze(correo_url, seleniumaccess.driver)
     seleniumaccess.close_selenium()
     assert result.get("page", "") == "irishjobs"
@@ -160,7 +161,7 @@ def test_irishjobs_error_error():
     correo_url = {"url":url_irishjobs}
     seleniumaccess = SeleniumAccess(CONFIG, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzer_web_jobs = AnalyzerWebJobs(CONFIG, "DEBUG")
+    analyzer_web_jobs = AnalyzerWebJobs(CONFIG_ANALYZE, "DEBUG")
     result = analyzer_web_jobs.analyze(correo_url, seleniumaccess.driver)
     seleniumaccess.close_selenium()
     assert result.get("page", "") == "irishjobs"
@@ -186,7 +187,7 @@ def test_jobsie_error_retired():
     correo_url = {"url":url_jobsie}
     seleniumaccess = SeleniumAccess(CONFIG, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzer_web_jobs = AnalyzerWebJobs(CONFIG, "DEBUG")
+    analyzer_web_jobs = AnalyzerWebJobs(CONFIG_ANALYZE, "DEBUG")
     result = analyzer_web_jobs.analyze(correo_url, seleniumaccess.driver)
     seleniumaccess.close_selenium()
     assert result.get("page", "") == "jobs.ie"
@@ -212,7 +213,7 @@ def test_jobsie_error_noexist():
     correo_url = {"url":url_jobsie}
     seleniumaccess = SeleniumAccess(CONFIG, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzer_web_jobs = AnalyzerWebJobs(CONFIG, "DEBUG")
+    analyzer_web_jobs = AnalyzerWebJobs(CONFIG_ANALYZE, "DEBUG")
     result = analyzer_web_jobs.analyze(correo_url, seleniumaccess.driver)
     seleniumaccess.close_selenium()
     assert result.get("page", "") == "jobs.ie"
@@ -242,7 +243,7 @@ def test_monster_error_retired():
     correo_url = {"url":url_monster}
     seleniumaccess = SeleniumAccess(CONFIG, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzer_web_jobs = AnalyzerWebJobs(CONFIG, "DEBUG")
+    analyzer_web_jobs = AnalyzerWebJobs(CONFIG_ANALYZE, "DEBUG")
     result = analyzer_web_jobs.analyze(correo_url, seleniumaccess.driver)
     seleniumaccess.close_selenium()
     assert result.get("page", "") == "monster.ie"
@@ -272,7 +273,7 @@ def test_monster_error_noexist():
     correo_url = {"url":url_monster}
     seleniumaccess = SeleniumAccess(CONFIG, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzer_web_jobs = AnalyzerWebJobs(CONFIG, "DEBUG")
+    analyzer_web_jobs = AnalyzerWebJobs(CONFIG_ANALYZE, "DEBUG")
     result = analyzer_web_jobs.analyze(correo_url, seleniumaccess.driver)
     seleniumaccess.close_selenium()
     assert result.get("page", "") == "monster.ie"
@@ -293,7 +294,7 @@ def test_web_page_other():
     correo_url = {"url":url_other}
     seleniumaccess = SeleniumAccess(CONFIG, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzer_web_jobs = AnalyzerWebJobs(CONFIG, "DEBUG")
+    analyzer_web_jobs = AnalyzerWebJobs(CONFIG_ANALYZE, "DEBUG")
     result = analyzer_web_jobs.analyze(correo_url, seleniumaccess.driver)
     seleniumaccess.close_selenium()
     assert result.get("control", "") == "OTRO"
@@ -307,7 +308,7 @@ def test_web_page_error():
     correo_url = {"url":url_error}
     seleniumaccess = SeleniumAccess(CONFIG, "DEBUG")
     seleniumaccess.open_selenium()
-    analyzer_web_jobs = AnalyzerWebJobs(CONFIG, "DEBUG")
+    analyzer_web_jobs = AnalyzerWebJobs(CONFIG_ANALYZE, "DEBUG")
     result = analyzer_web_jobs.analyze(correo_url, seleniumaccess.driver)
     seleniumaccess.close_selenium()
     assert result.get("control", "") == "ERROR"
