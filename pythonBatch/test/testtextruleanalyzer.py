@@ -4,12 +4,19 @@
 """Test Text Rule Analyzer"""
 import sys
 import datetime
+import logging
 
 sys.path.insert(0, "..")
-from pyproj.textruleanalyzer import TextRuleAnalyzer
+try:
+    from pyproj.textruleanalyzer import TextRuleAnalyzer
+    from pyproj.config import Config
+except ImportError:
+    print 'No Import'
 
 
-TEXT_RULE_ANALYZER = TextRuleAnalyzer("DEBUG")
+FILE_CONFIG3 = "../test/config/configOk.json"
+CONFIG = Config(FILE_CONFIG3, logging.DEBUG)
+TEXT_RULE_ANALYZER = TextRuleAnalyzer(CONFIG)
 
 def test_real_url_void():
     """Test"""

@@ -3,17 +3,23 @@
 
 """Test ANalyzeWebJobs Functions no Selenium"""
 import sys
-import json
+import logging
 
-sys.path.insert(0, "..")
-from pyproj.analyzerwebjobs import AnalyzerWebJobs
-from pyproj.seleniumaccess import SeleniumAccess
+sys.path.append("..")
 
-CONFIG_TEXT2 = open("../test/config/configOk.json", "r").read()
-ALL_CONFIG2 = json.loads(CONFIG_TEXT2)
-CONFIG2 = ALL_CONFIG2.get("webPagesDef", None)
-SELENIUM_ACCESS = SeleniumAccess(CONFIG2, "DEBUG")
-ANALYZER_WEB_JOBS = AnalyzerWebJobs(CONFIG2, "DEBUG")
+try:
+    from pyproj.seleniumaccess import SeleniumAccess
+    from pyproj.analyzerwebjobs import AnalyzerWebJobs
+    from pyproj.config import Config
+except ImportError:
+    print 'No Import'
+
+FILE_CONFIG2 = "../test/config/configOk.json"
+CONFIG = Config(FILE_CONFIG2, logging.DEBUG)
+CONFIG_PARAM = CONFIG.get_config_param()
+
+SELENIUM_ACCESS = SeleniumAccess(CONFIG)
+ANALYZER_WEB_JOBS = AnalyzerWebJobs(CONFIG)
 
 def test_determinate_web_error():
     """test_determinate_web_error"""

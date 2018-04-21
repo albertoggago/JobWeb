@@ -8,13 +8,15 @@ import logging
 import sys
 
 from pyproj.readandanalyse import ReadAndAnalyse
+from pyproj.config import Config
 
 if __name__ == '__main__':
     print "## INFO ## inicio: {0}".format(datetime.datetime.now())
-    FILE = sys.argv[1] if len(sys.argv) > 1 else "config.json"
+    FILE = sys.argv[1] if len(sys.argv) > 1 else "config/config.json"
     print "## INFO ## FILE CONFIG: {0}".format(FILE)
 
-    READ_AND_ANALYSE = ReadAndAnalyse("config/"+FILE, logging.DEBUG)
+    CONFIG = Config(FILE, logging.DEBUG)
+    READ_AND_ANALYSE = ReadAndAnalyse(CONFIG)
     MAILS_READ = READ_AND_ANALYSE.finding_mails()
     print "## INFO ## Mails Read: {0}".format(MAILS_READ)
     URLS_READS = READ_AND_ANALYSE.finding_urls()

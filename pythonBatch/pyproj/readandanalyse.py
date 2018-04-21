@@ -4,11 +4,9 @@
 """ file include class ReadAndAnalyse """
 
 import datetime
-import json
 import urllib2
 from selenium.common.exceptions import WebDriverException
 
-from pyproj.logger import Logger
 from pyproj.mongodbaccess import MongoDBAccess
 from pyproj.mailaccess import MailAccess
 from pyproj.analyzerwebjobs import AnalyzerWebJobs
@@ -17,131 +15,122 @@ from pyproj.seleniumaccess import SeleniumAccess
 
 class ReadAndAnalyse(object):
     """ Class for read and analize information, combine class"""
-    logger = None
-    mongo_db_access = None
-    mail_access = None
-    analyzer_web_jobs = None
-    seleniumaccess = None
-    config = None
+    _logger = None
+    _mongo_db_access = None
+    _mail_access = None
+    _analyzer_web_jobs = None
+    _seleniumaccess = None
+    _config_param = None
 
-    def __init__(self, fileConfig, levelLog):
-        self.logger = Logger(self.__class__.__name__, levelLog).get()
-        try:
-            self.config = json.loads(open(fileConfig, "r").read())
-            self.mongo_db_access = MongoDBAccess(self.config, levelLog)
-            self.mail_access = MailAccess(self.config, levelLog)
-            self.seleniumaccess = SeleniumAccess(self.config, levelLog)
-            self.analyzer_web_jobs = AnalyzerWebJobs(self.config.get("webPagesDef", None), levelLog)
-        except IOError:
-            self.logger.error("File Error: %s", fileConfig)
-            self.mongo_db_access = MongoDBAccess({}, levelLog)
-            self.mail_access = MailAccess({}, levelLog)
-        self.logger.info("Inicio: %s", datetime.datetime.now())
+    def __init__(self, config):
+        self._logger = config.get_logger(self.__class__.__name__)
+        self._config_param = config.get_config_param()
+
+        self._mongo_db_access = MongoDBAccess(config)
+        self._mail_access = MailAccess(config)
+        self._seleniumaccess = SeleniumAccess(config)
+        self._analyzer_web_jobs = AnalyzerWebJobs(config)
+        self._logger.info("Inicio: %s", datetime.datetime.now())
 
     def finding_mails(self):
         """Module for looking for emails return emails finding """
-        self.logger.info("find_emails")
-        if not self.mail_access.status():
-            self.logger.error("Error mail Not Active")
+        self._logger.info("find_emails")
+        if not self._mail_access.status():
+            self._logger.error("Error mail Not Active")
             return None
-        if not self.mongo_db_access.status():
-            self.logger.error("Error Database Not Active")
+        if not self._mongo_db_access.status():
+            self._logger.error("Error Database Not Active")
             return None
 
         count_emails = 0
-        list_emails = self.mail_access.search_mails("inbox")
+        list_emails = self._mail_access.search_mails("inbox")
 
         for ele in list_emails:
-            mail = self.mail_access.compose_mail_json(self.mail_access.get(ele))
+            mail = self._mail_access.compose_mail_json(self._mail_access.get(ele))
             if mail is None:
-                self.logger.error("Mail generate wrong")
+                self._logger.error("Mail generate wrong")
             else:
-                self.logger.debug("Insert into Control")
-                self.logger.debug("control: %s", mail.get("control"))
-                self.logger.debug("urls: %s", mail.get("urls"))
-                self.logger.debug("datetime: %s", mail.get("datetime"))
-                self.mongo_db_access.insert("correo", mail)
+                self._logger.debug("Insert into Control")
+                self._logger.debug("control: %s", mail.get("control"))
+                self._logger.debug("urls: %s", mail.get("urls"))
+                self._logger.debug("datetime: %s", mail.get("datetime"))
+                self._mongo_db_access.insert("correo", mail)
                 count_emails += 1
-                self.mail_access.store(ele)
+                self._mail_access.store(ele)
 
-        if self.config.get("env", "DEV") == "PRODUCTION":
-            self.logger.info("CLEAN EMAIL")
-            self.mail_access.clean()
-        self.mail_access.logout()
-        self.logger.info("emails reads : %s", count_emails)
+        if self._config_param.get("env", "DEV") == "PRODUCTION":
+            self._logger.info("CLEAN EMAIL")
+            self._mail_access.clean()
+        self._mail_access.logout()
+        self._logger.info("emails reads : %s", count_emails)
         return count_emails
 
     def finding_urls(self):
         """ Find urls inside of mails saved """
-        self.logger.info("FINDING_URLS")
-        if not self.mongo_db_access.status():
-            self.logger.error("Error Database Not Active")
+        self._logger.info("FINDING_URLS")
+        if not self._mongo_db_access.status():
+            self._logger.error("Error Database Not Active")
             return None
 
         count_urls = 0
-        mails = self.mongo_db_access.find("correo", {"control":{"$exists":0}}, \
+        mails = self._mongo_db_access.find("correo", {"control":{"$exists":0}}, \
                                               sort={"urls":1, "_id":1})
         for mail in mails:
             for url in mail.get("urls", []):
                 correo_url = build_mail_url(mail["_id"], url)
                 count_urls += self.review_mail_url(correo_url, url)
-            self.mongo_db_access.update_one("correo", {"_id":mail["_id"]}, {"control":"DONE"})
-        self.logger.info("URLS read: %s", count_urls)
+            self._mongo_db_access.update_one("correo", {"_id":mail["_id"]}, {"control":"DONE"})
+        self._logger.info("URLS read: %s", count_urls)
         return count_urls
 
     def review_mail_url(self, mail_url, url):
         """ review mail url looking for in dabase and when not exist save"""
-        buscar_url = self.mongo_db_access.find_one("correoUrl", {"url":url})
+        buscar_url = self._mongo_db_access.find_one("correoUrl", {"url":url})
         if buscar_url is None:
-            self.logger.debug("Url to save: %s", url)
-            self.mongo_db_access.insert("correoUrl", mail_url)
+            self._logger.debug("Url to save: %s", url)
+            self._mongo_db_access.insert("correoUrl", mail_url)
             return 1
         else:
-            self.logger.debug("No SAVE URL: %s", url)
+            self._logger.debug("No SAVE URL: %s", url)
             return 0
 
     def scrap_urls(self, limite=None):
         """ srap url using system of parameters and save this information in data base"""
-        self.seleniumaccess.open_selenium()
-        self.logger.info("SCRAP_URLS")
-        if not self.mongo_db_access.status():
-            self.logger.error("Error Database Not Active")
+        driver = self._seleniumaccess.open_selenium()
+        self._logger.info("SCRAP_URLS")
+        if not self._mongo_db_access.status():
+            self._logger.error("Error Database Not Active")
             return None
         self.reprocess_mails()
         count = {}
-        correos_url = self.mongo_db_access.find("correoUrl", \
+        correos_url = self._mongo_db_access.find("correoUrl", \
                                   {"control":{"$exists":0}, "url":{"$exists":1}}, limite=limite)
         for correo_url in correos_url:
             try:
-                control = self.scrap_url(correo_url)
+                control = self.scrap_url(correo_url, driver)
             except urllib2.URLError:
                 control = "ERROR_URL"
             except WebDriverException:
                 control = "ERROR_WEBDRIVER_ERROR"
-
-            if count.get(control, 0) == 0:
-                count[control] = 1
-            else:
-                count[control] += 1
-
-        self.logger.info("-- INFO -- URLs Analysed  %s", count)
-        self.seleniumaccess.close_selenium()
+            accumulate_dic(count, {control:1})
+        self._logger.info("-- INFO -- URLs Analysed  %s", count)
+        self._seleniumaccess.close_selenium(driver)
         return count
 
     def reprocess_mails(self):
         """ reprocess mails in status Error"""
-        mails_reproces_error = self.mongo_db_access\
+        mails_reproces_error = self._mongo_db_access\
                .update_many("correoUrl", {"control":"ERROR"}, {"control":""}, is_set="unset")
-        self.logger.info("Email_Error Reprocess: %s", mails_reproces_error.modified_count)
-        mails_reproces_control = self.mongo_db_access\
+        self._logger.info("Email_Error Reprocess: %s", mails_reproces_error.modified_count)
+        mails_reproces_control = self._mongo_db_access\
                .update_many("correoUrl", {"control":""}, {"control":""}, is_set="unset")
-        self.logger.info("Email_Blanck Reprocess: %d", mails_reproces_control.modified_count)
+        self._logger.info("Email_Blanck Reprocess: %d", mails_reproces_control.modified_count)
 
-    def scrap_url(self, correo_url):
+    def scrap_url(self, correo_url, driver):
         """  scrap one url retrieve the information locate """
-        self.logger.info("SCRAP_URL: %s", correo_url["url"])
-        data_of_scraping = self.analyzer_web_jobs.analyze(correo_url, self.seleniumaccess.driver)
-        self.mongo_db_access.update_one("correoUrl", \
+        self._logger.info("SCRAP_URL: %s", correo_url["url"])
+        data_of_scraping = self._analyzer_web_jobs.analyze(correo_url, driver)
+        self._mongo_db_access.update_one("correoUrl", \
                          {"_id":correo_url["_id"]}, \
                          {"control":data_of_scraping.get("control", "ERROR"),\
                            "pagina":data_of_scraping.get("page", "None"),\
@@ -154,9 +143,17 @@ class ReadAndAnalyse(object):
 
     def save_scraping(self, id_code, correo_url):
         """ save information into database """
-        self.logger.debug("Save: ")
-        self.logger.debug(correo_url)
-        self.mongo_db_access.update_one("correoUrl", {"_id":id_code}, correo_url)
+        self._logger.debug("Save: ")
+        self._logger.debug(correo_url)
+        self._mongo_db_access.update_one("correoUrl", {"_id":id_code}, correo_url)
+
+    def get_mongo_db_access(self):
+        """Return method of mongodbaccess"""
+        return self._mongo_db_access
+
+    def get_mail_access(self):
+        """Return method of mongodbaccess"""
+        return self._mail_access
 
 def build_mail_url(id_code, url):
     """ Build structure of correoUrl"""
@@ -167,3 +164,9 @@ def build_mail_url(id_code, url):
     correo_url["decision"] = ""
     correo_url["datetime"] = datetime.datetime.now()
     return correo_url
+
+def accumulate_dic(dict_big, dict_to_add):
+    """get two dicts and add first the data of second"""
+    for key, value in dict_to_add.iteritems():
+        dict_big[key] = dict_big.get(key, 0) + value
+    return dict_big

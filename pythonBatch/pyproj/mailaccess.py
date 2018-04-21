@@ -11,18 +11,16 @@ import datetime
 import base64
 from socket import gaierror
 
-from pyproj.logger import Logger
-
 #class for analize emails.
 class MailAccess(object):
     """ Create un access to Mail to read Emails and format Text"""
 
     _mail = None
-    _config = None
+    _config_param = None
 
-    def __init__(self, config, levelLog):
-        self.logger = Logger(self.__class__.__name__, levelLog).get()
-        self._config = config
+    def __init__(self, config):
+        self._config_param = config.get_config_param()
+        self.logger = config.get_logger(self.__class__.__name__)
         self.login()
 
 
@@ -30,10 +28,11 @@ class MailAccess(object):
         """ do loggin using informaction of file configuration"""
         try:
             self.logger.debug("acceso al Correo %s",\
-                              self._config.get("sslServer", "ERROR sslServer"))
-            self._mail = imaplib.IMAP4_SSL(self._config.get("sslServer", ""))
-            self.logger.info("loggin correo: %s", self._config.get("fromEmail", ""))
-            self._mail.login(self._config["fromEmail"], self._config.get("pwdServer", ""))
+                              self._config_param.get("sslServer", "ERROR sslServer"))
+            self._mail = imaplib.IMAP4_SSL(self._config_param.get("sslServer", ""))
+            self.logger.info("loggin correo: %s", self._config_param.get("fromEmail", ""))
+            self._mail.login(self._config_param.get("fromEmail", ""), \
+                             self._config_param.get("pwdServer", ""))
             self.logger.info("conected Data Base")
             return True
         except imaplib.IMAP4.error:

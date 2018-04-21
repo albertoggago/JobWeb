@@ -5,16 +5,13 @@
 import datetime
 import types
 
-#own classes
-from pyproj.logger import Logger
-
 class TextRuleAnalyzer(object):
     """Analyze text for AnalizerWebJobs"""
 
     logger = None
 
-    def __init__(self, level_log):
-        self.logger = Logger(self.__class__.__name__, level_log).get()
+    def __init__(self, config):
+        self.logger = config.get_logger(self.__class__.__name__)
 
     def real_url_transform(self, web_intro, rules):
         """ transform url using rules to eliminate wrong data"""

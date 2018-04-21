@@ -9,7 +9,7 @@ import os
 class Logger(object):
     """Logger Activate object of logg create a file per name with level log"""
 
-    LOGGING_DIR = "log"
+    _LOGGING_DIR = "log"
 
     def __init__(self, name, levelLog):
         name = name.replace('.log', '')
@@ -17,7 +17,7 @@ class Logger(object):
 
         logger.setLevel(levelLog)
         if not logger.handlers:
-            file_name = os.path.join(self.LOGGING_DIR, '%s.log' % name)
+            file_name = os.path.join(self._LOGGING_DIR, '%s.log' % name)
             handler = logging.FileHandler(file_name)
             formatter = logging.Formatter('%(asctime)s %(levelname)s:%(name)s %(message)s')
             handler.setFormatter(formatter)
