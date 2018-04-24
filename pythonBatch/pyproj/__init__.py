@@ -9,5 +9,6 @@ from pyproj.logger           import Logger
 from pyproj.mailaccess       import MailAccess
 from pyproj.mongodbaccess    import MongoDBAccess
 from pyproj.readandanalyse   import ReadAndAnalyse
+from pyproj.resultanalyze    import ResultAnalyze
 from pyproj.seleniumaccess   import SeleniumAccess
 from pyproj.textruleanalyzer import TextRuleAnalyzer

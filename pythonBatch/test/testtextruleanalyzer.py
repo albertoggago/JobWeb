@@ -10,6 +10,7 @@ sys.path.insert(0, "..")
 try:
     from pyproj.textruleanalyzer import TextRuleAnalyzer
     from pyproj.config import Config
+    from pyproj.resultanalyze import ResultAnalyze
 except ImportError:
     print 'No Import'
 
@@ -105,103 +106,176 @@ def test_url_role_error_from():
 
 def test_aplrulaftsel_void():
     """Test"""
-    text = {"newCorreoUrl":{"campo1":"a", "campo2":"a"}, "other":"xxxx"}
+    result_analyze = ResultAnalyze(CONFIG)
+    result_analyze.set_content_variable("campo1", "a")
+    result_analyze.set_content_variable("campo2", "b")
+    result_analyze.set_page("xxxx")
     rule = {}
-    result = {"newCorreoUrl":{"campo1":"a", "campo2":"a"}, "other":"xxxx"}
-    assert TEXT_RULE_ANALYZER.apply_rule_after_sel(text, rule) == result
+    TEXT_RULE_ANALYZER.apply_rule_after_sel(result_analyze, rule)
+    assert result_analyze.get_content_variable("campo1") == "a"
+    assert result_analyze.get_content_variable("campo2") == "b"
+    assert result_analyze.get_page() == "xxxx"
 
 def test_aplrulaftsel_err_ty():
     """Test"""
-    text = {"newCorreoUrl":{"campo1":"a", "campo2":"a"}, "other":"xxxx"}
+    result_analyze = ResultAnalyze(CONFIG)
+    result_analyze.set_content_variable("campo1", "a")
+    result_analyze.set_content_variable("campo2", "b")
+    result_analyze.set_page("xxxx")
     rule = [{"in":"campo1", "out":"campo1", "valueInxxx":"a", "action":"SPACES"}]
-    result = {"newCorreoUrl":{"campo1":"a", "campo2":"a"}, "other":"xxxx"}
-    assert TEXT_RULE_ANALYZER.apply_rule_after_sel(text, rule) == result
+    TEXT_RULE_ANALYZER.apply_rule_after_sel(result_analyze, rule)
+    assert result_analyze.get_content_variable("campo1") == "a"
+    assert result_analyze.get_content_variable("campo2") == "b"
+    assert result_analyze.get_page() == "xxxx"
 
 def test_aplrulaftsel_error_act():
     """Test"""
-    text = {"newCorreoUrl":{"campo1":"a", "campo2":"b"}, "other":"xxxx"}
+    result_analyze = ResultAnalyze(CONFIG)
+    result_analyze.set_content_variable("campo1", "a")
+    result_analyze.set_content_variable("campo2", "b")
+    result_analyze.set_page("xxxx")
     rule = {"in":"campo1", "out":"campo1", "valueIn":"a", "actionxxx":"SPACES"}
-    result = {"newCorreoUrl":{"campo1":"a", "campo2":"b"}, "other":"xxxx"}
-    assert TEXT_RULE_ANALYZER.apply_rule_after_sel(text, rule) == result
+    TEXT_RULE_ANALYZER.apply_rule_after_sel(result_analyze, rule)
+    assert result_analyze.get_content_variable("campo1") == "a"
+    assert result_analyze.get_content_variable("campo2") == "b"
+    assert result_analyze.get_page() == "xxxx"
 
 def test_aplrulaftsel_error_in():
     """Test"""
-    text = {"newCorreoUrl":{"campo1":"a", "campo2":"b"}, "other":"xxxx"}
+    result_analyze = ResultAnalyze(CONFIG)
+    result_analyze.set_content_variable("campo1", "a")
+    result_analyze.set_content_variable("campo2", "b")
+    result_analyze.set_page("xxxx")
     rule = {"inxxx":"campo1", "out":"campo1", "valueIn":"a", "action":"SPACES"}
-    result = {"newCorreoUrl":{"campo1":"a", "campo2":"b"}, "other":"xxxx"}
-    assert TEXT_RULE_ANALYZER.apply_rule_after_sel(text, rule) == result
+    TEXT_RULE_ANALYZER.apply_rule_after_sel(result_analyze, rule)
+    assert result_analyze.get_content_variable("campo1") == "a"
+    assert result_analyze.get_content_variable("campo2") == "b"
+    assert result_analyze.get_page() == "xxxx"
 
 def test_aplrulaftsel_error_out():
     """Test"""
-    text = {"newCorreoUrl":{"campo1":"a", "campo2":"b"}, "other":"xxxx"}
+    result_analyze = ResultAnalyze(CONFIG)
+    result_analyze.set_content_variable("campo1", "a")
+    result_analyze.set_content_variable("campo2", "b")
+    result_analyze.set_page("xxxx")
     rule = {"in":"campo1", "outxxxx":"campo1", "valueIn":"a", "action":"SPACES"}
-    result = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "OUT-ERROR":""}, "other":"xxxx"}
-    assert TEXT_RULE_ANALYZER.apply_rule_after_sel(text, rule) == result
+    TEXT_RULE_ANALYZER.apply_rule_after_sel(result_analyze, rule)
+    assert result_analyze.get_content_variable("campo1") == "a"
+    assert result_analyze.get_content_variable("campo2") == "b"
+    assert result_analyze.get_content_variable("OUT-ERROR") == ""
+    assert result_analyze.get_page() == "xxxx"
 
 def test_aplrulaftsel_error_val_in():
     """Test"""
-    text = {"newCorreoUrl":{"campo1":"a", "campo2":"b"}, "other":"xxxx"}
+    result_analyze = ResultAnalyze(CONFIG)
+    result_analyze.set_content_variable("campo1", "a")
+    result_analyze.set_content_variable("campo2", "b")
+    result_analyze.set_page("xxxx")
     rule = {"in":"campo1", "out":"campo1", "valueInxxx":"a", "action":"SPACES"}
-    result = {"newCorreoUrl":{"campo1":"a", "campo2":"b"}, "other":"xxxx"}
-    assert TEXT_RULE_ANALYZER.apply_rule_after_sel(text, rule) == result
+    TEXT_RULE_ANALYZER.apply_rule_after_sel(result_analyze, rule)
+    assert result_analyze.get_content_variable("campo1") == "a"
+    assert result_analyze.get_content_variable("campo2") == "b"
+    assert result_analyze.get_page() == "xxxx"
 
 def test_aplrulaftsel_error_val_out():
     """Test"""
-    text = {"newCorreoUrl":{"campo1":"a", "campo2":"b"}, "other":"xxxx"}
+    result_analyze = ResultAnalyze(CONFIG)
+    result_analyze.set_content_variable("campo1", "a")
+    result_analyze.set_content_variable("campo2", "b")
+    result_analyze.set_page("xxxx")
     rule = {"in":"campo1", "out":"campo1", "valueIn":"a", "action":"COPY", "valueOutX":"hello"}
-    result = {"newCorreoUrl":{"campo1":"ERROR-VALUE-OUT", "campo2":"b"}, "other":"xxxx"}
-    assert TEXT_RULE_ANALYZER.apply_rule_after_sel(text, rule) == result
+    TEXT_RULE_ANALYZER.apply_rule_after_sel(result_analyze, rule)
+    assert result_analyze.get_content_variable("campo1") == "ERROR-VALUE-OUT"
+    assert result_analyze.get_content_variable("campo2") == "b"
+    assert result_analyze.get_page() == "xxxx"
 
 def test_aplrulaftsel_error_val_oth():
     """Test"""
-    text = {"newCorreoUrl":{"campo1":"a", "campo2":"b"}, "other":"xxxx"}
+    result_analyze = ResultAnalyze(CONFIG)
+    result_analyze.set_content_variable("campo1", "a")
+    result_analyze.set_content_variable("campo2", "b")
+    result_analyze.set_page("xxxx")
     rule = {"in":"campo1", "out":"campo1", "valueIn":"a", "action":"COPY-ANOTHER"}
-    result = {"newCorreoUrl":{"campo1":"a", "campo2":"b"}, "other":"xxxx"}
-    assert TEXT_RULE_ANALYZER.apply_rule_after_sel(text, rule) == result
+    TEXT_RULE_ANALYZER.apply_rule_after_sel(result_analyze, rule)
+    assert result_analyze.get_content_variable("campo1") == "a"
+    assert result_analyze.get_content_variable("campo2") == "b"
+    assert result_analyze.get_page() == "xxxx"
 
 def test_aplrulaftsel_ok_b_same_var():
     """Test"""
-    text = {"newCorreoUrl":{"campo1":"a", "campo2":"b"}, "other":"xxxx"}
+    result_analyze = ResultAnalyze(CONFIG)
+    result_analyze.set_content_variable("campo1", "a")
+    result_analyze.set_content_variable("campo2", "b")
+    result_analyze.set_page("xxxx")
     rule = {"in":"campo1", "out":"campo1", "valueIn":"a", "action":"SPACES"}
-    result = {"newCorreoUrl":{"campo1":"", "campo2":"b"}, "other":"xxxx"}
-    assert TEXT_RULE_ANALYZER.apply_rule_after_sel(text, rule) == result
+    TEXT_RULE_ANALYZER.apply_rule_after_sel(result_analyze, rule)
+    assert result_analyze.get_content_variable("campo1") == ""
+    assert result_analyze.get_content_variable("campo2") == "b"
+    assert result_analyze.get_page() == "xxxx"
 
 def test_aplrulaftsel_ok_b_oth_var():
     """Test"""
-    text = {"newCorreoUrl":{"campo1":"a", "campo2":"b"}, "other":"xxxx"}
+    result_analyze = ResultAnalyze(CONFIG)
+    result_analyze.set_content_variable("campo1", "a")
+    result_analyze.set_content_variable("campo2", "b")
+    result_analyze.set_page("xxxx")
     rule = {"in":"campo1", "out":"campo2", "valueIn":"a", "action":"SPACES"}
-    result = {"newCorreoUrl":{"campo1":"a", "campo2":""}, "other":"xxxx"}
-    assert TEXT_RULE_ANALYZER.apply_rule_after_sel(text, rule) == result
+    TEXT_RULE_ANALYZER.apply_rule_after_sel(result_analyze, rule)
+    assert result_analyze.get_content_variable("campo1") == "a"
+    assert result_analyze.get_content_variable("campo2") == ""
+    assert result_analyze.get_page() == "xxxx"
 
 def test_aplrulaftsel_ok_same_var():
     """Test"""
-    text = {"newCorreoUrl":{"campo1":"a", "campo2":"b"}, "other":"xxxx"}
+    result_analyze = ResultAnalyze(CONFIG)
+    result_analyze.set_content_variable("campo1", "a")
+    result_analyze.set_content_variable("campo2", "b")
+    result_analyze.set_page("xxxx")
     rule = {"in":"campo1", "out":"campo1", "valueIn":"a", "action":"COPY", "valueOut":"hello"}
-    result = {"newCorreoUrl":{"campo1":"hello", "campo2":"b"}, "other":"xxxx"}
-    assert TEXT_RULE_ANALYZER.apply_rule_after_sel(text, rule) == result
+    TEXT_RULE_ANALYZER.apply_rule_after_sel(result_analyze, rule)
+    assert result_analyze.get_content_variable("campo1") == "hello"
+    assert result_analyze.get_content_variable("campo2") == "b"
+    assert result_analyze.get_page() == "xxxx"
 
 def test_aplrulaftsel_ok_cp_oth_var():
     """Test"""
-    text = {"newCorreoUrl":{"campo1":"a", "campo2":"b"}, "other":"xxxx"}
+    result_analyze = ResultAnalyze(CONFIG)
+    result_analyze.set_content_variable("campo1", "a")
+    result_analyze.set_content_variable("campo2", "b")
+    result_analyze.set_page("xxxx")
     rule = {"in":"campo1", "out":"campo2", "valueIn":"a", "action":"COPY", "valueOut":"hello"}
-    result = {"newCorreoUrl":{"campo1":"a", "campo2":"hello"}, "other":"xxxx"}
-    assert TEXT_RULE_ANALYZER.apply_rule_after_sel(text, rule) == result
+    TEXT_RULE_ANALYZER.apply_rule_after_sel(result_analyze, rule)
+    assert result_analyze.get_content_variable("campo1") == "a"
+    assert result_analyze.get_content_variable("campo2") == "hello"
+    assert result_analyze.get_page() == "xxxx"
 
 def test_aplrulaftsel_ok_cp_oth_sva():
     """Test"""
-    text = {"newCorreoUrl":{"campo1":"a", "campo2":"b"}, "other":"xxxx"}
+    result_analyze = ResultAnalyze(CONFIG)
+    result_analyze.set_content_variable("campo1", "a")
+    result_analyze.set_content_variable("campo2", "b")
+    result_analyze.set_page("xxxx")
     rule = {"in":"campo1", "out":"campo1", "valueIn":"a", "action":"COPY-ANOTHER",\
             "another":"campo2"}
-    result = {"newCorreoUrl":{"campo1":"b", "campo2":"b"}, "other":"xxxx"}
-    assert TEXT_RULE_ANALYZER.apply_rule_after_sel(text, rule) == result
+    TEXT_RULE_ANALYZER.apply_rule_after_sel(result_analyze, rule)
+    assert result_analyze.get_content_variable("campo1") == "b"
+    assert result_analyze.get_content_variable("campo2") == "b"
+    assert result_analyze.get_page() == "xxxx"
 
 def test_aplrulaftsel_ok_cp_othothv():
     """Test"""
-    text = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"c"}, "other":"xxxx"}
+    result_analyze = ResultAnalyze(CONFIG)
+    result_analyze.set_content_variable("campo1", "a")
+    result_analyze.set_content_variable("campo2", "b")
+    result_analyze.set_content_variable("campo3", "c")
+    result_analyze.set_page("xxxx")
     rule = {"in":"campo1", "out":"campo3", "valueIn":"a", "action":"COPY-ANOTHER",\
             "another":"campo2"}
-    result = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"b"}, "other":"xxxx"}
-    assert TEXT_RULE_ANALYZER.apply_rule_after_sel(text, rule) == result
+    TEXT_RULE_ANALYZER.apply_rule_after_sel(result_analyze, rule)
+    assert result_analyze.get_content_variable("campo1") == "a"
+    assert result_analyze.get_content_variable("campo2") == "b"
+    assert result_analyze.get_content_variable("campo3") == "b"
+    assert result_analyze.get_page() == "xxxx"
 
 def test_proaftgetvar_void_rule():
     """Test"""
@@ -222,22 +296,35 @@ def test_proaftgetvar_err_type_rule():
 
 def test_proaftgetvar_one_rule():
     """Test"""
-    text = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"c"}, "other":"xxxx"}
+    result_analyze = ResultAnalyze(CONFIG)
+    result_analyze.set_content_variable("campo1", "a")
+    result_analyze.set_content_variable("campo2", "b")
+    result_analyze.set_content_variable("campo3", "c")
+    result_analyze.set_page("xxxx")
     rule = [{"in":"campo1", "out":"campo3", "valueIn":"a", "action":"COPY-ANOTHER",\
              "another":"campo2"}]
-    result = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"b"}, "other":"xxxx"}
-    TEXT_RULE_ANALYZER.process_after_get_variables(text, rule)
-    assert text == result
+    TEXT_RULE_ANALYZER.process_after_get_variables(result_analyze, rule)
+    assert result_analyze.get_content_variable("campo1") == "a"
+    assert result_analyze.get_content_variable("campo2") == "b"
+    assert result_analyze.get_content_variable("campo3") == "b"
+    assert result_analyze.get_page() == "xxxx"
 
 def test_proaftgetvar_two_rules():
     """Test"""
-    text = {"newCorreoUrl":{"campo1":"a", "campo2":"b", "campo3":"c"}, "other":"xxxx"}
+    result_analyze = ResultAnalyze(CONFIG)
+    result_analyze.set_content_variable("campo1", "a")
+    result_analyze.set_content_variable("campo2", "b")
+    result_analyze.set_content_variable("campo3", "c")
+    result_analyze.set_page("xxxx")
     rule = [{"in":"campo1", "out":"campo3", "valueIn":"a", "action":"COPY-ANOTHER",\
              "another":"campo2"}, \
             {"in":"campo1", "out":"campo1", "valueIn":"a", "action":"COPY", "valueOut":"hello"}]
-    result = {"newCorreoUrl":{"campo1":"hello", "campo2":"b", "campo3":"b"}, "other":"xxxx"}
-    TEXT_RULE_ANALYZER.process_after_get_variables(text, rule)
-    assert text == result
+    TEXT_RULE_ANALYZER.process_after_get_variables(result_analyze, rule)
+    assert result_analyze.get_content_variable("campo1") == "hello"
+    assert result_analyze.get_content_variable("campo2") == "b"
+    assert result_analyze.get_content_variable("campo3") == "b"
+    assert result_analyze.get_page() == "xxxx"
+
 
 def test_revdatok_void():
     """Test"""

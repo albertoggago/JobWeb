@@ -25,26 +25,26 @@ CONFIG_ERROR_MONGODB = Config(FILE_CONFIG_ERROR_MONGODB, logging.DEBUG)
 def test_ra_init_error_fichero():
     """test_ra_init_error_fichero"""
     read_and_analyse = ReadAndAnalyse(CONFIG_ERROR)
-    assert not read_and_analyse.get_mongo_db_access().status()
-    assert not read_and_analyse.get_mail_access().status()
+    assert not read_and_analyse.get_mongo_db_access_status()
+    assert not read_and_analyse.get_mail_access_status()
 
 def test_ra_init_correct():
     """test_ra_init_correct"""
     read_and_analyse = ReadAndAnalyse(CONFIG_OK)
-    assert read_and_analyse.get_mongo_db_access().status()
-    assert read_and_analyse.get_mail_access().status()
+    assert read_and_analyse.get_mongo_db_access_status()
+    assert read_and_analyse.get_mail_access_status()
 
 def test_ra_init_error_mongo():
     """test_ra_init_ErrorMongo"""
     read_and_analyse = ReadAndAnalyse(CONFIG_ERROR_MONGODB)
-    assert not read_and_analyse.get_mongo_db_access().status()
-    assert read_and_analyse.get_mail_access().status()
+    assert not read_and_analyse.get_mongo_db_access_status()
+    assert read_and_analyse.get_mail_access_status()
 
 def test_ra_init_error_mail():
     """test_ra_init_ErrorMail"""
     read_and_analyse = ReadAndAnalyse(CONFIG_ERROR_MAIL)
-    assert read_and_analyse.get_mongo_db_access().status()
-    assert not read_and_analyse.get_mail_access().status()
+    assert read_and_analyse.get_mongo_db_access_status()
+    assert not read_and_analyse.get_mail_access_status()
 
 def test_ra_finding_mails():
     """test_ra_findingMails"""

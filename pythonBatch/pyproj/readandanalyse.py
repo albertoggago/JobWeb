@@ -147,13 +147,13 @@ class ReadAndAnalyse(object):
         self._logger.debug(correo_url)
         self._mongo_db_access.update_one("correoUrl", {"_id":id_code}, correo_url)
 
-    def get_mongo_db_access(self):
+    def get_mongo_db_access_status(self):
         """Return method of mongodbaccess"""
-        return self._mongo_db_access
+        return self._mongo_db_access.status()
 
-    def get_mail_access(self):
+    def get_mail_access_status(self):
         """Return method of mongodbaccess"""
-        return self._mail_access
+        return self._mail_access.status()
 
 def build_mail_url(id_code, url):
     """ Build structure of correoUrl"""

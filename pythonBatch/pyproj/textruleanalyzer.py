@@ -34,27 +34,30 @@ class TextRuleAnalyzer(object):
             return ""
         return url.replace(rule.get("from", "NOFIND12345"), rule.get("to", "ERROR-RULE"))
 
-    def process_after_get_variables(self, json_result, rules_after_selenium):
+    def process_after_get_variables(self, result_analyze, rules_after_selenium):
         """ With rules transform output for modify data """
         self.logger.info("Rules Transform after Selenium")
         self.logger.info(rules_after_selenium)
         if not isinstance(rules_after_selenium, types.ListType):
             self.logger.error("Rules not List")
         for rule in rules_after_selenium:
-            self.apply_rule_after_sel(json_result, rule)
+            self.apply_rule_after_sel(result_analyze, rule)
 
-    def apply_rule_after_sel(self, data_imput, rule):
+    def apply_rule_after_sel(self, result_analyze, rule):
         """ get rule and aply to output"""
-        data_output = data_imput
         self.logger.debug("Rule Unique Transform after Selenium")
         if not isinstance(rule, types.DictType):
             self.logger.error("Rule not Dict")
-            return data_imput
+        else:
+            self.apply_rule_after_sel_correct(result_analyze, rule)
+
+    def apply_rule_after_sel_correct(self, result_analyze, rule):
+        """part apply rule after sel correct"""
         self.logger.debug(rule.get("valueIn", "yyyy"))
-        self.logger.debug(data_output["newCorreoUrl"].get(rule.get("in", "xxxx")))
+        self.logger.debug(result_analyze.get_content_variable(rule.get("in", "xxxx")))
         in_variable = rule.get("in", "IN-ERROR")
-        if data_output["newCorreoUrl"].get(in_variable) != None and\
-           data_output["newCorreoUrl"].get(in_variable)\
+        if result_analyze.get_content_variable(in_variable) != None and\
+           result_analyze.get_content_variable(in_variable)\
            .decode('utf-8', 'ignore')\
            .encode('utf-8', 'ignore') ==\
                rule.get("valueIn", "VALUE-ERROR"):
@@ -62,22 +65,20 @@ class TextRuleAnalyzer(object):
             out_variable = rule.get("out", "OUT-ERROR")
             self.logger.debug(action)
             if action == "SPACES":
-                data_output["newCorreoUrl"][out_variable] = ''
+                result_analyze.set_content_variable(out_variable, "")
             elif action == "COPY":
-                data_output["newCorreoUrl"][out_variable] =\
-                      rule.get("valueOut", "ERROR-VALUE-OUT")
+                result_analyze.set_content_variable(out_variable, \
+                                                    rule.get("valueOut", "ERROR-VALUE-OUT"))
             elif action == "COPY-ANOTHER":
                 another_variable = rule.get("another", "ERROR-ANOTHER")
                 if another_variable != "ERROR-ANOTHER":
-                    data_output["newCorreoUrl"][out_variable] = \
-                    data_output["newCorreoUrl"][another_variable]
+                    result_analyze \
+                      .set_content_variable(out_variable, \
+                                            result_analyze.get_content_variable(another_variable))
             self.logger.debug(rule.get("out", "zzz"))
-            self.logger.debug(data_output["newCorreoUrl"][out_variable])
-            self.logger.debug(data_output)
+            self.logger.debug(result_analyze.get_content_variable(out_variable))
 
-        return data_output
-
-    def review_data_ok(self, data_imput, rules_review_data):
+    def review_data_ok(self, result_analyze, rules_review_data):
         """ review which elements are mandatory """
         self.logger.info("Rules Review Data")
         self.logger.info(rules_review_data)
@@ -86,7 +87,7 @@ class TextRuleAnalyzer(object):
             return False
         status = True
         for variable_review in rules_review_data:
-            if not data_imput.get("newCorreoUrl", {}).get(variable_review, ""):
+            if not result_analyze.get_content_variable(variable_review):
                 status = False
         return status
 

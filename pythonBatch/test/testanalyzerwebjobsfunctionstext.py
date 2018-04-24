@@ -24,47 +24,47 @@ ANALYZER_WEB_JOBS = AnalyzerWebJobs(CONFIG)
 def test_determinate_web_error():
     """test_determinate_web_error"""
     url = "https://www.none.com"
-    result = {}
-    ANALYZER_WEB_JOBS.determinate_web(result, url)
-    assert result["page"] == "N/D"
-    assert result["control"] == "ERROR"
+    web_rules = ANALYZER_WEB_JOBS.return_rules(url)
+    assert ANALYZER_WEB_JOBS.get_page(web_rules) == "N/D"
+    assert ANALYZER_WEB_JOBS.get_control(web_rules, url) == "ERROR"
+    assert ANALYZER_WEB_JOBS.get_new_url(web_rules, url) == url
 
 def test_determinate_web_linkedin():
     """test_determinate_web_linkedin"""
     url = "https://www.linkedin.com"
-    result = {}
-    ANALYZER_WEB_JOBS.determinate_web(result, url)
-    assert result["page"] == "linkedin"
-    assert result["control"] == "REVIEW"
+    web_rules = ANALYZER_WEB_JOBS.return_rules(url)
+    assert ANALYZER_WEB_JOBS.get_page(web_rules) == "linkedin"
+    assert ANALYZER_WEB_JOBS.get_control(web_rules, url) == "REVIEW"
+    assert ANALYZER_WEB_JOBS.get_new_url(web_rules, url) == url
 
 def test_determinate_web_irishjobs():
     """test_determinate_web_irishjobs"""
     url = "https://www.irishjobs.ie"
-    result = {}
-    ANALYZER_WEB_JOBS.determinate_web(result, url)
-    assert result["page"] == "irishjobs"
-    assert result["control"] == "REVIEW"
+    web_rules = ANALYZER_WEB_JOBS.return_rules(url)
+    assert ANALYZER_WEB_JOBS.get_page(web_rules) == "irishjobs"
+    assert ANALYZER_WEB_JOBS.get_control(web_rules, url) == "REVIEW"
+    assert ANALYZER_WEB_JOBS.get_new_url(web_rules, url) == url
 
 def test_determinate_web_other():
     """test_determinate_web_other"""
     url = "https://www.saongroup.ie"
-    result = {}
-    ANALYZER_WEB_JOBS.determinate_web(result, url)
-    assert result["page"] == "N/D"
-    assert result["control"] == "OTRO"
+    web_rules = ANALYZER_WEB_JOBS.return_rules(url)
+    assert ANALYZER_WEB_JOBS.get_page(web_rules) == "N/D"
+    assert ANALYZER_WEB_JOBS.get_control(web_rules, url) == "OTRO"
+    assert ANALYZER_WEB_JOBS.get_new_url(web_rules, url) == url
 
 def test_determinate_other_error():
     """test_determinate_other_error"""
     url = "https://www.none.com"
-    result = {}
-    ANALYZER_WEB_JOBS.determinate_other_web(result, url)
-    assert result["page"] == "N/D"
-    assert result["control"] == "ERROR"
+    web_rules = ANALYZER_WEB_JOBS.return_rules(url)
+    assert ANALYZER_WEB_JOBS.get_page(web_rules) == "N/D"
+    assert ANALYZER_WEB_JOBS.get_control(web_rules, url) == "ERROR"
+    assert ANALYZER_WEB_JOBS.get_new_url(web_rules, url) == url
 
 def test_determinate_other_other():
     """test_determinate_other_other"""
     url = "https://www.saongroup.ie"
-    result = {}
-    ANALYZER_WEB_JOBS.determinate_other_web(result, url)
-    assert result["page"] == "N/D"
-    assert result["control"] == "OTRO"
+    web_rules = ANALYZER_WEB_JOBS.return_rules(url)
+    assert ANALYZER_WEB_JOBS.get_page(web_rules) == "N/D"
+    assert ANALYZER_WEB_JOBS.get_control(web_rules, url) == "OTRO"
+    assert ANALYZER_WEB_JOBS.get_new_url(web_rules, url) == url
