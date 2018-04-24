@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-""" Clase unique AnalyzerWebJobs """
-from selenium.common.exceptions import NoSuchElementException
+""" process web page and analyse """
+import types
 
 #own classes
-from pyproj.textruleanalyzer import TextRuleAnalyzer
 from pyproj.resultanalyze import ResultAnalyze
+from pyproj.analyzervariable import AnalyzerVariable
 
 NONE_DETERMINATE = "N/D"
 CONTROL_OK = "REVIEW"
@@ -20,14 +20,12 @@ class AnalyzerWebJobs(object):
 
     _config_param_analyze = None
     _logger = None
-    _text_rule_analyzer = None
     _config = None
 
     def __init__(self, config):
         self._config = config
         self._config_param_analyze = config.get_config_param().get("webPagesDef", {})
         self._logger = config.get_logger(self.__class__.__name__)
-        self._text_rule_analyzer = TextRuleAnalyzer(config)
 
     def analyze(self, correo_url, driver):
         """module analyze get url and prepare scraping"""
@@ -76,8 +74,7 @@ class AnalyzerWebJobs(object):
         if web_rules is None:
             return web_url
         else:
-            return  self._text_rule_analyzer\
-                        .real_url_transform(web_url, web_rules.get("rulesTransformUrl", []))
+            return  self.real_url_transform(web_url, web_rules.get("rulesTransformUrl", []))
 
     def review_continue_process(self, driver, result_analyze):
         """ review if is necessary contiue """
@@ -98,66 +95,102 @@ class AnalyzerWebJobs(object):
         #process search in rule variable
         for rule_variable in rules_page.get("necesaryVariables", []):
             result_analyze.set_content_variable(\
-                   rule_variable, \
-                   self.get_text_variable(rule_variable,\
+                        rule_variable, \
+                        AnalyzerVariable(self._config) \
+                                         .process( \
+                                         rule_variable,\
                                          rules_page.get("rulesTransformData", [])\
                                                    .get(rule_variable, {}),\
-                                          driver))
+                                         driver) \
+                        )
 
         #determinate rules after search
-        self._text_rule_analyzer\
-            .process_after_get_variables(result_analyze, \
+        self.process_after_get_variables(result_analyze, \
                                          rules_page.get("rulestransformFinal", []))
-        result_analyze.set_status(self._text_rule_analyzer.review_data_ok(result_analyze,\
+        result_analyze.set_status(self.review_data_ok(result_analyze,\
                                                           rules_page.get("rulesOkFinding", [])))
         result_analyze.set_control(CONTROL_ALL_OK if result_analyze.get_status() \
                                                   else CONTROL_ALL_NOTHING)
 
         self._logger.debug(result_analyze.get_return_all())
 
-    def get_text_variable(self, variable, rules_transform, driver):
-        """analize each varable of rules"""
-        self._logger.info("Process Variable: %s", variable)
-        self._logger.info(rules_transform)
-
-        #secuences
-        secuences = rules_transform.get("secuences", [{"tipo":"class", "elemento":"xx"}])
-        self._logger.debug(secuences)
-        text_after_secuence = self.in_driver_data_and_return_text(secuences, driver)
-
-        #split
-        self._logger.debug("text_after_secuence: %s", text_after_secuence)
-        split = rules_transform.get("split", None)
-        self._logger.debug(split)
-        if split is None:
-            text_split = text_after_secuence
-        else:
-            text_split = self._text_rule_analyzer.split_text(text_after_secuence, split)
-
-        #out
-        self._logger.debug("text_split: %s", text_split)
-
-        out = rules_transform.get("out", {"tipo":"text", "initText":None})
-        self._logger.debug(out)
-
-        text_out = self._text_rule_analyzer.format_text_out(text_split, out)
-
-        return text_out
-
-    def in_driver_data_and_return_text(self, secuences, driver):
-        """ Select of driver selenium data using secuences rules"""
-        driver_work = driver
-        try:
-            for secuence in secuences:
-                if secuence["tipo"] == "class":
-                    driver_work = driver_work.find_element_by_class_name(secuence["elemento"])
-                elif secuence["tipo"] == "tag":
-                    driver_work = driver_work.find_element_by_tag_name(secuence["elemento"])
-            text_after_secuence = driver_work.text.encode("utf-8", errors='ignore')
-            self._logger.debug("text_after_secuence %s", text_after_secuence)
-            return text_after_secuence
-        except NoSuchElementException as error:
-            self._logger.warning("Error secuences: ")
-            self._logger.warning(secuences)
-            self._logger.warning("Error find information: %s", error.args)
+    def real_url_transform(self, web_intro, rules):
+        """ transform url using rules to eliminate wrong data"""
+        self._logger.info("Rules Transform URL: ")
+        self._logger.info(rules)
+        if not isinstance(rules, types.ListType):
+            self._logger.error("Rules not List")
             return ""
+        web_output = web_intro
+        for rule_url_transform in rules:
+            web_output = self.transform_url_role(web_output, rule_url_transform)
+        return web_output
+
+    def transform_url_role(self, url, rule):
+        """ Transform url with one rule"""
+        self._logger.info("Rule Transform URL: ")
+        self._logger.info(rule)
+        if not isinstance(rule, types.DictType):
+            self._logger.error("Rule not Dictionary")
+            return ""
+        return url.replace(rule.get("from", "NOFIND12345"), rule.get("to", "ERROR-RULE"))
+
+    def process_after_get_variables(self, result_analyze, rules_after_selenium):
+        """ With rules transform output for modify data """
+        self._logger.info("Rules Transform after Selenium")
+        self._logger.info(rules_after_selenium)
+        if not isinstance(rules_after_selenium, types.ListType):
+            self._logger.error("Rules not List")
+        for rule in rules_after_selenium:
+            self.apply_rule_after_sel(result_analyze, rule)
+
+    def apply_rule_after_sel(self, result_analyze, rule):
+        """ get rule and aply to output"""
+        self._logger.debug("Rule Unique Transform after Selenium")
+        if not isinstance(rule, types.DictType):
+            self._logger.error("Rule not Dict")
+        else:
+            self.apply_rule_after_sel_correct(result_analyze, rule)
+
+    def apply_rule_after_sel_correct(self, result_analyze, rule):
+        """part apply rule after sel correct"""
+        self._logger.debug(rule.get("valueIn", "yyyy"))
+        self._logger.debug(result_analyze.get_content_variable(rule.get("in", "xxxx")))
+        in_variable = rule.get("in", "IN-ERROR")
+        if result_analyze.get_content_variable(in_variable) != None and\
+           result_analyze.get_content_variable(in_variable)\
+           .decode('utf-8', 'ignore')\
+           .encode('utf-8', 'ignore') ==\
+               rule.get("valueIn", "VALUE-ERROR"):
+            action = rule.get("action")
+            out_variable = rule.get("out", "OUT-ERROR")
+            self._logger.debug(action)
+            if action == "SPACES":
+                result_analyze.set_content_variable(out_variable, "")
+            elif action == "COPY":
+                result_analyze.set_content_variable(out_variable, \
+                                                    rule.get("valueOut", "ERROR-VALUE-OUT"))
+            elif action == "COPY-ANOTHER":
+                another_variable = rule.get("another", "ERROR-ANOTHER")
+                if another_variable != "ERROR-ANOTHER":
+                    result_analyze \
+                      .set_content_variable(out_variable, \
+                                            result_analyze.get_content_variable(another_variable))
+            self._logger.debug(rule.get("out", "zzz"))
+            self._logger.debug(result_analyze.get_content_variable(out_variable))
+
+    def review_data_ok(self, result_analyze, rules_review_data):
+        """ review which elements are mandatory """
+        self._logger.info("Rules Review Data")
+        self._logger.info(rules_review_data)
+        if not isinstance(rules_review_data, types.ListType):
+            self._logger.error("Rules not List")
+            return False
+        status = True
+        print rules_review_data
+        for variable_review in rules_review_data:
+            print variable_review
+            print result_analyze.get_content_variable(variable_review)
+            if result_analyze.get_content_variable(variable_review) == "":
+                status = False
+        return status

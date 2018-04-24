@@ -19,7 +19,7 @@ except ImportError:
 
 FILE_CONFIG = "../test/config/configOk.json"
 CONFIG = Config(FILE_CONFIG, logging.DEBUG)
-TIME_OUT = 20
+TIME_OUT = 30
 
 @pytest.mark.timeout(TIME_OUT)
 def test_linkedin():

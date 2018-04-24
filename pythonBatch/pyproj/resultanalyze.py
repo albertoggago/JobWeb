@@ -39,7 +39,7 @@ class ResultAnalyze(object):
 
     def get_content_variable(self, variable):
         """ return a specific variable saved"""
-        return self._var_list_content_variable.get(variable, ERROR)
+        return self._var_list_content_variable.get(variable, "")
 
     def set_page(self, page):
         """ save variable page"""
