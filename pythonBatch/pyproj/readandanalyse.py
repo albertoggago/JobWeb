@@ -8,6 +8,7 @@ import urllib2
 from selenium.common.exceptions import WebDriverException
 
 from pyproj.mongodbaccess import MongoDBAccess
+from pyproj.mail import Mail
 from pyproj.mailaccess import MailAccess
 from pyproj.analyzerwebjobs import AnalyzerWebJobs
 from pyproj.seleniumaccess import SeleniumAccess
@@ -21,8 +22,10 @@ class ReadAndAnalyse(object):
     _analyzer_web_jobs = None
     _seleniumaccess = None
     _config_param = None
+    _config = None
 
     def __init__(self, config):
+        self._config = config
         self._logger = config.get_logger(self.__class__.__name__)
         self._config_param = config.get_config_param()
 
@@ -46,17 +49,18 @@ class ReadAndAnalyse(object):
         list_emails = self._mail_access.search_mails("inbox")
 
         for ele in list_emails:
-            mail = self._mail_access.compose_mail_json(self._mail_access.get(ele))
-            if mail is None:
-                self._logger.error("Mail generate wrong")
-            else:
+            mail = Mail(self._config, self._mongo_db_access, self._mail_access.get(ele))
+
+            if mail.is_ok():
                 self._logger.debug("Insert into Control")
-                self._logger.debug("control: %s", mail.get("control"))
-                self._logger.debug("urls: %s", mail.get("urls"))
-                self._logger.debug("datetime: %s", mail.get("datetime"))
-                self._mongo_db_access.insert("correo", mail)
+                self._logger.debug("control: %s", mail.get_control())
+                self._logger.debug("urls: %s", mail.get_urls())
+                self._logger.debug("datetime: %s", mail.get_datetime())
+                mail.save_mail()
                 count_emails += 1
                 self._mail_access.store(ele)
+            else:
+                self._logger.error("Mail generate wrong")
 
         if self._config_param.get("env", "DEV") == "PRODUCTION":
             self._logger.info("CLEAN EMAIL")
