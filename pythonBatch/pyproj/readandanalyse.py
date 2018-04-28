@@ -60,7 +60,7 @@ class ReadAndAnalyse(object):
                 count_emails += 1
                 self._mail_access.store(ele)
             else:
-                self._logger.error("Mail generate wrong")
+                self._logger.error("AASFDYU  generate wrong")
 
         if self._config_param.get("env", "DEV") == "PRODUCTION":
             self._logger.info("CLEAN EMAIL")
